@@ -23,7 +23,9 @@ with each level you upgrade it to.  However, it can quickly provide some powerfu
 When upgrading it is recommended to first quality your orbs that have a bonus followed up 
 with attack and defense orbs, and then everything else to get the most value from your upgrades. 
 Just like with leveling your orbs we recommend upgrading them evenly because of the large 
-cost increase to upgrade each level.
+cost increase to upgrade each level. It is also worth noting at orbs currently do not have 
+an enhancement cap, but due to the cost increasing dramatically with each level, the general 
+soft cap most players agree on is around +6.
 
 ### Calculating orb bonus
 The formula for calculating an orb's bonus is as follows (confirmed December 2019 via support):
