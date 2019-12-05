@@ -24,7 +24,7 @@ have been.
    - Collections
    - Reforging
 
-- How to gear
+- [How to gear](how-to-gear.md)
    - Stat priorities
    - Orb equips and leveling
    - Reforging
