@@ -30,13 +30,17 @@ soft cap most players agree on is around +6.
 ### Calculating orb bonus
 The formula for calculating an orb's bonus is as follows (confirmed December 2019 via support):
 
-(Base orb stat + orb enhancement bonus * potential) * 5% = Enhancement bonus increase
+(Base orb stat + orb enhancement bonus * potential) * 5% = Enhancement bonus per level
 Note: Orb enhancement bonus is the count of the times boosted so a +7 would be a 6 bonus
 
 Example:  Hope Reborn Orb (potential 62) at a +7 enhancement
-(192 + 62 * 6) * 5% = 28.2 extra points
+(192 + 62 * 6) * 5% = 28.2 enhancement bonus (per level)
 
-//TODO confirm with devs the final calculation for orb overall bonus.
+Now that we have the extra potential points the final formula to calculate orb power is:
+Orb base stat + (orb potential + enhancement bonus) * orb level
+
+Example continued:
+192 + (62 + 28.2) * 100 = 9212 orb stat bonus
 
 ### Gearing with orbs
 //TODO add a link to the "gearing" information explaining how to select your orbs.
