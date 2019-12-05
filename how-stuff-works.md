@@ -10,8 +10,6 @@ Each orb also has a particular strength associated with it called potential whic
 how much stronger an orb becomes as you level it up and enhance it's quality.
 
 ### Orb level
-//TODO confirm mechanics with devs
-
 In general any orb you want to use you will spend the gold to level up to level 100. 
 If you are short on gold it is recommended to level all your orbs evenly until you get 
 them to 100. Please keep in mind that when you go to replace the orb there is no way 
@@ -19,8 +17,6 @@ to recover any gold spent leveling the orbs and it will all be lost. So before s
 to a new orb make sure you are going to use the orb for a while.
 
 ### Orb Quality
-// TODO confirm orb mechanics with devs
-
 Don't bother upgrading orb quality until you have decent potential legendary orbs in all 
 slots and your orb bonuses working. Raising an orb's quality very quickly gets more expensive 
 with each level you upgrade it to.  However, it can quickly provide some powerful bonuses. 
@@ -28,6 +24,17 @@ When upgrading it is recommended to first quality your orbs that have a bonus fo
 with attack and defense orbs, and then everything else to get the most value from your upgrades. 
 Just like with leveling your orbs we recommend upgrading them evenly because of the large 
 cost increase to upgrade each level.
+
+### Calculating orb bonus
+The formula for calculating an orb's bonus is as follows (confirmed December 2019 via support):
+
+(Base orb stat + orb enhancement bonus * potential) * 5% = Enhancement bonus increase
+Note: Orb enhancement bonus is the count of the times boosted so a +7 would be a 6 bonus
+
+Example:  Hope Reborn Orb (potential 62) at a +7 enhancement
+(192 + 62 * 6) * 5% = 28.2 extra points
+
+//TODO confirm with devs the final calculation for orb overall bonus.
 
 ### Gearing with orbs
 //TODO add a link to the "gearing" information explaining how to select your orbs.
