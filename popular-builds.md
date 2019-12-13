@@ -89,5 +89,3 @@ which can heal you and grant 1 blue to the board.  Since both Pax and Depth of D
 are equipped both a 1 white and 1 red will be triggered. 1 red will grant you an additional
 1 blue to the board.  The 1 white will grant you 1-2 blue to the board and when your 
 intensity reaches level 3 you will also have a high chance at an additional 1 red triggering.
-
-## 
