@@ -30,12 +30,11 @@ have been.
    - Reforging
    - Collections
    
-- Popular builds
+- [Popular builds](popular-builds.md)
+  - Hecatombus
   - The Turtle
   - Ratchet Rush
-  - Hectacombus
   - The Pax
-  - Daily Boss King
 
 - Guilds
   - Donations
