@@ -36,7 +36,7 @@ have been.
   - Ratchet Rush
   - The Pax
 
-- [How to Battle Event like a boss](battle-event.md)
+- [How to dominate the Battle Event](battle-event.md)
 
 - How to Quest Event like a boss
 
