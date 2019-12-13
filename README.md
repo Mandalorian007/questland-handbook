@@ -28,13 +28,14 @@ have been.
    - Stat priorities
    - Orb equips and leveling
    - Reforging
-   - Collection building
-   - Popular builds
-      - The Turtle
-      - Ratchet Rush
-      - Hectacombus
-      - The Pax
-      - Daily Boss King
+   - Collections
+   
+- Popular builds
+  - The Turtle
+  - Ratchet Rush
+  - Hectacombus
+  - The Pax
+  - Daily Boss King
 
 - Guilds
   - Donations
