@@ -36,14 +36,7 @@ have been.
   - Ratchet Rush
   - The Pax
 
-- Guilds
-  - Donations
-  - Research
-  - Selecting a guild
-
-- Daily Routine
-
-- How to Battle Event like a boss
+- [How to Battle Event like a boss](battle-event.md)
 
 - How to Quest Event like a boss
 
