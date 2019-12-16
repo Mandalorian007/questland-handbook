@@ -56,8 +56,8 @@ response = requests.get(items_url).json()
 # filter: 'talisman', 'ring', 'chest', 'head', 'off_hand', 'main_hand', 'amulet', 'gloves', 'feet'}
 legendary_items = [x for x in response if x['q'] == 'legendary' and x['s'] not in ['usable', 'rune', 'giftbox', 'lockbox', 'exactshard']]
 
-# print first item
-#jprint(legendary_items[0])
+# print first item in server json format.  Useful for debugging / finding new pieces of info
+jprint(legendary_items[0])
 
 # Convert all the data into a simplified model for calculations
 item_map = {}
@@ -96,7 +96,7 @@ print(f'{len(item_list)} legendary items available for gear & collections.')
 '''
 Things I know about internal model
 q = Gear quality common, uncommon, rare, legendary
-s = socket for gear.  Also has some oddities see above
+s = socket for gear.  It looks like orbs, keys, and all kind of things are denoted here.
 i = item id
 n = item's name
 set = set identifier (don't know how to resolve set name)
