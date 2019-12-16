@@ -1,5 +1,8 @@
 import requests
 import json
+from dataclasses import dataclass
+from typing import List
+from enum import Enum
 
 
 def jprint(obj):
@@ -8,12 +11,41 @@ def jprint(obj):
     print(text)
 
 
+class LinkBonus(Enum):
+    NONE = 1
+    ATTACK = 2
+    MAGIC = 3
+    DEFENSE = 4
+
+
+@dataclass
+class Item:
+    id: int
+    name: str
+    attack: int
+    magic: int
+    defense: int
+    health: int
+    link_bonus: LinkBonus
+    links: List[int]
+
+
+def text_to_link_bonus(text: str):
+    if text == 'damage':
+        return LinkBonus.ATTACK
+    elif text == 'defence':
+        return LinkBonus.DEFENSE
+    elif text == 'magic':
+        return LinkBonus.MAGIC
+    else:
+        return LinkBonus.NONE
+
+
 # get latest item templates reference id
 latest_server_data_url = 'http://gs-bhs-wrk-02.api-ql.com/client/checkstaticdata/?lang=en&graphics_quality=hd_android'
 response = requests.get(latest_server_data_url).json()
 
 item_templates = response['data']['static_data']['crc_details']['item_templates']
-
 print(item_templates)
 
 # get all items
@@ -24,17 +56,45 @@ response = requests.get(items_url).json()
 # filter: 'talisman', 'ring', 'chest', 'head', 'off_hand', 'main_hand', 'amulet', 'gloves', 'feet'}
 legendary_items = [x for x in response if x['q'] == 'legendary' and x['s'] not in ['usable', 'rune', 'giftbox', 'lockbox', 'exactshard']]
 
-types = set()
-for item in legendary_items:
-    types.add(item['set'])
-print(types)
-
 # print first item
-jprint(legendary_items)
+#jprint(legendary_items[0])
+
+# Convert all the data into a simplified model for calculations
+item_map = {}
+for leg_item in legendary_items:
+    stats = leg_item['stats']
+    # Items like weapons won't have links
+    if len(leg_item['links']) > 0:
+        link = leg_item['links'][0]['i']
+        link_bonus = text_to_link_bonus(leg_item['links'][0]['e'])
+        # Jubilee Talisman is an edge case with 1 link
+        if len(link) == 1:
+            item_links = [link[0][0]]
+        else:
+            item_links = [link[0][0], link[1][0], link[2][0]]
+    else:
+        item_links = []
+        link_bonus = LinkBonus.NONE
+    item_map[leg_item['i']] = Item(
+        leg_item['i'],
+        leg_item['n'],
+        stats['dmg'][0],
+        stats['magic'][0],
+        stats['def'][0],
+        stats['hp'][0],
+        link_bonus,
+        item_links
+    )
+
+item_list = list(item_map.values())
+for item in item_list:
+    print(item)
+print(f'{len(item_list)} legendary items available for gear & collections.')
+
 
 
 '''
-Things I know
+Things I know about internal model
 q = Gear quality common, uncommon, rare, legendary
 s = socket for gear.  Also has some oddities see above
 i = item id
