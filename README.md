@@ -39,9 +39,9 @@ have been.
 - [Guild ladder in the Battle Event](battle-event-guild-ladder.md)
 - [Individual ladder in the Battle Event](battle-event-individual-ladder.md)
 
-- How to Quest Event like a boss
+- [How to fully clear Quest Events](quest-events.md)
 
-- How to Arena like a boss
+- [How to Arena like a boss](arena-domination.md)
 
 - Spending money efficiently
 
