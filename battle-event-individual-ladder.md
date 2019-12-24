@@ -135,4 +135,4 @@ not you scored a 4 ticket kill.
 
 With this technique I have managed a 2 ticket boss kill on level 80 and a 4 ticket boss kill on level
 82.  At the time of writing this my hero power is around 1,150,000 and I had an event multiplier bonus
-of 154 (158 maxing bonus without link optimization).
+of 154 (158 maxing bonus without link optimization) Pre-Artifacts release.
