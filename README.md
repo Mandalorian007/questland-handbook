@@ -43,7 +43,7 @@ have been.
 
 - [How to Arena like a boss](arena-domination.md)
 
-- Spending money efficiently
+- [Spending money efficiently](spending-money.md)
 
 
 
