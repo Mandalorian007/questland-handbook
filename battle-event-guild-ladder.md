@@ -1,56 +1,9 @@
-# How to dominate the Battle Event
-The battle event is the pinnacle of Questland's end game and encompasses both personal
-and guild based goals. Fortunately, you can assist both the guild objectives and your 
-own with the following setup and priorities.
-
-## Event gearing
-Gearing up for the event is as simple as leveraging either the "Hecatombus" or "The Turtle"
-build with some modifications based on your battle multiplier links.
-
-When pushing the ladder you want to setup your event multipliers as follows:
-
-Row 1: Activate Passive Skill #2
-Row 2: Insert as many legendary orbs as you have into slots and potentially enhance them to +4 or 5
-Row 3: Epic Event token and common event token or a piece of gear with greater than +10 boost
-Row 4: Resistance against Physical or Magic depending on the boss.
-
-When pushing the guild boss it's common to swap row 3 and row 4 for damage boosts if the boss
-is too weak to 1 shot you or if you are simply tagging the boss.
-
-## Pushing the ladder as a solo
-This section of this guide is dedicated to making sure you maximize how high you can push on 
-the solo ladder. In order to push as high up on the ladder as you possibly can it means that
-you need to bring your battle event multiplier to the absolutely highest possible values you 
-can before switching from using 2 tickets on the hard boss. This is because each boss kill gives 
-you the same amount of points regardless of how many tickets you use to kill it.  So by simply
-using less tickets on the lower level bosses you will have more tickets on the higher level bosses.
-
-While this sounds simple in theory it actually involves quite a bit of work. The real trick is 
-leveraging all the crafting bonuses you get towards the end of a battle event. 
-
-Bonuses of note:
-- 5 craftable event legendaries + 1 bonus from doing all 5
-- 2 x30 tradable parts (swap with guild members so you get 2 and they get 2)
-- Event legendary orb craft
-
-In total assuming you are upgrading an epic orb to legendary that is another 12 multiplier
-and if you enhance your legendary orb to +4 that can be up to 16 additional multiplier.
-
-Since these craftable event bonuses are so large if you wait before switching to more tickets
-you can clear an additional few bosses. Which means you can spend those tickets on more kills of
-the higher bosses for extra points.
-
-Overall this idea in theory seems great until you realize that you have limited ticket 
-capacity so you can't just wait around forever or you lose tickets. This means you need to 
-think about ticket management very carefully.
-
-
-## Farming points against a guild boss
+# Farming points against a guild boss
 The guild boss is the bread and butter of this event and takes some serious coordination from
-your guild to be competitive in this scene.  Participation and organization are the pillars
+your guild to be competitive in this scene. Participation and organization are the pillars
 on which your score is reflected.
 
-### Overall strategy
+## Overall strategy
 Everyone will receive 198 guild boss tickets during the battle event.  And no matter how many
 tickets you spend on a guild boss when it dies you will receive the same reward for killing it.
 It's also worth noting that killing a higher level boss will grant you more points up to level 150.
@@ -67,6 +20,59 @@ levels with a constant streak of guild members tagging the boss to score immense
 guild. Because guild bosses take a while to kill at this high level it is recommended you have 
 2 or more joint pushes with the final push being right at the end of the event.
 
-### Custom Guild boss builds
-- //TODO armor buster
-- //TODO assassin
+## Custom Guild boss builds
+These builds are not good for standard use, but can help enable some extra guild boss killing 
+potential.
+
+### Armour Buster
+This build is for bosses that stack huge amounts of armour and it takes a long time for a striker to 
+break through that armour. It can also help in red events breaking the armour so your striker doesn't
+need to worry about hitting the second instant kill if their multiplier is too low.
+
+NOTE: If it is a blue event make sure you either use blue event orbs or no event orbs.
+
+#### Weapons
+- The Sanguiner / Sir Malicious
+- Any off hand with Resurrection
+
+#### Talents
+- Inner Fire
+- Elemental Wisdom
+- Elevation
+
+#### Playstyle
+You basically want to spam 2 red as much as possible which will burn 5% of the enemy shield 
+(10% with intensity) this will also trigger an additional 5% of the enemy shield with your primary 
+weapon. You can use 2 blue if there is no 2 red available and as a fallback option 1 white.
+
+NOTE: If it is a blue event make sure you either use blue event orbs or no event orbs.
+
+Perfect storm:
+- use 2 red: 10% enemy shield
+- use 2 red: 10% enemy shield
+- use 2 red: 10% enemy shield (max red intensity)
+- Boss kills you and you get resurrected
+- use 2 red: 15% enemy shield
+- use 2 red: 15% enemy shield
+- use 2 red: 15% enemy shield
+- Boss kills you permanently
+
+Ignoring your damage you have removed 75% of the enemy's shield.
+
+### The Assassin
+This build is perfect for the moment when your striker hits a bad patch of rng and pops up in guild
+chat with a sad face :( The Assassin is the perfect build to have on your roster for helping to clear
+up any messed up boss kill giving you a nice 15% of the bosses' health margin where a player with 2 
+tickets can actually finish the boss off!
+
+#### Weapons
+- Any * it's not a bad idea to use a talent + weapon combo to generate more red spirits
+- Any off hand with Resurrection
+
+#### Talents
+- Assassin's Way
+- Any
+- Any
+
+#### Playstyle
+Spam 1 red and stack up some seriously nasty poison damage on the boss!
