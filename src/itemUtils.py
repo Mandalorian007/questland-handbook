@@ -33,6 +33,8 @@ class Item:
     health: int
     link_bonus: LinkBonus
     links: List[int]
+    orb_bonus: LinkBonus
+    orb_links: List[int]
 
 
 def text_to_link_bonus(text: str):

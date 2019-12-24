@@ -17,25 +17,6 @@ Row 4: Resistance against Physical or Magic depending on the boss.
 When pushing the guild boss it's common to swap row 3 and row 4 for damage boosts if the boss
 is too weak to 1 shot you or if you are simply tagging the boss.
 
-### Blue Spirit Events
-For blue spirit events our core build is going to be "The Turtle" as it will help us 
-mitigate the heavy physical boss damage with high armor recovery. However, it is worth
-calling out that the build doesn't have enough healing to handle the high damage output 
-from the main boss. The solution to this is in unlocking passive #2 from the event
-multiplier links. This gives us a 50% chance to trigger a 4 white when we use a 4 blue.
-By pairing this ability with the Mystical Wind talent we can trigger a heal strong enough
-to heal us to maximum health thanks to the boss boosting our magic power. 
-
-### Red Spirit Events
-For red spirit events our core build is going to be "The Hecatombus" as it will provide us 
-a ton of build in healing and sustain.  In fact with the boss providing a magic boost, 
-bloodlust will actually be plenty of healing! However, red spirit bosses have a 14 round
-ability that will 1 shot you. In order to combat this Azazel will be swapped out for an 
-offhand that has a combat resurrection.  Since we drop Azazel we will lose out on the healing 
-from the 1 white trigger, but the 4 white triggers of the Crest Guardian will provide the 
-needed red spirits to keep the 4 red spam working and a needed damage boost since there
-will be a 28 round kill limit before the 1 shot mechanic triggers a second time.
-
 ## Pushing the ladder as a solo
 This section of this guide is dedicated to making sure you maximize how high you can push on 
 the solo ladder. In order to push as high up on the ladder as you possibly can it means that
@@ -63,25 +44,6 @@ Overall this idea in theory seems great until you realize that you have limited 
 capacity so you can't just wait around forever or you lose tickets. This means you need to 
 think about ticket management very carefully.
 
-### Ticket management
-The techniques I am about to cover will typically be available for everyone, but you might
-not be able to wait for all crafts if you don't have a high enough VIP level.  This is because
-you can have a larger amount of both boss and campaign tickets stored up with higher VIP levels
-while I don't have any direct data to support this I have heard that you will need a minimum of 
-VIP 10 to fully pull off all techniques listed here.  Obviously that varies based on many, 
-many factors.
-
-- Do not collect any tickets from your quest rewards as they are free ticket storage
-- Do not clear every ticket you have for the campaign because it grants more boss tickets
-- Watch your hp for clearing 2 ticket bosses to make sure you won't die so you know how far you can safely push
-
-These above strategies are the trick to keeping your tickets from overflowing. However, there is 
-one complication. In order to score as high as possible you also need to be purchasing boss tickets
-daily. In a low competition bracket you can skip the green boss tickets, but you definitely need
-the red tickets to score very highly. This means you will have extra boss tickets you need to keep
-under the cap.  DO NOT purchase the Boss tickets pack unless it is the final day and doing so will 
-push you up a scoring bracket with some big rewards. Remember that pack is a once per event so 
-definitely don't purchase it early and don't waste gems if it won't win you anything.
 
 ## Farming points against a guild boss
 The guild boss is the bread and butter of this event and takes some serious coordination from

@@ -111,3 +111,33 @@ stats = obvious breakdown.  the second number is potential increase on each leve
     "val": 0
 }
 '''
+
+'''
+Legendary orb object
+'''
+
+'''
+{
+    "d": "",
+    "g": 1002,
+    "i": 2163,
+    "i_hd": 20463,
+    "i_sd": 20465,
+    "ip": 50,
+    "n": "Behemoth Flames",
+    "p": 0,
+    "prvw": 27719,
+    "q": "legendary",
+    "s": "rune",
+    "sd": 0,
+    "si": 1,
+    "stats": {
+        "dmg": [
+            96,
+            31
+        ]
+    },
+    "t": 357,
+    "umul": 1
+}
+'''

@@ -14,9 +14,6 @@ def is_item_linked(item: Item, all_socketed_items: List):
 
 
 def simplify_item(leg_item):
-    if leg_item['n'] == 'Scarlet Choker':
-        print(json.dumps(leg_item))
-
     stats = leg_item['stats']
     # Items like weapons won't have links
     if len(leg_item['links']) > 0:
@@ -39,7 +36,9 @@ def simplify_item(leg_item):
         stats['def'][0],
         stats['hp'][0],
         link_bonus,
-        item_links
+        item_links,
+        LinkBonus.NONE,
+        []
     )
 
 
