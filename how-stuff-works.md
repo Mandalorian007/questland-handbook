@@ -44,9 +44,6 @@ Orb base stat + (orb potential + enhancement bonus) * orb level
 Example continued:
 192 + (62 + 28.2) * 100 = 9212 orb stat bonus
 
-### Gearing with orbs
-//TODO add a link to the "gearing" information explaining how to select your orbs.
-
 
 ## Gear Bonuses
 Each pieces of gear comes with 2 different possible bonuses that are something you will 
@@ -67,9 +64,6 @@ won't do anything for you. It is common practice to prioritize maximizing the st
 For instance if you have a %15 orb health bonus, and your piece of gear can socket a 
 low potential health orb or a low potential defense orb, then you will want to socket the low
 potential defense orb and equip a powerful health orb to get the most out of your bonus.
-
-//TODO link
-More details on this in the "gearing information"
 
 ## Collections
 Collections are an absolute powerhouse, but a bit complicated so let's break them down 
