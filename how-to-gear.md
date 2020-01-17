@@ -1,3 +1,5 @@
+[Home](README.md)
+
 # How to Gear
 Getting geared up in Questland can be difficult and confusing with so many different 
 options available.  This guide is going to take an extremely opinionated stance on 
@@ -116,3 +118,39 @@ Technically every piece of collections gear can be reforged to increase your sta
 However, in reality this can be quite expensive so ensure that you have all your core gear 
 and weapons reforged before even considering this. Especially since swapping a single 
 equipped piece of gear could mean a bunch of collection changes.
+
+
+
+## Artifacts
+TODO
+Repost of thoughts on how to think about safety in artifact upgrades.
+
+Artifact level 1 is a perfectly safe upgrade. Each artifact level 3 needs three level 1 artifacts (1 must be same emblem).  So you can have tons of artifact level 1s lying around with no downside.
+
+Artifact level 2 I avoid because if you can't get level 3 easily your legendary investment could be trapped there.
+
+Artifact level 3 is good for your "older gear" you are currently wearing while farming up your "sick end game build" this is because you can use those level 3s to Artifact level 4s for your end game build.
+
+TLDR:
+Artifact 1 safe 
+Artifact 2 avoid
+Artifact 3 for current gear
+Artifact 4 for super end game build. (This is a dead end. So tons legendaries invested with no way to get them back)
+
+Steps from this point:
+
+- Extract copies of Necro talisman, Venom Necklace, and Necro chest.
+- Rush Artifact 3 on all equipments
+- Collections rush Artifact 1
+
+Item levels:
+Aim for 140 on everything EXCEPT!!!!!!!!!!!
+
+Empowering stones are expensive to acquire so feel free to upgrade Artifact levels, but DO NOT spend empowering stones on any items that are not final equips.
+Example: Your Death Chest.  It is a wonderful piece of gear that needs artifact levels for your collections, but wasting empowering stones to increase it's item level is a bad idea.
+ 
+Artifact selection logic:
+
+When upgrading to Artifacts you need to select "sacrificial" pieces. There are several "selection rules"
+- Select pieces from sets you do not use in your equipment or collections.  Example: Dragon
+- Try to avoid pieces in groups of "3" (When making artifact 1s for sacrifices in artifact 3 crafting you will need these) Example: I have 5 dragon rings. I can use 2 for sacrifices, but I want to save 3 dragon rings so I can make an artifact 1 from them to help with my Artifact 3 upgrades

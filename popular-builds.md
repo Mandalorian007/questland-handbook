@@ -1,3 +1,5 @@
+[Home](README.md)
+
 # Popular builds
 This section is dedicated to covering the popular and meta builds in Questland and is a
 great starting place for new players who simply need to know a good build to get started.

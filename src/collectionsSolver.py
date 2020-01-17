@@ -31,6 +31,7 @@ def simplify_item(leg_item):
         leg_item['t'],  # note we are going to treat the link id as the id
         leg_item['n'],
         text_to_item_slot(leg_item['s']),
+        0,
         stats['dmg'][0],
         stats['magic'][0],
         stats['def'][0],
@@ -38,7 +39,8 @@ def simplify_item(leg_item):
         link_bonus,
         item_links,
         LinkBonus.NONE,
-        []
+        [],
+        0
     )
 
 

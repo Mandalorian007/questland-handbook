@@ -32,6 +32,7 @@ def simplify_item(leg_item):
         leg_item['t'],  # note we are going to treat the link id as the id
         leg_item['n'],
         text_to_item_slot(leg_item['s']),
+        stats['dmg'][1] + stats['magic'][1] + stats['def'][1] + stats['hp'][1],
         stats['dmg'][0],
         stats['magic'][0],
         stats['def'][0],
@@ -39,7 +40,8 @@ def simplify_item(leg_item):
         link_bonus,
         item_links,
         LinkBonus.NONE,
-        orb_links
+        orb_links,
+        leg_item['set']
     )
 
 # Load server data for current in game items
@@ -69,8 +71,9 @@ for orb in orb_list:
 with open('ql_export.csv', mode='w') as ql_export:
     csv_writer = csv.writer(ql_export, delimiter=',', quotechar='"', quoting=csv.QUOTE_NONE)
 
-    csv_writer.writerow(['Item Name', 'Health', 'Attack', 'Magic', 'Defense', 'Link 1', 'Link 2',
-                         'Link 3', 'Orb 1', 'Orb 2'])
+    csv_writer.writerow(['Item Name', 'Potential', 'Slot', 'Health', 'Attack', 'Magic', 'Defense',
+                         'Set',
+                         'Link 1', 'Link 2', 'Link 3', 'Orb 1', 'Orb 2'])
 
     for item in item_list:
         item_link_1 = ''
@@ -92,7 +95,8 @@ with open('ql_export.csv', mode='w') as ql_export:
             if item.orb_links[1] in orb_map:
                 orb_2 = orb_map[item.orb_links[1]]
 
-        csv_writer.writerow([item.name, item.health, item.attack, item.magic, item.defense,
+        csv_writer.writerow([item.name, item.potential, item.slot,
+                            item.health, item.attack, item.magic, item.defense, item.set,
                             item_link_1, item_link_2, item_link_3,
                             orb_1, orb_2])
 

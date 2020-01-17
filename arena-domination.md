@@ -1,3 +1,5 @@
+[Home](README.md)
+
 # Dominating in the arena
 Questland's arena can at first be extremely intimidating, but it's
 actually incredibly easy to blast through to the top of the ladder

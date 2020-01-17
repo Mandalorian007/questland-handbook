@@ -16,6 +16,8 @@ have been.
 - Peitcadon
 
 
+## Note some pages are dated and are being updated for 3.0
+
 ## Topics
 
 - [How stuff works](how-stuff-works.md)
@@ -23,27 +25,22 @@ have been.
    - Gear Bonuses
    - Collections
    - Reforging
-
+   - Artifacts
 - [How to gear](how-to-gear.md)
    - Stat priorities
    - Orb equips and leveling
    - Reforging
    - Collections
-   
 - [Popular builds](popular-builds.md)
   - Hecatombus
   - The Turtle
   - Ratchet Rush
   - The Pax
-
 - [Guild ladder in the Battle Event](battle-event-guild-ladder.md)
 - [Individual ladder in the Battle Event](battle-event-individual-ladder.md)
-
 - [How to fully clear Quest Events](quest-events.md)
-
 - [How to Arena like a boss](arena-domination.md)
 
-- [Spending money efficiently](spending-money.md)
 
 
 

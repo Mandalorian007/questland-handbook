@@ -1,3 +1,5 @@
+[Home](README.md)
+
 # Farming points against a guild boss
 The guild boss is the bread and butter of this event and takes some serious coordination from
 your guild to be competitive in this scene. Participation and organization are the pillars

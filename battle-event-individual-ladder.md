@@ -1,3 +1,5 @@
+[Home](README.md)
+
 # Climbing the individual ladder in the battle event
 
 Climbing the individual ladder in Questland is a challenge and requires 

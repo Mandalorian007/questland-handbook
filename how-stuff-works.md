@@ -1,3 +1,5 @@
+[Home](README.md)
+
 # How Stuff works
 
 This section of our guide is dedicated to digging into the actual mechanics of various 
@@ -110,3 +112,10 @@ Many strategies will split their reforge points for cost efficiency and other pr
 on this is the gearing section.
 //TODO link
 
+## Artifacts
+TODO need content and framing
+- General info
+
+Potential increases with each artifact level
+Note reforge points increase with each artifact level as well as each "Empower"
+Empowering stones costs: 5k, 10K, 20k, 40K

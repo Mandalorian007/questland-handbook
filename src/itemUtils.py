@@ -27,6 +27,7 @@ class Item:
     id: int
     name: str
     slot: ItemSlot
+    potential: int
     attack: int
     magic: int
     defense: int
@@ -35,6 +36,7 @@ class Item:
     links: List[int]
     orb_bonus: LinkBonus
     orb_links: List[int]
+    set: int
 
 
 def text_to_link_bonus(text: str):

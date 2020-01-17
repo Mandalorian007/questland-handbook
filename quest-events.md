@@ -1,3 +1,5 @@
+[Home](README.md)
+
 # How to Quest Event
 Right after the battle event there are always brand new quest
 events launched that usually have unattainable rewards.  The 
