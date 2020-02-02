@@ -16,7 +16,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Starting application build...
-      - gradlew bootJar
+      - ./gradlew bootJar
       - echo Finished building application
       - echo Building the Docker image...
       - docker build -t $REPOSITORY_URI:latest .
