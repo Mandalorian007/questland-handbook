@@ -16,6 +16,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Starting application build...
+      - chmod +x gradlew
       - ./gradlew bootJar
       - echo Finished building application
       - echo Building the Docker image...
