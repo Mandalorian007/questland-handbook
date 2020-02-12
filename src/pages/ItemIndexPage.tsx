@@ -21,19 +21,18 @@ import TablePagination from '@material-ui/core/TablePagination';
 interface ColumnData {
   id: string;
   label: string;
-  numeric: boolean;
 }
 
 const itemColumns: ColumnData[] = [
-  { id: 'name', label: 'Name', numeric: false },
-  { id: 'totalPotential', label: 'Potential', numeric: true },
-  { id: 'quality', label: 'Quality', numeric: false },
-  { id: 'itemSlot', label: 'Item Slot', numeric: false },
-  { id: 'emblem', label: 'Emblem', numeric: false },
-  { id: 'attack', label: 'Attack', numeric: true },
-  { id: 'magic', label: 'Magic', numeric: true },
-  { id: 'defense', label: 'Defense', numeric: true },
-  { id: 'health', label: 'Health', numeric: true }
+  { id: 'name', label: 'Name' },
+  { id: 'totalPotential', label: 'Potential' },
+  { id: 'quality', label: 'Quality' },
+  { id: 'itemSlot', label: 'Item Slot' },
+  { id: 'emblem', label: 'Emblem' },
+  { id: 'attack', label: 'Attack' },
+  { id: 'magic', label: 'Magic' },
+  { id: 'defense', label: 'Defense' },
+  { id: 'health', label: 'Health' }
 ];
 
 // TODO remove any and properly type these
