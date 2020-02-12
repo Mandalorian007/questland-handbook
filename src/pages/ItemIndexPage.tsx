@@ -109,8 +109,6 @@ export const ItemIndexPage: React.FC<{}> = () => {
                 >
                   <TableSortLabel
                     active={orderBy === column.id}
-                    // TODO Hell of a hard time making types work properly here
-
                     direction={orderBy === column.id ? order : 'asc'}
                     onClick={() => handleRequestSort(column.id)}
                   >
