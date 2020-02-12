@@ -70,7 +70,8 @@ export const ItemIndexPage: React.FC<{}> = () => {
   const [order, setOrder] = React.useState<'asc' | 'desc'>('asc');
   const [orderBy, setOrderBy] = React.useState('calories');
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
+  const rowsPerPage: number = 10;
 
   const handleRequestSort = (property: string) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -80,11 +81,6 @@ export const ItemIndexPage: React.FC<{}> = () => {
 
   const handleChangePage = (event: any, newPage: number) => {
     setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event: any) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
   };
 
   const emptyRows =
@@ -143,13 +139,12 @@ export const ItemIndexPage: React.FC<{}> = () => {
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[5, 10, 25]}
+        rowsPerPageOptions={[rowsPerPage]}
         component="div"
         count={items.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onChangePage={handleChangePage}
-        onChangeRowsPerPage={handleChangeRowsPerPage}
       />
     </Paper>
   );
