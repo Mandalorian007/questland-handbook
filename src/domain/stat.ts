@@ -3,7 +3,8 @@ export enum Stat {
   Attack = 'ATTACK',
   Magic = 'MAGIC',
   Defense = 'DEFENSE',
-  Health = 'HEALTH'
+  Health = 'HEALTH',
+  AttackMagic = 'ATTACK_MAGIC'
 }
 
 export const isStat = (maybeStat: string): maybeStat is Stat => {

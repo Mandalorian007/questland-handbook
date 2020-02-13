@@ -22,6 +22,7 @@ import { ArenaPage } from './pages/ArenaPage';
 import { IndividualBattleEventPage } from './pages/IndividualBattleEventPage';
 import { GuildBattleEventPage } from './pages/GuildBattleEventPage';
 import { HomePage } from './pages/HomePage';
+import { OrbIndexPage } from './pages/OrbIndexPage';
 
 const middleware = [reduxLogger as Middleware, thunk];
 
@@ -102,7 +103,7 @@ export const App: React.FC<{}> = () => (
             <ItemIndexPage />
           </Route>
           <Route path="/orbs" exact>
-            Orb index goes here!
+            <OrbIndexPage />
           </Route>
         </Switch>
       </Chrome>
