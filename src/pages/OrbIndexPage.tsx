@@ -17,8 +17,7 @@ const orbColumns: ColumnData<Orb>[] = [
   { id: 'name', label: 'Name' },
   { id: 'quality', label: 'Quality' },
   { id: 'statBonus', label: 'Stat Bonus' },
-  { id: 'attack', label: 'Attack' },
-  { id: 'magic', label: 'Magic' },
+  { id: 'attack', label: 'Attack & Magic' },
   { id: 'defense', label: 'Defense' },
   { id: 'health', label: 'Health' }
 ];
