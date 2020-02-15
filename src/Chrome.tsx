@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
@@ -7,22 +7,32 @@ import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import FolderIcon from '@material-ui/icons/Folder';
+import HomeIcon from '@material-ui/icons/Home';
+import MenuBookIcon from '@material-ui/icons/MenuBook';
+import { MemoryRouter, Route } from 'react-router';
+import Link, { LinkProps } from '@material-ui/core/Link';
+import { Link as RouterLink } from 'react-router-dom';
 import {
   createMuiTheme,
   createStyles,
   makeStyles,
-  styled,
   Theme,
   ThemeProvider,
   useTheme
 } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
-import { Paper } from '@material-ui/core';
+import {
+  BottomNavigation,
+  BottomNavigationAction,
+  Breadcrumbs,
+  Collapse,
+  Paper
+} from '@material-ui/core';
+import { ExpandLess, ExpandMore } from '@material-ui/icons';
 
 const darkTheme = createMuiTheme({
   palette: {
@@ -49,6 +59,18 @@ const useStyles = makeStyles((theme: Theme) =>
         marginLeft: drawerWidth
       }
     },
+    appBarBottom: {
+      [theme.breakpoints.down('sm')]: {
+        width: '100%',
+        position: 'fixed',
+        bottom: 0
+      },
+      [theme.breakpoints.up('sm')]: {
+        width: '0%',
+        position: 'fixed',
+        bottom: 0
+      }
+    },
     menuButton: {
       marginRight: theme.spacing(2),
       [theme.breakpoints.up('sm')]: {
@@ -62,34 +84,164 @@ const useStyles = makeStyles((theme: Theme) =>
     content: {
       flexGrow: 1,
       padding: theme.spacing(3)
+    },
+    lists: {
+      backgroundColor: theme.palette.background.paper,
+      marginTop: theme.spacing(1)
+    },
+    nested: {
+      paddingLeft: theme.spacing(4)
     }
   })
 );
 
-type NavItemGroup = {
-  sectionLabel: string;
-  icon: ReactElement;
-  navItems: NavItem[];
+export type SiteNavMap = {
+  [url: string]: string;
 };
 
-type NavItem = {
-  label: string;
-  path: string;
+interface ListItemLinkProps extends LinkProps {
+  to: string;
+  open?: boolean;
+}
+
+interface LinkRouterProps extends LinkProps {
+  to: string;
+  replace?: boolean;
+}
+
+const LinkRouter = (props: LinkRouterProps) => (
+  <Link {...props} component={RouterLink as any} />
+);
+
+function ListItemLink(props: Omit<ListItemLinkProps, 'ref'>) {
+  const { to, title, open, ...other } = props;
+  return (
+    <li>
+      <ListItem button component={RouterLink} to={to} {...other}>
+        <ListItemText primary={title} />
+        {open != null ? open ? <ExpandLess /> : <ExpandMore /> : null}
+      </ListItem>
+    </li>
+  );
+}
+
+const RouterBreadcrumbs: React.FC<{
+  siteNavMap: SiteNavMap;
+}> = ({ siteNavMap }) => {
+  const classes = useStyles();
+
+  return (
+    <MemoryRouter initialEntries={['/inbox']} initialIndex={0}>
+      <div className={classes.root}>
+        <Route>
+          {({ location }) => {
+            const pathnames = location.pathname.split('/').filter(x => x);
+            return (
+              <Breadcrumbs aria-label="breadcrumb">
+                <LinkRouter color="inherit" to="/">
+                  Home
+                </LinkRouter>
+                {pathnames.map((value, index) => {
+                  const last = index === pathnames.length - 1;
+                  const to = `/${pathnames.slice(0, index + 1).join('/')}`;
+
+                  return last ? (
+                    <Typography color="textPrimary" key={to}>
+                      {siteNavMap[to]}
+                    </Typography>
+                  ) : (
+                    <LinkRouter color="inherit" to={to} key={to}>
+                      {siteNavMap[to]}
+                    </LinkRouter>
+                  );
+                })}
+              </Breadcrumbs>
+            );
+          }}
+        </Route>
+      </div>
+    </MemoryRouter>
+  );
 };
 
-const StyledLink = styled(Link)({
-  display: 'inline',
-  textDecoration: 'none',
-  color: 'inherit'
-});
+const RouterDrawer: React.FC<{
+  siteNavMap: SiteNavMap;
+}> = ({ siteNavMap }) => {
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen(prevOpen => !prevOpen);
+  };
+
+  return (
+    <MemoryRouter initialEntries={['/']} initialIndex={0}>
+      <div className={classes.root}>
+        <nav className={classes.lists} aria-label="mailbox folders">
+          <List>
+            {Object.keys(siteNavMap).map(key => {
+              const breadcrumbParts: string[] = key.split('/').filter(x => x);
+              if (
+                // 0 handles the home page which is just a /
+                breadcrumbParts.length === 0 ||
+                breadcrumbParts.length === 1
+              ) {
+                const matches: string[] = Object.keys(siteNavMap).filter(key2 =>
+                  key2.includes(key)
+                );
+
+                if (matches.length > 1) {
+                  return (
+                    <ListItemLink
+                      to={key}
+                      title={siteNavMap[key]}
+                      open={open}
+                      onClick={handleClick}
+                    />
+                  );
+                } else {
+                  return (
+                    <ListItemLink
+                      to={key}
+                      title={siteNavMap[key]}
+                      onClick={handleClick}
+                    />
+                  );
+                }
+              } else {
+                return (
+                  <Collapse
+                    component="li"
+                    in={open}
+                    timeout="auto"
+                    unmountOnExit
+                  >
+                    <List disablePadding>
+                      <ListItemLink
+                        to={key}
+                        title={siteNavMap[key]}
+                        className={classes.nested}
+                      />
+                    </List>
+                  </Collapse>
+                );
+              }
+            })}
+          </List>
+        </nav>
+      </div>
+    </MemoryRouter>
+  );
+};
 
 export const Chrome: React.FC<{
   title: string;
-  navItemGroups: NavItemGroup[];
-}> = ({ children, title, navItemGroups }) => {
+  siteNavMap: SiteNavMap;
+}> = ({ title, siteNavMap, children }) => {
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [value, setValue] = React.useState('home');
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -99,26 +251,7 @@ export const Chrome: React.FC<{
     <Paper>
       <div className={classes.toolbar} />
       <Divider />
-      <List>
-        {navItemGroups.map(({ sectionLabel, icon, navItems }) => (
-          <div key={sectionLabel}>
-            <ListItem>
-              <ListItemIcon>{icon}</ListItemIcon>
-              <ListItemText primary={sectionLabel} />
-            </ListItem>
-            <List>
-              {navItems.map(({ label, path }, index) => (
-                <StyledLink key={label} to={path}>
-                  <ListItem button key={label}>
-                    <ListItemText primary={label} />
-                  </ListItem>
-                </StyledLink>
-              ))}
-            </List>
-            <Divider />
-          </div>
-        ))}
-      </List>
+      <RouterDrawer siteNavMap={siteNavMap} />
     </Paper>
   );
 
@@ -174,8 +307,36 @@ export const Chrome: React.FC<{
         </nav>
         <main className={classes.content}>
           <div className={classes.toolbar} />
+          <RouterBreadcrumbs siteNavMap={siteNavMap} />
           {children}
         </main>
+        <BottomNavigation
+          className={classes.appBarBottom}
+          value={value}
+          onChange={(event, newValue) => {
+            setValue(newValue);
+          }}
+          showLabels
+        >
+          <BottomNavigationAction
+            component={RouterLink}
+            to="/"
+            label="Home"
+            icon={<HomeIcon />}
+          />
+          <BottomNavigationAction
+            component={RouterLink}
+            to="/builds"
+            label="Builds"
+            icon={<MenuBookIcon />}
+          />
+          <BottomNavigationAction
+            component={RouterLink}
+            to="/items"
+            label="Item Index"
+            icon={<FolderIcon />}
+          />
+        </BottomNavigation>
       </div>
     </ThemeProvider>
   );

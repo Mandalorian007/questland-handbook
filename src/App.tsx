@@ -1,14 +1,12 @@
 import * as React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Chrome } from './Chrome';
+import { Chrome, SiteNavMap } from './Chrome';
 import { ItemIndexPage } from './pages/ItemIndexPage';
 import { applyMiddleware, createStore, Middleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { load, save } from 'redux-localstorage-simple';
 import reduxLogger from 'redux-logger';
 import thunk from 'redux-thunk';
-import MenuBookIcon from '@material-ui/icons/MenuBook';
-import ListIcon from '@material-ui/icons/List';
 import { AppState, rootReducer } from './store/rootReducer';
 import { Provider } from 'react-redux';
 import { OrbPage } from './pages/OrgPage';
@@ -32,39 +30,19 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(...middleware, save()))
 );
 
+const siteNavMap: SiteNavMap = {
+  '/': 'Home',
+  '/builds': 'Builds',
+  '/items': 'Item Index',
+  '/orbs': 'Orb Index',
+  '/inbox': 'Inbox',
+  '/inbox/important': 'Important'
+};
+
 export const App: React.FC<{}> = () => (
   <Provider store={store}>
     <Router>
-      <Chrome
-        title="Questland Handbook"
-        navItemGroups={[
-          {
-            sectionLabel: 'Guides',
-            icon: <MenuBookIcon />,
-            navItems: [
-              { label: 'Home', path: '/' },
-              { label: 'Stat Priorities', path: '/stat-priorities' },
-              { label: 'Gear', path: '/gear' },
-              { label: 'Orbs', path: '/orb' },
-              { label: 'Collections', path: '/collections' },
-              { label: 'Reforging', path: '/reforging' },
-              { label: 'Artifacts', path: '/artifacts' },
-              { label: 'Popular Builds', path: '/builds' },
-              { label: 'Arena', path: '/arena' },
-              { label: 'Individual Battle Event', path: '/individual-be' },
-              { label: 'Guild Battle Event', path: '/guild-be' }
-            ]
-          },
-          {
-            sectionLabel: 'Indexes',
-            icon: <ListIcon />,
-            navItems: [
-              { label: 'Items', path: '/items' },
-              { label: 'Orbs', path: '/orbs' }
-            ]
-          }
-        ]}
-      >
+      <Chrome title="Questland Handbook" siteNavMap={siteNavMap}>
         <Switch>
           <Route path="/" exact>
             <HomePage />
