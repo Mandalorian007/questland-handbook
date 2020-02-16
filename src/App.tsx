@@ -8,11 +8,15 @@ import reduxLogger from 'redux-logger';
 import thunk from 'redux-thunk';
 import { AppState, rootReducer } from './store/rootReducer';
 import { Provider } from 'react-redux';
-import { CollectionsPage } from './pages/CollectionsPage';
-import { ReforgingPage } from './pages/ReforgingPage';
 import { HomePage } from './pages/HomePage';
 import { ResourcesPage } from './pages/ResourcesPage';
 import { NavItem } from './components/RoutableNavList';
+import { GuidesPage } from './pages/GuidesPage';
+import { IndexPage } from './pages/IndexPage';
+import { ItemIndexPage } from './pages/ItemIndexPage';
+import { OrbIndexPage } from './pages/OrbIndexPage';
+import { GearingPage } from './pages/GearingPage';
+import { BattleEventPage } from './pages/BattleEventPage';
 
 const middleware = [reduxLogger as Middleware, thunk];
 
@@ -24,10 +28,13 @@ const store = createStore(
 
 const navItems: NavItem[] = [
   { label: 'Home', to: '/' },
-  { label: 'Resources', to: '/resources' },
-  //TODO change this to scrolls instead of collections and have collections under gearing
-  { label: 'Collections', to: '/resources/collections' },
-  { label: 'Reforging', to: '/resources/reforging' }
+  { label: 'Guides', to: '/guides' },
+  { label: 'Resources', to: '/guides/resources' },
+  { label: 'Gearing', to: '/guides/gearing' },
+  { label: 'Battle Event', to: '/guides/battle-event' },
+  { label: 'Indexes', to: '/indexes' },
+  { label: 'Gear Index', to: '/indexes/gear' },
+  { label: 'Orb Index', to: '/indexes/orb' }
 ];
 
 export const App: React.FC = () => (
@@ -38,14 +45,26 @@ export const App: React.FC = () => (
           <Route path="/" exact>
             <HomePage />
           </Route>
-          <Route path="/resources" exact>
+          <Route path="/guides" exact>
+            <GuidesPage />
+          </Route>
+          <Route path="/guides/resources" exact>
             <ResourcesPage />
           </Route>
-          <Route path="/resources/collections" exact>
-            <CollectionsPage />
+          <Route path="/guides/gearing" exact>
+            <GearingPage />
           </Route>
-          <Route path="/resources/reforging" exact>
-            <ReforgingPage />
+          <Route path="/guides/battle-event" exact>
+            <BattleEventPage />
+          </Route>
+          <Route path="/indexes" exact>
+            <IndexPage />
+          </Route>
+          <Route path="/indexes/gear" exact>
+            <ItemIndexPage />
+          </Route>
+          <Route path="/indexes/orb" exact>
+            <OrbIndexPage />
           </Route>
         </Switch>
       </Chrome>
