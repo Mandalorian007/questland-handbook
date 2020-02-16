@@ -14,19 +14,17 @@ export const HomePage = () => (
       This document is only possible because of the many amazing guild members
       and friends who have taught me. I want to call out some in particular who
       really inspired me with how helpful and amazing they have been.
-      <br />
-      <br />
-      <ul>
-        <li>SIBB</li>
-        <li>TigerFan</li>
-        <li>Vangoth</li>
-        <li>Punisher777</li>
-        <li>Draugluin</li>
-        <li>Juoh</li>
-        <li>Monstercat</li>
-        <li>Peitcadon</li>
-      </ul>
     </p>
+    <ul>
+      <li>SIBB</li>
+      <li>TigerFan</li>
+      <li>Vangoth</li>
+      <li>Punisher777</li>
+      <li>Draugluin</li>
+      <li>Juoh</li>
+      <li>Monstercat</li>
+      <li>Peitcadon</li>
+    </ul>
 
     <h3>Want to help make this site look nice?</h3>
     <p>
