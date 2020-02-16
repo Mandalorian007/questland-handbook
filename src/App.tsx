@@ -42,12 +42,17 @@ export const App: React.FC = () => (
     <Router>
       <Chrome title="Questland Handbook" navItems={navItems}>
         <Switch>
+          {/* Top level Drawer & Bottom nav items */}
           <Route path="/" exact>
             <HomePage />
           </Route>
           <Route path="/guides" exact>
             <GuidesPage />
           </Route>
+          <Route path="/indexes" exact>
+            <IndexPage />
+          </Route>
+          {/* Second level of routing in Drawer expansions */}
           <Route path="/guides/resources" exact>
             <ResourcesPage />
           </Route>
@@ -57,15 +62,45 @@ export const App: React.FC = () => (
           <Route path="/guides/battle-event" exact>
             <BattleEventPage />
           </Route>
-          <Route path="/indexes" exact>
-            <IndexPage />
-          </Route>
           <Route path="/indexes/gear" exact>
             <ItemIndexPage />
           </Route>
           <Route path="/indexes/orb" exact>
             <OrbIndexPage />
           </Route>
+          {/* Deeper level content routing */}
+          {/*
+          --- guides/resources
+          dust
+          scrolls
+          essences
+          eternium
+          extract
+          empowering stones
+          divide tokens
+          gems
+          gold
+          energy
+          loot tokens
+          arena tickets
+          shop currencies (same page for all)
+          - barrels
+          - stamps
+          - guild coins
+
+
+          --- guides/gearing
+          reforge
+          collections
+          orbs
+          gear
+          artifacts
+
+
+          --- guides/battle-event
+          individual
+          guild
+          */}
         </Switch>
       </Chrome>
     </Router>
