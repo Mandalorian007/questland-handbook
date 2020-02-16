@@ -52,6 +52,7 @@ export const App: React.FC = () => (
           <Route path="/indexes" exact>
             <IndexPage />
           </Route>
+
           {/* Second level of routing in Drawer expansions */}
           <Route path="/guides/resources" exact>
             <ResourcesPage />
@@ -68,6 +69,7 @@ export const App: React.FC = () => (
           <Route path="/indexes/orb" exact>
             <OrbIndexPage />
           </Route>
+
           {/* Deeper level content routing */}
           {/*
           --- guides/resources
