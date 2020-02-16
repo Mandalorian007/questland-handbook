@@ -4,14 +4,14 @@ import {
   useDispatch,
   useSelector as useReduxSelector
 } from 'react-redux';
-import { AppState } from '../store/rootReducer';
+import { AppState } from '../../store/rootReducer';
 import { Paper } from '@material-ui/core';
-import { loadItems } from '../store/itemActions';
-import { Item } from '../domain/item';
+import { loadItems } from '../../store/itemActions';
+import { Item } from '../../domain/item';
 import {
   ColumnData,
   PagingSortingTable
-} from '../components/PagingSortingTable';
+} from '../../components/PagingSortingTable';
 
 const itemColumns: ColumnData<Item>[] = [
   { id: 'name', label: 'Name' },

@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { Paper } from '@material-ui/core';
-import { BuildExpansionPanel } from '../components/BuildExpansionPanel';
+import { BuildExpansionPanel } from '../../../components/BuildExpansionPanel';
 import {
   FireBlaster,
   IceCannon,
   ThePAXAntiHealEdition
-} from '../domain/builds';
+} from '../../../domain/builds';
 
-export const ArenaPage = () => (
+export const OldArenaPage = () => (
   <Paper>
     <h1>Dominating in the arena</h1>
     <p>

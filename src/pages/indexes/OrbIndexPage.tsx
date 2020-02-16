@@ -4,14 +4,14 @@ import {
   useDispatch,
   useSelector as useReduxSelector
 } from 'react-redux';
-import { AppState } from '../store/rootReducer';
+import { AppState } from '../../store/rootReducer';
 import { Paper } from '@material-ui/core';
-import { loadOrbs } from '../store/orbActions';
-import { Orb } from '../domain/orb';
+import { loadOrbs } from '../../store/orbActions';
+import { Orb } from '../../domain/orb';
 import {
   ColumnData,
   PagingSortingTable
-} from '../components/PagingSortingTable';
+} from '../../components/PagingSortingTable';
 
 const orbColumns: ColumnData<Orb>[] = [
   { id: 'name', label: 'Name' },

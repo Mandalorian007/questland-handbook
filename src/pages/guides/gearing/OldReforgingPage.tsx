@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Paper } from '@material-ui/core';
 
-export const ReforgingPage = () => (
+export const OldReforgingPage = () => (
   <Paper>
     <h1>Reforging</h1>
     <p>

@@ -8,15 +8,15 @@ import reduxLogger from 'redux-logger';
 import thunk from 'redux-thunk';
 import { AppState, rootReducer } from './store/rootReducer';
 import { Provider } from 'react-redux';
-import { HomePage } from './pages/HomePage';
-import { ResourcesPage } from './pages/ResourcesPage';
+import { HomePage } from './pages/home/HomePage';
+import { ResourcesHomePage } from './pages/guides/resources/ResourcesHomePage';
 import { NavItem } from './components/RoutableNavList';
-import { GuidesPage } from './pages/GuidesPage';
-import { IndexPage } from './pages/IndexPage';
-import { ItemIndexPage } from './pages/ItemIndexPage';
-import { OrbIndexPage } from './pages/OrbIndexPage';
-import { GearingPage } from './pages/GearingPage';
-import { BattleEventPage } from './pages/BattleEventPage';
+import { GuidesHomePage } from './pages/guides/GuidesHomePage';
+import { IndexHomePage } from './pages/indexes/IndexHomePage';
+import { ItemIndexPage } from './pages/indexes/ItemIndexPage';
+import { OrbIndexPage } from './pages/indexes/OrbIndexPage';
+import { GearingHomePage } from './pages/guides/gearing/GearingHomePage';
+import { BattleEventHomePage } from './pages/guides/battleevent/BattleEventHomePage';
 
 const middleware = [reduxLogger as Middleware, thunk];
 
@@ -47,21 +47,21 @@ export const App: React.FC = () => (
             <HomePage />
           </Route>
           <Route path="/guides" exact>
-            <GuidesPage />
+            <GuidesHomePage />
           </Route>
           <Route path="/indexes" exact>
-            <IndexPage />
+            <IndexHomePage />
           </Route>
 
           {/* Second level of routing in Drawer expansions */}
           <Route path="/guides/resources" exact>
-            <ResourcesPage />
+            <ResourcesHomePage />
           </Route>
           <Route path="/guides/gearing" exact>
-            <GearingPage />
+            <GearingHomePage />
           </Route>
           <Route path="/guides/battle-event" exact>
-            <BattleEventPage />
+            <BattleEventHomePage />
           </Route>
           <Route path="/indexes/gear" exact>
             <ItemIndexPage />
@@ -72,25 +72,6 @@ export const App: React.FC = () => (
 
           {/* Deeper level content routing */}
           {/*
-          --- guides/resources
-          dust
-          scrolls
-          essences
-          eternium
-          extract
-          empowering stones
-          divide tokens
-          gems
-          gold
-          energy
-          loot tokens
-          arena tickets
-          shop currencies (same page for all)
-          - barrels
-          - stamps
-          - guild coins
-
-
           --- guides/gearing
           reforge
           collections

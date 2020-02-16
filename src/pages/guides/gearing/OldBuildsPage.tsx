@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { Paper } from '@material-ui/core';
-import { BuildExpansionPanel } from '../components/BuildExpansionPanel';
+import { BuildExpansionPanel } from '../../../components/BuildExpansionPanel';
 import {
   RatchetRush,
   TheHecatombus,
   ThePAX,
   TheTurtle
-} from '../domain/builds';
+} from '../../../domain/builds';
 
-export const BuildsPage = () => (
+export const OldBuildsPage = () => (
   <Paper>
     <h1>Popular Builds</h1>
     <p>

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Paper } from '@material-ui/core';
 
-export const GearPage = () => (
+export const OldGearPage = () => (
   <Paper>
     <h1>Gear</h1>
     <h3>Gear Bonuses</h3>

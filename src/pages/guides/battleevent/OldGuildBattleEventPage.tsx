@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Paper } from '@material-ui/core';
-import { BuildExpansionPanel } from '../components/BuildExpansionPanel';
-import { TheArmourBuster, TheAssassin } from '../domain/builds';
+import { BuildExpansionPanel } from '../../../components/BuildExpansionPanel';
+import { TheArmourBuster, TheAssassin } from '../../../domain/builds';
 
-export const GuildBattleEventPage = () => (
+export const OldGuildBattleEventPage = () => (
   <Paper>
     <h1>Farming points against a guild boss</h1>
     <p>
