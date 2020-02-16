@@ -64,6 +64,14 @@ const hasNested = (navItem: NavItem, navItems: NavItem[]) => {
   return matchCount > 0;
 };
 
+const getNavParent = (navItem: NavItem, navItems: NavItem[]) => {
+  let maybeParent = navItems
+    .filter(item => hasNested(item, navItems))
+    .find(navItemParent => navItem.to.includes(navItemParent.to));
+  //TODO We should always find a parent here, but not sure how to enforce this
+  return maybeParent ? maybeParent : navItem;
+};
+
 interface ListItemOpenStatus {
   url: string;
   open: boolean;
@@ -99,12 +107,10 @@ export const RoutableNavList: React.FC<{ navItems: NavItem[] }> = ({
   );
 
   const handleClick = (url: string) => {
-    setOpen(open => ({
-      ...open,
-      open: open.map(item =>
-        item.url === url ? { ...item, open: !item.open } : item
-      )
-    }));
+    const newOpenState = open.map(openState =>
+      openState.url === url ? { url: url, open: !openState.open } : openState
+    );
+    setOpen(newOpenState);
   };
 
   return (
@@ -115,7 +121,7 @@ export const RoutableNavList: React.FC<{ navItems: NavItem[] }> = ({
           return (
             <Collapse
               key={navItem.to}
-              in={extractOpenState(navItem, open)}
+              in={extractOpenState(getNavParent(navItem, navItems), open)}
               timeout="auto"
               unmountOnExit
             >
