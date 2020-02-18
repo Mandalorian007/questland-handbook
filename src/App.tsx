@@ -17,6 +17,11 @@ import { ItemIndexPage } from './pages/indexes/ItemIndexPage';
 import { OrbIndexPage } from './pages/indexes/OrbIndexPage';
 import { GearingHomePage } from './pages/guides/gearing/GearingHomePage';
 import { BattleEventHomePage } from './pages/guides/battleevent/BattleEventHomePage';
+import HomeIcon from '@material-ui/icons/Home';
+import MenuBookIcon from '@material-ui/icons/MenuBook';
+import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
+import EventIcon from '@material-ui/icons/Event';
+import ListIcon from '@material-ui/icons/List';
 
 const middleware = [reduxLogger as Middleware, thunk];
 
@@ -27,14 +32,14 @@ const store = createStore(
 );
 
 const navItems: NavItem[] = [
-  { label: 'Home', to: '/' },
-  { label: 'Guides', to: '/guides' },
-  { label: 'Resources', to: '/guides/resources' },
-  { label: 'Gearing', to: '/guides/gearing' },
-  { label: 'Battle Event', to: '/guides/battle-event' },
-  { label: 'Indexes', to: '/indexes' },
-  { label: 'Gear Index', to: '/indexes/gear' },
-  { label: 'Orb Index', to: '/indexes/orb' }
+  { label: 'Home', to: '/', icon: <HomeIcon /> },
+  { label: 'Guides', to: '/guides', icon: <MenuBookIcon /> },
+  { label: 'Resources', to: '/guides/resources', icon: <BusinessCenterIcon /> },
+  { label: 'Gearing', to: '/guides/gearing', icon: <MenuBookIcon /> },
+  { label: 'Battle Event', to: '/guides/battle-event', icon: <EventIcon /> },
+  { label: 'Indexes', to: '/indexes', icon: <ListIcon /> },
+  { label: 'Gear Index', to: '/indexes/gear', icon: <ListIcon /> },
+  { label: 'Orb Index', to: '/indexes/orb', icon: <ListIcon /> }
 ];
 
 export const App: React.FC = () => (

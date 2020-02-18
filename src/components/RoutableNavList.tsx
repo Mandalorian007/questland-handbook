@@ -133,9 +133,8 @@ export const RoutableNavList: React.FC<{ navItems: NavItem[] }> = ({
                   component={NavLink}
                   to={navItem.to}
                 >
-                  {/*TODO figure out how to use navItem.icon to set this instead*/}
                   <ListItemIcon>
-                    <SendIcon />
+                    {navItem.icon ? navItem.icon : <SendIcon />}
                   </ListItemIcon>
                   <ListItemText primary={navItem.label} />
                 </ListItem>
@@ -151,9 +150,8 @@ export const RoutableNavList: React.FC<{ navItems: NavItem[] }> = ({
               to={navItem.to}
               onClick={() => handleClick(navItem.to)}
             >
-              {/*TODO figure out how to use navItem.icon to set this instead*/}
               <ListItemIcon>
-                <SendIcon />
+                {navItem.icon ? navItem.icon : <SendIcon />}
               </ListItemIcon>
               <ListItemText primary={navItem.label} />
               {/* If list item has sub list items allow them to be expandable */}

@@ -3,7 +3,7 @@ import { Paper } from '@material-ui/core';
 import { BuildExpansionPanel } from '../../../components/BuildExpansionPanel';
 import { TheArmourBuster, TheAssassin } from '../../../domain/builds';
 
-export const OldGuildBattleEventPage = () => (
+export const GuildBattleEventPage = () => (
   <Paper>
     <h1>Farming points against a guild boss</h1>
     <p>
