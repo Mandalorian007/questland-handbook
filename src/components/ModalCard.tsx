@@ -45,7 +45,7 @@ export const ModalCard: React.FC<{
     <GridListTile key={modalCard.title} cols={1}>
       <Card>
         <CardHeader title={modalCard.title} />
-        <CardContent>content</CardContent>
+        <CardContent>{modalCard.cardContent}</CardContent>
         <Button variant="outlined" color="primary" onClick={handleClickOpen}>
           Learn More
         </Button>
