@@ -7,7 +7,7 @@ import {
   ThePAXAntiHealEdition
 } from '../../../domain/builds';
 
-export const OldArenaPage = () => (
+export const ArenaPage = () => (
   <Paper>
     <h1>Dominating in the arena</h1>
     <p>

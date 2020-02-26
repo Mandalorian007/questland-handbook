@@ -8,7 +8,7 @@ import {
   TheTurtle
 } from '../../../domain/builds';
 
-export const OldBuildsPage = () => (
+export const BuildsPage = () => (
   <Paper>
     <h1>Popular Builds</h1>
     <p>

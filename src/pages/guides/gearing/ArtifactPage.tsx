@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Paper } from '@material-ui/core';
 
-export const OldArtifactPage = () => (
+export const ArtifactPage = () => (
   <Paper>
     <h1>Artifacts</h1>
     <p>

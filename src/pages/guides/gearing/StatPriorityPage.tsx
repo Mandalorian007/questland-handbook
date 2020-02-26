@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Paper } from '@material-ui/core';
 
-export const OldStatPriorityPage = () => (
+export const StatPriorityPage = () => (
   <Paper>
     <h1>Stat Priorities</h1>
     <p>
