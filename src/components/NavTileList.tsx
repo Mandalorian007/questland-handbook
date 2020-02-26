@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import {
   Button,
   Card,
+  CardActions,
   CardContent,
   CardHeader,
   GridList,
@@ -23,9 +24,17 @@ export const NavTileList: React.FC<{
         <Card>
           <CardHeader title={tile.title} />
           <CardContent>content</CardContent>
-          <Button size="small" color="primary" component={NavLink} to={tile.to}>
-            Go to Guides
-          </Button>
+          <CardActions>
+            <Button
+              variant="contained"
+              size="small"
+              color="primary"
+              component={NavLink}
+              to={tile.to}
+            >
+              {`Go to ${tile.title} Guides`}
+            </Button>
+          </CardActions>
         </Card>
       </GridListTile>
     ))}

@@ -5,10 +5,10 @@ import {
   AppBar,
   Button,
   Card,
+  CardActions,
   CardContent,
   CardHeader,
   Dialog,
-  GridListTile,
   IconButton,
   Paper,
   Slide,
@@ -42,35 +42,35 @@ export const ModalCard: React.FC<{
     setOpen(false);
   };
   return (
-    <GridListTile key={modalCard.title} cols={1}>
-      <Card>
-        <CardHeader title={modalCard.title} />
-        <CardContent>{modalCard.cardContent}</CardContent>
-        <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+    <Card>
+      <CardHeader title={modalCard.title} />
+      <CardContent>{modalCard.cardContent}</CardContent>
+      <CardActions>
+        <Button variant="contained" color="primary" onClick={handleClickOpen}>
           Learn More
         </Button>
-        <Dialog
-          fullScreen
-          open={open}
-          onClose={handleClose}
-          TransitionComponent={Transition}
-        >
-          <AppBar>
-            <Toolbar>
-              <IconButton
-                edge="start"
-                color="inherit"
-                onClick={handleClose}
-                aria-label="close"
-              >
-                <CloseIcon />
-              </IconButton>
-              <Typography variant="h6">{modalCard.title}</Typography>
-            </Toolbar>
-          </AppBar>
-          <Paper>{modalCard.modalContent}</Paper>
-        </Dialog>
-      </Card>
-    </GridListTile>
+      </CardActions>
+      <Dialog
+        fullScreen
+        open={open}
+        onClose={handleClose}
+        TransitionComponent={Transition}
+      >
+        <AppBar>
+          <Toolbar>
+            <IconButton
+              edge="start"
+              color="inherit"
+              onClick={handleClose}
+              aria-label="close"
+            >
+              <CloseIcon />
+            </IconButton>
+            <Typography variant="h6">{modalCard.title}</Typography>
+          </Toolbar>
+        </AppBar>
+        <Paper>{modalCard.modalContent}</Paper>
+      </Dialog>
+    </Card>
   );
 };

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { GridList } from '@material-ui/core';
+import { GridList, GridListTile } from '@material-ui/core';
 import { ModalCard, ModalCardData } from '../../../components/ModalCard';
 import { ArenaPage } from './ArenaPage';
 import { StatPriorityPage } from './StatPriorityPage';
@@ -55,9 +55,11 @@ const modalCardList: ModalCardData[] = [
 
 export const GearingHomePage = () => {
   return (
-    <GridList cellHeight={160} cols={3}>
+    <GridList cellHeight={160} cols={3} spacing={20}>
       {modalCardList.map(modalCard => (
-        <ModalCard key={modalCard.title} modalCard={modalCard} />
+        <GridListTile key={modalCard.title} cols={1}>
+          <ModalCard modalCard={modalCard} />
+        </GridListTile>
       ))}
     </GridList>
   );
