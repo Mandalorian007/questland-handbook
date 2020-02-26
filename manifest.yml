@@ -1,0 +1,3 @@
+applications:
+  - name: questland-handbook
+    buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git#v1.5.4
