@@ -1,4 +1,9 @@
 import * as React from 'react';
-import { Paper } from '@material-ui/core';
+import { TileData, NavTileList } from '../../components/NavTileList';
 
-export const IndexHomePage = () => <Paper>Index Page</Paper>;
+const tileDataList: TileData[] = [
+  { title: 'Gear Index', to: '/indexes/gear' },
+  { title: 'Orb Index', to: '/indexes/orb' }
+];
+
+export const IndexHomePage = () => <NavTileList tileDataList={tileDataList} />;

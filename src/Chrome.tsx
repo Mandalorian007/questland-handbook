@@ -16,7 +16,7 @@ import {
   ThemeProvider
 } from '@material-ui/core/styles';
 import { Paper } from '@material-ui/core';
-import { NavItem, RoutableNavList } from './components/RoutableNavList';
+import { NavItemGroup, RoutableNavList } from './components/RoutableNavList';
 
 const darkTheme = createMuiTheme({
   palette: {
@@ -69,8 +69,8 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export const Chrome: React.FC<{
   title: string;
-  navItems: NavItem[];
-}> = ({ title, navItems, children }) => {
+  navItemGroups: NavItemGroup[];
+}> = ({ title, navItemGroups, children }) => {
   const classes = useStyles();
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -116,7 +116,7 @@ export const Chrome: React.FC<{
               <Paper>
                 <div className={classes.toolbar} />
                 <Divider />
-                <RoutableNavList navItems={navItems} />
+                <RoutableNavList navItemGroups={navItemGroups} />
               </Paper>
             </Drawer>
           </Hidden>
@@ -130,8 +130,7 @@ export const Chrome: React.FC<{
             >
               <Paper>
                 <div className={classes.toolbar} />
-                <Divider />
-                <RoutableNavList navItems={navItems} />
+                <RoutableNavList navItemGroups={navItemGroups} />
               </Paper>
             </Drawer>
           </Hidden>

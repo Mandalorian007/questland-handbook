@@ -18,10 +18,10 @@ export interface Item {
   defensePotential: number;
   healthPotential: number;
   emblem: Emblem;
-  itemBonus: Stat;
-  itemLinks: number[];
-  orbBonus: Stat;
-  orbLinks: number[];
+  //itemBonus: Stat;
+  //itemLinks: number[];
+  //orbBonus: Stat;
+  //orbLinks: number[];
 }
 
 export interface ServerItem {
@@ -39,17 +39,17 @@ export interface ServerItem {
   defensePotential: number;
   healthPotential: number;
   emblem: string;
-  itemBonus: string;
-  itemLinks: number[];
-  orbBonus: string;
-  orbLinks: number[];
+  //itemBonus: string;
+  //itemLinks: number[];
+  //orbBonus: string;
+  //orbLinks: number[];
 }
 
 export const serverItemToItem = (serverItem: ServerItem): Item => ({
   ...serverItem,
   quality: toQuality(serverItem.quality),
   itemSlot: toItemSlot(serverItem.itemSlot),
-  emblem: toEmblem(serverItem.emblem),
-  itemBonus: toStat(serverItem.itemBonus),
-  orbBonus: toStat(serverItem.orbBonus)
+  emblem: toEmblem(serverItem.emblem)
+  //itemBonus: toStat(serverItem.itemBonus),
+  //orbBonus: toStat(serverItem.orbBonus)
 });
