@@ -34,7 +34,7 @@ export const ItemIndexPage: React.FC<{}> = () => {
 
   useEffect(() => {
     dispatch(loadItems());
-  });
+  }, [dispatch]);
 
   return (
     <Paper>

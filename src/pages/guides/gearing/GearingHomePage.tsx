@@ -9,6 +9,7 @@ import { CollectionsPage } from './CollectionsPage';
 import { ReforgingPage } from './ReforgingPage';
 import { ArtifactPage } from './ArtifactPage';
 import { BuildsPage } from './BuildsPage';
+import { useGridListCols } from '../../../lib/responsiveList';
 
 const modalCardList: ModalCardData[] = [
   {
@@ -55,7 +56,7 @@ const modalCardList: ModalCardData[] = [
 
 export const GearingHomePage = () => {
   return (
-    <GridList cellHeight={160} cols={3} spacing={20}>
+    <GridList cellHeight={160} cols={useGridListCols()} spacing={20}>
       {modalCardList.map(modalCard => (
         <GridListTile key={modalCard.title} cols={1}>
           <ModalCard modalCard={modalCard} />

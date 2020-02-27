@@ -31,7 +31,7 @@ export const OrbIndexPage: React.FC<{}> = () => {
 
   useEffect(() => {
     dispatch(loadOrbs());
-  });
+  }, [dispatch]);
 
   return (
     <Paper>

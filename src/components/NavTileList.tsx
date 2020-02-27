@@ -9,6 +9,7 @@ import {
   GridList,
   GridListTile
 } from '@material-ui/core';
+import { useGridListCols } from '../lib/responsiveList';
 
 export interface TileData {
   title: string;
@@ -18,7 +19,7 @@ export interface TileData {
 export const NavTileList: React.FC<{
   tileDataList: TileData[];
 }> = ({ tileDataList }) => (
-  <GridList cellHeight={160} cols={3}>
+  <GridList cellHeight={160} cols={useGridListCols()}>
     {tileDataList.map(tile => (
       <GridListTile key={tile.title} cols={1}>
         <Card>
