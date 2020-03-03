@@ -95,7 +95,8 @@ export const ResourcesHomePage = () => {
         eternium, reforge powder, and empowering stones you have used on a piece
         of gear. You will only get a percentage of the resources you put in back
         so make sure to only invest large amounts of resources in gear you will
-        be using for a while.
+        be using for a while. The lesser divide tokens with give you 80% of your
+        resources back while the superior tokens will give you 95%.
       </p>
       <h3>Loot Tokens</h3>
       <p>
