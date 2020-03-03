@@ -82,11 +82,11 @@ export const ResourcesHomePage = () => {
       <h3>Divide Tokens</h3>
       <p>
         These common in a lesser and a superior form. Typically you will only
-        ever want to use the later. These tokens are used to extract eternium,
-        reforge powder, and empowering stones you have used on a piece of gear.
-        You will only get a percentage of the resources you put in back so make
-        sure to only invest large amounts of resources in gear you will be using
-        for a while.
+        ever want to use the superior ones. These tokens are used to extract
+        eternium, reforge powder, and empowering stones you have used on a piece
+        of gear. You will only get a percentage of the resources you put in back
+        so make sure to only invest large amounts of resources in gear you will
+        be using for a while.
       </p>
       <h3>Loot Tokens</h3>
       <p>
