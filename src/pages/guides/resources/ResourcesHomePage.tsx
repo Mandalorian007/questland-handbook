@@ -61,7 +61,7 @@ export const ResourcesHomePage = () => {
         effective.
         <br />
         <br />
-        Up to 190% 1 scroll is a 1% increase.
+        75% -> 190% 1 scroll is an average of 1% increase.
         <br />
         190% -> 220% is a .6% increase.
         <br />
