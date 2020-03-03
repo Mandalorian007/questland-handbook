@@ -57,6 +57,15 @@ export const ResourcesHomePage = () => {
         Scrolls are either for Collection 1 or Collection 2 and will simply
         raise the power of a collection slot when used. Originally they are also
         used to unlock a slot which is much more important than leveling a slot.
+        Leveling a slot has 3 phases and in each phase a scroll be comes less
+        effective.
+        <br />
+        <br />
+        Up to 190% 1 scroll is a 1% increase.
+        <br />
+        190% -> 220% is a .6% increase.
+        <br />
+        220% -> 250% is a .2% increase.
       </p>
       <h3>Essences</h3>
       <p>
