@@ -7,4 +7,4 @@ const tileDataList: TileData[] = [
   { title: 'Battle Event', to: '/guides/battle-event' }
 ];
 
-export const GuidesHomePage = () => <NavTileList tileDataList={tileDataList} />;
+export const GuidesHomePage = () => <NavTileList buttonSuffix='guides' tileDataList={tileDataList} />;
