@@ -29,7 +29,8 @@
     "redux-localstorage-simple": "^2.1.6",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "typescript": "~3.7.2"
+    "typescript": "~3.7.2",
+    "@material-ui/lab": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
