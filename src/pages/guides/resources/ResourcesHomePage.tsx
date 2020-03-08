@@ -124,7 +124,6 @@ export const ResourcesHomePage = () => {
         from Battle Events that your guild leader will distribute. These can
         also only be spent in the guild shop.
       </p>
-      <Divider />
     </Paper>
   );
 };
