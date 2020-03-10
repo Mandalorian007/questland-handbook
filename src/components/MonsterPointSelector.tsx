@@ -26,6 +26,7 @@ export const MonsterPointSelector: React.FC<{
         id="monster-selector"
         options={monsterNames}
         getOptionLabel={option => option}
+        defaultValue={monsterNames[0]}
         style={{ width: 300, display: `inline - flex` }}
         renderInput={params => (
           <TextField {...params} label="Monster Selector" variant="outlined" />
