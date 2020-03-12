@@ -13,15 +13,23 @@ import { ResourcesHomePage } from './pages/guides/resources/ResourcesHomePage';
 import { NavItemGroup } from './components/RoutableNavList';
 import { GuidesHomePage } from './pages/guides/GuidesHomePage';
 import { IndexHomePage } from './pages/indexes/IndexHomePage';
-import { ItemIndexPage } from './pages/indexes/ItemIndexPage';
 import { OrbIndexPage } from './pages/indexes/OrbIndexPage';
 import { GearingHomePage } from './pages/guides/gearing/GearingHomePage';
 import { BattleEventHomePage } from './pages/guides/battleevent/BattleEventHomePage';
+import { ItemIndexPage } from './pages/indexes/ItemIndexPage';
+import { MonsterSlayerCalcPage } from './pages/tools/MonsterSlayerCalcPage';
+import { ToolsHomePage } from './pages/tools/ToolsHomePage';
 import HomeIcon from '@material-ui/icons/Home';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 import EventIcon from '@material-ui/icons/Event';
 import ListIcon from '@material-ui/icons/List';
+import BuildIcon from '@material-ui/icons/Build';
+import LocationSearchingIcon from '@material-ui/icons/LocationSearching';
+import AndroidIcon from '@material-ui/icons/Android';
+import HttpIcon from '@material-ui/icons/Http';
+import { DiscordBotPage } from './pages/tools/DiscordBotPage';
+import { PublicAPIPage } from './pages/tools/PubicAPIPage';
 
 const middleware = [reduxLogger as Middleware, thunk];
 
@@ -55,6 +63,28 @@ const navItemGroups: NavItemGroup[] = [
       { label: 'Gear Index', to: '/indexes/gear', icon: <ListIcon /> },
       { label: 'Orb Index', to: '/indexes/orb', icon: <ListIcon /> }
     ]
+  },
+  {
+    label: 'Tools',
+    to: '/tools',
+    icon: <BuildIcon />,
+    navItems: [
+      {
+        label: 'Monster Slayer Calculator',
+        to: '/tools/monster-slayer-calc',
+        icon: <LocationSearchingIcon />
+      },
+      {
+        label: 'QL Bot for Discord',
+        to: '/tools/ql-bot',
+        icon: <AndroidIcon />
+      },
+      {
+        label: 'Questland Public API',
+        to: '/tools/public-api',
+        icon: <HttpIcon />
+      }
+    ]
   }
 ];
 
@@ -73,6 +103,9 @@ export const App: React.FC = () => (
           <Route path="/indexes" exact>
             <IndexHomePage />
           </Route>
+          <Route path="/tools" exact>
+            <ToolsHomePage />
+          </Route>
 
           {/* Second level of routing in Drawer expansions */}
           <Route path="/guides/resources" exact>
@@ -90,21 +123,15 @@ export const App: React.FC = () => (
           <Route path="/indexes/orb" exact>
             <OrbIndexPage />
           </Route>
-
-          {/* Deeper level content routing */}
-          {/*
-          --- guides/gearing
-          reforge
-          collections
-          orbs
-          gear
-          artifacts
-
-
-          --- guides/battle-event
-          individual
-          guild
-          */}
+          <Route path="/tools/monster-slayer-calc" exact>
+            <MonsterSlayerCalcPage />
+          </Route>
+          <Route path="/tools/ql-bot" exact>
+            <DiscordBotPage />
+          </Route>
+          <Route path="/tools/public-api" exact>
+            <PublicAPIPage />
+          </Route>
         </Switch>
       </Chrome>
     </Router>

@@ -17,14 +17,14 @@ export interface TileData {
 }
 
 export const NavTileList: React.FC<{
+  buttonSuffix: string;
   tileDataList: TileData[];
-}> = ({ tileDataList }) => (
+}> = ({ buttonSuffix, tileDataList }) => (
   <GridList cellHeight={160} cols={useGridListCols()}>
     {tileDataList.map(tile => (
       <GridListTile key={tile.title} cols={1}>
         <Card>
           <CardHeader title={tile.title} />
-          <CardContent>content</CardContent>
           <CardActions>
             <Button
               variant="contained"
@@ -33,7 +33,7 @@ export const NavTileList: React.FC<{
               component={NavLink}
               to={tile.to}
             >
-              {`Go to ${tile.title} Guides`}
+              {`Go to ${tile.title} ${buttonSuffix}`}
             </Button>
           </CardActions>
         </Card>

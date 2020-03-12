@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Paper } from '@material-ui/core';
+import { Link, Paper } from '@material-ui/core';
 
 export const CollectionsPage = () => (
   <Paper>
@@ -58,9 +58,9 @@ export const CollectionsPage = () => (
       Collection Analysis for new link system (I will eventually rework this
       info to here)
       <br />
-      <a href="https://docs.google.com/document/d/17YQPAsSc0ceVwgv_ZUADImQBwBXqGmeoipztyUZb3EM">
+      <Link href="https://docs.google.com/document/d/17YQPAsSc0ceVwgv_ZUADImQBwBXqGmeoipztyUZb3EM">
         Collection Analysis
-      </a>
+      </Link>
     </p>
   </Paper>
 );

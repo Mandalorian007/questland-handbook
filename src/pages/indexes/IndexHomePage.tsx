@@ -6,4 +6,4 @@ const tileDataList: TileData[] = [
   { title: 'Orb Index', to: '/indexes/orb' }
 ];
 
-export const IndexHomePage = () => <NavTileList tileDataList={tileDataList} />;
+export const IndexHomePage = () => <NavTileList buttonSuffix='' tileDataList={tileDataList} />;
