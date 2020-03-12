@@ -10,8 +10,15 @@ import { ReforgingPage } from './ReforgingPage';
 import { ArtifactPage } from './ArtifactPage';
 import { BuildsPage } from './BuildsPage';
 import { useGridListCols } from '../../../lib/responsiveList';
+import { BeginnerTipsPage } from './BeginnerTipsPage';
 
 const modalCardList: ModalCardData[] = [
+  {
+    title: 'Beginner Tips',
+    cardContent:
+      'Getting started quickly in Questland and avoiding common mistakes',
+    modalContent: <BeginnerTipsPage />
+  },
   {
     title: 'Stat Priorities',
     cardContent: 'Stat evaluation and break down.',
