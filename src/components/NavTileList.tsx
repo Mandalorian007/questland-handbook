@@ -25,7 +25,6 @@ export const NavTileList: React.FC<{
       <GridListTile key={tile.title} cols={1}>
         <Card>
           <CardHeader title={tile.title} />
-          <CardContent>content</CardContent>
           <CardActions>
             <Button
               variant="contained"
