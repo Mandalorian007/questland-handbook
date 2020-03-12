@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Paper } from '@material-ui/core';
+import { Link, Paper } from '@material-ui/core';
 
 export const PublicAPIPage = () => (
   <Paper>
@@ -19,8 +19,8 @@ export const PublicAPIPage = () => (
     </ul>
 
     <h3>Public API Swagger Documentation</h3>
-    <a href="https://questland-public-api.cfapps.io/swagger-ui.html">
+    <Link href="https://questland-public-api.cfapps.io/swagger-ui.html">
       Swagger API docs
-    </a>
+    </Link>
   </Paper>
 );
