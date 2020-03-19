@@ -22,3 +22,17 @@ export const toItemSlot = (expectedItemSlot: string): ItemSlot => {
   }
   return expectedItemSlot;
 };
+
+export const getItemSlots = () => {
+  return [
+    ItemSlot.Helm,
+    ItemSlot.Chest,
+    ItemSlot.Gloves,
+    ItemSlot.Boots,
+    ItemSlot.Necklace,
+    ItemSlot.Ring,
+    ItemSlot.Talisman,
+    ItemSlot.MainHand,
+    ItemSlot.OffHand
+  ];
+};

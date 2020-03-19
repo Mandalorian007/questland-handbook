@@ -28,3 +28,28 @@ export const toEmblem = (expectedEmblem: string): Emblem => {
   }
   return expectedEmblem;
 };
+
+export const getEmblems = () => {
+  return [
+    Emblem.Sacred,
+    Emblem.Necro,
+    Emblem.Beast,
+    Emblem.Nature,
+    Emblem.Dragon,
+    Emblem.Shadow,
+    Emblem.Myth,
+    Emblem.Ice,
+    Emblem.Venom,
+    Emblem.Death,
+    Emblem.Lava,
+    Emblem.Hex,
+    Emblem.Noble,
+    Emblem.Thunder,
+    Emblem.Abyss,
+    Emblem.Wind
+  ];
+};
+
+export const getEmblemImgUrl = (emblem: Emblem) => {
+  return `/emblems/${emblem}.png`;
+};
