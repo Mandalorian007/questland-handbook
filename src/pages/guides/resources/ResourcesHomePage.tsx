@@ -103,6 +103,9 @@ export const ResourcesHomePage = () => {
         These tokens let you collect 10 runs of loot from a single campaign
         level and are typically used to farm either purple materials for orbs or
         rare essences.
+        <br />
+        For loot tokens a popular trick is to run a level 9 times on energy and
+        then use a loot token so you can get level loot 19 times instead of 10.
       </p>
       <h3>Arena Tickets</h3>
       <p>This ticket lets you participate in an arena battle.</p>

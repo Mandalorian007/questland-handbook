@@ -258,9 +258,9 @@ export const IndividualBattleEventPage = () => {
         <ExpansionPanelDetails>
           <Typography>
             <p>
-              Starting out the red boss is exceptionally easy and we will simply
-              be using "The Turtle" build from the popular builds page. There
-              are a few things to discuss with event links here.
+              Starting out the blue boss is exceptionally easy and we will
+              simply be using "The Turtle" build from the popular builds page.
+              There are a few things to discuss with event links here.
             </p>
             <ul>
               <li>
