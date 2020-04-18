@@ -26,8 +26,9 @@ export const ResourcesHomePage = () => {
       <h2>Primary Currencies</h2>
       <h3>Eternium</h3>
       <p>
-        This is the core currency used to upgrade your equipped gear's levels.
-        The vast bulk of this will be gotten from your idle rewards.
+        This is the core currency needed to upgrade gear levels. It is easily
+        acquired by collecting Idle Rewards. Completing campaign sections will
+        increase amount collected.
       </p>
       <h3>Gold</h3>
       <p>
