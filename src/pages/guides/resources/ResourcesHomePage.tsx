@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Divider, Paper } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
-/* TODO ask Andrew if it's possible to add this more globally, but only for content pages */
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     contentPaper: {
@@ -42,16 +41,28 @@ export const ResourcesHomePage = () => {
       </p>
       <Divider />
       <h2>Secondary Currencies</h2>
+      <h3>Arena Tickets</h3>
+      <p>This ticket lets you participate in an arena battle.</p>
       <h3>Energy</h3>
       <p>
         Energy is currently only used to run the campaign so early on in the
-        game you will need more of it and later on it will just build up.
+        game you will need more of it and later on it will just build up. You
+        can also get 10 free energy per day by clicking on the + icon.
       </p>
-      <h3>Reforge Powder</h3>
+      <h3>Stews</h3>
       <p>
-        Reforge Powder is used to reforge your gear and grant it extra stats.
-        Even though it seems like you get a decent amount of reforge powder you
-        should save it for your end game gear.
+        Stews will give you an additional 12 energy and can be purchased with
+        barrels from the Trade Shop.
+      </p>
+      <h3>Loot Tokens</h3>
+      <p>
+        These tokens let you collect 10 runs of loot from a single campaign
+        level that you have previously completed with 3 stars. These are
+        typically used to farm either purple materials for orbs or rare
+        essences.
+        <br />
+        For loot tokens a popular trick is to run a level 9 times on energy and
+        then use a loot token so you can get level loot 19 times instead of 10.
       </p>
       <h3>Scrolls</h3>
       <p>
@@ -68,19 +79,30 @@ export const ResourcesHomePage = () => {
         <br />
         220% -> 250% is a .2% increase.
       </p>
-      <h3>Essences</h3>
+      <h3>Reforge Powder</h3>
       <p>
-        Essences are the primary currency for enhancing your orbs to make them
-        even more powerful. This currency comes in four types (common, rare,
-        epic, legendary) each of which have a stronger effect on raising your
-        power
+        Reforge Powder is used to reforge your gear and grant it extra stats.
+        Even though it seems like you get a decent amount of reforge powder you
+        should save it for your end game gear.
       </p>
       <h3>Extract Tools</h3>
       <p>
         Extract's primary purpose is to help you build up more copies of a piece
-        of gear that you already own. Since the extract option is limited to
-        once per month and items are pretty expensive make sure you use these
-        wisely.
+        of gear that you already own with the goal of making artifact gear for
+        your build. Since the extract option is limited to once per month and
+        items are pretty expensive make sure you use these wisely.
+      </p>
+      <h3>Divide Tokens</h3>
+      <p>
+        These come in a lesser and a superior form. Typically you will only ever
+        want to use the superior ones. These tokens are used to break down gear
+        you have put resources into (eternium, reforge powder, and empowering
+        stones). You will only get a percentage of the resources you put in back
+        so make sure to only invest large amounts of resources in gear you will
+        be using for a while. The lesser divide tokens with give you 80% of your
+        resources back while the superior tokens will give you 95%. It is
+        recommended to focus on dividing old gear so you can use the resources
+        on your new more powerful gear.
       </p>
       <h3>Empowering Stones</h3>
       <p>
@@ -89,27 +111,13 @@ export const ResourcesHomePage = () => {
         artifacts have 4 levels this means you can awaken each piece of your
         gear for an increasingly more expensive amount of empowering stones.
       </p>
-      <h3>Divide Tokens</h3>
+      <h3>Essences</h3>
       <p>
-        These common in a lesser and a superior form. Typically you will only
-        ever want to use the superior ones. These tokens are used to extract
-        eternium, reforge powder, and empowering stones you have used on a piece
-        of gear. You will only get a percentage of the resources you put in back
-        so make sure to only invest large amounts of resources in gear you will
-        be using for a while. The lesser divide tokens with give you 80% of your
-        resources back while the superior tokens will give you 95%.
+        Essences are the primary currency for enhancing your orbs to make them
+        even more powerful. This currency comes in four types (common, rare,
+        epic, legendary) each of which have a stronger effect on raising your
+        power
       </p>
-      <h3>Loot Tokens</h3>
-      <p>
-        These tokens let you collect 10 runs of loot from a single campaign
-        level and are typically used to farm either purple materials for orbs or
-        rare essences.
-        <br />
-        For loot tokens a popular trick is to run a level 9 times on energy and
-        then use a loot token so you can get level loot 19 times instead of 10.
-      </p>
-      <h3>Arena Tickets</h3>
-      <p>This ticket lets you participate in an arena battle.</p>
       <Divider />
       <h2>Shop Currencies</h2>
       <h3>Barrels</h3>
@@ -119,8 +127,8 @@ export const ResourcesHomePage = () => {
       </p>
       <h3>Stamp</h3>
       <p>
-        Stamps are collected from the daily boss fights and are only used in the
-        stamp shop.
+        Stamps are collected from the daily boss fights and completing your
+        daily quests and are only used in the stamp shop.
       </p>
       <h3>Guild Coins</h3>
       <p>
