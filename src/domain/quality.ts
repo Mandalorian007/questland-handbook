@@ -7,7 +7,8 @@ export enum Quality {
   Artifact1 = 'ARTIFACT1',
   Artifact2 = 'ARTIFACT2',
   Artifact3 = 'ARTIFACT3',
-  Artifact4 = 'ARTIFACT4'
+  Artifact4 = 'ARTIFACT4',
+  Artifact5 = 'ARTIFACT5'
 }
 
 export const isQuality = (maybeQuality: string): maybeQuality is Quality => {

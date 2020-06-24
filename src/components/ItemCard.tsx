@@ -20,6 +20,7 @@ const getItemColor = (item: Item) => {
     case Quality.Artifact2:
     case Quality.Artifact3:
     case Quality.Artifact4:
+    case Quality.Artifact5:
       return 'red';
   }
 };
