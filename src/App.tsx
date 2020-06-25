@@ -9,7 +9,6 @@ import thunk from 'redux-thunk';
 import { AppState, rootReducer } from './store/rootReducer';
 import { Provider } from 'react-redux';
 import { HomePage } from './pages/home/HomePage';
-import { ResourcesHomePage } from './pages/guides/resources/ResourcesHomePage';
 import { NavItemGroup } from './components/RoutableNavList';
 import { GuidesHomePage } from './pages/guides/GuidesHomePage';
 import { IndexHomePage } from './pages/indexes/IndexHomePage';
@@ -21,15 +20,19 @@ import { MonsterSlayerCalcPage } from './pages/tools/MonsterSlayerCalcPage';
 import { ToolsHomePage } from './pages/tools/ToolsHomePage';
 import HomeIcon from '@material-ui/icons/Home';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
-import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 import EventIcon from '@material-ui/icons/Event';
 import ListIcon from '@material-ui/icons/List';
 import BuildIcon from '@material-ui/icons/Build';
 import LocationSearchingIcon from '@material-ui/icons/LocationSearching';
+import CurrencyIcon from '@material-ui/icons/AttachMoney';
 import AndroidIcon from '@material-ui/icons/Android';
 import HttpIcon from '@material-ui/icons/Http';
 import { DiscordBotPage } from './pages/tools/DiscordBotPage';
 import { PublicAPIPage } from './pages/tools/PubicAPIPage';
+import { CurrenciesHomePage } from './pages/currencies/CurrenciesHomePage';
+import { PrimaryCurrencyPage } from './pages/currencies/PrimaryCurrencyPage';
+import { SecondaryCurrencyPage } from './pages/currencies/SecondaryCurrencyPage';
+import { ShopCurrencyPage } from './pages/currencies/ShopCurrencyPage';
 
 const middleware = [reduxLogger as Middleware, thunk];
 
@@ -46,13 +49,30 @@ const navItemGroups: NavItemGroup[] = [
     to: '/guides',
     icon: <MenuBookIcon />,
     navItems: [
-      {
-        label: 'Resources',
-        to: '/guides/resources',
-        icon: <BusinessCenterIcon />
-      },
       { label: 'Gearing', to: '/guides/gearing', icon: <MenuBookIcon /> },
       { label: 'Battle Event', to: '/guides/battle-event', icon: <EventIcon /> }
+    ]
+  },
+  {
+    label: 'Currencies',
+    to: '/currencies',
+    icon: <CurrencyIcon />,
+    navItems: [
+      {
+        label: 'Primary',
+        to: '/currencies/primary',
+        icon: <CurrencyIcon />
+      },
+      {
+        label: 'Secondary',
+        to: '/currencies/secondary',
+        icon: <CurrencyIcon />
+      },
+      {
+        label: 'Shop',
+        to: '/currencies/shop',
+        icon: <CurrencyIcon />
+      }
     ]
   },
   {
@@ -93,23 +113,12 @@ export const App: React.FC = () => (
     <Router>
       <Chrome title="Questland Handbook" navItemGroups={navItemGroups}>
         <Switch>
-          {/* Top level Drawer & Bottom nav items */}
           <Route path="/" exact>
             <HomePage />
           </Route>
+
           <Route path="/guides" exact>
             <GuidesHomePage />
-          </Route>
-          <Route path="/indexes" exact>
-            <IndexHomePage />
-          </Route>
-          <Route path="/tools" exact>
-            <ToolsHomePage />
-          </Route>
-
-          {/* Second level of routing in Drawer expansions */}
-          <Route path="/guides/resources" exact>
-            <ResourcesHomePage />
           </Route>
           <Route path="/guides/gearing" exact>
             <GearingHomePage />
@@ -117,11 +126,32 @@ export const App: React.FC = () => (
           <Route path="/guides/battle-event" exact>
             <BattleEventHomePage />
           </Route>
+
+          <Route path="/currencies" exact>
+            <CurrenciesHomePage />
+          </Route>
+          <Route path="/currencies/primary" exact>
+            <PrimaryCurrencyPage />
+          </Route>
+          <Route path="/currencies/secondary" exact>
+            <SecondaryCurrencyPage />
+          </Route>
+          <Route path="/currencies/shop" exact>
+            <ShopCurrencyPage />
+          </Route>
+
+          <Route path="/indexes" exact>
+            <IndexHomePage />
+          </Route>
           <Route path="/indexes/gear" exact>
             <ItemIndexPage />
           </Route>
           <Route path="/indexes/orb" exact>
             <OrbIndexPage />
+          </Route>
+
+          <Route path="/tools" exact>
+            <ToolsHomePage />
           </Route>
           <Route path="/tools/monster-slayer-calc" exact>
             <MonsterSlayerCalcPage />

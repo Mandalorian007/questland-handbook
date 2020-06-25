@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, Grid } from '@material-ui/core';
+import { Card, CardContent, Grid } from '@material-ui/core';
 import { getEmblemImgUrl } from '../domain/emblem';
 import React from 'react';
 import { Item } from '../domain/item';
@@ -30,19 +30,17 @@ export const ItemCard: React.FC<{
 }> = ({ item }) => {
   return (
     <Card>
-      <CardHeader
-        title={item.name}
-        avatar={
-          <img
-            src={getEmblemImgUrl(item.emblem)}
-            alt={item.emblem}
-            width={24}
-            height={24}
-          />
-        }
-      />
       <CardContent>
         <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <img
+              src={getEmblemImgUrl(item.emblem)}
+              alt={item.emblem}
+              width={24}
+              height={24}
+            />
+            {item.name}
+          </Grid>
           <Grid item xs>
             <div style={{ color: getItemColor(item) }}>{item.quality}</div>
             <div>Potential: {item.totalPotential}</div>

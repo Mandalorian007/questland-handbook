@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { TileData, NavTileList } from '../../components/NavTileList';
+import { NavTileList, TileData } from '../../components/NavTileList';
 
 const tileDataList: TileData[] = [
-  { title: 'Resources', to: '/guides/resources' },
   { title: 'Gearing', to: '/guides/gearing' },
   { title: 'Battle Event', to: '/guides/battle-event' }
 ];
