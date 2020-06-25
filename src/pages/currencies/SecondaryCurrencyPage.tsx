@@ -45,13 +45,13 @@ const currencyCardList: CurrencyCardList[] = [
         <br />
         Per Scroll effectiveness:
         <br />
-        '75% -> 190% is ~1% increase.'
+        75% -> 190% is ~1% increase.
         <br />
-        '190% -> 220% is a .6% increase.'
+        190% -> 220% is a .6% increase.
         <br />
-        '220% -> 250% is a .2% increase.'
+        220% -> 250% is a .2% increase.
         <br />
-        '250% -> 275% is a .02-.04% increase.'
+        250% -> 275% is a .02-.04% increase.
       </div>
     )
   },

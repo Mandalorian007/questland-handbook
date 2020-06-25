@@ -25,6 +25,7 @@ import ListIcon from '@material-ui/icons/List';
 import BuildIcon from '@material-ui/icons/Build';
 import LocationSearchingIcon from '@material-ui/icons/LocationSearching';
 import CurrencyIcon from '@material-ui/icons/AttachMoney';
+import ShieldIcon from '@material-ui/icons/Security';
 import AndroidIcon from '@material-ui/icons/Android';
 import HttpIcon from '@material-ui/icons/Http';
 import { DiscordBotPage } from './pages/tools/DiscordBotPage';
@@ -33,6 +34,12 @@ import { CurrenciesHomePage } from './pages/currencies/CurrenciesHomePage';
 import { PrimaryCurrencyPage } from './pages/currencies/PrimaryCurrencyPage';
 import { SecondaryCurrencyPage } from './pages/currencies/SecondaryCurrencyPage';
 import { ShopCurrencyPage } from './pages/currencies/ShopCurrencyPage';
+import { ArenaHomePage } from './pages/arena/ArenaHomePage';
+import { FireBlasterPage } from './pages/arena/FireBlasterPage';
+import { IcyCannonPage } from './pages/arena/IcyCannonPage';
+import { BoomingTurtlePage } from './pages/arena/BoomingTurtlePage';
+import { WardingFangPage } from './pages/arena/WardingFangPage';
+import { StrategyPage } from './pages/arena/StrategyPage';
 
 const middleware = [reduxLogger as Middleware, thunk];
 
@@ -51,6 +58,38 @@ const navItemGroups: NavItemGroup[] = [
     navItems: [
       { label: 'Gearing', to: '/guides/gearing', icon: <MenuBookIcon /> },
       { label: 'Battle Event', to: '/guides/battle-event', icon: <EventIcon /> }
+    ]
+  },
+  {
+    label: 'Arena',
+    to: '/arena',
+    icon: <ShieldIcon />,
+    navItems: [
+      {
+        label: 'Strategy',
+        to: '/arena/strategy',
+        icon: <ShieldIcon />
+      },
+      {
+        label: 'Fire Blaster',
+        to: '/arena/fire-blaster',
+        icon: <ShieldIcon />
+      },
+      {
+        label: 'Icy Cannon',
+        to: '/arena/icy-cannon',
+        icon: <ShieldIcon />
+      },
+      {
+        label: 'Booming Turtle',
+        to: '/arena/booming-turtle',
+        icon: <ShieldIcon />
+      },
+      {
+        label: 'Warding Fang',
+        to: '/arena/warding-fang',
+        icon: <ShieldIcon />
+      }
     ]
   },
   {
@@ -125,6 +164,25 @@ export const App: React.FC = () => (
           </Route>
           <Route path="/guides/battle-event" exact>
             <BattleEventHomePage />
+          </Route>
+
+          <Route path="/arena" exact>
+            <ArenaHomePage />
+          </Route>
+          <Route path="/arena/strategy" exact>
+            <StrategyPage />
+          </Route>
+          <Route path="/arena/fire-blaster" exact>
+            <FireBlasterPage />
+          </Route>
+          <Route path="/arena/icy-cannon" exact>
+            <IcyCannonPage />
+          </Route>
+          <Route path="/arena/booming-turtle" exact>
+            <BoomingTurtlePage />
+          </Route>
+          <Route path="/arena/warding-fang" exact>
+            <WardingFangPage />
           </Route>
 
           <Route path="/currencies" exact>

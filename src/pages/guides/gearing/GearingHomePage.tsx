@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { GridList, GridListTile } from '@material-ui/core';
 import { ModalCard, ModalCardData } from '../../../components/ModalCard';
-import { ArenaPage } from './ArenaPage';
 import { StatPriorityPage } from './StatPriorityPage';
 import { GearPage } from './GearPage';
 import { OrbPage } from './OrgPage';
@@ -53,11 +52,6 @@ const modalCardList: ModalCardData[] = [
     title: 'Popular / Core Builds',
     cardContent: 'The core builds to catapult yourself to success',
     modalContent: <BuildsPage />
-  },
-  {
-    title: 'Arena Setups',
-    cardContent: 'Dominating in the Arena',
-    modalContent: <ArenaPage />
   }
 ];
 
