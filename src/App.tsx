@@ -14,7 +14,6 @@ import { GuidesHomePage } from './pages/guides/GuidesHomePage';
 import { IndexHomePage } from './pages/indexes/IndexHomePage';
 import { OrbIndexPage } from './pages/indexes/OrbIndexPage';
 import { GearingHomePage } from './pages/guides/gearing/GearingHomePage';
-import { BattleEventHomePage } from './pages/guides/battleevent/BattleEventHomePage';
 import { ItemIndexPage } from './pages/indexes/ItemIndexPage';
 import { MonsterSlayerCalcPage } from './pages/tools/MonsterSlayerCalcPage';
 import { ToolsHomePage } from './pages/tools/ToolsHomePage';
@@ -26,6 +25,7 @@ import BuildIcon from '@material-ui/icons/Build';
 import LocationSearchingIcon from '@material-ui/icons/LocationSearching';
 import CurrencyIcon from '@material-ui/icons/AttachMoney';
 import ShieldIcon from '@material-ui/icons/Security';
+import TrophyIcon from '@material-ui/icons/EmojiEvents';
 import AndroidIcon from '@material-ui/icons/Android';
 import HttpIcon from '@material-ui/icons/Http';
 import { DiscordBotPage } from './pages/tools/DiscordBotPage';
@@ -40,6 +40,12 @@ import { IcyCannonPage } from './pages/arena/IcyCannonPage';
 import { BoomingTurtlePage } from './pages/arena/BoomingTurtlePage';
 import { WardingFangPage } from './pages/arena/WardingFangPage';
 import { StrategyPage } from './pages/arena/StrategyPage';
+import { BattleEventHomePage } from './pages/battleevent/BattleEventHomePage';
+import { RedBattleEventPage } from './pages/battleevent/RedBattleEventPage';
+import { BlueBattleEventPage } from './pages/battleevent/BlueBattleEventPage';
+import { GuildBattleEventStrategyPage } from './pages/battleevent/GuildBattleEventStrategyPage';
+import { RedGuildStrikerPage } from './pages/battleevent/RedGuildStrikerPage';
+import { BlueGuildStrikerPage } from './pages/battleevent/BlueGuildStrikerPage';
 
 const middleware = [reduxLogger as Middleware, thunk];
 
@@ -58,6 +64,38 @@ const navItemGroups: NavItemGroup[] = [
     navItems: [
       { label: 'Gearing', to: '/guides/gearing', icon: <MenuBookIcon /> },
       { label: 'Battle Event', to: '/guides/battle-event', icon: <EventIcon /> }
+    ]
+  },
+  {
+    label: 'Battle Event',
+    to: '/battle-event',
+    icon: <TrophyIcon />,
+    navItems: [
+      {
+        label: 'Red Battle Event',
+        to: '/battle-event/red',
+        icon: <TrophyIcon />
+      },
+      {
+        label: 'Blue Battle Event',
+        to: '/battle-event/blue',
+        icon: <TrophyIcon />
+      },
+      {
+        label: 'Guild Strategy',
+        to: '/battle-event/guild-strategy',
+        icon: <TrophyIcon />
+      },
+      {
+        label: 'Red Guild Striker',
+        to: '/battle-event/red-guild-striker',
+        icon: <TrophyIcon />
+      },
+      {
+        label: 'Blue Guild Striker',
+        to: '/battle-event/blue-guild-striker',
+        icon: <TrophyIcon />
+      }
     ]
   },
   {
@@ -162,8 +200,24 @@ export const App: React.FC = () => (
           <Route path="/guides/gearing" exact>
             <GearingHomePage />
           </Route>
-          <Route path="/guides/battle-event" exact>
+
+          <Route path="/battle-event" exact>
             <BattleEventHomePage />
+          </Route>
+          <Route path="/battle-event/red" exact>
+            <RedBattleEventPage />
+          </Route>
+          <Route path="/battle-event/blue" exact>
+            <BlueBattleEventPage />
+          </Route>
+          <Route path="/battle-event/guild-strategy" exact>
+            <GuildBattleEventStrategyPage />
+          </Route>
+          <Route path="/battle-event/red-guild-striker" exact>
+            <RedGuildStrikerPage />
+          </Route>
+          <Route path="/battle-event/blue-guild-striker" exact>
+            <BlueGuildStrikerPage />
           </Route>
 
           <Route path="/arena" exact>

@@ -52,7 +52,7 @@ export const BuildPageLayout: React.FC<{
     fetch(`https://questland-public-api.cfapps.io/build/${props.buildOption}`)
       .then(response => response.json())
       .then((build: Build) => setBuild(build));
-  }, []);
+  }, [props.buildOption]);
 
   return (
     <div>

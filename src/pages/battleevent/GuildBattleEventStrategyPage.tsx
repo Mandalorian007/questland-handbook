@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Paper } from '@material-ui/core';
-import { BuildExpansionPanel } from '../../../components/BuildExpansionPanel';
-import { TheArmourBuster, TheAssassin } from '../../../domain/builds';
+import { BuildExpansionPanel } from '../../components/BuildExpansionPanel';
+import { TheArmourBuster, TheAssassin } from '../../domain/builds';
 
-export const GuildBattleEventPage = () => (
+export const GuildBattleEventStrategyPage = () => (
   <Paper>
     <h1>Farming points against a guild boss</h1>
     <p>
@@ -15,7 +15,7 @@ export const GuildBattleEventPage = () => (
 
     <h3>Overall strategy</h3>
     <p>
-      Everyone will receive 198 guild boss tickets during the battle event. And
+      Everyone will receive 176 guild boss tickets during the battle event. And
       no matter how many tickets you spend on a guild boss when it dies you will
       receive the same reward for killing it. It's also worth noting that
       killing a higher level boss will grant you more points up to level 150.
