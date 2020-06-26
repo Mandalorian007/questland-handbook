@@ -15,6 +15,8 @@ export interface Build {
 export enum BuildOption {
   redBattleEvent = 'RED_BATTLE_EVENT',
   blueBattleEvent = 'BLUE_BATTLE_EVENT',
+  redGuildStriker = 'RED_GUILD_STRIKER',
+  blueGuildStriker = 'BLUE_GUILD_STRIKER',
   hecatombus = 'HECATOMBUS',
   turtle = 'TURTLE',
   thePax = 'THE_PAX',
