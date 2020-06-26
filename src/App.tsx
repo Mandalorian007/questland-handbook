@@ -62,8 +62,7 @@ const navItemGroups: NavItemGroup[] = [
     to: '/guides',
     icon: <MenuBookIcon />,
     navItems: [
-      { label: 'Gearing', to: '/guides/gearing', icon: <MenuBookIcon /> },
-      { label: 'Battle Event', to: '/guides/battle-event', icon: <EventIcon /> }
+      { label: 'Gearing', to: '/guides/gearing', icon: <MenuBookIcon /> }
     ]
   },
   {
