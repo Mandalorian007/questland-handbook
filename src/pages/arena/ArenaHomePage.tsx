@@ -6,7 +6,8 @@ const tileDataList: TileData[] = [
   { title: 'Fire Blaster', to: '/arena/fire-blaster' },
   { title: 'Icy Cannon', to: '/arena/icy-cannon' },
   { title: 'Booming Turtle', to: '/arena/booming-turtle' },
-  { title: 'Warding Fang', to: '/arena/warding-fang' }
+  { title: 'Warding Fang', to: '/arena/warding-fang' },
+  { title: 'The Farmer', to: '/arena/the-farmer' }
 ];
 
 export const ArenaHomePage = () => (

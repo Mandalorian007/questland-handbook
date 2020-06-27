@@ -51,6 +51,7 @@ import { ArtifactPage } from './pages/gearing/ArtifactPage';
 import { CollectionsPage } from './pages/gearing/CollectionsPage';
 import { ReforgingPage } from './pages/gearing/ReforgingPage';
 import { StatPriorityPage } from './pages/gearing/StatPriorityPage';
+import { FarmerPage } from './pages/arena/FarmerPage';
 
 const middleware = [reduxLogger as Middleware, thunk];
 
@@ -159,6 +160,10 @@ const navItemGroups: NavItemGroup[] = [
       {
         label: 'Warding Fang',
         to: '/arena/warding-fang'
+      },
+      {
+        label: 'The Farmer',
+        to: '/arena/the-farmer'
       }
     ]
   },
@@ -288,6 +293,9 @@ export const App: React.FC = () => (
           </Route>
           <Route path="/arena/warding-fang" exact>
             <WardingFangPage />
+          </Route>
+          <Route path="/arena/the-farmer" exact>
+            <FarmerPage />
           </Route>
 
           <Route path="/currencies" exact>

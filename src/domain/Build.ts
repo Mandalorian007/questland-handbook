@@ -25,5 +25,6 @@ export enum BuildOption {
   boomingTurtle = 'BOOMING_TURTLE',
   wardingFang = 'WARDING_FANG',
   fireBlaster = 'FIRE_BLASTER',
-  icyCannon = 'ICY_CANNON'
+  icyCannon = 'ICY_CANNON',
+  farmer = 'THE_FARMER'
 }
