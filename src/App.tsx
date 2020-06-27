@@ -19,7 +19,6 @@ import { MonsterSlayerCalcPage } from './pages/tools/MonsterSlayerCalcPage';
 import { ToolsHomePage } from './pages/tools/ToolsHomePage';
 import HomeIcon from '@material-ui/icons/Home';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
-import EventIcon from '@material-ui/icons/Event';
 import ListIcon from '@material-ui/icons/List';
 import BuildIcon from '@material-ui/icons/Build';
 import LocationSearchingIcon from '@material-ui/icons/LocationSearching';

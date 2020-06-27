@@ -4,7 +4,6 @@ import {
   Button,
   Card,
   CardActions,
-  CardContent,
   CardHeader,
   GridList,
   GridListTile

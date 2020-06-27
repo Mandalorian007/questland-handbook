@@ -21,8 +21,6 @@ import {
 } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
-import { type } from 'os';
-import { ColumnData } from '../../components/PagingSortingTable';
 import { getComparator, stableSort } from '../../lib/sort';
 
 const useStyles = makeStyles(theme => ({
