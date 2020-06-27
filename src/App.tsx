@@ -13,7 +13,7 @@ import { NavItemGroup } from './components/RoutableNavList';
 import { GuidesHomePage } from './pages/guides/GuidesHomePage';
 import { IndexHomePage } from './pages/indexes/IndexHomePage';
 import { OrbIndexPage } from './pages/indexes/OrbIndexPage';
-import { GearingHomePage } from './pages/guides/gearing/GearingHomePage';
+import { GearingHomePage } from './pages/gearing/GearingHomePage';
 import { ItemIndexPage } from './pages/indexes/ItemIndexPage';
 import { MonsterSlayerCalcPage } from './pages/tools/MonsterSlayerCalcPage';
 import { ToolsHomePage } from './pages/tools/ToolsHomePage';
@@ -21,12 +21,10 @@ import HomeIcon from '@material-ui/icons/Home';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import ListIcon from '@material-ui/icons/List';
 import BuildIcon from '@material-ui/icons/Build';
-import LocationSearchingIcon from '@material-ui/icons/LocationSearching';
 import CurrencyIcon from '@material-ui/icons/AttachMoney';
 import ShieldIcon from '@material-ui/icons/Security';
 import TrophyIcon from '@material-ui/icons/EmojiEvents';
-import AndroidIcon from '@material-ui/icons/Android';
-import HttpIcon from '@material-ui/icons/Http';
+import HeroIcon from '@material-ui/icons/Accessibility';
 import { DiscordBotPage } from './pages/tools/DiscordBotPage';
 import { PublicAPIPage } from './pages/tools/PubicAPIPage';
 import { CurrenciesHomePage } from './pages/currencies/CurrenciesHomePage';
@@ -45,6 +43,14 @@ import { BlueBattleEventPage } from './pages/battleevent/BlueBattleEventPage';
 import { GuildBattleEventStrategyPage } from './pages/battleevent/GuildBattleEventStrategyPage';
 import { RedGuildStrikerPage } from './pages/battleevent/RedGuildStrikerPage';
 import { BlueGuildStrikerPage } from './pages/battleevent/BlueGuildStrikerPage';
+import { BeginnerTipsPage } from './pages/guides/BeginnerTipsPage';
+import { BuildsPage } from './pages/guides/BuildsPage';
+import { GearPage } from './pages/gearing/GearPage';
+import { OrbPage } from './pages/gearing/OrgPage';
+import { ArtifactPage } from './pages/gearing/ArtifactPage';
+import { CollectionsPage } from './pages/gearing/CollectionsPage';
+import { ReforgingPage } from './pages/gearing/ReforgingPage';
+import { StatPriorityPage } from './pages/gearing/StatPriorityPage';
 
 const middleware = [reduxLogger as Middleware, thunk];
 
@@ -61,7 +67,45 @@ const navItemGroups: NavItemGroup[] = [
     to: '/guides',
     icon: <MenuBookIcon />,
     navItems: [
-      { label: 'Gearing', to: '/guides/gearing', icon: <MenuBookIcon /> }
+      {
+        label: 'Beginner Tips',
+        to: '/guides/beginner-tips'
+      },
+      {
+        label: 'Popular Builds',
+        to: '/guides/popular-builds'
+      }
+    ]
+  },
+  {
+    label: 'Gearing',
+    to: '/gearing',
+    icon: <HeroIcon />,
+    navItems: [
+      {
+        label: 'Gear',
+        to: '/gearing/gear'
+      },
+      {
+        label: 'Orbs',
+        to: '/gearing/orbs'
+      },
+      {
+        label: 'Artifacts',
+        to: '/gearing/artifacts'
+      },
+      {
+        label: 'Collections',
+        to: '/gearing/collections'
+      },
+      {
+        label: 'Reforging',
+        to: '/gearing/reforging'
+      },
+      {
+        label: 'Stat Priorities',
+        to: '/gearing/stat-priorities'
+      }
     ]
   },
   {
@@ -71,28 +115,23 @@ const navItemGroups: NavItemGroup[] = [
     navItems: [
       {
         label: 'Red Battle Event',
-        to: '/battle-event/red',
-        icon: <TrophyIcon />
+        to: '/battle-event/red'
       },
       {
         label: 'Blue Battle Event',
-        to: '/battle-event/blue',
-        icon: <TrophyIcon />
+        to: '/battle-event/blue'
       },
       {
         label: 'Guild Strategy',
-        to: '/battle-event/guild-strategy',
-        icon: <TrophyIcon />
+        to: '/battle-event/guild-strategy'
       },
       {
         label: 'Red Guild Striker',
-        to: '/battle-event/red-guild-striker',
-        icon: <TrophyIcon />
+        to: '/battle-event/red-guild-striker'
       },
       {
         label: 'Blue Guild Striker',
-        to: '/battle-event/blue-guild-striker',
-        icon: <TrophyIcon />
+        to: '/battle-event/blue-guild-striker'
       }
     ]
   },
@@ -103,28 +142,23 @@ const navItemGroups: NavItemGroup[] = [
     navItems: [
       {
         label: 'Strategy',
-        to: '/arena/strategy',
-        icon: <ShieldIcon />
+        to: '/arena/strategy'
       },
       {
         label: 'Fire Blaster',
-        to: '/arena/fire-blaster',
-        icon: <ShieldIcon />
+        to: '/arena/fire-blaster'
       },
       {
         label: 'Icy Cannon',
-        to: '/arena/icy-cannon',
-        icon: <ShieldIcon />
+        to: '/arena/icy-cannon'
       },
       {
         label: 'Booming Turtle',
-        to: '/arena/booming-turtle',
-        icon: <ShieldIcon />
+        to: '/arena/booming-turtle'
       },
       {
         label: 'Warding Fang',
-        to: '/arena/warding-fang',
-        icon: <ShieldIcon />
+        to: '/arena/warding-fang'
       }
     ]
   },
@@ -135,18 +169,15 @@ const navItemGroups: NavItemGroup[] = [
     navItems: [
       {
         label: 'Primary',
-        to: '/currencies/primary',
-        icon: <CurrencyIcon />
+        to: '/currencies/primary'
       },
       {
         label: 'Secondary',
-        to: '/currencies/secondary',
-        icon: <CurrencyIcon />
+        to: '/currencies/secondary'
       },
       {
         label: 'Shop',
-        to: '/currencies/shop',
-        icon: <CurrencyIcon />
+        to: '/currencies/shop'
       }
     ]
   },
@@ -155,8 +186,8 @@ const navItemGroups: NavItemGroup[] = [
     to: '/indexes',
     icon: <ListIcon />,
     navItems: [
-      { label: 'Gear Index', to: '/indexes/gear', icon: <ListIcon /> },
-      { label: 'Orb Index', to: '/indexes/orb', icon: <ListIcon /> }
+      { label: 'Gear Index', to: '/indexes/gear' },
+      { label: 'Orb Index', to: '/indexes/orb' }
     ]
   },
   {
@@ -166,18 +197,15 @@ const navItemGroups: NavItemGroup[] = [
     navItems: [
       {
         label: 'Monster Slayer Calculator',
-        to: '/tools/monster-slayer-calc',
-        icon: <LocationSearchingIcon />
+        to: '/tools/monster-slayer-calc'
       },
       {
         label: 'QL Bot for Discord',
-        to: '/tools/ql-bot',
-        icon: <AndroidIcon />
+        to: '/tools/ql-bot'
       },
       {
         label: 'Questland Public API',
-        to: '/tools/public-api',
-        icon: <HttpIcon />
+        to: '/tools/public-api'
       }
     ]
   }
@@ -195,8 +223,33 @@ export const App: React.FC = () => (
           <Route path="/guides" exact>
             <GuidesHomePage />
           </Route>
-          <Route path="/guides/gearing" exact>
+          <Route path="/guides/beginner-tips" exact>
+            <BeginnerTipsPage />
+          </Route>
+          <Route path="/guides/popular-builds" exact>
+            <BuildsPage />
+          </Route>
+
+          <Route path="/gearing" exact>
             <GearingHomePage />
+          </Route>
+          <Route path="/gearing/gear" exact>
+            <GearPage />
+          </Route>
+          <Route path="/gearing/orbs" exact>
+            <OrbPage />
+          </Route>
+          <Route path="/gearing/artifacts" exact>
+            <ArtifactPage />
+          </Route>
+          <Route path="/gearing/collections" exact>
+            <CollectionsPage />
+          </Route>
+          <Route path="/gearing/reforging" exact>
+            <ReforgingPage />
+          </Route>
+          <Route path="/gearing/stat-priorities" exact>
+            <StatPriorityPage />
           </Route>
 
           <Route path="/battle-event" exact>

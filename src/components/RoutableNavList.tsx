@@ -54,7 +54,6 @@ export type NavItemGroup = {
 export type NavItem = {
   label: string;
   to: string;
-  icon?: ReactElement;
 };
 
 // Only supporting 1 level of nesting atm
@@ -114,9 +113,6 @@ export const RoutableNavList: React.FC<{ navItemGroups: NavItemGroup[] }> = ({
                       component={NavLink}
                       to={navItem.to}
                     >
-                      <ListItemIcon>
-                        {navItem.icon ? navItem.icon : <SendIcon />}
-                      </ListItemIcon>
                       <ListItemText primary={navItem.label} />
                     </ListItem>
                   </List>
