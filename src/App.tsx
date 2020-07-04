@@ -55,6 +55,7 @@ import { FarmerPage } from './pages/arena/FarmerPage';
 import { HardBossStatsIndexPage } from './pages/indexes/HardBossStatsIndexPage';
 import { GuildBossStatsIndexPage } from './pages/indexes/GuildBossStatsIndexPage';
 import { GuildLookupPage } from './pages/tools/GuildLookupPage';
+import { GuildBattleEventPlanner } from './pages/tools/GuildBattleEventPlanner';
 
 const middleware = [reduxLogger as Middleware, thunk];
 
@@ -220,6 +221,10 @@ const navItemGroups: NavItemGroup[] = [
       {
         label: 'Guild Lookup',
         to: '/tools/guild-lookup'
+      },
+      {
+        label: 'Guild Battle Event Planner',
+        to: '/tools/guild-be-plan'
       }
     ]
   }
@@ -350,6 +355,9 @@ export const App: React.FC = () => (
           </Route>
           <Route path="/tools/guild-lookup" exact>
             <GuildLookupPage />
+          </Route>
+          <Route path="/tools/guild-be-plan" exact>
+            <GuildBattleEventPlanner />
           </Route>
         </Switch>
       </Chrome>

@@ -5,7 +5,8 @@ const tileDataList: TileData[] = [
   { title: 'Monster Slayer Calculator', to: '/tools/monster-slayer-calc' },
   { title: 'QL Bot for Discord', to: '/tools/ql-bot' },
   { title: 'Questland Public API', to: '/tools/public-api' },
-  { title: 'Guild Lookup', to: '/tools/guild-lookup' }
+  { title: 'Guild Lookup', to: '/tools/guild-lookup' },
+  { title: 'Guild Battle Event Planner', to: '/tools/guild-be-plan' }
 ];
 
 export const ToolsHomePage = () => (
