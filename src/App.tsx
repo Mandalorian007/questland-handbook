@@ -54,6 +54,7 @@ import { StatPriorityPage } from './pages/gearing/StatPriorityPage';
 import { FarmerPage } from './pages/arena/FarmerPage';
 import { HardBossStatsIndexPage } from './pages/indexes/HardBossStatsIndexPage';
 import { GuildBossStatsIndexPage } from './pages/indexes/GuildBossStatsIndexPage';
+import { GuildLookupPage } from './pages/tools/GuildLookupPage';
 
 const middleware = [reduxLogger as Middleware, thunk];
 
@@ -215,6 +216,10 @@ const navItemGroups: NavItemGroup[] = [
       {
         label: 'Questland Public API',
         to: '/tools/public-api'
+      },
+      {
+        label: 'Guild Lookup',
+        to: '/tools/guild-lookup'
       }
     ]
   }
@@ -342,6 +347,9 @@ export const App: React.FC = () => (
           </Route>
           <Route path="/tools/public-api" exact>
             <PublicAPIPage />
+          </Route>
+          <Route path="/tools/guild-lookup" exact>
+            <GuildLookupPage />
           </Route>
         </Switch>
       </Chrome>
