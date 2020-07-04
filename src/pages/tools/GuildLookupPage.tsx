@@ -50,11 +50,15 @@ export const GuildLookupPage: React.FC<{}> = () => {
     )}?server=${serverName}`;
     fetch(url)
       .then(res => res.json())
-      .then(test => {
-        console.log(test);
-        return test;
-      })
-      .then(guild => setGuild(guild));
+      .then(json => {
+        if ('guildId' in json) {
+          setGuild(json);
+        } else {
+          alert(
+            `Couldn't find guild with name: ${guildName} on server: ${serverName}`
+          );
+        }
+      });
   };
 
   return (
@@ -74,7 +78,7 @@ export const GuildLookupPage: React.FC<{}> = () => {
         <Select
           labelId="select-server-label"
           id="select-server"
-          value={'GLOBAL'}
+          value={serverName}
           onChange={handleServerNameChange}
         >
           <MenuItem value={'GLOBAL'}>Global</MenuItem>
