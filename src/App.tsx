@@ -52,6 +52,8 @@ import { CollectionsPage } from './pages/gearing/CollectionsPage';
 import { ReforgingPage } from './pages/gearing/ReforgingPage';
 import { StatPriorityPage } from './pages/gearing/StatPriorityPage';
 import { FarmerPage } from './pages/arena/FarmerPage';
+import { HardBossStatsIndexPage } from './pages/indexes/HardBossStatsIndexPage';
+import { GuildBossStatsIndexPage } from './pages/indexes/GuildBossStatsIndexPage';
 
 const middleware = [reduxLogger as Middleware, thunk];
 
@@ -192,7 +194,9 @@ const navItemGroups: NavItemGroup[] = [
     icon: <ListIcon />,
     navItems: [
       { label: 'Gear Index', to: '/indexes/gear' },
-      { label: 'Orb Index', to: '/indexes/orb' }
+      { label: 'Orb Index', to: '/indexes/orb' },
+      { label: 'Hard Boss Stats', to: '/indexes/hard-boss-stats' },
+      { label: 'Guild Boss Stats', to: '/indexes/guild-boss-stats' }
     ]
   },
   {
@@ -319,6 +323,12 @@ export const App: React.FC = () => (
           </Route>
           <Route path="/indexes/orb" exact>
             <OrbIndexPage />
+          </Route>
+          <Route path="/indexes/hard-boss-stats" exact>
+            <HardBossStatsIndexPage />
+          </Route>
+          <Route path="/indexes/guild-boss-stats" exact>
+            <GuildBossStatsIndexPage />
           </Route>
 
           <Route path="/tools" exact>
