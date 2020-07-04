@@ -91,7 +91,7 @@ export const GuildBattleEventPlanner: React.FC<{}> = () => {
           size="small"
           color="primary"
         >
-          Generate Battle Event Plan (Please be paitent this takes time)
+          Generate Battle Event Plan (Please be patient this takes time)
         </Button>
       </form>
       <br />
