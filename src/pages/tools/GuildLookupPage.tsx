@@ -45,7 +45,9 @@ export const GuildLookupPage: React.FC<{}> = () => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    let url = `https://questland-public-api.cfapps.io/guild/${guildName}?server=${serverName}`;
+    let url = `https://questland-public-api.cfapps.io/guild/${encodeURI(
+      guildName
+    )}?server=${serverName}`;
     fetch(url)
       .then(res => res.json())
       .then(test => {
