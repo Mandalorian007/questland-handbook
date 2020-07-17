@@ -46,7 +46,7 @@ import { BlueGuildStrikerPage } from './pages/battleevent/BlueGuildStrikerPage';
 import { BeginnerTipsPage } from './pages/guides/BeginnerTipsPage';
 import { BuildsPage } from './pages/guides/BuildsPage';
 import { GearPage } from './pages/gearing/GearPage';
-import { OrbPage } from './pages/gearing/OrgPage';
+import { OrbPage } from './pages/gearing/OrbPage';
 import { ArtifactPage } from './pages/gearing/ArtifactPage';
 import { CollectionsPage } from './pages/gearing/CollectionsPage';
 import { ReforgingPage } from './pages/gearing/ReforgingPage';
