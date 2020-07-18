@@ -59,7 +59,7 @@ export const HomePage = () => {
       </ul>
       <h4>Content Editors</h4>
       <p>
-        These are the community members who take my terribly writing skills and
+        These are the community members who take my terrible writing skills and
         make it easy to understand and access for everyone here. Without their
         help I would still be second guessing phrasing for months!
       </p>
