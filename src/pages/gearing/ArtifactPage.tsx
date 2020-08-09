@@ -1,69 +1,129 @@
 import * as React from 'react';
 import { Paper } from '@material-ui/core';
 
-export const ArtifactPage = () => (
-  <Paper>
-    <h1>Artifacts</h1>
-    <p>
-      Artifacts are an absolutely massive feature in Questland that helps you
-      completely scale your character to whole new heights with each level
-      increasing not only your base stats, but your increase in stats for every
-      level. Currently there are four different levels of artifacts in
-      Questland.
-    </p>
-
-    <h3>What does an artifact give me</h3>
-    <p>
-      Each tier of an artifact will unlock:
-      <ul>
-        <li>higher base stats</li>
-        <li>higher potential</li>
-        <li>additional reforge points</li>
-      </ul>
-      What does awakening do to a piece of gear?
-      <br />- It increases the item level cap by 20
-    </p>
-
-    <h3>Artifact upgrading considerations</h3>
-    <p>
-      Artifact level 1 is a perfectly safe upgrade. Each artifact level 3 needs
-      three level 1 artifacts (1 must be same emblem). So you can have tons of
-      artifact level 1s lying around with no downside.
-      <br />
-      <br />
-      Artifact level 2 I avoid because if you can't get level 3 easily your
-      legendary investment could be trapped there.
-      <br />
-      <br />
-      Artifact level 3 is good for your "older gear" you are currently wearing
-      while farming up your "sick end game build" this is because you can use
-      those level 3s to make Artifact level 4s for your end game build.
-      <br />
-      <br />
-      Artifact 4 for super end game build. (This is a dead end. So tons
-      legendaries invested with no way to get them back)
-    </p>
-
-    <h3>Legendary sacrifices selection logic</h3>
-    <p>
-      When upgrading to Artifacts you need to select "sacrificial" pieces. There
-      are several "selection rules"
-    </p>
-    <ul>
-      <li>
-        Select pieces from sets you do not use in your equipment or collections.
-      </li>
-      <li>
-        Be careful not to sacrifice copes of the item you are upgrading to make
-        an artifact. It takes 7 of the same item to reach artifact 4
-      </li>
-      <li>
-        Try to avoid pieces in groups of "3" (When making artifact 1s for
-        sacrifices in artifact 3 crafting you will need these) Example: I have 5
-        dragon rings. I can use 2 for sacrifices, but I want to save 3 dragon
-        rings so I can make an artifact 1 from them to help with my Artifact 3
-        upgrades
-      </li>
-    </ul>
-  </Paper>
-);
+export class ArtifactPage extends React.Component {
+  render() {
+    return (
+      <Paper>
+        <h1>Artifacts</h1>
+        <p>
+          Artifacts are an absolutely massive feature in Questland that helps
+          you completely scale your character to whole new heights with each
+          level increasing not only your base stats, but your increase in stats
+          for every level. Currently there are five different levels of
+          artifacts in Questland, commonly abbreviated as A1-A5.
+        </p>
+        <h3>Artifact recipes</h3>
+        <p>Artifact 1</p>
+        <ul>
+          <li>3 copies of the item you want to make A1</li>
+          <li>1 legendary of same emblem</li>
+          <li>4 random legendaries</li>
+        </ul>
+        <p>Artifact 2</p>
+        <ul>
+          <li>A1 of the item you want to make A2</li>
+          <li>1 copy of the item you want to make A2</li>
+          <li>4 legendaries of same emblem</li>
+          <li>4 random legendaries</li>
+        </ul>
+        <p>Artifact 3</p>
+        <ul>
+          <li>A2 of the item you want to make A3</li>
+          <li>A1 of same emblem</li>
+          <li>2 random A1s</li>
+        </ul>
+        <p>Artifact 4</p>
+        <ul>
+          <li>A3 of the item you want to make A4</li>
+          <li>A1 of same item you want to make A4</li>
+          <li>random A3</li>
+          <li>3 random legendaries</li>
+        </ul>
+        <p>Artifact 5</p>
+        <ul>
+          <li>A4 of the item you want to make A5</li>
+          <li>random A4</li>
+          <li>4 legendaries of same emblem</li>
+          <li>4 random legendaries</li>
+        </ul>
+        <h3>What does an artifact give me?</h3>
+        <p>
+          Each tier of an artifact will unlock:
+          <ul>
+            <li>higher base stats</li>
+            <li>higher potential</li>
+            <li>additional reforge points</li>
+          </ul>
+          What does awakening do to a piece of gear?
+          <br />
+          It increases the item level cap by 20 for each artifact level that’s
+          added. An Artifact 1, or A1 for short, has a max level of 120, A2 with
+          140, A3 with 160, A4 with 180, and A5 with level 200.
+        </p>
+        <h3>Artifact upgrading considerations</h3>
+        <p>
+          Artifacts are incredibly powerful, but be careful before creating them
+          since there is no way to undo or split the artifact into parts once
+          it’s created.
+          <br />
+          <br />
+          Some of the artifact levels are safer to create than others.
+          <br />
+          <br />
+          Artifact level 1 is a perfectly safe upgrade because you can use it,
+          and swap it out later for another piece of gear without issue. Each
+          artifact level 3 needs three level 1 artifacts to create it, with 1 of
+          those A1 artifacts being the same emblem. So you can have tons of
+          artifact level 1s lying around with no downside.
+          <br />
+          <br />
+          Artifact level 2 I avoid because if you can't get to level 3 easily
+          your legendary investment could be trapped there.
+          <br />
+          <br />
+          Artifact level 3 is a good investment to make because outdated level
+          3s are used to make artifact level 4s. Artifact level 4s are also a
+          good investment, because they’re used to create A5s.
+          <br />
+          <br />
+          Currently, the end of the artifact level is the A5, and the game
+          developers have said that there won’t be additional artifact levels.
+        </p>
+        <h3>Legendary sacrifices selection logic</h3>
+        <p>
+          When upgrading to Artifacts you need to select pieces to destroy or
+          sacrifice to create the artifact. Keep this in mind as you’re choosing
+          legendary items to sacrifice to create the artifact:
+        </p>
+        <ul>
+          <li>
+            Select pieces from sets you do not use in your equipment or
+            collections
+          </li>
+          <li>
+            Don’t sacrifice duplicates of the item you’re upgrading to an
+            artifact as these will be necessary to raise to the next artifact
+            levels
+          </li>
+          <li>
+            Save gear in groups of 3 for creation of future A1s. If you have 5
+            dragon rings, 2 can be used for sacrifices, but 3 should be saved
+            for a future A1
+          </li>
+        </ul>
+        Save 4 copies
+        <br />
+        <br />
+        Option 1:
+        <br />
+        - sacrifice 3 of the 4 to make an A1 and keep 1 copy for a BE multiplier
+        link
+        <br />
+        <br />
+        Option 2:
+        <br />- sacrifice all 4 to make an A3 for sacrifices
+      </Paper>
+    );
+  }
+}

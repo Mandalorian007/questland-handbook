@@ -13,10 +13,12 @@ export const BeginnerTipsPage = () => (
       you have on the campaign also increases your Idle reward generation, which
       will be your most consistent future source of items and resources.
       <br />
+      <br />
       Stars also dictate which talents are obtainable from the Event Call talent
       packs in the blimp. Unlocking the talents used in the Core/Popular Builds
       section of this handbook should be one of your first priorities starting
       out. Some of these talents require a specific star amount of the campaign.
+      <br />
       <br />
       When stuck on the campaign, I would recommend farming rare material
       levels, and then essence levels. Your goal here would be to get the rare
@@ -40,11 +42,13 @@ export const BeginnerTipsPage = () => (
       stop when the price increases. The price will go back down when the next
       talent replaces it.
       <br />
+      <br />
       Your second best use of gems will be buying some of the smaller Quest
       Event items from the Mall. This includes gear schemes, eternal keys, and
       spin tokens. Your goal when buying these is to increase your stock to
       complete the weekly Quest Events to earn more rewards. This will be talked
       about later.
+      <br />
       <br />
       When it comes to spending gems to acquire legendaries, the most cost
       effective way is to buy 1 gear scheme a day, and avoid the current
@@ -63,6 +67,7 @@ export const BeginnerTipsPage = () => (
       difficult to name every alternate build so I will talk about things to
       look for.
       <br />
+      <br />
       First off, look for weapons that do one of three main things: add spirits
       to your board, chain other talents, and lastly provide health. Adding
       spirits is done in a meta build by weapons like Hecatombus and Malachite
@@ -74,6 +79,7 @@ export const BeginnerTipsPage = () => (
       hand and offhand weapons that can help you control the spirits on your
       board.
       <br />
+      <br />
       Chaining weapons are key to creating the synergy with your talents and are
       used in all meta builds. For example the Ratchet Rush build uses two
       chaining weapons, Ratchet Hatchet and Azazel Shield. This creates a system
@@ -83,6 +89,7 @@ export const BeginnerTipsPage = () => (
       keep your damage going. There are currently a few main hand and several
       offhand options for these weapons so check your index and see if you have
       one to use.
+      <br />
       <br />
       In the event that you have neither of these weapon types, your next best
       solution would be to look for survivability. In my opinion weapons that
@@ -96,6 +103,7 @@ export const BeginnerTipsPage = () => (
       awakening and collection setup, look in the Gearing section in the
       handbook.
       <br />
+      <br />
       As a beginner player just know that your biggest power increase will be
       from getting multiple copies of high potential gear to awaken and upgrade.
       So starting out your focus should be on collecting and saving as many
@@ -103,9 +111,11 @@ export const BeginnerTipsPage = () => (
       older/weaker legendary items as they will be useful as you progress
       further.
       <br />
+      <br />
       When you choose your starting gear, look for gear with higher potential
       and start trying to collect gear from the same set to start activating
       bonus links.
+      <br />
       <br />
       While awakening is going to be your biggest power increase, don't jump to
       do so right away. It's best to have an idea of the gear you are going to
@@ -124,6 +134,7 @@ export const BeginnerTipsPage = () => (
       players should use their gear schemes and legendary shards to get their
       gear and collections outfitted first, before hoarding.
       <br />
+      <br />
       Other items that are worth saving that aren’t used in the current Quest
       Event are: Loot tokens, Legendary orb keys, gold and silver keys, and
       craft tokens. Energy stews are worth saving for completing the Monster
@@ -140,7 +151,9 @@ export const BeginnerTipsPage = () => (
       scrolls to unlock, so you will need 50 of each type to fully unlock your
       collections.
       <br />
+      <br />
       There are differing opinions on how to best upgrade your slots.
+      <br />
       <br />
       The most basic is to level them all evenly, which is good for balance and
       increasing your hero power. Others will focus on upgrading health slots
@@ -148,6 +161,7 @@ export const BeginnerTipsPage = () => (
       game. Another option is to focus on the slots with your higher potential
       items for the most immediate boost. This is good for quickly raising your
       hero power, but your collections are then harder to change around.
+      <br />
       <br />
       If you're going to focus on specific slots, be aware that scrolls become
       less effective after some specific percentages: 100, 190, 220, 240, and
@@ -162,11 +176,13 @@ export const BeginnerTipsPage = () => (
       upgrading anything less than a legendary orb, and only max level 100 high
       potential orbs.
       <br />
+      <br />
       As you start to outfit your orb slots and have some excess gold, one good
       use is to buy some of the items in the Mall to stock up for Quest Events.
       Your end game use for gold will be reforging all your gear. However you
       shouldn’t start reforging until you’ve sorted out all of your collections
       and decided on a final gear set since reforging is such a resource pit.
+      <br />
       <br />
       The item shop should be avoided as a new player since there are better
       uses for your gold then buying low quality items for smelting or crafting.
@@ -186,6 +202,7 @@ export const BeginnerTipsPage = () => (
       source of gold and eternium, but eternal keys as well. The best use of
       barrels is purchasing your Quest Event items: eternal keys, arena tickets,
       and spin tokens.
+      <br />
       <br />
       As a newer player, it's worthwhile to buy the single of each scroll (the
       x2 scrolls price isn't worth it) until your collections are unlocked. I
