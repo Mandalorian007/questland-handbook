@@ -56,6 +56,7 @@ import { HardBossStatsIndexPage } from './pages/indexes/HardBossStatsIndexPage';
 import { GuildBossStatsIndexPage } from './pages/indexes/GuildBossStatsIndexPage';
 import { GuildLookupPage } from './pages/tools/GuildLookupPage';
 import { GuildBattleEventPlanner } from './pages/tools/GuildBattleEventPlanner';
+import { QeSmeltingCalcPage } from './pages/tools/QeSmeltingCalcPage';
 
 const middleware = [reduxLogger as Middleware, thunk];
 
@@ -211,6 +212,10 @@ const navItemGroups: NavItemGroup[] = [
         to: '/tools/monster-slayer-calc'
       },
       {
+        label: 'Quest Event Smelting Calculator',
+        to: '/tools/qe-smelting-calc'
+      },
+      {
         label: 'QL Bot for Discord',
         to: '/tools/ql-bot'
       },
@@ -346,6 +351,9 @@ export const App: React.FC = () => (
           </Route>
           <Route path="/tools/monster-slayer-calc" exact>
             <MonsterSlayerCalcPage />
+          </Route>
+          <Route path="/tools/qe-smelting-calc" exact>
+            <QeSmeltingCalcPage />
           </Route>
           <Route path="/tools/ql-bot" exact>
             <DiscordBotPage />
