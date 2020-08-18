@@ -57,6 +57,7 @@ import { GuildBossStatsIndexPage } from './pages/indexes/GuildBossStatsIndexPage
 import { GuildLookupPage } from './pages/tools/GuildLookupPage';
 import { GuildBattleEventPlanner } from './pages/tools/GuildBattleEventPlanner';
 import { QeSmeltingCalcPage } from './pages/tools/QeSmeltingCalcPage';
+import { OrbCalcPage } from './pages/tools/OrbCalcPage';
 
 const middleware = [reduxLogger as Middleware, thunk];
 
@@ -216,6 +217,10 @@ const navItemGroups: NavItemGroup[] = [
         to: '/tools/qe-smelting-calc'
       },
       {
+        label: 'Orb Stat Calculator',
+        to: '/tools/orb-calc'
+      },
+      {
         label: 'QL Bot for Discord',
         to: '/tools/ql-bot'
       },
@@ -354,6 +359,9 @@ export const App: React.FC = () => (
           </Route>
           <Route path="/tools/qe-smelting-calc" exact>
             <QeSmeltingCalcPage />
+          </Route>
+          <Route path="/tools/orb-calc" exact>
+            <OrbCalcPage />
           </Route>
           <Route path="/tools/ql-bot" exact>
             <DiscordBotPage />
