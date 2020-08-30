@@ -122,7 +122,7 @@ const guildMemberPlanTable = (memberPlans: HeroPlan[]) => {
           </TableHead>
           <TableBody>
             {memberPlans
-              .sort((a, b) => b.heroPower - a.heroPower)
+              .sort((a, b) => b.beHeroPower - a.beHeroPower)
               .map(memberPlan => {
                 return (
                   <TableRow key={memberPlan.id}>
