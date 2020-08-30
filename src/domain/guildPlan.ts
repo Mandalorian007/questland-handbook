@@ -13,6 +13,11 @@ export interface HeroPlan {
   defense: number;
   magic: number;
   battleEventMulti: number;
+  beHeroPower: number;
+  beHealth: number;
+  beAttack: number;
+  beDefense: number;
+  beMagic: number;
   row1Bonus: string;
   row2Bonus: string;
   row3Bonus: string;

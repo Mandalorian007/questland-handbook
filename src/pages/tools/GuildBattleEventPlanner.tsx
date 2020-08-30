@@ -111,9 +111,9 @@ const guildMemberPlanTable = (memberPlans: HeroPlan[]) => {
           <TableHead>
             <TableRow>
               <TableCell>Hero</TableCell>
-              <TableCell>Hero Power</TableCell>
-              <TableCell>Stats (Health, Attack, Defense, Magic)</TableCell>
+              <TableCell>{'Hero Power (Health | Attack | Defense | Magic)'}</TableCell>
               <TableCell>Battle Event Multiplier</TableCell>
+              <TableCell>{'BE Hero Power (Health | Attack | Defense | Magic)'}</TableCell>
               <TableCell>Row#1 Multiplier Link Bonus</TableCell>
               <TableCell>Row#2 Multiplier Link Bonus</TableCell>
               <TableCell>Row#3 Multiplier Link Bonus</TableCell>
@@ -127,17 +127,31 @@ const guildMemberPlanTable = (memberPlans: HeroPlan[]) => {
                 return (
                   <TableRow key={memberPlan.id}>
                     <TableCell>{memberPlan.name}</TableCell>
-                    <TableCell>{memberPlan.heroPower}</TableCell>
-                    <TableCell>
-                      {memberPlan.health +
-                        ', ' +
-                        memberPlan.attack +
-                        ', ' +
-                        memberPlan.defense +
-                        ', ' +
-                        memberPlan.magic}
-                    </TableCell>
+                    <TableCell>{
+                      memberPlan.heroPower.toLocaleString() +
+                      ' (' +
+                      memberPlan.health.toLocaleString() +
+                      ' | ' +
+                      memberPlan.attack.toLocaleString() +
+                      ' | ' +
+                      memberPlan.defense.toLocaleString() +
+                      ' | ' +
+                      memberPlan.magic.toLocaleString() +
+                      ')'
+                    }</TableCell>
                     <TableCell>{memberPlan.battleEventMulti}</TableCell>
+                    <TableCell>{
+                      memberPlan.beHeroPower.toLocaleString() +
+                      ' (' +
+                      memberPlan.beHealth.toLocaleString() +
+                      ' | ' +
+                      memberPlan.beAttack.toLocaleString() +
+                      ' | ' +
+                      memberPlan.beDefense.toLocaleString() +
+                      ' | ' +
+                      memberPlan.beMagic.toLocaleString() +
+                      ')'
+                    }</TableCell>
                     <TableCell>{memberPlan.row1Bonus}</TableCell>
                     <TableCell>{memberPlan.row2Bonus}</TableCell>
                     <TableCell>{memberPlan.row3Bonus}</TableCell>
