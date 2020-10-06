@@ -38,7 +38,7 @@ export const GuildBattleEventPlanner: React.FC<{}> = () => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     setDisabled(true);
-    let url = `https://questland-public-api.cfapps.io/guild/plan/${encodeURIComponent(
+    let url = `https://questland-public-api-dot-questland-tools.uc.r.appspot.com/guild/plan/${encodeURIComponent(
       guildName
     )}?server=${serverName}`;
     fetch(url)

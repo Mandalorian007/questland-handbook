@@ -25,7 +25,7 @@ export const loadHardBossStats = (): ThunkAction<
       ReduxLoadHardBossStatsAction
     >
   ) => {
-    let url = 'https://questland-public-api.cfapps.io/hardboss/stats';
+    let url = 'https://questland-public-api-dot-questland-tools.uc.r.appspot.com/hardboss/stats';
     const res = await fetch(url);
     const serverHardBossStats: Record<number, BossStats> = await res.json();
 

@@ -19,7 +19,7 @@ export const PublicAPIPage = () => (
     </ul>
 
     <h3>Public API Swagger Documentation</h3>
-    <Link href="https://questland-public-api.cfapps.io/swagger-ui.html">
+    <Link href="https://questland-public-api-dot-questland-tools.uc.r.appspot.com/swagger-ui.html">
       Swagger API docs
     </Link>
   </Paper>

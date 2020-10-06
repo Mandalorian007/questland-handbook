@@ -25,7 +25,7 @@ export const loadGuildBossStats = (): ThunkAction<
       ReduxLoadGuildBossStatsAction
     >
   ) => {
-    let url = 'https://questland-public-api.cfapps.io/guildboss/stats';
+    let url = 'https://questland-public-api-dot-questland-tools.uc.r.appspot.com/guildboss/stats';
     const res = await fetch(url);
     const serverGuildBossStats: Record<number, BossStats> = await res.json();
 

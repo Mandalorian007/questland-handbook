@@ -24,7 +24,7 @@ export const OrbCalcPage: React.FC<{}> = () => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    let url = `https://questland-public-api.cfapps.io/orbs/calc?basestat=${baseStat}&potential=${potential}&enhance=${enhance}&level=${level}`;
+    let url = `https://questland-public-api-dot-questland-tools.uc.r.appspot.com/orbs/calc?basestat=${baseStat}&potential=${potential}&enhance=${enhance}&level=${level}`;
     fetch(url)
       .then(res => res.text())
       .then(orbTotal => setOrbTotal(parseInt(orbTotal)));

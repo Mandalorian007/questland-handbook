@@ -49,7 +49,7 @@ export const BuildPageLayout: React.FC<{
   const [build, setBuild] = React.useState<Build>(initialState);
 
   useEffect(() => {
-    fetch(`https://questland-public-api.cfapps.io/build/${props.buildOption}`)
+    fetch(`https://questland-public-api-dot-questland-tools.uc.r.appspot.com/build/${props.buildOption}`)
       .then(response => response.json())
       .then((build: Build) => setBuild(build));
   }, [props.buildOption]);

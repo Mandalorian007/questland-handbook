@@ -21,7 +21,7 @@ export const loadOrbs = (): ThunkAction<
   return async (
     dispatch: ThunkDispatch<ReduxOrbState, undefined, ReduxLoadOrbsAction>
   ) => {
-    let url = 'https://questland-public-api.cfapps.io/orbs';
+    let url = 'https://questland-public-api-dot-questland-tools.uc.r.appspot.com/orbs?filterArtifacts=true';
     const res = await fetch(url);
     const orbs: ServerOrb[] = await res.json();
 

@@ -15,3 +15,15 @@ have been.
 - Monstercat
 - Peitcadon
 - ZombieKat
+
+
+## Developers run locally
+- Node & Yarn are required
+- `yarn install`
+- `yarn build`
+- `yarn local`
+
+## Developers deploy to GCE
+- Gcloud SDK + gcp project with billing enabled is needed
+- `yarn build`
+- `gcloud app deploy app.yaml -v 1`

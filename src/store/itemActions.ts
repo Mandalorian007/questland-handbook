@@ -22,7 +22,7 @@ export const loadItems = (): ThunkAction<
     dispatch: ThunkDispatch<ReduxItemState, undefined, ReduxLoadItemsAction>
   ) => {
     let url =
-      'https://questland-public-api.cfapps.io/items?sort=totalPotential,desc&filterArtifacts=true';
+      'https://questland-public-api-dot-questland-tools.uc.r.appspot.com/items?sort=totalPotential,desc&filterArtifacts=true';
     const res = await fetch(url);
     const items: ServerItem[] = await res.json();
 

@@ -22,7 +22,7 @@ export const loadBattleLocations = (): ThunkAction<
     dispatch: ThunkDispatch<ReduxBattleLocationState, undefined, ReduxLoadBattleLocationsAction>
   ) => {
     let url =
-      'https://questland-public-api.cfapps.io/battle-locations';
+      'https://questland-public-api-dot-questland-tools.uc.r.appspot.com/battle-locations';
     const res = await fetch(url);
     const battleLocations: BattleLocation[] = await res.json();
 
