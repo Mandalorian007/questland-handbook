@@ -62,7 +62,7 @@ export const ReforgingPage = () => (
         </p>
         <br/>
         <p>
-            Players who are looking to optimize their builds can accept only specific offers to maximize 1-2 stats. If
+            Players who are looking to optimize their builds can choose to accept only specific offers to maximize 1-2 stats. If
             you’re only interested in increasing health, you’d cancel the reforge offer for any stat but health.
             Warning: not accepting the reforge offer will still spend the reforge powder.
         </p>
