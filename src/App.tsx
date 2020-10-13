@@ -1,22 +1,22 @@
 import * as React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Chrome } from './Chrome';
-import { applyMiddleware, createStore, Middleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import { load, save } from 'redux-localstorage-simple';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {Chrome} from './Chrome';
+import {applyMiddleware, createStore, Middleware} from 'redux';
+import {composeWithDevTools} from 'redux-devtools-extension';
+import {load, save} from 'redux-localstorage-simple';
 import reduxLogger from 'redux-logger';
 import thunk from 'redux-thunk';
-import { AppState, rootReducer } from './store/rootReducer';
-import { Provider } from 'react-redux';
-import { HomePage } from './pages/home/HomePage';
-import { NavItemGroup } from './components/RoutableNavList';
-import { GuidesHomePage } from './pages/guides/GuidesHomePage';
-import { IndexHomePage } from './pages/indexes/IndexHomePage';
-import { OrbIndexPage } from './pages/indexes/OrbIndexPage';
-import { GearingHomePage } from './pages/gearing/GearingHomePage';
-import { ItemIndexPage } from './pages/indexes/ItemIndexPage';
-import { MonsterSlayerCalcPage } from './pages/tools/MonsterSlayerCalcPage';
-import { ToolsHomePage } from './pages/tools/ToolsHomePage';
+import {AppState, rootReducer} from './store/rootReducer';
+import {Provider} from 'react-redux';
+import {HomePage} from './pages/home/HomePage';
+import {NavItemGroup} from './components/RoutableNavList';
+import {GuidesHomePage} from './pages/guides/GuidesHomePage';
+import {IndexHomePage} from './pages/indexes/IndexHomePage';
+import {OrbIndexPage} from './pages/indexes/OrbIndexPage';
+import {GearingHomePage} from './pages/gearing/GearingHomePage';
+import {ItemIndexPage} from './pages/indexes/ItemIndexPage';
+import {MonsterSlayerCalcPage} from './pages/tools/MonsterSlayerCalcPage';
+import {ToolsHomePage} from './pages/tools/ToolsHomePage';
 import HomeIcon from '@material-ui/icons/Home';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import ListIcon from '@material-ui/icons/List';
@@ -25,39 +25,40 @@ import CurrencyIcon from '@material-ui/icons/AttachMoney';
 import ShieldIcon from '@material-ui/icons/Security';
 import TrophyIcon from '@material-ui/icons/EmojiEvents';
 import HeroIcon from '@material-ui/icons/Accessibility';
-import { DiscordBotPage } from './pages/tools/DiscordBotPage';
-import { PublicAPIPage } from './pages/tools/PubicAPIPage';
-import { CurrenciesHomePage } from './pages/currencies/CurrenciesHomePage';
-import { PrimaryCurrencyPage } from './pages/currencies/PrimaryCurrencyPage';
-import { SecondaryCurrencyPage } from './pages/currencies/SecondaryCurrencyPage';
-import { ShopCurrencyPage } from './pages/currencies/ShopCurrencyPage';
-import { ArenaHomePage } from './pages/arena/ArenaHomePage';
-import { FireBlasterPage } from './pages/arena/FireBlasterPage';
-import { IcyCannonPage } from './pages/arena/IcyCannonPage';
-import { BoomingTurtlePage } from './pages/arena/BoomingTurtlePage';
-import { WardingFangPage } from './pages/arena/WardingFangPage';
-import { StrategyPage } from './pages/arena/StrategyPage';
-import { BattleEventHomePage } from './pages/battleevent/BattleEventHomePage';
-import { RedBattleEventPage } from './pages/battleevent/RedBattleEventPage';
-import { BlueBattleEventPage } from './pages/battleevent/BlueBattleEventPage';
-import { GuildBattleEventStrategyPage } from './pages/battleevent/GuildBattleEventStrategyPage';
-import { RedGuildStrikerPage } from './pages/battleevent/RedGuildStrikerPage';
-import { BlueGuildStrikerPage } from './pages/battleevent/BlueGuildStrikerPage';
-import { BeginnerTipsPage } from './pages/guides/BeginnerTipsPage';
-import { BuildsPage } from './pages/guides/BuildsPage';
-import { GearPage } from './pages/gearing/GearPage';
-import { OrbPage } from './pages/gearing/OrbPage';
-import { ArtifactPage } from './pages/gearing/ArtifactPage';
-import { CollectionsPage } from './pages/gearing/CollectionsPage';
-import { ReforgingPage } from './pages/gearing/ReforgingPage';
-import { StatPriorityPage } from './pages/gearing/StatPriorityPage';
-import { FarmerPage } from './pages/arena/FarmerPage';
-import { HardBossStatsIndexPage } from './pages/indexes/HardBossStatsIndexPage';
-import { GuildBossStatsIndexPage } from './pages/indexes/GuildBossStatsIndexPage';
-import { GuildLookupPage } from './pages/tools/GuildLookupPage';
-import { GuildBattleEventPlanner } from './pages/tools/GuildBattleEventPlanner';
-import { QeSmeltingCalcPage } from './pages/tools/QeSmeltingCalcPage';
-import { OrbCalcPage } from './pages/tools/OrbCalcPage';
+import {DiscordBotPage} from './pages/tools/DiscordBotPage';
+import {PublicAPIPage} from './pages/tools/PubicAPIPage';
+import {CurrenciesHomePage} from './pages/currencies/CurrenciesHomePage';
+import {PrimaryCurrencyPage} from './pages/currencies/PrimaryCurrencyPage';
+import {SecondaryCurrencyPage} from './pages/currencies/SecondaryCurrencyPage';
+import {ShopCurrencyPage} from './pages/currencies/ShopCurrencyPage';
+import {ArenaHomePage} from './pages/arena/ArenaHomePage';
+import {FireBlasterPage} from './pages/arena/FireBlasterPage';
+import {IcyCannonPage} from './pages/arena/IcyCannonPage';
+import {BoomingTurtlePage} from './pages/arena/BoomingTurtlePage';
+import {WardingFangPage} from './pages/arena/WardingFangPage';
+import {StrategyPage} from './pages/arena/StrategyPage';
+import {BattleEventHomePage} from './pages/battleevent/BattleEventHomePage';
+import {RedBattleEventPage} from './pages/battleevent/RedBattleEventPage';
+import {BlueBattleEventPage} from './pages/battleevent/BlueBattleEventPage';
+import {GuildBattleEventStrategyPage} from './pages/battleevent/GuildBattleEventStrategyPage';
+import {RedGuildStrikerPage} from './pages/battleevent/RedGuildStrikerPage';
+import {BlueGuildStrikerPage} from './pages/battleevent/BlueGuildStrikerPage';
+import {BuildsPage} from './pages/guides/BuildsPage';
+import {ReforgingPage} from './pages/gearing/ReforgingPage';
+import {FarmerPage} from './pages/arena/FarmerPage';
+import {HardBossStatsIndexPage} from './pages/indexes/HardBossStatsIndexPage';
+import {GuildBossStatsIndexPage} from './pages/indexes/GuildBossStatsIndexPage';
+import {GuildLookupPage} from './pages/tools/GuildLookupPage';
+import {GuildBattleEventPlanner} from './pages/tools/GuildBattleEventPlanner';
+import {QeSmeltingCalcPage} from './pages/tools/QeSmeltingCalcPage';
+import {OrbCalcPage} from './pages/tools/OrbCalcPage';
+import {Markdown} from "./components/Markdown";
+import beginnerTips from './pages/guides/beginner-tips.md'
+import artifacts from './pages/gearing/artifacts.md'
+import collections from './pages/gearing/collections.md'
+import gear from './pages/gearing/gear.md'
+import orbs from './pages/gearing/orbs.md'
+import statPriorities from './pages/gearing/statPriorities.md'
 
 const middleware = [reduxLogger as Middleware, thunk];
 
@@ -253,7 +254,7 @@ export const App: React.FC = () => (
             <GuidesHomePage />
           </Route>
           <Route path="/guides/beginner-tips" exact>
-            <BeginnerTipsPage />
+            <Markdown md={beginnerTips}/>
           </Route>
           <Route path="/guides/popular-builds" exact>
             <BuildsPage />
@@ -263,22 +264,22 @@ export const App: React.FC = () => (
             <GearingHomePage />
           </Route>
           <Route path="/gearing/gear" exact>
-            <GearPage />
+            <Markdown md={gear} />
           </Route>
           <Route path="/gearing/orbs" exact>
-            <OrbPage />
+            <Markdown md={orbs}/>
           </Route>
           <Route path="/gearing/artifacts" exact>
-            <ArtifactPage />
+            <Markdown md={artifacts}/>
           </Route>
           <Route path="/gearing/collections" exact>
-            <CollectionsPage />
+            <Markdown md={collections}/>
           </Route>
           <Route path="/gearing/reforging" exact>
             <ReforgingPage />
           </Route>
           <Route path="/gearing/stat-priorities" exact>
-            <StatPriorityPage />
+            <Markdown md={statPriorities}/>
           </Route>
 
           <Route path="/battle-event" exact>

@@ -23,15 +23,11 @@ export const Markdown: React.FC<{
                 component: Typography,
                 props: {
                     gutterBottom: true,
-                    variant: 'h5',
+                    variant: 'h4',
                 },
             },
-            h2: { component: Typography, props: { gutterBottom: true, variant: 'h6' } },
-            h3: { component: Typography, props: { gutterBottom: true, variant: 'subtitle1' } },
-            h4: {
-                component: Typography,
-                props: { gutterBottom: true, variant: 'caption', paragraph: true },
-            },
+            h2: { component: Typography, props: { gutterBottom: true, variant: 'h5' } },
+            h3: { component: Typography, props: { gutterBottom: true, variant: 'h6' } },
             p: { component: Typography, props: { paragraph: true } },
             a: { component: Link },
             li: {
