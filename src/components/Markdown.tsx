@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {useEffect} from 'react';
-import ReactMarkdown from 'markdown-to-jsx';
+import ReactMarkdown, {MarkdownToJSX} from 'markdown-to-jsx';
+import {Link, Typography} from "@material-ui/core";
 
 export const Markdown: React.FC<{
     md: any;
@@ -15,5 +16,33 @@ export const Markdown: React.FC<{
             })
     }, [md, markdown]);
 
-    return (<ReactMarkdown children={markdown}/>)
+    // @ts-ignore
+    const options: MarkdownToJSX.Options = {
+        overrides: {
+            h1: {
+                component: Typography,
+                props: {
+                    gutterBottom: true,
+                    variant: 'h5',
+                },
+            },
+            h2: { component: Typography, props: { gutterBottom: true, variant: 'h6' } },
+            h3: { component: Typography, props: { gutterBottom: true, variant: 'subtitle1' } },
+            h4: {
+                component: Typography,
+                props: { gutterBottom: true, variant: 'caption', paragraph: true },
+            },
+            p: { component: Typography, props: { paragraph: true } },
+            a: { component: Link },
+            li: {
+                component: (({ classes, ...props }) => (
+                    <li>
+                        <Typography component="span" {...props} />
+                    </li>
+                )),
+            },
+        },
+    };
+
+    return (<ReactMarkdown children={markdown} options={options}/>)
 };
