@@ -76,9 +76,8 @@ export const RoutableNavList: React.FC<{ navItemGroups: NavItemGroup[] }> = ({
     <List>
       {navItemGroups.map(navItemGroup => {
         return (
-          <>
+          <div key={navItemGroup.to}>
             <ListItem
-              key={navItemGroup.to}
               button
               component={NavLink}
               to={navItemGroup.to}
@@ -107,7 +106,6 @@ export const RoutableNavList: React.FC<{ navItemGroups: NavItemGroup[] }> = ({
                 >
                   <List component="div" disablePadding>
                     <ListItem
-                      key={navItem.to}
                       button={true}
                       className={classes.nested}
                       component={NavLink}
@@ -119,7 +117,7 @@ export const RoutableNavList: React.FC<{ navItemGroups: NavItemGroup[] }> = ({
                 </Collapse>
               );
             })}
-          </>
+          </div>
         );
       })}
     </List>

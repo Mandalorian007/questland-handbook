@@ -25,6 +25,7 @@ import CurrencyIcon from '@material-ui/icons/AttachMoney';
 import ShieldIcon from '@material-ui/icons/Security';
 import TrophyIcon from '@material-ui/icons/EmojiEvents';
 import HeroIcon from '@material-ui/icons/Accessibility';
+import InfoIcon from '@material-ui/icons/Info';
 import {DiscordBotPage} from './pages/tools/DiscordBotPage';
 import {PublicAPIPage} from './pages/tools/PubicAPIPage';
 import {CurrenciesHomePage} from './pages/currencies/CurrenciesHomePage';
@@ -59,6 +60,7 @@ import collections from './pages/gearing/collections.md'
 import gear from './pages/gearing/gear.md'
 import orbs from './pages/gearing/orbs.md'
 import statPriorities from './pages/gearing/statPriorities.md'
+import about from './pages/about/about.md'
 
 const middleware = [reduxLogger as Middleware, thunk];
 
@@ -238,7 +240,8 @@ const navItemGroups: NavItemGroup[] = [
         to: '/tools/guild-be-plan'
       }
     ]
-  }
+  },
+  { label: 'About', to: '/about', icon: <InfoIcon />, navItems: [] },
 ];
 
 export const App: React.FC = () => (
@@ -375,6 +378,10 @@ export const App: React.FC = () => (
           </Route>
           <Route path="/tools/guild-be-plan" exact>
             <GuildBattleEventPlanner />
+          </Route>
+
+          <Route path="/about" exact>
+            <Markdown md={about}/>
           </Route>
         </Switch>
       </Chrome>

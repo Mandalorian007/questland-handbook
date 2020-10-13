@@ -33,6 +33,7 @@
     "redux-localstorage-simple": "^2.1.6",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
+    "rss-parser": "^3.9.0",
     "typescript": "~3.7.2"
   },
   "scripts": {

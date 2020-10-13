@@ -1,4 +1,4 @@
-# Questland Handbook
+# About
 This project is meant to be a repository of Questland information, opinionated best practices, and utilities.
 
 ## Special Thanks
