@@ -11,6 +11,7 @@ import {
   useTheme
 } from '@material-ui/core';
 import ReactPlayer from 'react-player';
+import { qlApiUrl } from "../config";
 
 const useCustomColumns = () => {
   const theme = useTheme();
@@ -49,7 +50,7 @@ export const BuildPageLayout: React.FC<{
   const [build, setBuild] = React.useState<Build>(initialState);
 
   useEffect(() => {
-    fetch(`https://questland-public-api-dot-questland-tools.uc.r.appspot.com/build/${props.buildOption}`)
+    fetch(qlApiUrl + `build/${props.buildOption}`)
       .then(response => response.json())
       .then((build: Build) => setBuild(build));
   }, [props.buildOption]);

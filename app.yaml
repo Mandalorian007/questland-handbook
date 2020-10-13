@@ -1,4 +1,6 @@
-service: questland-handbook
+# Using the default to help with server mapping
+#service: questland-handbook
+service: default
 runtime: nodejs12
 manual_scaling:
   instances: 1

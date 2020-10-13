@@ -1,6 +1,7 @@
 import { Button, Divider, Paper } from '@material-ui/core';
 import * as React from 'react';
 import TextField from '@material-ui/core/TextField';
+import { qlApiUrl } from "../../config";
 
 export const OrbCalcPage: React.FC<{}> = () => {
   const [baseStat, setBaseStat] = React.useState<number>(0);
@@ -24,7 +25,7 @@ export const OrbCalcPage: React.FC<{}> = () => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    let url = `https://questland-public-api-dot-questland-tools.uc.r.appspot.com/orbs/calc?basestat=${baseStat}&potential=${potential}&enhance=${enhance}&level=${level}`;
+    let url = qlApiUrl + `orbs/calc?basestat=${baseStat}&potential=${potential}&enhance=${enhance}&level=${level}`;
     fetch(url)
       .then(res => res.text())
       .then(orbTotal => setOrbTotal(parseInt(orbTotal)));

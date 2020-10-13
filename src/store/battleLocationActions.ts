@@ -2,6 +2,7 @@ import { ReduxActionTypes } from './rootReducer';
 import { BattleLocation } from '../domain/battleLocation';
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import {ReduxBattleLocationState} from "./battleLocationReducer";
+import { qlApiUrl } from "../config";
 
 export interface ReduxLoadBattleLocationsAction {
   type: ReduxActionTypes.LOAD_BATTLE_LOCATIONS;
@@ -21,8 +22,7 @@ export const loadBattleLocations = (): ThunkAction<
   return async (
     dispatch: ThunkDispatch<ReduxBattleLocationState, undefined, ReduxLoadBattleLocationsAction>
   ) => {
-    let url =
-      'https://questland-public-api-dot-questland-tools.uc.r.appspot.com/battle-locations';
+    let url = qlApiUrl + 'battle-locations';
     const res = await fetch(url);
     const battleLocations: BattleLocation[] = await res.json();
 

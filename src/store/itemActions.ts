@@ -2,6 +2,7 @@ import { ReduxActionTypes } from './rootReducer';
 import { Item, ServerItem, serverItemToItem } from '../domain/item';
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import { ReduxItemState } from './itemReducer';
+import { qlApiUrl } from "../config";
 
 export interface ReduxLoadItemsAction {
   type: ReduxActionTypes.LOAD_ITEMS;
@@ -21,8 +22,7 @@ export const loadItems = (): ThunkAction<
   return async (
     dispatch: ThunkDispatch<ReduxItemState, undefined, ReduxLoadItemsAction>
   ) => {
-    let url =
-      'https://questland-public-api-dot-questland-tools.uc.r.appspot.com/items?sort=totalPotential,desc&filterArtifacts=true';
+    let url = qlApiUrl + 'items?sort=totalPotential,desc&filterArtifacts=true';
     const res = await fetch(url);
     const items: ServerItem[] = await res.json();
 

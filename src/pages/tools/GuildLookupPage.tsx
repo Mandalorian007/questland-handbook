@@ -15,6 +15,7 @@ import {
 import * as React from 'react';
 import TextField from '@material-ui/core/TextField';
 import { Guild, GuildMember } from '../../domain/guild';
+import { qlApiUrl } from "../../config";
 
 export const GuildLookupPage: React.FC<{}> = () => {
   const [guildName, setGuildName] = React.useState<string>('');
@@ -45,7 +46,7 @@ export const GuildLookupPage: React.FC<{}> = () => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    let url = `https://questland-public-api-dot-questland-tools.uc.r.appspot.com/guild/${encodeURIComponent(
+    let url = qlApiUrl + `guild/${encodeURIComponent(
       guildName
     )}?server=${serverName}`;
     fetch(url)

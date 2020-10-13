@@ -1,0 +1,1 @@
+export const qlApiUrl = 'https://questland-public-api-dot-questland-tools.uc.r.appspot.com/';

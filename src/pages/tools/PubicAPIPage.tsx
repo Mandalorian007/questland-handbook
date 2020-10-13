@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Link, Paper } from '@material-ui/core';
+import { qlApiUrl } from "../../config";
 
 export const PublicAPIPage = () => (
   <Paper>
@@ -19,7 +20,7 @@ export const PublicAPIPage = () => (
     </ul>
 
     <h3>Public API Swagger Documentation</h3>
-    <Link href="https://questland-public-api-dot-questland-tools.uc.r.appspot.com/swagger-ui.html">
+    <Link href={ qlApiUrl + 'swagger-ui.html' }>
       Swagger API docs
     </Link>
   </Paper>

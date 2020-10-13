@@ -2,6 +2,7 @@ import { ReduxActionTypes } from './rootReducer';
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import { BossStats, serverBossStatsToBossStats } from '../domain/bossStats';
 import { ReduxGuildBossStatState } from './guildBossStatReducer';
+import { qlApiUrl } from "../config";
 
 export interface ReduxLoadGuildBossStatsAction {
   type: ReduxActionTypes.LOAD_GUILD_BOSS_STATS;
@@ -25,7 +26,7 @@ export const loadGuildBossStats = (): ThunkAction<
       ReduxLoadGuildBossStatsAction
     >
   ) => {
-    let url = 'https://questland-public-api-dot-questland-tools.uc.r.appspot.com/guildboss/stats';
+    let url = qlApiUrl + 'guildboss/stats';
     const res = await fetch(url);
     const serverGuildBossStats: Record<number, BossStats> = await res.json();
 

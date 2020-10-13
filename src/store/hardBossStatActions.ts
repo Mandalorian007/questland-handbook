@@ -2,6 +2,7 @@ import { ReduxActionTypes } from './rootReducer';
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import { BossStats, serverBossStatsToBossStats } from '../domain/bossStats';
 import { ReduxHardBossStatState } from './hardBossStatReducer';
+import {qlApiUrl} from "../config";
 
 export interface ReduxLoadHardBossStatsAction {
   type: ReduxActionTypes.LOAD_HARD_BOSS_STATS;
@@ -25,7 +26,7 @@ export const loadHardBossStats = (): ThunkAction<
       ReduxLoadHardBossStatsAction
     >
   ) => {
-    let url = 'https://questland-public-api-dot-questland-tools.uc.r.appspot.com/hardboss/stats';
+    let url = qlApiUrl + 'hardboss/stats';
     const res = await fetch(url);
     const serverHardBossStats: Record<number, BossStats> = await res.json();
 

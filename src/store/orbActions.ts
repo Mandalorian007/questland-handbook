@@ -2,6 +2,7 @@ import { ReduxActionTypes } from './rootReducer';
 import { Orb, ServerOrb, serverOrbToOrb } from '../domain/orb';
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import { ReduxOrbState } from './orbReducer';
+import {qlApiUrl} from "../config";
 
 export interface ReduxLoadOrbsAction {
   type: ReduxActionTypes.LOAD_ORBS;
@@ -21,7 +22,7 @@ export const loadOrbs = (): ThunkAction<
   return async (
     dispatch: ThunkDispatch<ReduxOrbState, undefined, ReduxLoadOrbsAction>
   ) => {
-    let url = 'https://questland-public-api-dot-questland-tools.uc.r.appspot.com/orbs?filterArtifacts=true';
+    let url = qlApiUrl + 'orbs?filterArtifacts=true';
     const res = await fetch(url);
     const orbs: ServerOrb[] = await res.json();
 

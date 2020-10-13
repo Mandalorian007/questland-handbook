@@ -15,6 +15,7 @@ import {
 import * as React from 'react';
 import TextField from '@material-ui/core/TextField';
 import { GuildPlan, HeroPlan } from '../../domain/guildPlan';
+import { qlApiUrl } from "../../config";
 
 export const GuildBattleEventPlanner: React.FC<{}> = () => {
   const [guildName, setGuildName] = React.useState<string>('');
@@ -38,7 +39,7 @@ export const GuildBattleEventPlanner: React.FC<{}> = () => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     setDisabled(true);
-    let url = `https://questland-public-api-dot-questland-tools.uc.r.appspot.com/guild/plan/${encodeURIComponent(
+    let url = qlApiUrl + `guild/plan/${encodeURIComponent(
       guildName
     )}?server=${serverName}`;
     fetch(url)
