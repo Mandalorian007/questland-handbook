@@ -39,7 +39,7 @@ export const HighlightedPost: React.FC<{
                         </CardContent>
                     </div>
                     <Hidden xsDown>
-                        <CardMedia className={classes.cardMedia} image={post.image} title={post.imageText} />
+                        <CardMedia className={classes.cardMedia} image={post.image}/>
                     </Hidden>
                 </Card>
             </CardActionArea>

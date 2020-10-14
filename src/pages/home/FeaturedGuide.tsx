@@ -41,7 +41,7 @@ export const FeaturedGuide: React.FC<{
     return (
         <Paper className={classes.mainFeaturedPost} style={{backgroundImage: "url(" + post.image + ")"}}>
             {/* Increase the priority of the hero background image */}
-            {<img style={{display: 'none'}} src={post.image} alt={post.imageText}/>}
+            {<img style={{display: 'none'}} src={post.image} alt={''}/>}
             <div className={classes.overlay}/>
             <Grid container>
                 <Grid item md={6}>

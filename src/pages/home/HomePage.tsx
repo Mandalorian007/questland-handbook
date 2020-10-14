@@ -32,8 +32,6 @@ export const HomePage = () => {
         title: 'New to Questland? Check out the Beginner Guide!',
         description: 'What should I be equipping? Should I be using my gems? And what are all these resources good for? Find out here!',
         image: 'https://www.questland-handbook.com/Knight%20of%20Tempest%20Image.png',
-        //'https://source.unsplash.com/random',
-        imageText: 'loading image',
         link: '/guides/beginner-tips'
     };
 
@@ -41,14 +39,12 @@ export const HomePage = () => {
         title: 'Have a guild discord? Check out QL Bot',
         description: 'Need to lookup an item, check a popular build, or figure out the best monster slayer quest? We got you covered with the QL Bot!',
         image: 'discordbot_avatar_weasel.png',
-        imageText: 'loading image',
         link: '/tools/ql-bot'
     };
     const hightlightedPost2: Post = {
         title: 'All your Guild Battle Event Planning needs in one spot',
         description: 'Hero Power, multipliers, and talent setups for every member in your guild all in one place! No more individual checks!',
         image: 'guild boss trophies.png',
-        imageText: 'loading image',
         link: '/tools/guild-be-plan'
     };
     const highlightedContent: Post[] = [hightlightedPost1, hightlightedPost2];

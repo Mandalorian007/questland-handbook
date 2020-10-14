@@ -48,7 +48,6 @@ const videoToPost = (item: any) => {
   const contentFirstParagraphDescription = item.mediaGroup['media:description'][0].split(/\r?\n/)[0];
   const post: Post = {
     image: thumbnailUrl,
-    imageText: 'image not found',
     title: item.title || 'Loading...',
     description: contentFirstParagraphDescription,
     link: item.link || '#',

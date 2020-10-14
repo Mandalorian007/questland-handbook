@@ -10,7 +10,8 @@ const useStyles = makeStyles((theme) => ({
         flex: 1,
     },
     cardMedia: {
-        height: 300,
+        height: 0,
+        paddingTop: '56.25%', // 16:9
     },
 }));
 
@@ -25,7 +26,7 @@ export const RecentVideoPost: React.FC<{
                     <div className={classes.cardDetails}>
                         <CardContent>
                             <Hidden xsDown>
-                                <CardMedia className={classes.cardMedia} image={post.image} title={post.imageText}/>
+                                <CardMedia className={classes.cardMedia} image={post.image}/>
                             </Hidden>
                             <Typography component="h3" variant="h6">
                                 {post.title}
