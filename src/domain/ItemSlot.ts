@@ -7,7 +7,8 @@ export enum ItemSlot {
   Ring = 'RING',
   Talisman = 'TALISMAN',
   MainHand = 'MAIN_HAND',
-  OffHand = 'OFF_HAND'
+  OffHand = 'OFF_HAND',
+  Unknown = 'UNKNOWN'
 }
 
 export const isItemSlot = (

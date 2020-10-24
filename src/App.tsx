@@ -61,6 +61,7 @@ import gear from './pages/gearing/gear.md'
 import orbs from './pages/gearing/orbs.md'
 import statPriorities from './pages/gearing/statPriorities.md'
 import about from './pages/about/about.md'
+import {ItemPage} from "./pages/indexes/ItemPage";
 
 const middleware = [reduxLogger as Middleware, thunk];
 
@@ -345,6 +346,7 @@ export const App: React.FC = () => (
           <Route path="/indexes/gear" exact>
             <ItemIndexPage />
           </Route>
+          <Route path="/item/:id" component={ItemPage}/>
           <Route path="/indexes/orb" exact>
             <OrbIndexPage />
           </Route>

@@ -4,6 +4,7 @@ import React from 'react';
 import {Item} from '../domain/item';
 import {Quality} from '../domain/quality';
 import {getItemSlotUrl} from "../domain/ItemSlot";
+import {NavLink} from "react-router-dom";
 
 const getItemColor = (item: Item) => {
     switch (item.quality) {
@@ -61,7 +62,10 @@ export const ItemCard: React.FC<{
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small" color="primary">
+                <Button size="small"
+                        color="primary"
+                        component={NavLink}
+                        to={`/item/${item.id}`}>
                     Details
                 </Button>
             </CardActions>

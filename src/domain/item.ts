@@ -17,11 +17,19 @@ export interface Item {
   magicPotential: number;
   defensePotential: number;
   healthPotential: number;
+  reforgePointsPerLevel: number;
   emblem: Emblem;
   itemBonus: Stat;
-  itemLinks: number[];
+  itemLink1?: number;
+  itemLink2?: number;
+  itemLink3?: number;
   orbBonus: Stat;
-  orbLinks: number[];
+  orbLink1?: number;
+  orbLink2?: number;
+  passive1Name?: string;
+  passive1Description?: string;
+  passive2Name?: string;
+  passive2Description?: string;
 }
 
 export interface ServerItem {
@@ -38,11 +46,19 @@ export interface ServerItem {
   magicPotential: number;
   defensePotential: number;
   healthPotential: number;
+  reforgePointsPerLevel: number;
   emblem: string;
   itemBonus: string;
-  itemLinks: number[];
+  itemLink1?: number;
+  itemLink2?: number;
+  itemLink3?: number;
   orbBonus: string;
-  orbLinks: number[];
+  orbLink1?: number;
+  orbLink2?: number;
+  passive1Name?: string;
+  passive1Description?: string;
+  passive2Name?: string;
+  passive2Description?: string;
 }
 
 export const serverItemToItem = (serverItem: ServerItem): Item => ({
