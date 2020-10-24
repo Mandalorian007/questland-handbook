@@ -2,30 +2,9 @@ import {Button, Card, CardActions, CardContent, Grid, Typography} from '@materia
 import {getEmblemImgUrl} from '../domain/emblem';
 import React from 'react';
 import {Item} from '../domain/item';
-import {Quality} from '../domain/quality';
 import {getItemSlotUrl} from "../domain/ItemSlot";
 import {NavLink} from "react-router-dom";
-
-const getItemColor = (item: Item) => {
-    switch (item.quality) {
-        case Quality.Uncommon:
-            return 'grey';
-        case Quality.Common:
-            return 'green';
-        case Quality.Rare:
-            return 'blue';
-        case Quality.Epic:
-            return 'purple';
-        case Quality.Legendary:
-            return 'orange';
-        case Quality.Artifact1:
-        case Quality.Artifact2:
-        case Quality.Artifact3:
-        case Quality.Artifact4:
-        case Quality.Artifact5:
-            return 'red';
-    }
-};
+import {getQualityColor} from "../domain/quality";
 
 export const ItemCard: React.FC<{
     item: Item;
@@ -47,7 +26,7 @@ export const ItemCard: React.FC<{
                         width={24}
                         height={24}
                     />
-                    <Typography gutterBottom variant="subtitle1" component="h5" style={{color: getItemColor(item)}}>
+                    <Typography gutterBottom variant="subtitle1" component="h5" style={{color: getQualityColor(item.quality)}}>
                         {`\xa0\xa0${item.name}`}
                     </Typography>
                 </Grid>

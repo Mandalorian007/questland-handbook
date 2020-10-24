@@ -53,3 +53,26 @@ export const getEmblems = () => {
 export const getEmblemImgUrl = (emblem: Emblem) => {
   return `/emblems/${emblem}.png`;
 };
+
+
+export const getEmblemColor = (emblem: Emblem) => {
+  switch (emblem) {
+    case Emblem.Sacred:
+    case Emblem.Necro:
+    case Emblem.Beast:
+    case Emblem.Nature:
+    case Emblem.Dragon:
+    case Emblem.Shadow:
+    case Emblem.Myth:
+    case Emblem.Ice:
+    case Emblem.Venom:
+    case Emblem.Death:
+    case Emblem.Lava:
+    case Emblem.Hex:
+    case Emblem.Noble:
+    case Emblem.Thunder:
+    case Emblem.Abyss:
+    case Emblem.Wind:
+      return 'green';
+  }
+};
