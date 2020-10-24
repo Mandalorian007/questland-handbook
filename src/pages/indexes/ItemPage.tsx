@@ -173,7 +173,17 @@ const ItemPageInternal: React.FC<{}> = () => {
                         + `${item.health}, ${item.attack}, ${item.defense}, ${item.magic}`}
                     </ListItemText>
                 </ListItem>
+                <ListItem>
+                    <ListItemText>
+                        {'Item Bonus: ' + item.itemBonus}
+                    </ListItemText>
+                </ListItem>
                 {getLinkedItems(item)}
+                <ListItem>
+                    <ListItemText>
+                        {'Orb Bonus: ' + item.orbBonus}
+                    </ListItemText>
+                </ListItem>
                 {getLinkedOrbs(item)}
                 {getPassive1(item)}
                 {getPassive2(item)}
