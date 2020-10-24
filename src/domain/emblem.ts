@@ -58,21 +58,36 @@ export const getEmblemImgUrl = (emblem: Emblem) => {
 export const getEmblemColor = (emblem: Emblem) => {
   switch (emblem) {
     case Emblem.Sacred:
+      return 'Bisque';
     case Emblem.Necro:
+      return 'aquamarine';
     case Emblem.Beast:
+      return 'brown';
     case Emblem.Nature:
-    case Emblem.Dragon:
-    case Emblem.Shadow:
-    case Emblem.Myth:
-    case Emblem.Ice:
-    case Emblem.Venom:
-    case Emblem.Death:
-    case Emblem.Lava:
-    case Emblem.Hex:
-    case Emblem.Noble:
-    case Emblem.Thunder:
-    case Emblem.Abyss:
-    case Emblem.Wind:
       return 'green';
+    case Emblem.Dragon:
+      return 'red';
+    case Emblem.Shadow:
+      return 'grey';
+    case Emblem.Myth:
+      return 'DarkOrchid';
+    case Emblem.Ice:
+      return 'aqua';
+    case Emblem.Venom:
+      return 'purple';
+    case Emblem.Death:
+      return 'black';
+    case Emblem.Lava:
+      return 'crimson';
+    case Emblem.Hex:
+      return 'GreenYellow';
+    case Emblem.Noble:
+      return 'lightblue';
+    case Emblem.Thunder:
+      return 'yellow';
+    case Emblem.Abyss:
+      return 'darkturquoise';
+    case Emblem.Wind:
+      return 'lightblue';
   }
 };
