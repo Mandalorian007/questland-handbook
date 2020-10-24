@@ -36,3 +36,7 @@ export const getItemSlots = () => {
     ItemSlot.OffHand
   ];
 };
+
+export const getItemSlotUrl = (slot: ItemSlot) => {
+  return `/slot/${slot}.png`;
+};

@@ -197,7 +197,7 @@ export const ItemIndexPage: React.FC<{}> = () => {
           <TextField {...params} label="Item Slot Filter" variant="outlined" />
         )}
       />
-      <GridList cellHeight={160} spacing={16} cols={useGridListCols()}>
+      <GridList cellHeight={180} spacing={16} cols={useGridListCols()}>
         {displayedItems.map((item, index) => {
           return (
             <GridListTile key={index} cols={1}>
