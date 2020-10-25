@@ -26,6 +26,8 @@ import ShieldIcon from '@material-ui/icons/Security';
 import TrophyIcon from '@material-ui/icons/EmojiEvents';
 import HeroIcon from '@material-ui/icons/Accessibility';
 import InfoIcon from '@material-ui/icons/Info';
+import MapIcon from '@material-ui/icons/Map';
+import StarsIcon from '@material-ui/icons/Stars';
 import {DiscordBotPage} from './pages/tools/DiscordBotPage';
 import {PublicAPIPage} from './pages/tools/PubicAPIPage';
 import {CurrenciesHomePage} from './pages/currencies/CurrenciesHomePage';
@@ -44,7 +46,6 @@ import {BlueBattleEventPage} from './pages/battleevent/BlueBattleEventPage';
 import {GuildBattleEventStrategyPage} from './pages/battleevent/GuildBattleEventStrategyPage';
 import {RedGuildStrikerPage} from './pages/battleevent/RedGuildStrikerPage';
 import {BlueGuildStrikerPage} from './pages/battleevent/BlueGuildStrikerPage';
-import {BuildsPage} from './pages/guides/BuildsPage';
 import {ReforgingPage} from './pages/gearing/ReforgingPage';
 import {FarmerPage} from './pages/arena/FarmerPage';
 import {HardBossStatsIndexPage} from './pages/indexes/HardBossStatsIndexPage';
@@ -62,6 +63,13 @@ import orbs from './pages/gearing/orbs.md'
 import statPriorities from './pages/gearing/statPriorities.md'
 import about from './pages/about/about.md'
 import {ItemPage} from "./pages/indexes/ItemPage";
+import {CampaignHomePage} from "./pages/campaign/CampaignHomePage";
+import {FaerieWrathPage} from "./pages/campaign/FaerieWrathPage";
+import {PhoenixPage} from "./pages/campaign/PhoenixPage";
+import {ShinobiPage} from "./pages/campaign/ShinobiPage";
+import {MetaBuildHomePage} from "./pages/meta/MetaBuildHomePage";
+import {BloodyHellPage} from "./pages/meta/BloodyHellPage";
+import {TurtlePage} from "./pages/meta/TurtlePage";
 
 const middleware = [reduxLogger as Middleware, thunk];
 
@@ -81,10 +89,6 @@ const navItemGroups: NavItemGroup[] = [
       {
         label: 'Beginner Tips',
         to: '/guides/beginner-tips'
-      },
-      {
-        label: 'Popular Builds',
-        to: '/guides/popular-builds'
       }
     ]
   },
@@ -116,6 +120,40 @@ const navItemGroups: NavItemGroup[] = [
       {
         label: 'Stat Priorities',
         to: '/gearing/stat-priorities'
+      }
+    ]
+  },
+  {
+    label: 'Meta Builds',
+    to: '/meta',
+    icon: <StarsIcon />,
+    navItems: [
+      {
+        label: 'Bloody Hell',
+        to: '/meta/bloody-hell'
+      },
+      {
+        label: 'Turtle',
+        to: '/meta/turtle'
+      }
+    ]
+  },
+  {
+    label: 'Campaign Builds',
+    to: '/campaign',
+    icon: <MapIcon />,
+    navItems: [
+      {
+        label: 'Faerie Wrath',
+        to: '/campaign/faerie-wrath'
+      },
+      {
+        label: 'Phoenix',
+        to: '/campaign/phoenix'
+      },
+      {
+        label: 'Shinobi',
+        to: '/campaign/shinobi'
       }
     ]
   },
@@ -260,9 +298,6 @@ export const App: React.FC = () => (
           <Route path="/guides/beginner-tips" exact>
             <Markdown md={beginnerTips}/>
           </Route>
-          <Route path="/guides/popular-builds" exact>
-            <BuildsPage />
-          </Route>
 
           <Route path="/gearing" exact>
             <GearingHomePage />
@@ -284,6 +319,29 @@ export const App: React.FC = () => (
           </Route>
           <Route path="/gearing/stat-priorities" exact>
             <Markdown md={statPriorities}/>
+          </Route>
+
+          <Route path="/meta" exact>
+            <MetaBuildHomePage />
+          </Route>
+          <Route path="/meta/bloody-hell" exact>
+            <BloodyHellPage />
+          </Route>
+          <Route path="/meta/turtle" exact>
+            <TurtlePage />
+          </Route>
+
+          <Route path="/campaign" exact>
+            <CampaignHomePage />
+          </Route>
+          <Route path="/campaign/faerie-wrath" exact>
+            <FaerieWrathPage />
+          </Route>
+          <Route path="/campaign/phoenix" exact>
+            <PhoenixPage />
+          </Route>
+          <Route path="/campaign/shinobi" exact>
+            <ShinobiPage />
           </Route>
 
           <Route path="/battle-event" exact>
