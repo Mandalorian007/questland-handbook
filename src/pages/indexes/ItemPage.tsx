@@ -30,6 +30,8 @@ import Typography from "@material-ui/core/Typography";
 import {ItemCard} from "../../components/ItemCard";
 import {useGridListCols} from "../../lib/responsiveList";
 import {OrbCard} from "../../components/OrbCard";
+import {qlApiUrl} from "../../config";
+import {ArtifactItemCard} from "../../components/ArtifactItemCard";
 
 export const useSelector: TypedUseSelectorHook<AppState> = useReduxSelector;
 
@@ -98,12 +100,18 @@ const ItemPageInternal: React.FC<{}> = () => {
             return emptyItem;
         }
     });
+    const [artifactItems, setArtifactItems] = React.useState<Item[]>([]);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(loadItems());
         dispatch(loadOrbs());
-    }, [dispatch]);
+        const artifactLookupEndpoint = qlApiUrl + `items/artifacts/${id}`;
+        fetch(artifactLookupEndpoint)
+            .then(res => res.json())
+            .then(artifacts => setArtifactItems(artifacts));
+
+    }, [dispatch, id, setArtifactItems]);
 
     const resolveItem = (id: number | undefined) => {
         if (id) {
@@ -206,6 +214,20 @@ const ItemPageInternal: React.FC<{}> = () => {
         }
     };
 
+    const getArtifactDetails = (cols: number) => {
+        return (
+            <Grid item xs={12} md={12}>
+                <GridList cellHeight={140} spacing={16} cols={cols}>
+                    {artifactItems.map(artifactItem =>
+                        <GridListTile>
+                            <ArtifactItemCard item={artifactItem}/>
+                        </GridListTile>
+                    )}
+                </GridList>
+            </Grid>
+        );
+    };
+
     return (
         <Grid container spacing={1}>
             <Grid item xs={12} md={12}>
@@ -290,6 +312,14 @@ const ItemPageInternal: React.FC<{}> = () => {
             <Grid item xs={12} md={12}>
                 {getPassiveDetails()}
             </Grid>
+            <Grid item xs={12} md={12}>
+                <Paper>
+                    <Typography variant="subtitle1" component="h5" paragraph align="center">
+                        Artifact Item versions
+                    </Typography>
+                </Paper>
+            </Grid>
+            {getArtifactDetails(useGridListCols())}
         </Grid>
     );
 };
