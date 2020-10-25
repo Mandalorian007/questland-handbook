@@ -31,6 +31,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import {ItemCard} from "../../components/ItemCard";
 import {useGridListCols} from "../../lib/responsiveList";
+import {OrbCard} from "../../components/OrbCard";
 
 export const useSelector: TypedUseSelectorHook<AppState> = useReduxSelector;
 
@@ -52,6 +53,22 @@ const emptyItem: Item = {
     orbBonus: Stat.None,
     quality: Quality.Legendary,
     totalPotential: 0
+
+};
+
+const emptyOrb: Orb = {
+    attack: 0,
+    attackPotential: 0,
+    defense: 0,
+    defensePotential: 0,
+    health: 0,
+    healthPotential: 0,
+    id: 0,
+    magic: 0,
+    magicPotential: 0,
+    name: "Unknown Orb",
+    quality: Quality.Legendary,
+    statBonus: Stat.None
 
 };
 
@@ -100,14 +117,14 @@ const ItemPageInternal: React.FC<{}> = () => {
         return emptyItem;
     };
 
-    const resolveOrbName = (id: number | undefined) => {
+    const resolveOrb = (id: number | undefined) => {
         if (id) {
             const maybeOrb = orbs.find(orb => orb.id === id);
             if (maybeOrb) {
-                return maybeOrb.name;
+                return maybeOrb;
             }
         }
-        return 'Unknown Orb'
+        return emptyOrb;
     };
 
     const getPassive1 = (item: Item) => {
@@ -138,17 +155,84 @@ const ItemPageInternal: React.FC<{}> = () => {
         }
     };
 
-    const getLinkedOrbs = (item: Item) => {
-        if (item.orbLink1) {
+    const getItemLinkDescription = () => {
+        if (item.itemBonus && item.itemBonus !== Stat.None) {
+            return `${item.itemBonus} boost item links`
+        } else {
+            return `There are no item links`
+        }
+    };
+
+    const getItemLinkDetails = (cols: number) => {
+        if (item.itemBonus && item.itemBonus !== Stat.None) {
             return (
-                <ListItem>
-                    <ListItemText>
-                        {`Linked Orbs: ${resolveOrbName(item.orbLink1)}, ${resolveOrbName(item.orbLink2)}`}
-                    </ListItemText>
-                </ListItem>
-            )
+                <Grid item xs={12} md={12}>
+                    <GridList cellHeight={180} spacing={16} cols={cols}>
+                        <GridListTile>
+                            <ItemCard item={resolveItem(item.itemLink1)}/>
+                        </GridListTile>
+                        <GridListTile>
+                            <ItemCard item={resolveItem(item.itemLink2)}/>
+                        </GridListTile>
+                        <GridListTile>
+                            <ItemCard item={resolveItem(item.itemLink3)}/>
+                        </GridListTile>
+                    </GridList>
+                </Grid>
+            );
         } else {
             return <div/>
+        }
+    };
+
+    const getOrbLinkDescription = () => {
+
+        if (item.itemBonus && item.itemBonus !== Stat.None) {
+            return `${item.orbBonus} boost orb links`;
+        } else {
+            return `There are no orb links`
+        }
+    };
+
+    const getOrbLinkDetails = (cols: number) => {
+        if (item.orbBonus && item.orbBonus !== Stat.None) {
+            return (
+                <Grid item xs={12} md={12}>
+                    <GridList cellHeight={140} spacing={16} cols={cols}>
+                        <GridListTile>
+                            <OrbCard orb={resolveOrb(item.orbLink1)}/>
+                        </GridListTile>
+                        <GridListTile>
+                            <OrbCard orb={resolveOrb(item.orbLink2)}/>
+                        </GridListTile>
+                    </GridList>
+                </Grid>
+            );
+        } else {
+            return <div/>
+        }
+    };
+
+    const getPassiveDetails = () => {
+        if (item.passive1Name) {
+            return (
+                <Paper>
+                    <Typography variant="subtitle1" component="h5" paragraph>
+                        {item.passive1Name + ': ' + item.passive1Description}
+                    </Typography>
+                    <Typography variant="subtitle1" component="h5" paragraph>
+                        {item.passive2Name + ': ' + item.passive2Description}
+                    </Typography>
+                </Paper>
+            )
+        } else {
+            return (
+                <Paper>
+                    <Typography variant="subtitle1" component="h5" paragraph align="center">
+                        There are no passives for this item
+                    </Typography>
+                </Paper>
+            )
         }
     };
 
@@ -220,29 +304,21 @@ const ItemPageInternal: React.FC<{}> = () => {
             <Grid item xs={12} md={12}>
                 <Paper>
                     <Typography variant="subtitle1" component="h5" paragraph align="center">
-                        {`${item.itemBonus} boost item links`}
+                        {getItemLinkDescription()}
                     </Typography>
                 </Paper>
             </Grid>
-            <Grid item xs={12} md={12}>
-                <GridList cellHeight={180} spacing={16} cols={useGridListCols()}>
-                    <GridListTile>
-                        <ItemCard item={resolveItem(item.itemLink1)}/>
-                    </GridListTile>
-                    <GridListTile>
-                        <ItemCard item={resolveItem(item.itemLink2)}/>
-                    </GridListTile>
-                    <GridListTile>
-                        <ItemCard item={resolveItem(item.itemLink3)}/>
-                    </GridListTile>
-                </GridList>
-            </Grid>
+            {getItemLinkDetails(useGridListCols())}
             <Grid item xs={12} md={12}>
                 <Paper>
                     <Typography variant="subtitle1" component="h5" paragraph align="center">
-                        {`${item.orbBonus} boost orb links`}
+                        {getOrbLinkDescription()}
                     </Typography>
                 </Paper>
+            </Grid>
+            {getOrbLinkDetails(useGridListCols())}
+            <Grid item xs={12} md={12}>
+                {getPassiveDetails()}
             </Grid>
         </Grid>
     );
