@@ -40,3 +40,7 @@ export const serverOrbToOrb = (serverOrb: ServerOrb): Orb => ({
 export const getOrbStatUrl = (orbStat: Stat) => {
   return `/orb-stat/${orbStat}.png`;
 };
+
+export const getArtifactOrbStatUrl = (orbStat: Stat) => {
+  return `/orb-stat/ARTIFACT_${orbStat}.png`;
+};

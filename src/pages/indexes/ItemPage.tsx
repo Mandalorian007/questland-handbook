@@ -32,6 +32,7 @@ import {useGridListCols} from "../../lib/responsiveList";
 import {OrbCard} from "../../components/OrbCard";
 import {qlApiUrl} from "../../config";
 import {ArtifactItemCard} from "../../components/ArtifactItemCard";
+import {ArtifactOrbCard} from "../../components/ArtifactOrbCard";
 
 export const useSelector: TypedUseSelectorHook<AppState> = useReduxSelector;
 
@@ -91,16 +92,9 @@ const ItemPageInternal: React.FC<{}> = () => {
     const items: Item[] = useSelector(state => state.itemState.items);
     const orbs: Orb[] = useSelector(state => state.orbState.orbs);
 
-    const item: Item = useSelector(state => {
-        const itemArray = state.itemState.items;
-        const maybeItem = itemArray.find(item => item.id === +id);
-        if (maybeItem) {
-            return maybeItem;
-        } else {
-            return emptyItem;
-        }
-    });
+    const [item, setItem] = React.useState<Item>(emptyItem);
     const [artifactItems, setArtifactItems] = React.useState<Item[]>([]);
+    const [artifactOrbs, setArtifactOrbs] = React.useState<Orb[]>([]);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -111,7 +105,28 @@ const ItemPageInternal: React.FC<{}> = () => {
             .then(res => res.json())
             .then(artifacts => setArtifactItems(artifacts));
 
-    }, [dispatch, id, setArtifactItems]);
+        // resolve item and artifact orbs
+        fetch(qlApiUrl + `items/${id}`)
+            .then(res => res.json() as Promise<Item>)
+            .then(resolvedItem => {
+                setItem(resolvedItem);
+                return resolvedItem;
+            })
+            .then(resolvedItem => [resolvedItem.orbLink1, resolvedItem.orbLink2])
+            .then(orbLinks => {
+                Promise.all([
+                    fetch(qlApiUrl + `orbs/artifacts/${orbLinks[0]}`),
+                    fetch(qlApiUrl + `orbs/artifacts/${orbLinks[1]}`)
+                ]).then(([artifactOrbs1, artifactOrbs2]) => {
+                    const array1 = artifactOrbs1.ok ? artifactOrbs1.json() as Promise<Orb[]> : Promise.resolve([]);
+                    const array2 = artifactOrbs1.ok ? artifactOrbs2.json() as Promise<Orb[]> : Promise.resolve([]);
+                    Promise.all([array1, array2])
+                        .then(([artOrbs1, artOrbs2]) => {
+                            setArtifactOrbs(artOrbs1.concat(artOrbs2))
+                        })
+                })
+            })
+    }, [dispatch, id, setArtifactItems, setItem]);
 
     const resolveItem = (id: number | undefined) => {
         if (id) {
@@ -174,15 +189,22 @@ const ItemPageInternal: React.FC<{}> = () => {
 
     const getOrbLinkDetails = (cols: number) => {
         if (item.orbBonus && item.orbBonus !== Stat.None) {
+            const id1 = item.orbLink1;
+            const id2 = item.orbLink2;
             return (
                 <Grid item xs={12} md={12}>
                     <GridList cellHeight={140} spacing={16} cols={cols}>
                         <GridListTile>
-                            <OrbCard orb={resolveOrb(item.orbLink1)}/>
+                            <OrbCard orb={resolveOrb(id1)}/>
                         </GridListTile>
                         <GridListTile>
-                            <OrbCard orb={resolveOrb(item.orbLink2)}/>
+                            <OrbCard orb={resolveOrb(id2)}/>
                         </GridListTile>
+                        {artifactOrbs.map(artifactOrb =>
+                            <GridListTile key={artifactOrb.id}>
+                                <ArtifactOrbCard orb={artifactOrb}/>
+                            </GridListTile>
+                        )}
                     </GridList>
                 </Grid>
             );
@@ -219,7 +241,7 @@ const ItemPageInternal: React.FC<{}> = () => {
             <Grid item xs={12} md={12}>
                 <GridList cellHeight={140} spacing={16} cols={cols}>
                     {artifactItems.map(artifactItem =>
-                        <GridListTile>
+                        <GridListTile key={artifactItem.id}>
                             <ArtifactItemCard item={artifactItem}/>
                         </GridListTile>
                     )}
