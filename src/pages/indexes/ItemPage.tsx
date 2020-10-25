@@ -8,8 +8,6 @@ import {
     GridList,
     GridListTile,
     Hidden,
-    ListItem,
-    ListItemText,
     Paper,
     Table,
     TableBody,
