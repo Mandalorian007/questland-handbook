@@ -127,34 +127,6 @@ const ItemPageInternal: React.FC<{}> = () => {
         return emptyOrb;
     };
 
-    const getPassive1 = (item: Item) => {
-        if (item.passive1Name && item.passive1Name !== '') {
-            return (
-                <ListItem>
-                    <ListItemText>
-                        {item.passive1Name + ': ' + item.passive1Description}
-                    </ListItemText>
-                </ListItem>
-            )
-        } else {
-            return <div/>
-        }
-    };
-
-    const getPassive2 = (item: Item) => {
-        if (item.passive2Name && item.passive2Name !== '') {
-            return (
-                <ListItem>
-                    <ListItemText>
-                        {item.passive2Name + ': ' + item.passive2Description}
-                    </ListItemText>
-                </ListItem>
-            )
-        } else {
-            return <div/>
-        }
-    };
-
     const getItemLinkDescription = () => {
         if (item.itemBonus && item.itemBonus !== Stat.None) {
             return `${item.itemBonus} boost item links`
