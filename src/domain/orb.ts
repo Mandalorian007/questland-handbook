@@ -1,5 +1,5 @@
-import { Quality, toQuality } from './quality';
-import { Stat, toStat } from './stat';
+import {Quality, toQuality} from './quality';
+import {Stat, toStat} from './stat';
 
 export interface Orb {
   id: number;
@@ -36,3 +36,7 @@ export const serverOrbToOrb = (serverOrb: ServerOrb): Orb => ({
   quality: toQuality(serverOrb.quality),
   statBonus: toStat(serverOrb.statBonus)
 });
+
+export const getOrbStatUrl = (orbStat: Stat) => {
+  return `/orb-stat/${orbStat}.png`;
+};
