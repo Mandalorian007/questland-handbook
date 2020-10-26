@@ -150,9 +150,9 @@ export const ItemIndexPage: React.FC<{}> = () => {
     const onPassive1FilterChange = (event: any) => {
         const passives = event.target.value as string;
         let passivesToSet: (string | undefined)[];
-        if (passives == 'All') {
+        if (passives === 'All') {
             passivesToSet = allItem1Passives;
-        } else if (passives == 'None') {
+        } else if (passives === 'None') {
             passivesToSet = [undefined];
         } else {
             passivesToSet = [passives];
@@ -171,9 +171,9 @@ export const ItemIndexPage: React.FC<{}> = () => {
     const onPassive2FilterChange = (event: any) => {
         const passives = event.target.value as string;
         let passivesToSet: (string | undefined)[];
-        if (passives == 'All') {
+        if (passives === 'All') {
             passivesToSet = allItem1Passives;
-        } else if (passives == 'None') {
+        } else if (passives === 'None') {
             passivesToSet = [undefined];
         } else {
             passivesToSet = [passives];
