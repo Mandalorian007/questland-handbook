@@ -2,15 +2,18 @@ import React, {useEffect} from 'react';
 import {TypedUseSelectorHook, useDispatch, useSelector as useReduxSelector} from 'react-redux';
 import {AppState} from '../../store/rootReducer';
 import {
+    Accordion,
+    AccordionDetails,
+    AccordionSummary,
     Chip,
     FormControl,
     GridList,
     GridListTile,
     InputLabel,
     MenuItem,
-    Paper,
     Select,
-    TextField
+    TextField,
+    Typography
 } from '@material-ui/core';
 import {loadItems} from '../../store/itemActions';
 import {Item} from '../../domain/item';
@@ -22,17 +25,29 @@ import {Quality} from '../../domain/quality';
 import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import {getItemSlots, ItemSlot} from '../../domain/ItemSlot';
 import {getComparator, stableSort} from '../../lib/sort';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 export const useSelector: TypedUseSelectorHook<AppState> = useReduxSelector;
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
+        heading: {
+            fontSize: theme.typography.pxToRem(15),
+            fontWeight: theme.typography.fontWeightRegular,
+        },
+        filters: {
+            display: 'flex',
+            flexDirection: 'column',
+        },
         paddingForMe: {
             margin: theme.spacing(2)
         },
         formControl: {
             margin: theme.spacing(2),
             minWidth: 120,
+        },
+        itemList: {
+            paddingTop: theme.spacing(2),
         }
     })
 );
@@ -203,99 +218,108 @@ export const ItemIndexPage: React.FC<{}> = () => {
 
     return (
         <>
-            <Paper>
-                <FormControl className={classes.paddingForMe}>
-                    <InputLabel>Sort By</InputLabel>
-                    <Select value={sortProperty} onChange={onSortChange}>
-                        {sortOptions.map(sortOption => (
-                            <option key={sortOption.value} value={sortOption.value}>{sortOption.label}</option>
-                        ))}
-                    </Select>
-                </FormControl>
-                <Autocomplete
-                    className={classes.paddingForMe}
-                    multiple
-                    id="Quality Filter"
-                    size="small"
-                    options={qualities}
-                    getOptionLabel={emblem => emblem}
-                    defaultValue={[Quality.Legendary]}
-                    onChange={onQualityFilterChange}
-                    renderTags={(value, getTagProps) =>
-                        value.map((quality, index) => (
-                            <Chip label={quality} {...getTagProps({index})} />
-                        ))
-                    }
-                    renderInput={params => (
-                        <TextField {...params} label="Quality Filter" variant="outlined"/>
-                    )}
-                />
-                <Autocomplete
-                    className={classes.paddingForMe}
-                    multiple
-                    id="Emblem Filter"
-                    size="small"
-                    options={emblems}
-                    getOptionLabel={emblem => emblem}
-                    defaultValue={emblems}
-                    onChange={onEmblemFilterChange}
-                    renderTags={(value, getTagProps) =>
-                        value.map((emblem, index) => (
-                            <Chip label={emblem} {...getTagProps({index})} />
-                        ))
-                    }
-                    renderInput={params => (
-                        <TextField {...params} label="Emblem Filter" variant="outlined"/>
-                    )}
-                />
-                <Autocomplete
-                    className={classes.paddingForMe}
-                    multiple
-                    id="Item Slot Filter"
-                    size="small"
-                    options={itemSlots}
-                    getOptionLabel={emblem => emblem}
-                    defaultValue={itemSlots}
-                    onChange={onItemSlotFilterChange}
-                    renderTags={(value, getTagProps) =>
-                        value.map((itemSlot, index) => (
-                            <Chip label={itemSlot} {...getTagProps({index})} />
-                        ))
-                    }
-                    renderInput={params => (
-                        <TextField {...params} label="Item Slot Filter" variant="outlined"/>
-                    )}
-                />
-                <FormControl className={classes.formControl}>
-                    <InputLabel id="passive-1-select-label">Passive 1 Filter</InputLabel>
-                    <Select
-                        labelId="passive-1-select-label"
-                        id="passive-1-select"
-                        value={getPassiveValue(selected1Passives)}
-                        onChange={onPassive1FilterChange}
-                    >
-                        {(['All', 'None'].concat(allItem1Passives.filter(passive => passive !== undefined) as string[])).map((passive, index) => {
-                                return <MenuItem key={index} value={passive}>{passive}</MenuItem>;
-                            }
+            <Accordion>
+                <AccordionSummary
+                    expandIcon={<ExpandMoreIcon/>}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                >
+                    <Typography className={classes.heading}>Filter and Sorting Options</Typography>
+                </AccordionSummary>
+                <AccordionDetails className={classes.filters}>
+                    <FormControl className={classes.paddingForMe}>
+                        <InputLabel>Sort By</InputLabel>
+                        <Select value={sortProperty} onChange={onSortChange}>
+                            {sortOptions.map(sortOption => (
+                                <option key={sortOption.value} value={sortOption.value}>{sortOption.label}</option>
+                            ))}
+                        </Select>
+                    </FormControl>
+                    <Autocomplete
+                        className={classes.paddingForMe}
+                        multiple
+                        id="Quality Filter"
+                        size="small"
+                        options={qualities}
+                        getOptionLabel={emblem => emblem}
+                        defaultValue={[Quality.Legendary]}
+                        onChange={onQualityFilterChange}
+                        renderTags={(value, getTagProps) =>
+                            value.map((quality, index) => (
+                                <Chip label={quality} {...getTagProps({index})} />
+                            ))
+                        }
+                        renderInput={params => (
+                            <TextField {...params} label="Quality Filter" variant="outlined"/>
                         )}
-                    </Select>
-                </FormControl>
-                <FormControl className={classes.formControl}>
-                    <InputLabel id="passive-2-select-label">Passive 2 Filter</InputLabel>
-                    <Select
-                        labelId="passive-2-select-label"
-                        id="passive-2-select"
-                        value={getPassiveValue(selected2Passives)}
-                        onChange={onPassive2FilterChange}
-                    >
-                        {(['All', 'None'].concat(allItem2Passives.filter(passive => passive !== undefined) as string[])).map((passive, index) => {
-                                return <MenuItem key={index} value={passive}>{passive}</MenuItem>;
-                            }
+                    />
+                    <Autocomplete
+                        className={classes.paddingForMe}
+                        multiple
+                        id="Emblem Filter"
+                        size="small"
+                        options={emblems}
+                        getOptionLabel={emblem => emblem}
+                        defaultValue={emblems}
+                        onChange={onEmblemFilterChange}
+                        renderTags={(value, getTagProps) =>
+                            value.map((emblem, index) => (
+                                <Chip label={emblem} {...getTagProps({index})} />
+                            ))
+                        }
+                        renderInput={params => (
+                            <TextField {...params} label="Emblem Filter" variant="outlined"/>
                         )}
-                    </Select>
-                </FormControl>
-            </Paper>
-            <GridList cellHeight={180} spacing={16} cols={useGridListCols()}>
+                    />
+                    <Autocomplete
+                        className={classes.paddingForMe}
+                        multiple
+                        id="Item Slot Filter"
+                        size="small"
+                        options={itemSlots}
+                        getOptionLabel={emblem => emblem}
+                        defaultValue={itemSlots}
+                        onChange={onItemSlotFilterChange}
+                        renderTags={(value, getTagProps) =>
+                            value.map((itemSlot, index) => (
+                                <Chip label={itemSlot} {...getTagProps({index})} />
+                            ))
+                        }
+                        renderInput={params => (
+                            <TextField {...params} label="Item Slot Filter" variant="outlined"/>
+                        )}
+                    />
+                    <FormControl className={classes.formControl}>
+                        <InputLabel id="passive-1-select-label">Passive 1 Filter</InputLabel>
+                        <Select
+                            labelId="passive-1-select-label"
+                            id="passive-1-select"
+                            value={getPassiveValue(selected1Passives)}
+                            onChange={onPassive1FilterChange}
+                        >
+                            {(['All', 'None'].concat(allItem1Passives.filter(passive => passive !== undefined) as string[])).map((passive, index) => {
+                                    return <MenuItem key={index} value={passive}>{passive}</MenuItem>;
+                                }
+                            )}
+                        </Select>
+                    </FormControl>
+                    <FormControl className={classes.formControl}>
+                        <InputLabel id="passive-2-select-label">Passive 2 Filter</InputLabel>
+                        <Select
+                            labelId="passive-2-select-label"
+                            id="passive-2-select"
+                            value={getPassiveValue(selected2Passives)}
+                            onChange={onPassive2FilterChange}
+                        >
+                            {(['All', 'None'].concat(allItem2Passives.filter(passive => passive !== undefined) as string[])).map((passive, index) => {
+                                    return <MenuItem key={index} value={passive}>{passive}</MenuItem>;
+                                }
+                            )}
+                        </Select>
+                    </FormControl>
+                </AccordionDetails>
+            </Accordion>
+            <GridList cellHeight={180} spacing={16} cols={useGridListCols()} className={classes.itemList}>
                 {displayedItems.map((item, index) => {
                     return (
                         <GridListTile key={index} cols={1}>
