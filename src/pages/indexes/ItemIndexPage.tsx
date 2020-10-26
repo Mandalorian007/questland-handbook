@@ -31,6 +31,9 @@ export const useSelector: TypedUseSelectorHook<AppState> = useReduxSelector;
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
+        search: {
+            paddingBottom: theme.spacing(2)
+        },
         heading: {
             fontSize: theme.typography.pxToRem(15),
             fontWeight: theme.typography.fontWeightRegular,
@@ -85,6 +88,8 @@ export const ItemIndexPage: React.FC<{}> = () => {
     const allItem2Passives: (string | undefined) [] = useSelector(state => cleanArray(state.itemState.items.map(item => item.passive2Name)));
     const [selected1Passives, setSelected1Passives] = React.useState<(string | undefined) []>(allItem1Passives);
     const [selected2Passives, setSelected2Passives] = React.useState<(string | undefined) []>(allItem2Passives);
+    const itemNames: string[] = useSelector(state => cleanArray(state.itemState.items.map(item => item.name)));
+    const [selectedItem, setSelectedItem] = React.useState<string | null>(null);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -97,17 +102,37 @@ export const ItemIndexPage: React.FC<{}> = () => {
         emblems: Emblem[],
         itemSlots: ItemSlot[],
         passive1s: (string | undefined) [],
-        passive2s: (string | undefined) []
+        passive2s: (string | undefined) [],
+        singleSearch: (string | null)
     ) => {
-        let items: Item[] = itemSource.filter(item =>
-            qualities.includes(item.quality)
-        );
-        items = items.filter(item => emblems.includes(item.emblem));
-        items = items.filter(item => itemSlots.includes(item.itemSlot));
-        items = items.filter(item => passive1s.includes(item.passive1Name?.trim()));
-        items = items.filter(item => passive2s.includes(item.passive2Name?.trim()));
+        let items: Item[] = itemSource;
+        if (singleSearch === null) {
+            items = items.filter(item =>
+                qualities.includes(item.quality)
+            );
+            items = items.filter(item => emblems.includes(item.emblem));
+            items = items.filter(item => itemSlots.includes(item.itemSlot));
+            items = items.filter(item => passive1s.includes(item.passive1Name?.trim()));
+            items = items.filter(item => passive2s.includes(item.passive2Name?.trim()));
+        } else {
+            items = items.filter(item => item.name === singleSearch);
+        }
         items = stableSort(items, getComparator<Item>('desc', propertySort));
         setDisplayedItems(items);
+    };
+
+    const onItemSearchChange = (value: string | null) => {
+        const itemName = value as string | null;
+        setSelectedItem(itemName);
+        configureDisplayedItems(
+            sortProperty,
+            qualities,
+            selectedEmblems,
+            selectedItemSlots,
+            selected1Passives,
+            selected2Passives,
+            itemName
+        );
     };
 
     const onSortChange = (event: React.ChangeEvent<{ value: unknown }>) => {
@@ -119,7 +144,8 @@ export const ItemIndexPage: React.FC<{}> = () => {
             selectedEmblems,
             selectedItemSlots,
             selected1Passives,
-            selected2Passives
+            selected2Passives,
+            selectedItem
         );
     };
 
@@ -132,7 +158,8 @@ export const ItemIndexPage: React.FC<{}> = () => {
             emblems,
             selectedItemSlots,
             selected1Passives,
-            selected2Passives
+            selected2Passives,
+            selectedItem
         );
     };
 
@@ -145,7 +172,8 @@ export const ItemIndexPage: React.FC<{}> = () => {
             selectedEmblems,
             selectedItemSlots,
             selected1Passives,
-            selected2Passives
+            selected2Passives,
+            selectedItem
         );
     };
 
@@ -158,7 +186,8 @@ export const ItemIndexPage: React.FC<{}> = () => {
             selectedEmblems,
             itemSlots,
             selected1Passives,
-            selected2Passives
+            selected2Passives,
+            selectedItem
         );
     };
 
@@ -179,7 +208,8 @@ export const ItemIndexPage: React.FC<{}> = () => {
             selectedEmblems,
             itemSlots,
             passivesToSet,
-            selected2Passives
+            selected2Passives,
+            selectedItem
         );
     };
 
@@ -200,7 +230,8 @@ export const ItemIndexPage: React.FC<{}> = () => {
             selectedEmblems,
             itemSlots,
             selected1Passives,
-            passivesToSet
+            passivesToSet,
+            selectedItem
         );
     };
 
@@ -218,6 +249,27 @@ export const ItemIndexPage: React.FC<{}> = () => {
 
     return (
         <>
+            <Autocomplete
+                id="item-select"
+                style={{width: 300}}
+                className={classes.search}
+                options={itemNames}
+                onChange={(event, value) => onItemSearchChange(value)}
+                autoHighlight
+                getOptionLabel={(option) => option}
+                renderOption={(option) => option}
+                renderInput={(params) => (
+                    <TextField
+                        {...params}
+                        label="find an item"
+                        variant="outlined"
+                        inputProps={{
+                            ...params.inputProps,
+                            autoComplete: 'new-password', // disable autocomplete and autofill
+                        }}
+                    />
+                )}
+            />
             <Accordion>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon/>}
