@@ -208,7 +208,7 @@ export const ItemIndexPage: React.FC<{}> = () => {
                     <InputLabel>Sort By</InputLabel>
                     <Select value={sortProperty} onChange={onSortChange}>
                         {sortOptions.map(sortOption => (
-                            <option value={sortOption.value}>{sortOption.label}</option>
+                            <option key={sortOption.value} value={sortOption.value}>{sortOption.label}</option>
                         ))}
                     </Select>
                 </FormControl>
@@ -274,8 +274,8 @@ export const ItemIndexPage: React.FC<{}> = () => {
                         value={getPassiveValue(selected1Passives)}
                         onChange={onPassive1FilterChange}
                     >
-                        {(['All', 'None'].concat(allItem1Passives.filter(passive => passive !== undefined) as string[])).map(passive => {
-                                return <MenuItem key={passive} value={passive}>{passive}</MenuItem>;
+                        {(['All', 'None'].concat(allItem1Passives.filter(passive => passive !== undefined) as string[])).map((passive, index) => {
+                                return <MenuItem key={index} value={passive}>{passive}</MenuItem>;
                             }
                         )}
                     </Select>
@@ -288,8 +288,8 @@ export const ItemIndexPage: React.FC<{}> = () => {
                         value={getPassiveValue(selected2Passives)}
                         onChange={onPassive2FilterChange}
                     >
-                        {(['All', 'None'].concat(allItem2Passives.filter(passive => passive !== undefined) as string[])).map(passive => {
-                                return <MenuItem key={passive} value={passive}>{passive}</MenuItem>;
+                        {(['All', 'None'].concat(allItem2Passives.filter(passive => passive !== undefined) as string[])).map((passive, index) => {
+                                return <MenuItem key={index} value={passive}>{passive}</MenuItem>;
                             }
                         )}
                     </Select>
