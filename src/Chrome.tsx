@@ -154,7 +154,7 @@ export const Chrome: React.FC<{
                                 <a href="https://www.patreon.com/bePatron?u=33921067" target="_blank"
                                    rel="noopener noreferrer">
                                     <img
-                                        src="become_a_patron_button@2x.png"
+                                        src="https://www.questland-handbook.com/become_a_patron_button@2x.png"
                                         alt="unable to load patreon logo"
                                         width={160}
                                     />
