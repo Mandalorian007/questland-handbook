@@ -2,10 +2,8 @@ import * as React from 'react';
 import TagManager, {TagManagerArgs} from 'react-gtm-module';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import {Chrome} from './Chrome';
-import {applyMiddleware, createStore, Middleware} from 'redux';
-import {composeWithDevTools} from 'redux-devtools-extension';
-import {load, save} from 'redux-localstorage-simple';
-import reduxLogger from 'redux-logger';
+import {applyMiddleware, createStore} from 'redux';
+import {load} from 'redux-localstorage-simple';
 import thunk from 'redux-thunk';
 import {AppState, rootReducer} from './store/rootReducer';
 import {Provider} from 'react-redux';
@@ -72,12 +70,10 @@ import {MetaBuildHomePage} from "./pages/meta/MetaBuildHomePage";
 import {BloodyHellPage} from "./pages/meta/BloodyHellPage";
 import {TurtlePage} from "./pages/meta/TurtlePage";
 
-const middleware = [reduxLogger as Middleware, thunk];
-
 const store = createStore(
     rootReducer,
     load() as AppState,
-    composeWithDevTools(applyMiddleware(...middleware, save()))
+    applyMiddleware(thunk)
 );
 
 const navItemGroups: NavItemGroup[] = [
@@ -287,9 +283,6 @@ const navItemGroups: NavItemGroup[] = [
 export const App: React.FC = () => {
     const tagManagerArgs: TagManagerArgs = {
         gtmId: process.env.REACT_APP_GTM_ID || '',
-        /*events: {
-            pageView: 'Page View',
-        }*/
     };
     TagManager.initialize(tagManagerArgs);
 
