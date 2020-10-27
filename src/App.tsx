@@ -1,4 +1,5 @@
 import * as React from 'react';
+import TagManager, {TagManagerArgs} from 'react-gtm-module';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import {Chrome} from './Chrome';
 import {applyMiddleware, createStore, Middleware} from 'redux';
@@ -70,7 +71,6 @@ import {ShinobiPage} from "./pages/campaign/ShinobiPage";
 import {MetaBuildHomePage} from "./pages/meta/MetaBuildHomePage";
 import {BloodyHellPage} from "./pages/meta/BloodyHellPage";
 import {TurtlePage} from "./pages/meta/TurtlePage";
-import GA from './components/GoogleAnalytics'
 
 const middleware = [reduxLogger as Middleware, thunk];
 
@@ -284,169 +284,178 @@ const navItemGroups: NavItemGroup[] = [
     {label: 'About', to: '/about', icon: <InfoIcon/>, navItems: []},
 ];
 
-export const App: React.FC = () => (
-    <Provider store={store}>
-        <Router>
-            {GA.init() && <GA.RouteTracker/>}
-            <Chrome title="Questland Handbook" navItemGroups={navItemGroups}>
-                <Switch>
-                    <Route path="/" exact>
-                        <HomePage/>
-                    </Route>
+export const App: React.FC = () => {
+    const tagManagerArgs: TagManagerArgs = {
+        gtmId: process.env.REACT_APP_GTM_ID || '',
+        /*events: {
+            pageView: 'Page View',
+        }*/
+    };
+    TagManager.initialize(tagManagerArgs);
 
-                    <Route path="/guides" exact>
-                        <GuidesHomePage/>
-                    </Route>
-                    <Route path="/guides/beginner-tips" exact>
-                        <Markdown md={beginnerTips}/>
-                    </Route>
+    return(
+        <Provider store={store}>
+            <Router>
+                <Chrome title="Questland Handbook" navItemGroups={navItemGroups}>
+                    <Switch>
+                        <Route path="/" exact>
+                            <HomePage/>
+                        </Route>
 
-                    <Route path="/gearing" exact>
-                        <GearingHomePage/>
-                    </Route>
-                    <Route path="/gearing/gear" exact>
-                        <Markdown md={gear}/>
-                    </Route>
-                    <Route path="/gearing/orbs" exact>
-                        <Markdown md={orbs}/>
-                    </Route>
-                    <Route path="/gearing/artifacts" exact>
-                        <Markdown md={artifacts}/>
-                    </Route>
-                    <Route path="/gearing/collections" exact>
-                        <Markdown md={collections}/>
-                    </Route>
-                    <Route path="/gearing/reforging" exact>
-                        <ReforgingPage/>
-                    </Route>
-                    <Route path="/gearing/stat-priorities" exact>
-                        <Markdown md={statPriorities}/>
-                    </Route>
+                        <Route path="/guides" exact>
+                            <GuidesHomePage/>
+                        </Route>
+                        <Route path="/guides/beginner-tips" exact>
+                            <Markdown md={beginnerTips}/>
+                        </Route>
 
-                    <Route path="/meta" exact>
-                        <MetaBuildHomePage/>
-                    </Route>
-                    <Route path="/meta/bloody-hell" exact>
-                        <BloodyHellPage/>
-                    </Route>
-                    <Route path="/meta/turtle" exact>
-                        <TurtlePage/>
-                    </Route>
+                        <Route path="/gearing" exact>
+                            <GearingHomePage/>
+                        </Route>
+                        <Route path="/gearing/gear" exact>
+                            <Markdown md={gear}/>
+                        </Route>
+                        <Route path="/gearing/orbs" exact>
+                            <Markdown md={orbs}/>
+                        </Route>
+                        <Route path="/gearing/artifacts" exact>
+                            <Markdown md={artifacts}/>
+                        </Route>
+                        <Route path="/gearing/collections" exact>
+                            <Markdown md={collections}/>
+                        </Route>
+                        <Route path="/gearing/reforging" exact>
+                            <ReforgingPage/>
+                        </Route>
+                        <Route path="/gearing/stat-priorities" exact>
+                            <Markdown md={statPriorities}/>
+                        </Route>
 
-                    <Route path="/campaign" exact>
-                        <CampaignHomePage/>
-                    </Route>
-                    <Route path="/campaign/faerie-wrath" exact>
-                        <FaerieWrathPage/>
-                    </Route>
-                    <Route path="/campaign/phoenix" exact>
-                        <PhoenixPage/>
-                    </Route>
-                    <Route path="/campaign/shinobi" exact>
-                        <ShinobiPage/>
-                    </Route>
+                        <Route path="/meta" exact>
+                            <MetaBuildHomePage/>
+                        </Route>
+                        <Route path="/meta/bloody-hell" exact>
+                            <BloodyHellPage/>
+                        </Route>
+                        <Route path="/meta/turtle" exact>
+                            <TurtlePage/>
+                        </Route>
 
-                    <Route path="/battle-event" exact>
-                        <BattleEventHomePage/>
-                    </Route>
-                    <Route path="/battle-event/red" exact>
-                        <RedBattleEventPage/>
-                    </Route>
-                    <Route path="/battle-event/blue" exact>
-                        <BlueBattleEventPage/>
-                    </Route>
-                    <Route path="/battle-event/guild-strategy" exact>
-                        <GuildBattleEventStrategyPage/>
-                    </Route>
-                    <Route path="/battle-event/red-guild-striker" exact>
-                        <RedGuildStrikerPage/>
-                    </Route>
-                    <Route path="/battle-event/blue-guild-striker" exact>
-                        <BlueGuildStrikerPage/>
-                    </Route>
+                        <Route path="/campaign" exact>
+                            <CampaignHomePage/>
+                        </Route>
+                        <Route path="/campaign/faerie-wrath" exact>
+                            <FaerieWrathPage/>
+                        </Route>
+                        <Route path="/campaign/phoenix" exact>
+                            <PhoenixPage/>
+                        </Route>
+                        <Route path="/campaign/shinobi" exact>
+                            <ShinobiPage/>
+                        </Route>
 
-                    <Route path="/arena" exact>
-                        <ArenaHomePage/>
-                    </Route>
-                    <Route path="/arena/strategy" exact>
-                        <StrategyPage/>
-                    </Route>
-                    <Route path="/arena/fire-blaster" exact>
-                        <FireBlasterPage/>
-                    </Route>
-                    <Route path="/arena/icy-cannon" exact>
-                        <IcyCannonPage/>
-                    </Route>
-                    <Route path="/arena/booming-turtle" exact>
-                        <BoomingTurtlePage/>
-                    </Route>
-                    <Route path="/arena/warding-fang" exact>
-                        <WardingFangPage/>
-                    </Route>
-                    <Route path="/arena/the-farmer" exact>
-                        <FarmerPage/>
-                    </Route>
+                        <Route path="/battle-event" exact>
+                            <BattleEventHomePage/>
+                        </Route>
+                        <Route path="/battle-event/red" exact>
+                            <RedBattleEventPage/>
+                        </Route>
+                        <Route path="/battle-event/blue" exact>
+                            <BlueBattleEventPage/>
+                        </Route>
+                        <Route path="/battle-event/guild-strategy" exact>
+                            <GuildBattleEventStrategyPage/>
+                        </Route>
+                        <Route path="/battle-event/red-guild-striker" exact>
+                            <RedGuildStrikerPage/>
+                        </Route>
+                        <Route path="/battle-event/blue-guild-striker" exact>
+                            <BlueGuildStrikerPage/>
+                        </Route>
 
-                    <Route path="/currencies" exact>
-                        <CurrenciesHomePage/>
-                    </Route>
-                    <Route path="/currencies/primary" exact>
-                        <PrimaryCurrencyPage/>
-                    </Route>
-                    <Route path="/currencies/secondary" exact>
-                        <SecondaryCurrencyPage/>
-                    </Route>
-                    <Route path="/currencies/shop" exact>
-                        <ShopCurrencyPage/>
-                    </Route>
+                        <Route path="/arena" exact>
+                            <ArenaHomePage/>
+                        </Route>
+                        <Route path="/arena/strategy" exact>
+                            <StrategyPage/>
+                        </Route>
+                        <Route path="/arena/fire-blaster" exact>
+                            <FireBlasterPage/>
+                        </Route>
+                        <Route path="/arena/icy-cannon" exact>
+                            <IcyCannonPage/>
+                        </Route>
+                        <Route path="/arena/booming-turtle" exact>
+                            <BoomingTurtlePage/>
+                        </Route>
+                        <Route path="/arena/warding-fang" exact>
+                            <WardingFangPage/>
+                        </Route>
+                        <Route path="/arena/the-farmer" exact>
+                            <FarmerPage/>
+                        </Route>
 
-                    <Route path="/indexes" exact>
-                        <IndexHomePage/>
-                    </Route>
-                    <Route path="/indexes/gear" exact>
-                        <ItemIndexPage/>
-                    </Route>
-                    <Route path="/item/:id" component={ItemPage}/>
-                    <Route path="/indexes/orb" exact>
-                        <OrbIndexPage/>
-                    </Route>
-                    <Route path="/indexes/hard-boss-stats" exact>
-                        <HardBossStatsIndexPage/>
-                    </Route>
-                    <Route path="/indexes/guild-boss-stats" exact>
-                        <GuildBossStatsIndexPage/>
-                    </Route>
+                        <Route path="/currencies" exact>
+                            <CurrenciesHomePage/>
+                        </Route>
+                        <Route path="/currencies/primary" exact>
+                            <PrimaryCurrencyPage/>
+                        </Route>
+                        <Route path="/currencies/secondary" exact>
+                            <SecondaryCurrencyPage/>
+                        </Route>
+                        <Route path="/currencies/shop" exact>
+                            <ShopCurrencyPage/>
+                        </Route>
 
-                    <Route path="/tools" exact>
-                        <ToolsHomePage/>
-                    </Route>
-                    <Route path="/tools/monster-slayer-calc" exact>
-                        <MonsterSlayerCalcPage/>
-                    </Route>
-                    <Route path="/tools/qe-smelting-calc" exact>
-                        <QeSmeltingCalcPage/>
-                    </Route>
-                    <Route path="/tools/orb-calc" exact>
-                        <OrbCalcPage/>
-                    </Route>
-                    <Route path="/tools/ql-bot" exact>
-                        <DiscordBotPage/>
-                    </Route>
-                    <Route path="/tools/public-api" exact>
-                        <PublicAPIPage/>
-                    </Route>
-                    <Route path="/tools/guild-lookup" exact>
-                        <GuildLookupPage/>
-                    </Route>
-                    <Route path="/tools/guild-be-plan" exact>
-                        <GuildBattleEventPlanner/>
-                    </Route>
+                        <Route path="/indexes" exact>
+                            <IndexHomePage/>
+                        </Route>
+                        <Route path="/indexes/gear" exact>
+                            <ItemIndexPage/>
+                        </Route>
+                        <Route path="/item/:id" component={ItemPage}/>
+                        <Route path="/indexes/orb" exact>
+                            <OrbIndexPage/>
+                        </Route>
+                        <Route path="/indexes/hard-boss-stats" exact>
+                            <HardBossStatsIndexPage/>
+                        </Route>
+                        <Route path="/indexes/guild-boss-stats" exact>
+                            <GuildBossStatsIndexPage/>
+                        </Route>
 
-                    <Route path="/about" exact>
-                        <Markdown md={about}/>
-                    </Route>
-                </Switch>
-            </Chrome>
-        </Router>
-    </Provider>
-);
+                        <Route path="/tools" exact>
+                            <ToolsHomePage/>
+                        </Route>
+                        <Route path="/tools/monster-slayer-calc" exact>
+                            <MonsterSlayerCalcPage/>
+                        </Route>
+                        <Route path="/tools/qe-smelting-calc" exact>
+                            <QeSmeltingCalcPage/>
+                        </Route>
+                        <Route path="/tools/orb-calc" exact>
+                            <OrbCalcPage/>
+                        </Route>
+                        <Route path="/tools/ql-bot" exact>
+                            <DiscordBotPage/>
+                        </Route>
+                        <Route path="/tools/public-api" exact>
+                            <PublicAPIPage/>
+                        </Route>
+                        <Route path="/tools/guild-lookup" exact>
+                            <GuildLookupPage/>
+                        </Route>
+                        <Route path="/tools/guild-be-plan" exact>
+                            <GuildBattleEventPlanner/>
+                        </Route>
+
+                        <Route path="/about" exact>
+                            <Markdown md={about}/>
+                        </Route>
+                    </Switch>
+                </Chrome>
+            </Router>
+        </Provider>
+    );
+};
