@@ -25,11 +25,10 @@ have been.
 
 ## Developers deploy to GCE
 - Gcloud SDK + gcp project with billing enabled is needed
-- you need a local environment variables file `env_variables.yaml` with Google Analytics settings
+- you need a local environment variables file `env_variables.yaml` with Google Tag Manager settings
 ```yaml
 env_variables:
-  REACT_APP_GA_TRACKING_ID: 'MEASUREMENT_ID_GOES_HERE'
-  REACT_APP_GA_DEBUG: 'false'
+  REACT_APP_GTM_ID: 'GTM-59N8KB2'
 ```
 - `yarn build`
 - `gcloud app deploy app.yaml -v 1`
