@@ -54,7 +54,6 @@ import {GuildBattleEventPlanner} from './pages/tools/GuildBattleEventPlanner';
 import {QeSmeltingCalcPage} from './pages/tools/QeSmeltingCalcPage';
 import {OrbCalcPage} from './pages/tools/OrbCalcPage';
 import {Markdown} from "./components/Markdown";
-import beginnerTips from './pages/guides/beginner-tips.md'
 import artifacts from './pages/gearing/artifacts.md'
 import collections from './pages/gearing/collections.md'
 import gear from './pages/gearing/gear.md'
@@ -69,6 +68,7 @@ import {ShinobiPage} from "./pages/campaign/ShinobiPage";
 import {MetaBuildHomePage} from "./pages/meta/MetaBuildHomePage";
 import {BloodyHellPage} from "./pages/meta/BloodyHellPage";
 import {TurtlePage} from "./pages/meta/TurtlePage";
+import {BeginnerTipsPage} from "./pages/guides/BeginnerTipsGuide";
 
 const store = createStore(
     rootReducer,
@@ -299,7 +299,7 @@ export const App: React.FC = () => {
                             <GuidesHomePage/>
                         </Route>
                         <Route path="/guides/beginner-tips" exact>
-                            <Markdown md={beginnerTips}/>
+                            <BeginnerTipsPage />
                         </Route>
 
                         <Route path="/gearing" exact>
