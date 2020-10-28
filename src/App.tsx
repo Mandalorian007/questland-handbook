@@ -12,7 +12,7 @@ import {NavItemGroup} from './components/RoutableNavList';
 import {GuidesHomePage} from './pages/guides/GuidesHomePage';
 import {IndexHomePage} from './pages/indexes/IndexHomePage';
 import {OrbIndexPage} from './pages/indexes/OrbIndexPage';
-import {GearingHomePage} from './pages/gearing/GearingHomePage';
+import {GearSystemHomePage} from './pages/gearing/GearSystemHomePage';
 import {ItemIndexPage} from './pages/indexes/ItemIndexPage';
 import {MonsterSlayerCalcPage} from './pages/tools/MonsterSlayerCalcPage';
 import {ToolsHomePage} from './pages/tools/ToolsHomePage';
@@ -58,7 +58,7 @@ import artifacts from './pages/gearing/artifacts.md'
 import collections from './pages/gearing/collections.md'
 import gear from './pages/gearing/gear.md'
 import orbs from './pages/gearing/orbs.md'
-import statPriorities from './pages/gearing/statPriorities.md'
+import statPriorities from './pages/guides/statPriorities.md'
 import about from './pages/about/about.md'
 import {ItemPage} from "./pages/indexes/ItemPage";
 import {CampaignHomePage} from "./pages/campaign/CampaignHomePage";
@@ -69,6 +69,7 @@ import {MetaBuildHomePage} from "./pages/meta/MetaBuildHomePage";
 import {BloodyHellPage} from "./pages/meta/BloodyHellPage";
 import {TurtlePage} from "./pages/meta/TurtlePage";
 import {BeginnerTipsPage} from "./pages/guides/BeginnerTipsGuide";
+import {GearDesignPage} from "./pages/guides/GearDesignPage";
 
 const store = createStore(
     rootReducer,
@@ -86,37 +87,41 @@ const navItemGroups: NavItemGroup[] = [
             {
                 label: 'Beginner Tips',
                 to: '/guides/beginner-tips'
+            },
+            {
+                label: 'Stat Priorities',
+                to: '/guides/stat-priorities'
+            },
+            {
+                label: 'Gear Design',
+                to: '/guides/gear-design'
             }
         ]
     },
     {
-        label: 'Gearing',
-        to: '/gearing',
+        label: 'Gear system',
+        to: '/gear-system',
         icon: <HeroIcon/>,
         navItems: [
             {
                 label: 'Gear',
-                to: '/gearing/gear'
+                to: '/gear-system/gear'
             },
             {
                 label: 'Orbs',
-                to: '/gearing/orbs'
+                to: '/gear-system/orbs'
             },
             {
                 label: 'Artifacts',
-                to: '/gearing/artifacts'
+                to: '/gear-system/artifacts'
             },
             {
                 label: 'Collections',
-                to: '/gearing/collections'
+                to: '/gear-system/collections'
             },
             {
                 label: 'Reforging',
-                to: '/gearing/reforging'
-            },
-            {
-                label: 'Stat Priorities',
-                to: '/gearing/stat-priorities'
+                to: '/gear-system/reforging'
             }
         ]
     },
@@ -301,27 +306,30 @@ export const App: React.FC = () => {
                         <Route path="/guides/beginner-tips" exact>
                             <BeginnerTipsPage />
                         </Route>
-
-                        <Route path="/gearing" exact>
-                            <GearingHomePage/>
+                        <Route path="/guides/stat-priorities" exact>
+                            <Markdown md={statPriorities}/>
                         </Route>
-                        <Route path="/gearing/gear" exact>
+                        <Route path="/guides/gear-design" exact>
+                            <GearDesignPage />
+                        </Route>
+
+                        <Route path="/gear-system" exact>
+                            <GearSystemHomePage/>
+                        </Route>
+                        <Route path="/gear-system/gear" exact>
                             <Markdown md={gear}/>
                         </Route>
-                        <Route path="/gearing/orbs" exact>
+                        <Route path="/gear-system/orbs" exact>
                             <Markdown md={orbs}/>
                         </Route>
-                        <Route path="/gearing/artifacts" exact>
+                        <Route path="/gear-system/artifacts" exact>
                             <Markdown md={artifacts}/>
                         </Route>
-                        <Route path="/gearing/collections" exact>
+                        <Route path="/gear-system/collections" exact>
                             <Markdown md={collections}/>
                         </Route>
-                        <Route path="/gearing/reforging" exact>
+                        <Route path="/gear-system/reforging" exact>
                             <ReforgingPage/>
-                        </Route>
-                        <Route path="/gearing/stat-priorities" exact>
-                            <Markdown md={statPriorities}/>
                         </Route>
 
                         <Route path="/meta" exact>
