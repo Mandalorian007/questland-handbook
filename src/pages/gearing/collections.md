@@ -21,6 +21,3 @@ The perfect scenario would be that every attack, magic, and defense slot that ha
 Then, the health slots provide additional space to fill gear links, ideally with high health stats. In reality, this is very hard which is why most players wear multiple sets to make collections more effective.
 
 Hopefully in the future we will have a tool to "auto-solve" collections for you.
-
-## Understanding collections with respect to balanced vs focused builds
-[Collection Analysis](https://docs.google.com/document/d/17YQPAsSc0ceVwgv_ZUADImQBwBXqGmeoipztyUZb3EM) for gear over 200 potential (content will be reworked here eventually)
