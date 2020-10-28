@@ -2,6 +2,7 @@
 #service: questland-handbook
 service: default
 runtime: nodejs12
+
 manual_scaling:
   instances: 1
 
@@ -14,6 +15,3 @@ handlers:
   - url: /.*
     static_files: build/index.html
     upload: build/index.html
-
-includes:
-  - env_variables.yaml
