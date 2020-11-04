@@ -70,6 +70,7 @@ import {BloodyHellPage} from "./pages/meta/BloodyHellPage";
 import {TurtlePage} from "./pages/meta/TurtlePage";
 import {BeginnerTipsPage} from "./pages/guides/BeginnerTipsGuide";
 import {GearDesignPage} from "./pages/guides/GearDesignPage";
+import {OptimizedGearSetsPage} from "./pages/gearing/OptimizedGearSetsPage";
 
 const store = createStore(
     rootReducer,
@@ -122,6 +123,10 @@ const navItemGroups: NavItemGroup[] = [
             {
                 label: 'Reforging',
                 to: '/gear-system/reforging'
+            },
+            {
+                label: 'Optimized Gear Sets',
+                to: '/gear-system/optimized-gear-sets'
             }
         ]
     },
@@ -291,7 +296,7 @@ export const App: React.FC = () => {
     };
     TagManager.initialize(tagManagerArgs);
 
-    return(
+    return (
         <Provider store={store}>
             <Router>
                 <Chrome title="Questland Handbook" navItemGroups={navItemGroups}>
@@ -304,13 +309,13 @@ export const App: React.FC = () => {
                             <GuidesHomePage/>
                         </Route>
                         <Route path="/guides/beginner-tips" exact>
-                            <BeginnerTipsPage />
+                            <BeginnerTipsPage/>
                         </Route>
                         <Route path="/guides/stat-priorities" exact>
                             <Markdown md={statPriorities}/>
                         </Route>
                         <Route path="/guides/gear-design" exact>
-                            <GearDesignPage />
+                            <GearDesignPage/>
                         </Route>
 
                         <Route path="/gear-system" exact>
@@ -330,6 +335,9 @@ export const App: React.FC = () => {
                         </Route>
                         <Route path="/gear-system/reforging" exact>
                             <ReforgingPage/>
+                        </Route>
+                        <Route path="/gear-system/optimized-gear-sets" exact>
+                            <OptimizedGearSetsPage/>
                         </Route>
 
                         <Route path="/meta" exact>

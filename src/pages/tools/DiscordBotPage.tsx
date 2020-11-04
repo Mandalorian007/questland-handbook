@@ -18,9 +18,8 @@ export const DiscordBotPage = () => (
                         <Typography align='center' variant='h5'>QL Bot is a Discord Bot designed to help you and your
                             friends enjoy Questland.</Typography>
                     </Grid>
-                    {/*TODO add a video guide for the QL Bot
-                    <Grid>
-                        <ReactPlayer url={'https://youtu.be/hrV_gbvAWbU'}/>
+                    {/*<Grid>
+                        <ReactPlayer url={'https://youtu.be/9fRcxFtwOgQ'}/>
                     </Grid>*/}
                     <DiscordBotFeature
                         title='Daily Boss build lookup'
@@ -39,15 +38,16 @@ export const DiscordBotPage = () => (
                         textFirst={true}/>
                     <Grid>
                         <Typography align='center' variant='h3'>Connect QL Bot to your server!</Typography>
-                        <Typography align='center' variant='subtitle1'>You can invite QL Bot to your server here! Just select your server in the dropdown menu,
+                        <Typography align='center' variant='subtitle1'>You can invite QL Bot to your server here! Just
+                            select your server in the dropdown menu,
                             and ensure that "Read Messages", "Send Messages", "Embed Links", and "Attach Files" are
                             enabled!</Typography>
                     </Grid>
                     <Grid>
-                            <Button color='primary' variant='contained'
-                                    href='https://discordapp.com/oauth2/authorize?client_id=675765765395316740&scope=bot'>
-                                Connect QL Bot
-                            </Button>
+                        <Button color='primary' variant='contained'
+                                href='https://discordapp.com/oauth2/authorize?client_id=675765765395316740&scope=bot'>
+                            Connect QL Bot
+                        </Button>
                     </Grid>
                 </Grid>
             </Grid>
