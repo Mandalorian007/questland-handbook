@@ -20,9 +20,9 @@ export interface Hero {
   heroPvpRank: number;
   collection1Slots: CollectionSlots;
   collection2Slots: CollectionSlots;
-  equippedGear: Gear[];
-  collections1: Gear[];
-  collections2: Gear[];
+  equippedGear: EquippedGear[];
+  collections1: EquippedGear[];
+  collections2: EquippedGear[];
   battleEventMulti: number;
   row1Bonus: string;
   row2Bonus: string;
@@ -35,7 +35,7 @@ export interface CollectionSlots {
   slotUpgradePercentages: number[];
 }
 
-export interface Gear {
+export interface EquippedGear {
   id: number;
   level: number;
   boost: number;
@@ -45,10 +45,10 @@ export interface Gear {
   attackReforge: number;
   defenseReforge: number;
   magicReforge: number;
-  socketedOrbs: Orb[];
+  socketedOrbs: EquippedOrb[];
 }
 
-export interface Orb {
+export interface EquippedOrb {
   id: number;
   level: number;
   enhance: number;

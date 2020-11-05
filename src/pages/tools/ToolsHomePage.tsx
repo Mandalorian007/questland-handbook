@@ -8,6 +8,7 @@ const tileDataList: TileData[] = [
   { title: 'QL Bot for Discord', to: '/tools/ql-bot' },
   { title: 'Questland Public API', to: '/tools/public-api' },
   { title: 'Guild Lookup', to: '/tools/guild-lookup' },
+  { title: 'Hero Lookup', to: '/tools/hero-lookup' },
   { title: 'Guild Battle Event Planner', to: '/tools/guild-be-plan' }
 ];
 

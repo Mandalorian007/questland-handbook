@@ -71,6 +71,7 @@ import {TurtlePage} from "./pages/meta/TurtlePage";
 import {BeginnerTipsPage} from "./pages/guides/BeginnerTipsGuide";
 import {GearDesignPage} from "./pages/guides/GearDesignPage";
 import {OptimizedGearSetsPage} from "./pages/gearing/OptimizedGearSetsPage";
+import {HeroLookupPage} from "./pages/tools/HeroLookupPage";
 
 const store = createStore(
     rootReducer,
@@ -282,6 +283,10 @@ const navItemGroups: NavItemGroup[] = [
                 to: '/tools/guild-lookup'
             },
             {
+                label: 'Hero Lookup',
+                to: '/tools/hero-lookup'
+            },
+            {
                 label: 'Guild Battle Event Planner',
                 to: '/tools/guild-be-plan'
             }
@@ -454,6 +459,9 @@ export const App: React.FC = () => {
                         </Route>
                         <Route path="/tools/guild-lookup" exact>
                             <GuildLookupPage/>
+                        </Route>
+                        <Route path="/tools/hero-lookup" exact>
+                            <HeroLookupPage/>
                         </Route>
                         <Route path="/tools/guild-be-plan" exact>
                             <GuildBattleEventPlanner/>
