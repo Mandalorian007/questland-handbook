@@ -79,6 +79,11 @@ const store = createStore(
     applyMiddleware(thunk)
 );
 
+// Declare gTM dataLayer array.
+declare global {
+    interface Window { dataLayer: any[]; }
+}
+
 const navItemGroups: NavItemGroup[] = [
     {label: 'Home', to: '/', icon: <HomeIcon/>, navItems: []},
     {
@@ -300,6 +305,10 @@ export const App: React.FC = () => {
         gtmId: process.env.REACT_APP_GTM_ID || '',
     };
     TagManager.initialize(tagManagerArgs);
+
+    window.dataLayer.push({
+        event: 'pageview'
+    });
 
     return (
         <Provider store={store}>
