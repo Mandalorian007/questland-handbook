@@ -13,7 +13,7 @@ import {
     TableBody,
     TableCell,
     TableContainer,
-    TableHead
+    TableHead, TableRow
 } from '@material-ui/core';
 import {loadItems} from '../../store/itemActions';
 import {Item} from '../../domain/item';
@@ -296,24 +296,27 @@ const ItemPageInternal: React.FC<{}> = () => {
                             <TableContainer component={Paper}>
                                 <Table>
                                     <TableHead>
-                                        <TableCell>Health</TableCell>
-                                        <TableCell>Attack</TableCell>
-                                        <TableCell>Defense</TableCell>
-                                        <TableCell>Magic</TableCell>
+                                        <TableRow>
+                                            <TableCell>Health</TableCell>
+                                            <TableCell>Attack</TableCell>
+                                            <TableCell>Defense</TableCell>
+                                            <TableCell>Magic</TableCell>
+                                        </TableRow>
                                     </TableHead>
                                     <TableBody>
-                                        <TableCell>{`${item.health} (${item.healthPotential})`}</TableCell>
-                                        <TableCell>{`${item.attack} (${item.attackPotential})`}</TableCell>
-                                        <TableCell>{`${item.defense} (${item.defensePotential})`}</TableCell>
-                                        <TableCell>{`${item.magic} (${item.magicPotential})`}</TableCell>
+                                        <TableRow>
+                                            <TableCell>{`${item.health} (${item.healthPotential})`}</TableCell>
+                                            <TableCell>{`${item.attack} (${item.attackPotential})`}</TableCell>
+                                            <TableCell>{`${item.defense} (${item.defensePotential})`}</TableCell>
+                                            <TableCell>{`${item.magic} (${item.magicPotential})`}</TableCell>
+                                        </TableRow>
                                     </TableBody>
                                 </Table>
                             </TableContainer>
                         </CardContent>
                     </div>
                     <Hidden xsDown>
-                        <CardMedia className={classes.cardMedia}
-                                   image={item.fullGraphicsUrl}/>
+                        <CardMedia component="img" image={item.fullGraphicsUrl} className={classes.cardMedia}/>
                     </Hidden>
                 </Card>
             </Grid>
