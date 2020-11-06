@@ -161,7 +161,7 @@ const ItemPageInternal: React.FC<{}> = () => {
     const getItemLinkDetails = (cols: number) => {
         if (item.itemBonus && item.itemBonus !== Stat.None) {
             return (
-                <GridList cellHeight={180} spacing={16} cols={cols}>
+                <GridList cellHeight={200} spacing={16} cols={cols}>
                     <GridListTile>
                         <ItemCard item={resolveItem(item.itemLink1)}/>
                     </GridListTile>
@@ -249,7 +249,7 @@ const ItemPageInternal: React.FC<{}> = () => {
     const getArtifactDetails = (cols: number) => {
         return (
             <Grid item xs={12} md={12}>
-                <GridList cellHeight={140} spacing={16} cols={cols}>
+                <GridList cellHeight={160} spacing={16} cols={cols}>
                     {artifactItems.map(artifactItem =>
                         <GridListTile key={artifactItem.id}>
                             <ArtifactItemCard item={artifactItem}/>
