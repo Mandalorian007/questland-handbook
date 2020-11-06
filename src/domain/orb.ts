@@ -14,6 +14,7 @@ export interface Orb {
   magicPotential: number;
   defensePotential: number;
   healthPotential: number;
+  iconGraphicsUrl: string;
 }
 
 export interface ServerOrb {
@@ -29,6 +30,7 @@ export interface ServerOrb {
   magicPotential: number;
   defensePotential: number;
   healthPotential: number;
+  iconGraphicsUrl: string;
 }
 
 export const serverOrbToOrb = (serverOrb: ServerOrb): Orb => ({

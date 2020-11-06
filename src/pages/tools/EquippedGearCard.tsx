@@ -30,7 +30,8 @@ export const EquippedGearCard: React.FC<{
                 magicPotential: 0,
                 name: "Missing Orb",
                 quality: Quality.Legendary,
-                statBonus: Stat.None
+                statBonus: Stat.None,
+                iconGraphicsUrl: "",
             };
     };
 

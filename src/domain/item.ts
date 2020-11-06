@@ -8,6 +8,7 @@ export interface Item {
   name: string;
   quality: Quality;
   itemSlot: ItemSlot;
+  extractCost: number;
   totalPotential: number;
   attack: number;
   magic: number;
@@ -30,6 +31,8 @@ export interface Item {
   passive1Description?: string;
   passive2Name?: string;
   passive2Description?: string;
+  iconGraphicsUrl: string;
+  fullGraphicsUrl: string;
 }
 
 export interface ServerItem {
@@ -37,6 +40,7 @@ export interface ServerItem {
   name: string;
   quality: string;
   itemSlot: string;
+  extractCost: number;
   totalPotential: number;
   attack: number;
   magic: number;
@@ -59,6 +63,8 @@ export interface ServerItem {
   passive1Description?: string;
   passive2Name?: string;
   passive2Description?: string;
+  iconGraphicsUrl: string;
+  fullGraphicsUrl: string;
 }
 
 export const serverItemToItem = (serverItem: ServerItem): Item => ({

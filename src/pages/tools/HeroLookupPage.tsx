@@ -300,7 +300,10 @@ const missingItem: Item = {
     orbBonus: Stat.None,
     quality: Quality.Legendary,
     reforgePointsPerLevel: 0,
-    totalPotential: 0
+    totalPotential: 0,
+    extractCost: 0,
+    fullGraphicsUrl: "",
+    iconGraphicsUrl: "",
 };
 
 const getItemFromEquippedGear = (id: number, items: Item[]) => {
@@ -324,7 +327,8 @@ const getOrbsFromEquippedOrbs = (equippedOrbs: EquippedOrb[], orbs: Orb[]) => {
                 magicPotential: 0,
                 name: "Missing Orb",
                 quality: Quality.Legendary,
-                statBonus: Stat.None
+                statBonus: Stat.None,
+                iconGraphicsUrl: "",
             };
     })
 };

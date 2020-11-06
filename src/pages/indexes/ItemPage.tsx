@@ -53,8 +53,10 @@ const emptyItem: Item = {
     name: "Item not found",
     orbBonus: Stat.None,
     quality: Quality.Legendary,
-    totalPotential: 0
-
+    totalPotential: 0,
+    extractCost: 0,
+    fullGraphicsUrl: "",
+    iconGraphicsUrl: "",
 };
 
 const emptyOrb: Orb = {
@@ -69,8 +71,8 @@ const emptyOrb: Orb = {
     magicPotential: 0,
     name: "Unknown Orb",
     quality: Quality.Legendary,
-    statBonus: Stat.None
-
+    statBonus: Stat.None,
+    iconGraphicsUrl: "",
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -311,7 +313,7 @@ const ItemPageInternal: React.FC<{}> = () => {
                     </div>
                     <Hidden xsDown>
                         <CardMedia className={classes.cardMedia}
-                                   image={'https://www.questland-handbook.com/Knight%20of%20Tempest%20Image.png'}/>
+                                   image={item.fullGraphicsUrl}/>
                     </Hidden>
                 </Card>
             </Grid>

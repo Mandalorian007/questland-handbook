@@ -372,7 +372,7 @@ export const ItemIndexPage: React.FC<{}> = () => {
                 </AccordionDetails>
             </Accordion>
             <GridList cellHeight={180} spacing={16} cols={useGridListCols()} className={classes.itemList}>
-                {displayedItems.map((item, index) => {
+                {displayedItems.slice(0,50).map((item, index) => {
                     return (
                         <GridListTile key={index} cols={1}>
                             <ItemCard item={item}/>
