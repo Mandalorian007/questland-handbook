@@ -106,14 +106,18 @@ export const ItemIndexPage: React.FC<{}> = () => {
     ) => {
         let items: Item[] = itemSource;
         if (singleSearch === null) {
-            items = items.filter(item =>
-                qualities.includes(item.quality)
-            );
-            items = items.filter(item => emblems.includes(item.emblem));
             items = items.filter(item => qualities.includes(item.quality));
+            items = items.filter(item => emblems.includes(item.emblem));
             items = items.filter(item => itemSlots.includes(item.itemSlot));
-            items = items.filter(item => passive1s.includes(item.passive1Name?.trim()));
-            items = items.filter(item => passive2s.includes(item.passive2Name?.trim()));
+            //ensure they load
+            if (selected1Passives.length > 0 && selected1Passives.length < 2) {
+                console.log(selected1Passives);
+                items = items.filter(item => passive1s.includes(item.passive1Name?.trim()));
+            }
+            if (selected2Passives.length > 0 && selected1Passives.length < 2) {
+                console.log(selected2Passives);
+                items = items.filter(item => passive2s.includes(item.passive2Name?.trim()));
+            }
         } else {
             items = items.filter(item => item.name === singleSearch);
         }
@@ -149,20 +153,20 @@ export const ItemIndexPage: React.FC<{}> = () => {
         const passives = event.target.value as string;
         let passivesToSet: (string | undefined)[];
         if (passives === 'All') {
-            passivesToSet = allItem1Passives;
+            passivesToSet = [];
         } else if (passives === 'None') {
             passivesToSet = [undefined];
         } else {
             passivesToSet = [passives];
         }
         setSelected1Passives(passivesToSet);
-    }
+    };
 
     const onPassive2FilterChange = (event: any) => {
         const passives = event.target.value as string;
         let passivesToSet: (string | undefined)[];
         if (passives === 'All') {
-            passivesToSet = allItem1Passives;
+            passivesToSet = [];
         } else if (passives === 'None') {
             passivesToSet = [undefined];
         } else {
@@ -285,7 +289,7 @@ export const ItemIndexPage: React.FC<{}> = () => {
                             value={getPassiveValue(selected1Passives)}
                             onChange={onPassive1FilterChange}
                         >
-                            {(['All', 'None'].concat(allItem1Passives.filter(passive => passive !== undefined) as string[])).map((passive, index) => {
+                            {(['All', 'None'].concat(allItem1Passives.sort().filter(passive => passive !== undefined) as string[])).map((passive, index) => {
                                     return <MenuItem key={index} value={passive}>{passive}</MenuItem>;
                                 }
                             )}
@@ -299,7 +303,7 @@ export const ItemIndexPage: React.FC<{}> = () => {
                             value={getPassiveValue(selected2Passives)}
                             onChange={onPassive2FilterChange}
                         >
-                            {(['All', 'None'].concat(allItem2Passives.filter(passive => passive !== undefined) as string[])).map((passive, index) => {
+                            {(['All', 'None'].concat(allItem2Passives.sort().filter(passive => passive !== undefined) as string[])).map((passive, index) => {
                                     return <MenuItem key={index} value={passive}>{passive}</MenuItem>;
                                 }
                             )}
