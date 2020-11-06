@@ -12,6 +12,9 @@ export const ItemCard: React.FC<{
     return (
         <Card>
             <CardContent>
+                <Typography gutterBottom variant="subtitle1" component="h5" style={{color: getQualityColor(item.quality)}}>
+                    {`${item.name}`}
+                </Typography>
                 <Grid container direction="row" alignItems="center">
                     <img
                         src={getEmblemImgUrl(item.emblem)}
@@ -26,9 +29,6 @@ export const ItemCard: React.FC<{
                         width={24}
                         height={24}
                     />
-                    <Typography gutterBottom variant="subtitle1" component="h5" style={{color: getQualityColor(item.quality)}}>
-                        {`\xa0\xa0${item.name}`}
-                    </Typography>
                 </Grid>
                 <Typography variant="body1" color="textSecondary" component="p">
                     Potential: {item.totalPotential}

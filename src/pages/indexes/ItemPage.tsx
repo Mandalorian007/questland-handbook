@@ -152,7 +152,7 @@ const ItemPageInternal: React.FC<{}> = () => {
 
     const getItemLinkDescription = () => {
         if (item.itemBonus && item.itemBonus !== Stat.None) {
-            return `${item.itemBonus} boost item links`
+            return `Item links provide a bonus to: ${item.itemBonus.toString().toLowerCase()}`
         } else {
             return `There are no item links`
         }
@@ -161,29 +161,33 @@ const ItemPageInternal: React.FC<{}> = () => {
     const getItemLinkDetails = (cols: number) => {
         if (item.itemBonus && item.itemBonus !== Stat.None) {
             return (
-                <Grid item xs={12} md={12}>
-                    <GridList cellHeight={180} spacing={16} cols={cols}>
-                        <GridListTile>
-                            <ItemCard item={resolveItem(item.itemLink1)}/>
-                        </GridListTile>
-                        <GridListTile>
-                            <ItemCard item={resolveItem(item.itemLink2)}/>
-                        </GridListTile>
-                        <GridListTile>
-                            <ItemCard item={resolveItem(item.itemLink3)}/>
-                        </GridListTile>
-                    </GridList>
-                </Grid>
+                <GridList cellHeight={180} spacing={16} cols={cols}>
+                    <GridListTile>
+                        <ItemCard item={resolveItem(item.itemLink1)}/>
+                    </GridListTile>
+                    <GridListTile>
+                        <ItemCard item={resolveItem(item.itemLink2)}/>
+                    </GridListTile>
+                    <GridListTile>
+                        <ItemCard item={resolveItem(item.itemLink3)}/>
+                    </GridListTile>
+                </GridList>
             );
         } else {
-            return <div/>
+            return (
+                <Paper>
+                    <Typography variant="subtitle1" component="h5" paragraph align="center">
+                        No item links were found.
+                    </Typography>
+                </Paper>
+            )
         }
     };
 
     const getOrbLinkDescription = () => {
 
         if (item.itemBonus && item.itemBonus !== Stat.None) {
-            return `${item.orbBonus} boost orb links`;
+            return `Orb links provide a bonus to: ${item.orbBonus.toString().toLowerCase()}`;
         } else {
             return `There are no orb links`
         }
@@ -194,24 +198,28 @@ const ItemPageInternal: React.FC<{}> = () => {
             const id1 = item.orbLink1;
             const id2 = item.orbLink2;
             return (
-                <Grid item xs={12} md={12}>
-                    <GridList cellHeight={140} spacing={16} cols={cols}>
-                        <GridListTile>
-                            <OrbCard orb={resolveOrb(id1)}/>
+                <GridList cellHeight={140} spacing={16} cols={cols}>
+                    <GridListTile>
+                        <OrbCard orb={resolveOrb(id1)}/>
+                    </GridListTile>
+                    <GridListTile>
+                        <OrbCard orb={resolveOrb(id2)}/>
+                    </GridListTile>
+                    {artifactOrbs.map(artifactOrb =>
+                        <GridListTile key={artifactOrb.id}>
+                            <ArtifactOrbCard orb={artifactOrb}/>
                         </GridListTile>
-                        <GridListTile>
-                            <OrbCard orb={resolveOrb(id2)}/>
-                        </GridListTile>
-                        {artifactOrbs.map(artifactOrb =>
-                            <GridListTile key={artifactOrb.id}>
-                                <ArtifactOrbCard orb={artifactOrb}/>
-                            </GridListTile>
-                        )}
-                    </GridList>
-                </Grid>
+                    )}
+                </GridList>
             );
         } else {
-            return <div/>
+            return (
+                <Paper>
+                    <Typography variant="subtitle1" component="h5" paragraph align="center">
+                        No item links were found.
+                    </Typography>
+                </Paper>
+            )
         }
     };
 
@@ -321,30 +329,40 @@ const ItemPageInternal: React.FC<{}> = () => {
                 </Card>
             </Grid>
             <Grid item xs={12} md={12}>
-                <Paper>
-                    <Typography variant="subtitle1" component="h5" paragraph align="center">
-                        {getItemLinkDescription()}
-                    </Typography>
-                </Paper>
+                <Hidden smUp>
+                    <Card>
+                        <CardMedia component="img" image={item.fullGraphicsUrl}/>
+                    </Card>
+                </Hidden>
             </Grid>
-            {getItemLinkDetails(useGridListCols())}
             <Grid item xs={12} md={12}>
-                <Paper>
-                    <Typography variant="subtitle1" component="h5" paragraph align="center">
-                        {getOrbLinkDescription()}
-                    </Typography>
-                </Paper>
+                <Typography variant="h5" component="h5" paragraph align="center">
+                    {getItemLinkDescription()}
+                </Typography>
             </Grid>
-            {getOrbLinkDetails(useGridListCols())}
+            <Grid item xs={12} md={12}>
+                {getItemLinkDetails(useGridListCols())}
+            </Grid>
+            <Grid item xs={12} md={12}>
+                <Typography variant="h5" component="h5" paragraph align="center">
+                    {getOrbLinkDescription()}
+                </Typography>
+            </Grid>
+            <Grid item xs={12} md={12}>
+                {getOrbLinkDetails(useGridListCols())}
+            </Grid>
+            <Grid item xs={12} md={12}>
+                <Typography variant="h5" component="h5" paragraph align="center">
+                    Item Passives
+                </Typography>
+            </Grid>
             <Grid item xs={12} md={12}>
                 {getPassiveDetails()}
             </Grid>
             <Grid item xs={12} md={12}>
-                <Paper>
-                    <Typography variant="subtitle1" component="h5" paragraph align="center">
-                        Artifact Item versions
-                    </Typography>
-                </Paper>
+                <Typography variant="h5" component="h5" paragraph align="center">
+                    Artifact Item versions
+                </Typography>
             </Grid>
             {getArtifactDetails(useGridListCols())}
         </Grid>

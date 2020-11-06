@@ -371,7 +371,7 @@ export const ItemIndexPage: React.FC<{}> = () => {
                     </FormControl>
                 </AccordionDetails>
             </Accordion>
-            <GridList cellHeight={180} spacing={16} cols={useGridListCols()} className={classes.itemList}>
+            <GridList cellHeight={200} spacing={16} cols={useGridListCols()} className={classes.itemList}>
                 {displayedItems.slice(0,50).map((item, index) => {
                     return (
                         <GridListTile key={index} cols={1}>
