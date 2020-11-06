@@ -13,7 +13,7 @@ export const ItemCard: React.FC<{
         <Card>
             <CardContent style={{
                 backgroundRepeat: "no-repeat",
-                backgroundPosition: "right top",
+                backgroundPosition: "right bottom",
                 backgroundSize: "contain 35%",
                 backgroundImage: "url(" + item.iconGraphicsUrl + ")"
             }}>
@@ -40,7 +40,7 @@ export const ItemCard: React.FC<{
                     Potential: {item.totalPotential}
                 </Typography>
                 <Typography variant="body1" color="textSecondary" component="p">
-                    Stats (hp,atk,def,mag)
+                    Stats(hp,atk,def,mag)
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                     {item.health}, {item.attack}, {item.defense}, {item.magic}
