@@ -100,7 +100,7 @@ export const CollectionGearCard: React.FC<{
                     Boosts: {collectionGear.boost}
                 </Typography>
                 <Typography variant="body1" color="textSecondary" component="p">
-                    {`Slot Type: ${CollectionType.ONE === collectionType ? getCollectionType1Stat(collectionGear.collectionPosition) : getCollectionType2Stat(collectionGear.collectionPosition)}`}
+                    {`Slot Type: ${CollectionType.ONE === collectionType ? getCollectionType1Stat(collectionGear.collectionPosition -1) : getCollectionType2Stat(collectionGear.collectionPosition -1)}`}
                 </Typography>
                 <Typography variant="body1" color="textSecondary" component="p">
                     Slot Level: {collectionSlots.slotUpgradePercentages[collectionGear.collectionPosition - 1]}
