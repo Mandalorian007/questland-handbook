@@ -79,7 +79,6 @@ export const ItemIndexPage: React.FC<{}> = () => {
     const qualities: Quality[] = [Quality.Epic, Quality.Legendary];
     const itemSlots: ItemSlot[] = getItemSlots();
     const itemSource: Item[] = useSelector(state => state.itemState.items);
-    const [displayedItems, setDisplayedItems] = React.useState<Item[]>(itemSource);
     const [sortProperty, setSortProperty] = React.useState<keyof Item & string>('totalPotential');
     const [selectedEmblems, setSelectedEmblems] = React.useState<Emblem[]>(emblems);
     const [selectedQualities, setSelectedQualities] = React.useState<Quality[]>([Quality.Legendary]);
@@ -111,84 +110,39 @@ export const ItemIndexPage: React.FC<{}> = () => {
                 qualities.includes(item.quality)
             );
             items = items.filter(item => emblems.includes(item.emblem));
+            items = items.filter(item => qualities.includes(item.quality));
             items = items.filter(item => itemSlots.includes(item.itemSlot));
             items = items.filter(item => passive1s.includes(item.passive1Name?.trim()));
             items = items.filter(item => passive2s.includes(item.passive2Name?.trim()));
         } else {
             items = items.filter(item => item.name === singleSearch);
         }
-        items = stableSort(items, getComparator<Item>('desc', propertySort));
-        setDisplayedItems(items);
+        return stableSort(items, getComparator<Item>('desc', propertySort));
     };
 
     const onItemSearchChange = (value: string | null) => {
         const itemName = value as string | null;
         setSelectedItem(itemName);
-        configureDisplayedItems(
-            sortProperty,
-            qualities,
-            selectedEmblems,
-            selectedItemSlots,
-            selected1Passives,
-            selected2Passives,
-            itemName
-        );
     };
 
     const onSortChange = (event: React.ChangeEvent<{ value: unknown }>) => {
         const sortProperty = event.target.value as keyof Item & string;
         setSortProperty(sortProperty);
-        configureDisplayedItems(
-            sortProperty,
-            qualities,
-            selectedEmblems,
-            selectedItemSlots,
-            selected1Passives,
-            selected2Passives,
-            selectedItem
-        );
     };
 
     const onEmblemFilterChange = (event: any, values: any) => {
         const emblems = values as Emblem[];
         setSelectedEmblems(emblems);
-        configureDisplayedItems(
-            sortProperty,
-            selectedQualities,
-            emblems,
-            selectedItemSlots,
-            selected1Passives,
-            selected2Passives,
-            selectedItem
-        );
     };
 
     const onQualityFilterChange = (event: any, values: any) => {
         const qualities = values as Quality[];
         setSelectedQualities(qualities);
-        configureDisplayedItems(
-            sortProperty,
-            qualities,
-            selectedEmblems,
-            selectedItemSlots,
-            selected1Passives,
-            selected2Passives,
-            selectedItem
-        );
     };
 
     const onItemSlotFilterChange = (event: any, values: any) => {
         const itemSlots = values as ItemSlot[];
         setSelectedItemSlots(itemSlots);
-        configureDisplayedItems(
-            sortProperty,
-            selectedQualities,
-            selectedEmblems,
-            itemSlots,
-            selected1Passives,
-            selected2Passives,
-            selectedItem
-        );
     };
 
     const onPassive1FilterChange = (event: any) => {
@@ -202,16 +156,7 @@ export const ItemIndexPage: React.FC<{}> = () => {
             passivesToSet = [passives];
         }
         setSelected1Passives(passivesToSet);
-        configureDisplayedItems(
-            sortProperty,
-            selectedQualities,
-            selectedEmblems,
-            itemSlots,
-            passivesToSet,
-            selected2Passives,
-            selectedItem
-        );
-    };
+    }
 
     const onPassive2FilterChange = (event: any) => {
         const passives = event.target.value as string;
@@ -224,15 +169,6 @@ export const ItemIndexPage: React.FC<{}> = () => {
             passivesToSet = [passives];
         }
         setSelected2Passives(passivesToSet);
-        configureDisplayedItems(
-            sortProperty,
-            selectedQualities,
-            selectedEmblems,
-            itemSlots,
-            selected1Passives,
-            passivesToSet,
-            selectedItem
-        );
     };
 
     const getPassiveValue = (passives: (string | undefined)[]): string => {
@@ -372,13 +308,22 @@ export const ItemIndexPage: React.FC<{}> = () => {
                 </AccordionDetails>
             </Accordion>
             <GridList cellHeight={200} spacing={16} cols={useGridListCols()} className={classes.itemList}>
-                {displayedItems.slice(0,50).map((item, index) => {
-                    return (
-                        <GridListTile key={index} cols={1}>
-                            <ItemCard item={item}/>
-                        </GridListTile>
-                    );
-                })}
+                {configureDisplayedItems(
+                    sortProperty,
+                    selectedQualities,
+                    selectedEmblems,
+                    selectedItemSlots,
+                    selected1Passives,
+                    selected2Passives,
+                    selectedItem
+                )
+                    .slice(0, 20).map((item) => {
+                        return (
+                            <GridListTile key={item.id} cols={1}>
+                                <ItemCard item={item}/>
+                            </GridListTile>
+                        );
+                    })}
             </GridList>
         </>
     );
