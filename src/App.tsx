@@ -27,6 +27,7 @@ import HeroIcon from '@material-ui/icons/Accessibility';
 import InfoIcon from '@material-ui/icons/Info';
 import MapIcon from '@material-ui/icons/Map';
 import StarsIcon from '@material-ui/icons/Stars';
+import GavelIcon from '@material-ui/icons/Gavel';
 import {DiscordBotPage} from './pages/tools/DiscordBotPage';
 import {PublicAPIPage} from './pages/tools/PubicAPIPage';
 import {CurrenciesHomePage} from './pages/currencies/CurrenciesHomePage';
@@ -72,6 +73,7 @@ import {BeginnerTipsPage} from "./pages/guides/BeginnerTipsGuide";
 import {GearDesignPage} from "./pages/guides/GearDesignPage";
 import {OptimizedGearSetsPage} from "./pages/gearing/OptimizedGearSetsPage";
 import {HeroLookupPage} from "./pages/tools/HeroLookupPage";
+import {LicensingPage} from "./pages/licensing/LicensingPage";
 
 const store = createStore(
     rootReducer,
@@ -298,6 +300,7 @@ const navItemGroups: NavItemGroup[] = [
         ]
     },
     {label: 'About', to: '/about', icon: <InfoIcon/>, navItems: []},
+    {label: 'Licensing', to: '/licensing', icon: <GavelIcon/>, navItems: []},
 ];
 
 export const App: React.FC = () => {
@@ -478,6 +481,10 @@ export const App: React.FC = () => {
 
                         <Route path="/about" exact>
                             <Markdown md={about}/>
+                        </Route>
+
+                        <Route path="/licensing" exact>
+                            <LicensingPage/>
                         </Route>
                     </Switch>
                 </Chrome>
