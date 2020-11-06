@@ -175,7 +175,8 @@ export const ItemIndexPage: React.FC<{}> = () => {
         setSelected2Passives(passivesToSet);
     };
 
-    const getPassiveValue = (passives: (string | undefined)[]): string => {
+    //Note: all passives is present because of awkwardness around react's page refresh
+    const getPassiveValue = (passives: (string | undefined)[], allPassives: (string | undefined)[]): string => {
         if (passives.length === 1) {
             if (passives[0] === undefined) {
                 return 'None'
@@ -286,7 +287,7 @@ export const ItemIndexPage: React.FC<{}> = () => {
                         <Select
                             labelId="passive-1-select-label"
                             id="passive-1-select"
-                            value={getPassiveValue(selected1Passives)}
+                            value={getPassiveValue(selected1Passives, allItem1Passives)}
                             onChange={onPassive1FilterChange}
                         >
                             {(['All', 'None'].concat(allItem1Passives.sort().filter(passive => passive !== undefined) as string[])).map((passive, index) => {
@@ -300,7 +301,7 @@ export const ItemIndexPage: React.FC<{}> = () => {
                         <Select
                             labelId="passive-2-select-label"
                             id="passive-2-select"
-                            value={getPassiveValue(selected2Passives)}
+                            value={getPassiveValue(selected2Passives, allItem2Passives)}
                             onChange={onPassive2FilterChange}
                         >
                             {(['All', 'None'].concat(allItem2Passives.sort().filter(passive => passive !== undefined) as string[])).map((passive, index) => {
