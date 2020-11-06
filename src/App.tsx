@@ -9,13 +9,9 @@ import {AppState, rootReducer} from './store/rootReducer';
 import {Provider} from 'react-redux';
 import {HomePage} from './pages/home/HomePage';
 import {NavItemGroup} from './components/RoutableNavList';
-import {GuidesHomePage} from './pages/guides/GuidesHomePage';
-import {IndexHomePage} from './pages/indexes/IndexHomePage';
 import {OrbIndexPage} from './pages/indexes/OrbIndexPage';
-import {GearSystemHomePage} from './pages/gearing/GearSystemHomePage';
 import {ItemIndexPage} from './pages/indexes/ItemIndexPage';
 import {MonsterSlayerCalcPage} from './pages/tools/MonsterSlayerCalcPage';
-import {ToolsHomePage} from './pages/tools/ToolsHomePage';
 import HomeIcon from '@material-ui/icons/Home';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import ListIcon from '@material-ui/icons/List';
@@ -30,17 +26,14 @@ import StarsIcon from '@material-ui/icons/Stars';
 import GavelIcon from '@material-ui/icons/Gavel';
 import {DiscordBotPage} from './pages/tools/DiscordBotPage';
 import {PublicAPIPage} from './pages/tools/PubicAPIPage';
-import {CurrenciesHomePage} from './pages/currencies/CurrenciesHomePage';
 import {PrimaryCurrencyPage} from './pages/currencies/PrimaryCurrencyPage';
 import {SecondaryCurrencyPage} from './pages/currencies/SecondaryCurrencyPage';
 import {ShopCurrencyPage} from './pages/currencies/ShopCurrencyPage';
-import {ArenaHomePage} from './pages/arena/ArenaHomePage';
 import {FireBlasterPage} from './pages/arena/FireBlasterPage';
 import {IcyCannonPage} from './pages/arena/IcyCannonPage';
 import {BoomingTurtlePage} from './pages/arena/BoomingTurtlePage';
 import {WardingFangPage} from './pages/arena/WardingFangPage';
 import {StrategyPage} from './pages/arena/StrategyPage';
-import {BattleEventHomePage} from './pages/battleevent/BattleEventHomePage';
 import {RedBattleEventPage} from './pages/battleevent/RedBattleEventPage';
 import {BlueBattleEventPage} from './pages/battleevent/BlueBattleEventPage';
 import {GuildBattleEventStrategyPage} from './pages/battleevent/GuildBattleEventStrategyPage';
@@ -62,11 +55,9 @@ import orbs from './pages/gearing/orbs.md'
 import statPriorities from './pages/guides/statPriorities.md'
 import about from './pages/about/about.md'
 import {ItemPage} from "./pages/indexes/ItemPage";
-import {CampaignHomePage} from "./pages/campaign/CampaignHomePage";
 import {FaerieWrathPage} from "./pages/campaign/FaerieWrathPage";
 import {PhoenixPage} from "./pages/campaign/PhoenixPage";
 import {ShinobiPage} from "./pages/campaign/ShinobiPage";
-import {MetaBuildHomePage} from "./pages/meta/MetaBuildHomePage";
 import {BloodyHellPage} from "./pages/meta/BloodyHellPage";
 import {TurtlePage} from "./pages/meta/TurtlePage";
 import {BeginnerTipsPage} from "./pages/guides/BeginnerTipsGuide";
@@ -90,7 +81,6 @@ const navItemGroups: NavItemGroup[] = [
     {label: 'Home', to: '/', icon: <HomeIcon/>, navItems: []},
     {
         label: 'Guides',
-        to: '/guides',
         icon: <MenuBookIcon/>,
         navItems: [
             {
@@ -109,7 +99,6 @@ const navItemGroups: NavItemGroup[] = [
     },
     {
         label: 'Gear system',
-        to: '/gear-system',
         icon: <HeroIcon/>,
         navItems: [
             {
@@ -140,7 +129,6 @@ const navItemGroups: NavItemGroup[] = [
     },
     {
         label: 'Meta Builds',
-        to: '/meta',
         icon: <StarsIcon/>,
         navItems: [
             {
@@ -155,7 +143,6 @@ const navItemGroups: NavItemGroup[] = [
     },
     {
         label: 'Campaign Builds',
-        to: '/campaign',
         icon: <MapIcon/>,
         navItems: [
             {
@@ -174,7 +161,6 @@ const navItemGroups: NavItemGroup[] = [
     },
     {
         label: 'Battle Event',
-        to: '/battle-event',
         icon: <TrophyIcon/>,
         navItems: [
             {
@@ -201,7 +187,6 @@ const navItemGroups: NavItemGroup[] = [
     },
     {
         label: 'Arena',
-        to: '/arena',
         icon: <ShieldIcon/>,
         navItems: [
             {
@@ -232,7 +217,6 @@ const navItemGroups: NavItemGroup[] = [
     },
     {
         label: 'Currencies',
-        to: '/currencies',
         icon: <CurrencyIcon/>,
         navItems: [
             {
@@ -251,7 +235,6 @@ const navItemGroups: NavItemGroup[] = [
     },
     {
         label: 'Indexes',
-        to: '/indexes',
         icon: <ListIcon/>,
         navItems: [
             {label: 'Gear Index', to: '/indexes/gear'},
@@ -262,7 +245,6 @@ const navItemGroups: NavItemGroup[] = [
     },
     {
         label: 'Tools',
-        to: '/tools',
         icon: <BuildIcon/>,
         navItems: [
             {
@@ -322,9 +304,6 @@ export const App: React.FC = () => {
                             <HomePage/>
                         </Route>
 
-                        <Route path="/guides" exact>
-                            <GuidesHomePage/>
-                        </Route>
                         <Route path="/guides/beginner-tips" exact>
                             <BeginnerTipsPage/>
                         </Route>
@@ -335,9 +314,6 @@ export const App: React.FC = () => {
                             <GearDesignPage/>
                         </Route>
 
-                        <Route path="/gear-system" exact>
-                            <GearSystemHomePage/>
-                        </Route>
                         <Route path="/gear-system/gear" exact>
                             <Markdown md={gear}/>
                         </Route>
@@ -357,9 +333,6 @@ export const App: React.FC = () => {
                             <OptimizedGearSetsPage/>
                         </Route>
 
-                        <Route path="/meta" exact>
-                            <MetaBuildHomePage/>
-                        </Route>
                         <Route path="/meta/bloody-hell" exact>
                             <BloodyHellPage/>
                         </Route>
@@ -367,9 +340,6 @@ export const App: React.FC = () => {
                             <TurtlePage/>
                         </Route>
 
-                        <Route path="/campaign" exact>
-                            <CampaignHomePage/>
-                        </Route>
                         <Route path="/campaign/faerie-wrath" exact>
                             <FaerieWrathPage/>
                         </Route>
@@ -380,9 +350,6 @@ export const App: React.FC = () => {
                             <ShinobiPage/>
                         </Route>
 
-                        <Route path="/battle-event" exact>
-                            <BattleEventHomePage/>
-                        </Route>
                         <Route path="/battle-event/red" exact>
                             <RedBattleEventPage/>
                         </Route>
@@ -399,9 +366,6 @@ export const App: React.FC = () => {
                             <BlueGuildStrikerPage/>
                         </Route>
 
-                        <Route path="/arena" exact>
-                            <ArenaHomePage/>
-                        </Route>
                         <Route path="/arena/strategy" exact>
                             <StrategyPage/>
                         </Route>
@@ -421,9 +385,6 @@ export const App: React.FC = () => {
                             <FarmerPage/>
                         </Route>
 
-                        <Route path="/currencies" exact>
-                            <CurrenciesHomePage/>
-                        </Route>
                         <Route path="/currencies/primary" exact>
                             <PrimaryCurrencyPage/>
                         </Route>
@@ -434,9 +395,6 @@ export const App: React.FC = () => {
                             <ShopCurrencyPage/>
                         </Route>
 
-                        <Route path="/indexes" exact>
-                            <IndexHomePage/>
-                        </Route>
                         <Route path="/indexes/gear" exact>
                             <ItemIndexPage/>
                         </Route>
@@ -451,9 +409,6 @@ export const App: React.FC = () => {
                             <GuildBossStatsIndexPage/>
                         </Route>
 
-                        <Route path="/tools" exact>
-                            <ToolsHomePage/>
-                        </Route>
                         <Route path="/tools/monster-slayer-calc" exact>
                             <MonsterSlayerCalcPage/>
                         </Route>
