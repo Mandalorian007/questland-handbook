@@ -37,7 +37,12 @@ export const EquippedGearCard: React.FC<{
 
     return (
         <Card>
-            <CardContent>
+            <CardContent style={{
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "right top",
+                backgroundSize: "25%",
+                backgroundImage: "url(" + item.fullGraphicsUrl + ")"
+            }}>
                 <Typography gutterBottom variant="subtitle1" component="h5"
                             style={{color: getQualityColor(item.quality)}}>
                     {item.quality.toString().replace('ARTIFACT', 'A')}: {item.name}
@@ -64,7 +69,7 @@ export const EquippedGearCard: React.FC<{
                     Boosts: {equippedGear.boost}
                 </Typography>
                 <Typography variant="body1" color="textSecondary" component="p">
-                    Reforge (hp, atk, def, mag)
+                    Reforge(hp,atk,def,mag)
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                     {equippedGear.healthReforge}, {equippedGear.attackReforge}, {equippedGear.defenseReforge}, {equippedGear.magicReforge}

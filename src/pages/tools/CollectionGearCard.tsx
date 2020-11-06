@@ -76,7 +76,12 @@ export const CollectionGearCard: React.FC<{
 
     return (
         <Card>
-            <CardContent>
+            <CardContent style={{
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "right bottom",
+                backgroundSize: "20%",
+                backgroundImage: "url(" + item.fullGraphicsUrl + ")"
+            }}>
                 <Typography gutterBottom variant="subtitle1" component="h5"
                             style={{color: getQualityColor(item.quality)}}>
                     {item.quality.toString().replace('ARTIFACT', 'A')}: {item.name}

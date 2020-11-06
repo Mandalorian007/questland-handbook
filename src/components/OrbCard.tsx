@@ -36,7 +36,12 @@ export const OrbCard: React.FC<{
 
     return (
         <Card>
-            <CardContent>
+            <CardContent style={{
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "right bottom",
+                backgroundSize: "contain 20%",
+                backgroundImage: "url(" + orb.iconGraphicsUrl + ")"
+            }}>
                 <Typography gutterBottom variant="subtitle1" component="h5"
                             style={{color: getQualityColor(orb.quality)}}>
                     {`${orb.name}`}
@@ -53,7 +58,10 @@ export const OrbCard: React.FC<{
                     </Typography>
                 </Grid>
                 <Typography variant="body1" color="textSecondary" component="p">
-                    Potential (per level): {`${getOrbBase(orb)} (${getOrbPotential(orb)})`}
+                    Potential: {getOrbPotential(orb)}
+                </Typography>
+                <Typography variant="body1" color="textSecondary" component="p">
+                    Base Stat: {getOrbBase(orb)}
                 </Typography>
             </CardContent>
         </Card>
