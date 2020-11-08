@@ -10,12 +10,13 @@ import {ItemSlot} from "../../domain/ItemSlot";
 import {ItemSelectorCard} from "./ItemSelectorCard";
 import {Stat} from "../../domain/stat";
 import {useGridListCols} from "../../lib/responsiveList";
+import {GearSummary} from "./GearSummary";
 
-function notUndefined<T>(x: T | undefined): x is T {
+export function notUndefined<T>(x: T | undefined): x is T {
     return x !== undefined;
 }
 
-interface GearTemplate {
+export interface GearTemplate {
     helm?: Item,
     chest?: Item,
     gloves?: Item,
@@ -79,6 +80,8 @@ export const GearPlannerPage: React.FC<{}> = () => {
             <Typography variant="body1" color="textSecondary" component="p">
                 Legendary items available for gear design: {items.length}
             </Typography>
+            <h2>Gear Summary</h2>
+            <GearSummary gearTemplate={selectedGear}/>
             <h2>Equipment</h2>
             <GridList cellHeight={'auto'} cols={useGridListCols()}>
                 <GridListTile>
