@@ -74,7 +74,7 @@ export const ItemSelectorCard: React.FC<{
         const maybeItem = items.find(item => item.name === itemName);
         return <span>
             {getItemImageDetails(maybeItem?.emblem, maybeItem?.itemSlot, maybeItem?.itemBonus)}
-            {itemName}
+            {`\xa0\xa0${itemName}`}
         </span>
     };
 
