@@ -65,6 +65,7 @@ import {GearDesignPage} from "./pages/guides/GearDesignPage";
 import {OptimizedGearSetsPage} from "./pages/gearing/OptimizedGearSetsPage";
 import {HeroLookupPage} from "./pages/tools/HeroLookupPage";
 import {LicensingPage} from "./pages/licensing/LicensingPage";
+import {GearPlannerPage} from "./pages/tools/GearPlannerPage";
 
 const store = createStore(
     rootReducer,
@@ -278,7 +279,11 @@ const navItemGroups: NavItemGroup[] = [
             {
                 label: 'Guild Battle Event Planner',
                 to: '/tools/guild-be-plan'
-            }
+            }/*TODO add this back for live launch,
+            {
+                label: 'Gear Planner',
+                to: '/tools/gear-planner'
+            }*/
         ]
     },
     {label: 'About', to: '/about', icon: <InfoIcon/>, navItems: []},
@@ -432,6 +437,9 @@ export const App: React.FC = () => {
                         </Route>
                         <Route path="/tools/guild-be-plan" exact>
                             <GuildBattleEventPlanner/>
+                        </Route>
+                        <Route path="/tools/gear-planner" exact>
+                            <GearPlannerPage/>
                         </Route>
 
                         <Route path="/about" exact>
