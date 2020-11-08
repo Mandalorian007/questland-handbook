@@ -22,8 +22,8 @@ export const RoutableNavList: React.FC<{ navItemGroups: NavItemGroup[] }> =
         <div>
             {navItemGroups.map(navItemGroup => {
                 return navItemGroup.navItems.length > 1
-                    ? <NavListItemGroup navItemGroup={navItemGroup}/>
-                    : <NavListItem navItemGroup={navItemGroup}/>
+                    ? <NavListItemGroup navItemGroup={navItemGroup} key={navItemGroup.label}/>
+                    : <NavListItem navItemGroup={navItemGroup} key={navItemGroup.label}/>
             })}
         </div>
     );

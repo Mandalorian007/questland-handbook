@@ -39,7 +39,7 @@ export const NavListItemGroup: React.FC<{
                     unmountOnExit
                 >
                     {navItemGroup.navItems.map(navItem =>
-                        <List component="div" disablePadding>
+                        <List component="div" disablePadding key={navItem.label}>
                             <ListItem
                                 button={true}
                                 className={classes.nested}

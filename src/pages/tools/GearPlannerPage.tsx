@@ -4,12 +4,12 @@ import {Item} from "../../domain/item";
 import {useSelector} from "../indexes/ItemIndexPage";
 import {useDispatch} from "react-redux";
 import {loadItems} from "../../store/itemActions";
-import {Grid, Typography} from "@material-ui/core";
+import {GridList, GridListTile, Typography} from "@material-ui/core";
 import {Quality} from "../../domain/quality";
 import {ItemSlot} from "../../domain/ItemSlot";
 import {ItemSelectorCard} from "./ItemSelectorCard";
-import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
 import {Stat} from "../../domain/stat";
+import {useGridListCols} from "../../lib/responsiveList";
 
 function notUndefined<T>(x: T | undefined): x is T {
     return x !== undefined;
@@ -29,18 +29,8 @@ interface GearTemplate {
     magicCollections: (Item | undefined)[],
 }
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        itemList: {
-            paddingTop: theme.spacing(1),
-        }
-    })
-);
-
 export const GearPlannerPage: React.FC<{}> = () => {
-    const classes = useStyles();
     const dispatch = useDispatch();
-    const gridSize = 6;
     const items: Item[] = useSelector(state => state.itemState.items.filter(item => item.quality === Quality.Legendary));
     const [selectedGear, setSelectedGear] = React.useState<GearTemplate>({
         attackCollections: [undefined, undefined, undefined, undefined, undefined],
@@ -90,8 +80,8 @@ export const GearPlannerPage: React.FC<{}> = () => {
                 Legendary items available for gear design: {items.length}
             </Typography>
             <h2>Equipment</h2>
-            <Grid container spacing={3}>
-                <Grid item xs={gridSize}>
+            <GridList cellHeight={'auto'} cols={useGridListCols()}>
+                <GridListTile>
                     <ItemSelectorCard
                         title={ItemSlot.Helm.toString()}
                         slotFilter={ItemSlot.Helm}
@@ -101,8 +91,8 @@ export const GearPlannerPage: React.FC<{}> = () => {
                         selectedItemLinks={getItemLinks(selectedGear?.helm)}
                         equippedItemIds={getEquippedItemIds()}
                     />
-                </Grid>
-                <Grid item xs={gridSize}>
+                </GridListTile>
+                <GridListTile>
                     <ItemSelectorCard
                         title={ItemSlot.Chest.toString()}
                         slotFilter={ItemSlot.Chest}
@@ -112,8 +102,8 @@ export const GearPlannerPage: React.FC<{}> = () => {
                         selectedItemLinks={getItemLinks(selectedGear?.chest)}
                         equippedItemIds={getEquippedItemIds()}
                     />
-                </Grid>
-                <Grid item xs={gridSize}>
+                </GridListTile>
+                <GridListTile>
                     <ItemSelectorCard
                         title={ItemSlot.Gloves.toString()}
                         slotFilter={ItemSlot.Gloves}
@@ -123,8 +113,8 @@ export const GearPlannerPage: React.FC<{}> = () => {
                         selectedItemLinks={getItemLinks(selectedGear?.gloves)}
                         equippedItemIds={getEquippedItemIds()}
                     />
-                </Grid>
-                <Grid item xs={gridSize}>
+                </GridListTile>
+                <GridListTile>
                     <ItemSelectorCard
                         title={ItemSlot.Boots.toString()}
                         slotFilter={ItemSlot.Boots}
@@ -134,8 +124,8 @@ export const GearPlannerPage: React.FC<{}> = () => {
                         selectedItemLinks={getItemLinks(selectedGear?.boots)}
                         equippedItemIds={getEquippedItemIds()}
                     />
-                </Grid>
-                <Grid item xs={gridSize}>
+                </GridListTile>
+                <GridListTile>
                     <ItemSelectorCard
                         title={ItemSlot.Necklace.toString()}
                         slotFilter={ItemSlot.Necklace}
@@ -145,8 +135,8 @@ export const GearPlannerPage: React.FC<{}> = () => {
                         selectedItemLinks={getItemLinks(selectedGear?.necklace)}
                         equippedItemIds={getEquippedItemIds()}
                     />
-                </Grid>
-                <Grid item xs={gridSize}>
+                </GridListTile>
+                <GridListTile>
                     <ItemSelectorCard
                         title={ItemSlot.Ring.toString()}
                         slotFilter={ItemSlot.Ring}
@@ -156,8 +146,8 @@ export const GearPlannerPage: React.FC<{}> = () => {
                         selectedItemLinks={getItemLinks(selectedGear?.ring)}
                         equippedItemIds={getEquippedItemIds()}
                     />
-                </Grid>
-                <Grid item xs={gridSize}>
+                </GridListTile>
+                <GridListTile>
                     <ItemSelectorCard
                         title={ItemSlot.Talisman.toString()}
                         slotFilter={ItemSlot.Talisman}
@@ -167,12 +157,12 @@ export const GearPlannerPage: React.FC<{}> = () => {
                         selectedItemLinks={getItemLinks(selectedGear?.talisman)}
                         equippedItemIds={getEquippedItemIds()}
                     />
-                </Grid>
-            </Grid>
+                </GridListTile>
+            </GridList>
             <h2>Attack Collections</h2>
-            <Grid container spacing={3}>
+            <GridList cellHeight={'auto'} cols={useGridListCols()}>
                 {selectedGear.attackCollections.map((item, index) =>
-                    <Grid item xs={gridSize} key={index}>
+                    <GridListTile key={index}>
                         <ItemSelectorCard
                             title={`Attack Collection ${index + 1}`}
                             statFilter={Stat.Attack}
@@ -185,13 +175,13 @@ export const GearPlannerPage: React.FC<{}> = () => {
                             selectedItemLinks={getItemLinks(selectedGear.attackCollections[index])}
                             equippedItemIds={getEquippedItemIds()}
                         />
-                    </Grid>
+                    </GridListTile>
                 )}
-            </Grid>
+            </GridList>
             <h2>Magic Collections</h2>
-            <Grid container spacing={3}>
+            <GridList cellHeight={'auto'} cols={useGridListCols()}>
                 {selectedGear.magicCollections.map((item, index) =>
-                    <Grid item xs={gridSize} key={index}>
+                    <GridListTile key={index}>
                         <ItemSelectorCard
                             title={`Magic Collection ${index + 1}`}
                             statFilter={Stat.Magic}
@@ -204,13 +194,13 @@ export const GearPlannerPage: React.FC<{}> = () => {
                             selectedItemLinks={getItemLinks(selectedGear.magicCollections[index])}
                             equippedItemIds={getEquippedItemIds()}
                         />
-                    </Grid>
+                    </GridListTile>
                 )}
-            </Grid>
+            </GridList>
             <h2>Defense Collections</h2>
-            <Grid container spacing={3}>
+            <GridList cellHeight={'auto'} cols={useGridListCols()}>
                 {selectedGear.defenseCollections.map((item, index) =>
-                    <Grid item xs={gridSize} key={index}>
+                    <GridListTile key={index}>
                         <ItemSelectorCard
                             title={`Defense Collection ${index + 1}`}
                             statFilter={Stat.Defense}
@@ -223,13 +213,13 @@ export const GearPlannerPage: React.FC<{}> = () => {
                             selectedItemLinks={getItemLinks(selectedGear.defenseCollections[index])}
                             equippedItemIds={getEquippedItemIds()}
                         />
-                    </Grid>
+                    </GridListTile>
                 )}
-            </Grid>
+            </GridList>
             <h2>Health Collections</h2>
-            <Grid container spacing={3}>
+            <GridList cellHeight={'auto'} cols={useGridListCols()}>
                 {selectedGear.healthCollections.map((item, index) =>
-                    <Grid item xs={gridSize} key={index}>
+                    <GridListTile key={index}>
                         <ItemSelectorCard
                             title={`Health Collection ${index + 1}`}
                             statFilter={Stat.Health}
@@ -242,9 +232,9 @@ export const GearPlannerPage: React.FC<{}> = () => {
                             selectedItemLinks={getItemLinks(selectedGear.healthCollections[index])}
                             equippedItemIds={getEquippedItemIds()}
                         />
-                    </Grid>
+                    </GridListTile>
                 )}
-            </Grid>
+            </GridList>
         </>
     );
 };

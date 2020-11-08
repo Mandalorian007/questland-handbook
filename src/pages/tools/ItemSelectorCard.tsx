@@ -29,7 +29,7 @@ export const ItemSelectorCard: React.FC<{
 }> = ({title, slotFilter, statFilter, items, selectedItem, setSelectedItem, selectedItemLinks, equippedItemIds}) => {
 
     const getSearchOptions = (slot?: ItemSlot, stat?: Stat) => {
-        let options = items.filter(item => !equippedItemIds.includes(item?.id));
+        let options = items.filter(item => !equippedItemIds.includes(item?.id) || item?.id === selectedItem?.id);
         if (slot) {
             options = options.filter(item => item.itemSlot === slot);
         }
@@ -139,7 +139,7 @@ export const ItemSelectorCard: React.FC<{
                     unmountOnExit
                 >
                     <Autocomplete
-                        id="item-select"
+                        id={`item-select-${title.toLowerCase()}`}
                         options={getSearchOptions(slotFilter, statFilter)}
                         onChange={(event, value) => onItemSearchChange(value)}
                         autoHighlight
