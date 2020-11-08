@@ -79,6 +79,7 @@ export const ItemSelectorCard: React.FC<{
     };
 
     const getItemImageDetails = (emblem?: Emblem, slot?: ItemSlot, stat?: Stat) => {
+        const statName = (stat ? stat : Stat.None).toString().toLowerCase();
         return <span>
             <img
                 src={getEmblemImgUrl(emblem ? emblem : Emblem.None)}
@@ -92,9 +93,8 @@ export const ItemSelectorCard: React.FC<{
                 width={20}
                 height={20}
             />
-            {/*TODO replace these images with the actual stat icons when I can get them*/}
             <img
-                src={`/orb-stat/${stat ? stat : Stat.None}.png`}
+                src={`/stat/${statName}_icon_colored.png`}
                 alt=""
                 width={20}
                 height={20}
