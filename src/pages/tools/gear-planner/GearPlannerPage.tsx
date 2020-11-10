@@ -87,7 +87,7 @@ export const GearPlannerPage: React.FC<{}> = () => {
         dispatch(loadItems());
     }, [dispatch]);
 
-    const getItemLinks = (item: Item) => {
+    const getLinkedItems = (item: Item) => {
         const itemLinkIds: number[] = [item.itemLink1, item.itemLink2, item.itemLink3].filter(notUndefined);
         return itemLinkIds.map(id => items.find(item => item.id === id)).filter(notUndefined);
     };
@@ -104,7 +104,7 @@ export const GearPlannerPage: React.FC<{}> = () => {
                 title={title}
                 selectedItem={selectedItem}
                 setSelectedItem={setSelectedItem}
-                selectedItemLinks={getItemLinks(selectedItem)}
+                selectedItemLinks={getLinkedItems(selectedItem)}
                 equippedItemIds={equippedItemIds}
             />
             :
@@ -121,7 +121,8 @@ export const GearPlannerPage: React.FC<{}> = () => {
         <>
             <h1>Gear Planner</h1>
             <Typography variant="body1" color="textSecondary" component="p">
-                Legendary items available for gear design: {items.length}
+                This gear planner will always automatically include all the latest item data from Questland's API and in
+                the future will offer options for saving and sharing builds.
             </Typography>
             <h2>Gear Summary</h2>
             <GearSummary gearTemplate={selectedGear}/>

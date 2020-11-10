@@ -66,6 +66,7 @@ import {OptimizedGearSetsPage} from "./pages/gearing/OptimizedGearSetsPage";
 import {HeroLookupPage} from "./pages/tools/hero-lookup/HeroLookupPage";
 import {LicensingPage} from "./pages/licensing/LicensingPage";
 import {GearPlannerPage} from "./pages/tools/gear-planner/GearPlannerPage";
+import {PrivacyPolicyPage} from "./pages/privacy/PrivacyPolicyPage";
 
 const store = createStore(
     rootReducer,
@@ -448,6 +449,9 @@ export const App: React.FC = () => {
 
                         <Route path="/licensing" exact>
                             <LicensingPage/>
+                        </Route>
+                        <Route path="/privacy-policy" exact>
+                            <PrivacyPolicyPage/>
                         </Route>
                     </Switch>
                 </Chrome>
