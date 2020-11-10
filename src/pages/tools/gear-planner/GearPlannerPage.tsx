@@ -1,15 +1,15 @@
 import * as React from 'react';
 import {useEffect} from 'react';
-import {Item} from "../../domain/item";
-import {useSelector} from "../indexes/ItemIndexPage";
+import {Item} from "../../../domain/item";
+import {useSelector} from "../../indexes/ItemIndexPage";
 import {useDispatch} from "react-redux";
-import {loadItems} from "../../store/itemActions";
+import {loadItems} from "../../../store/itemActions";
 import {GridList, GridListTile, Typography} from "@material-ui/core";
-import {Quality} from "../../domain/quality";
-import {ItemSlot} from "../../domain/ItemSlot";
+import {Quality} from "../../../domain/quality";
+import {ItemSlot} from "../../../domain/ItemSlot";
 import {ItemSelectorCard} from "./ItemSelectorCard";
-import {Stat} from "../../domain/stat";
-import {useGridListCols} from "../../lib/responsiveList";
+import {Stat} from "../../../domain/stat";
+import {useGridListCols} from "../../../lib/responsiveList";
 import {GearSummary} from "./GearSummary";
 
 export function notUndefined<T>(x: T | undefined): x is T {

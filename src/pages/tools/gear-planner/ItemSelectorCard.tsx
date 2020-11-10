@@ -11,11 +11,11 @@ import {
     Typography
 } from '@material-ui/core';
 import React from 'react';
-import {Item} from '../../domain/item';
-import {getItemSlotUrl, ItemSlot} from "../../domain/ItemSlot";
-import {Stat} from "../../domain/stat";
+import {Item} from '../../../domain/item';
+import {getItemSlotUrl, ItemSlot} from "../../../domain/ItemSlot";
+import {Stat} from "../../../domain/stat";
 import {Autocomplete} from "@material-ui/lab";
-import {Emblem, getEmblemImgUrl} from "../../domain/emblem";
+import {Emblem, getEmblemImgUrl} from "../../../domain/emblem";
 
 export const ItemSelectorCard: React.FC<{
     title: string;

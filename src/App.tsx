@@ -8,7 +8,7 @@ import thunk from 'redux-thunk';
 import {AppState, rootReducer} from './store/rootReducer';
 import {Provider} from 'react-redux';
 import {HomePage} from './pages/home/HomePage';
-import {NavItemGroup} from './components/RoutableNavList';
+import {NavItemGroup} from './components/chrome/RoutableNavList';
 import {OrbIndexPage} from './pages/indexes/OrbIndexPage';
 import {ItemIndexPage} from './pages/indexes/ItemIndexPage';
 import {MonsterSlayerCalcPage} from './pages/tools/MonsterSlayerCalcPage';
@@ -24,7 +24,7 @@ import InfoIcon from '@material-ui/icons/Info';
 import MapIcon from '@material-ui/icons/Map';
 import StarsIcon from '@material-ui/icons/Stars';
 import GavelIcon from '@material-ui/icons/Gavel';
-import {DiscordBotPage} from './pages/tools/DiscordBotPage';
+import {DiscordBotPage} from './pages/tools/discord-bot/DiscordBotPage';
 import {PublicAPIPage} from './pages/tools/PubicAPIPage';
 import {PrimaryCurrencyPage} from './pages/currencies/PrimaryCurrencyPage';
 import {SecondaryCurrencyPage} from './pages/currencies/SecondaryCurrencyPage';
@@ -54,7 +54,7 @@ import gear from './pages/gearing/gear.md'
 import orbs from './pages/gearing/orbs.md'
 import statPriorities from './pages/guides/statPriorities.md'
 import about from './pages/about/about.md'
-import {ItemPage} from "./pages/indexes/ItemPage";
+import {ItemOverviewPage} from "./pages/indexes/item-overview/ItemOverviewPage";
 import {FaerieWrathPage} from "./pages/campaign/FaerieWrathPage";
 import {PhoenixPage} from "./pages/campaign/PhoenixPage";
 import {ShinobiPage} from "./pages/campaign/ShinobiPage";
@@ -63,9 +63,9 @@ import {TurtlePage} from "./pages/meta/TurtlePage";
 import {BeginnerTipsPage} from "./pages/guides/BeginnerTipsGuide";
 import {GearDesignPage} from "./pages/guides/GearDesignPage";
 import {OptimizedGearSetsPage} from "./pages/gearing/OptimizedGearSetsPage";
-import {HeroLookupPage} from "./pages/tools/HeroLookupPage";
+import {HeroLookupPage} from "./pages/tools/hero-lookup/HeroLookupPage";
 import {LicensingPage} from "./pages/licensing/LicensingPage";
-import {GearPlannerPage} from "./pages/tools/GearPlannerPage";
+import {GearPlannerPage} from "./pages/tools/gear-planner/GearPlannerPage";
 
 const store = createStore(
     rootReducer,
@@ -403,7 +403,7 @@ export const App: React.FC = () => {
                         <Route path="/indexes/gear" exact>
                             <ItemIndexPage/>
                         </Route>
-                        <Route path="/item/:id" component={ItemPage}/>
+                        <Route path="/item/:id" component={ItemOverviewPage}/>
                         <Route path="/indexes/orb" exact>
                             <OrbIndexPage/>
                         </Route>

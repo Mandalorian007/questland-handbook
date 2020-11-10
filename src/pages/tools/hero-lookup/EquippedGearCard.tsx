@@ -1,13 +1,13 @@
 import {Card, CardContent, Grid, List, Typography} from '@material-ui/core';
 import React from 'react';
-import {Item} from '../../domain/item';
-import {getQualityColor, Quality} from "../../domain/quality";
-import {EquippedGear} from "../../domain/hero";
-import {Orb} from "../../domain/orb";
-import {getEmblemImgUrl} from "../../domain/emblem";
-import {getItemSlotUrl} from "../../domain/ItemSlot";
+import {Item} from '../../../domain/item';
+import {getQualityColor, Quality} from "../../../domain/quality";
+import {EquippedGear} from "../../../domain/hero";
+import {Orb} from "../../../domain/orb";
+import {getEmblemImgUrl} from "../../../domain/emblem";
+import {getItemSlotUrl} from "../../../domain/ItemSlot";
 import {EquippedOrbListItem} from "./EquippedOrbListItem";
-import {Stat} from "../../domain/stat";
+import {Stat} from "../../../domain/stat";
 
 export const EquippedGearCard: React.FC<{
     equippedGear: EquippedGear;

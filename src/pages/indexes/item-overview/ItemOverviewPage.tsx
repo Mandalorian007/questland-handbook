@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {TypedUseSelectorHook, useDispatch, useSelector as useReduxSelector} from 'react-redux';
-import {AppState} from '../../store/rootReducer';
+import {AppState} from '../../../store/rootReducer';
 import {
     Card,
     CardContent,
@@ -15,24 +15,24 @@ import {
     TableContainer,
     TableHead, TableRow
 } from '@material-ui/core';
-import {loadItems} from '../../store/itemActions';
-import {Item} from '../../domain/item';
+import {loadItems} from '../../../store/itemActions';
+import {Item} from '../../../domain/item';
 import {useParams, withRouter} from 'react-router-dom';
-import {Emblem, getEmblemColor, getEmblemImgUrl} from "../../domain/emblem";
-import {Stat} from "../../domain/stat";
-import {getItemSlotUrl, ItemSlot} from "../../domain/ItemSlot";
-import {getQualityColor, Quality} from "../../domain/quality";
-import {Orb} from "../../domain/orb";
-import {loadOrbs} from "../../store/orbActions";
+import {Emblem, getEmblemColor, getEmblemImgUrl} from "../../../domain/emblem";
+import {Stat} from "../../../domain/stat";
+import {getItemSlotUrl, ItemSlot} from "../../../domain/ItemSlot";
+import {getQualityColor, Quality} from "../../../domain/quality";
+import {Orb} from "../../../domain/orb";
+import {loadOrbs} from "../../../store/orbActions";
 import {makeStyles} from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import {ItemCard} from "../../components/ItemCard";
-import {useGridListCols} from "../../lib/responsiveList";
-import {OrbCard} from "../../components/OrbCard";
-import {qlApiUrl} from "../../config";
-import {ArtifactItemCard} from "../../components/ArtifactItemCard";
-import {ArtifactOrbCard} from "../../components/ArtifactOrbCard";
+import {ItemCard} from "../item-index/ItemCard";
+import {useGridListCols} from "../../../lib/responsiveList";
+import {OrbCard} from "./OrbCard";
+import {qlApiUrl} from "../../../config";
+import {ArtifactItemCard} from "./ArtifactItemCard";
+import {ArtifactOrbCard} from "./ArtifactOrbCard";
 
 export const useSelector: TypedUseSelectorHook<AppState> = useReduxSelector;
 
@@ -87,7 +87,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const ItemPageInternal: React.FC<{}> = () => {
+const ItemOverviewPageInternal: React.FC<{}> = () => {
     const classes = useStyles();
     const {id} = useParams();
 
@@ -369,4 +369,4 @@ const ItemPageInternal: React.FC<{}> = () => {
     );
 };
 
-export const ItemPage = withRouter(ItemPageInternal);
+export const ItemOverviewPage = withRouter(ItemOverviewPageInternal);

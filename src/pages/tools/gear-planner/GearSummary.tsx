@@ -9,10 +9,10 @@ import {
     Typography
 } from '@material-ui/core';
 import React from 'react';
-import {Item} from '../../domain/item';
-import {getItemSlotUrl, ItemSlot} from "../../domain/ItemSlot";
-import {Stat} from "../../domain/stat";
-import {Emblem, getEmblemImgUrl} from "../../domain/emblem";
+import {Item} from '../../../domain/item';
+import {getItemSlotUrl, ItemSlot} from "../../../domain/ItemSlot";
+import {Stat} from "../../../domain/stat";
+import {Emblem, getEmblemImgUrl} from "../../../domain/emblem";
 import {GearTemplate, notUndefined} from "./GearPlannerPage";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 

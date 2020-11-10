@@ -1,11 +1,11 @@
 import {Card, CardContent, Grid, Typography} from '@material-ui/core';
 import React from 'react';
-import {Item} from '../../domain/item';
-import {getQualityColor} from "../../domain/quality";
-import {CollectionSlots, EquippedGear} from "../../domain/hero";
-import {getEmblemImgUrl} from "../../domain/emblem";
-import {getItemSlotUrl} from "../../domain/ItemSlot";
-import {Stat} from "../../domain/stat";
+import {Item} from '../../../domain/item';
+import {getQualityColor} from "../../../domain/quality";
+import {CollectionSlots, EquippedGear} from "../../../domain/hero";
+import {getEmblemImgUrl} from "../../../domain/emblem";
+import {getItemSlotUrl} from "../../../domain/ItemSlot";
+import {Stat} from "../../../domain/stat";
 
 export enum CollectionType {
     ONE,

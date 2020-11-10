@@ -1,7 +1,7 @@
 import {Card, CardContent, Typography} from '@material-ui/core';
 import React from 'react';
-import {Item} from '../domain/item';
-import {getQualityColor} from "../domain/quality";
+import {Item} from '../../../domain/item';
+import {getQualityColor} from "../../../domain/quality";
 
 export const ArtifactItemCard: React.FC<{
     item: Item;

@@ -1,10 +1,10 @@
 import {Button, Card, CardActions, CardContent, Grid, Typography} from '@material-ui/core';
-import {getEmblemImgUrl} from '../domain/emblem';
+import {getEmblemImgUrl} from '../../../domain/emblem';
 import React from 'react';
-import {Item} from '../domain/item';
-import {getItemSlotUrl} from "../domain/ItemSlot";
+import {Item} from '../../../domain/item';
+import {getItemSlotUrl} from "../../../domain/ItemSlot";
 import {NavLink} from "react-router-dom";
-import {getQualityColor} from "../domain/quality";
+import {getQualityColor} from "../../../domain/quality";
 
 export const ItemCard: React.FC<{
     item: Item;

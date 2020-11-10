@@ -1,9 +1,9 @@
 import {ListItem, ListItemIcon, ListItemText, Typography} from '@material-ui/core';
 import React from 'react';
-import {getQualityColor, Quality} from "../../domain/quality";
-import {EquippedOrb} from "../../domain/hero";
-import {getArtifactOrbStatUrl, getOrbStatUrl, Orb} from "../../domain/orb";
-import {Stat} from "../../domain/stat";
+import {getQualityColor, Quality} from "../../../domain/quality";
+import {EquippedOrb} from "../../../domain/hero";
+import {getArtifactOrbStatUrl, getOrbStatUrl, Orb} from "../../../domain/orb";
+import {Stat} from "../../../domain/stat";
 
 export const EquippedOrbListItem: React.FC<{
     equippedOrb: EquippedOrb;

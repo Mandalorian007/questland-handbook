@@ -18,7 +18,7 @@ import {
 import {loadItems} from '../../store/itemActions';
 import {Item} from '../../domain/item';
 import {useGridListCols} from '../../lib/responsiveList';
-import {ItemCard} from '../../components/ItemCard';
+import {ItemCard} from './item-index/ItemCard';
 import {Autocomplete} from '@material-ui/lab';
 import {Emblem, getEmblems} from '../../domain/emblem';
 import {Quality} from '../../domain/quality';

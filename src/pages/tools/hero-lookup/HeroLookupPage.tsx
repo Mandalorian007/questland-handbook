@@ -16,17 +16,17 @@ import {
 import * as React from 'react';
 import {useEffect} from 'react';
 import TextField from '@material-ui/core/TextField';
-import {qlApiUrl} from "../../config";
-import {CollectionSlots, EquippedOrb, Hero} from "../../domain/hero";
-import {useGridListCols} from "../../lib/responsiveList";
+import {qlApiUrl} from "../../../config";
+import {CollectionSlots, EquippedOrb, Hero} from "../../../domain/hero";
+import {useGridListCols} from "../../../lib/responsiveList";
 import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
 import {EquippedGearCard} from "./EquippedGearCard";
-import {Item, serverItemToItem} from "../../domain/item";
-import {Orb, serverOrbToOrb} from "../../domain/orb";
-import {Stat} from "../../domain/stat";
-import {ItemSlot, toItemSlot} from "../../domain/ItemSlot";
-import {Quality} from "../../domain/quality";
-import {Emblem} from "../../domain/emblem";
+import {Item, serverItemToItem} from "../../../domain/item";
+import {Orb, serverOrbToOrb} from "../../../domain/orb";
+import {Stat} from "../../../domain/stat";
+import {ItemSlot, toItemSlot} from "../../../domain/ItemSlot";
+import {Quality} from "../../../domain/quality";
+import {Emblem} from "../../../domain/emblem";
 import {CollectionGearCard, CollectionType} from "./CollectionGearCard";
 
 const useStyles = makeStyles((theme: Theme) =>

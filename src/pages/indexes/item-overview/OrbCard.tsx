@@ -1,8 +1,8 @@
 import {Card, CardContent, Grid, Typography} from '@material-ui/core';
 import React from 'react';
-import {getOrbStatUrl, Orb} from "../domain/orb";
-import {Stat} from "../domain/stat";
-import {getQualityColor} from "../domain/quality";
+import {getOrbStatUrl, Orb} from "../../../domain/orb";
+import {Stat} from "../../../domain/stat";
+import {getQualityColor} from "../../../domain/quality";
 
 export const OrbCard: React.FC<{
     orb: Orb;
