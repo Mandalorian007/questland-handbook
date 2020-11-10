@@ -450,7 +450,7 @@ export const App: React.FC = () => {
                         <Route path="/licensing" exact>
                             <LicensingPage/>
                         </Route>
-                        <Route path="/privacy-policy" exact>
+                        <Route path="/privacy" exact>
                             <PrivacyPolicyPage/>
                         </Route>
                     </Switch>

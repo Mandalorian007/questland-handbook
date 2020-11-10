@@ -1,5 +1,3 @@
-import {ItemSlot} from "./ItemSlot";
-
 export enum Stat {
   None = 'NONE',
   Attack = 'ATTACK',

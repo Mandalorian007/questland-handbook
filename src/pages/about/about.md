@@ -31,4 +31,4 @@ These are the community members who take my terrible writing skills and make it 
 Additionally you can learn more about privacy and licensing from the links below:
 
 - [Licensing](https://www.questland-handbook.com/licensing)
-- [Privacy Policy](https://www.questland-handbook.com/privacy-policy)
+- [Privacy Policy](https://www.questland-handbook.com/privacy)

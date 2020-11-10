@@ -1,18 +1,9 @@
 import * as React from 'react';
 import {useEffect} from 'react';
 import {Build, BuildOption} from '../domain/Build';
-import {
-    Card,
-    CardContent,
-    GridList,
-    GridListTile,
-    Typography,
-    useMediaQuery,
-    useTheme
-} from '@material-ui/core';
+import {Card, CardContent, GridList, GridListTile, Typography, useMediaQuery, useTheme} from '@material-ui/core';
 import ReactPlayer from 'react-player';
 import {qlApiUrl} from "../config";
-import {Emblem, getEmblemImgUrl} from "../domain/emblem";
 
 const useCustomColumns = () => {
     const theme = useTheme();
