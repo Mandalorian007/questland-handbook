@@ -6,29 +6,72 @@ import {useDispatch} from "react-redux";
 import {loadItems} from "../../../store/itemActions";
 import {GridList, GridListTile, Typography} from "@material-ui/core";
 import {Quality} from "../../../domain/quality";
-import {ItemSlot} from "../../../domain/ItemSlot";
+import {getItemSlotUrl, ItemSlot} from "../../../domain/ItemSlot";
 import {ItemSelectorCard} from "./ItemSelectorCard";
-import {Stat} from "../../../domain/stat";
+import {getStatUrl, Stat} from "../../../domain/stat";
 import {useGridListCols} from "../../../lib/responsiveList";
 import {GearSummary} from "./GearSummary";
+import {SelectedItemCard} from "./SelectedItemCard";
+import {GearTemplate, getEquippedItemIds, notUndefined} from "../../../domain/gearTemplate";
+import {Emblem, getEmblemImgUrl} from "../../../domain/emblem";
 
-export function notUndefined<T>(x: T | undefined): x is T {
-    return x !== undefined;
-}
+const emptyItem: Item = {
+    attack: 0,
+    attackPotential: 0,
+    defense: 0,
+    defensePotential: 0,
+    emblem: Emblem.None,
+    extractCost: 0,
+    fullGraphicsUrl: "",
+    health: 0,
+    healthPotential: 0,
+    iconGraphicsUrl: "",
+    id: 0,
+    itemBonus: Stat.None,
+    itemLink1: 0,
+    itemLink2: 0,
+    itemLink3: 0,
+    itemSlot: ItemSlot.Unknown,
+    magic: 0,
+    magicPotential: 0,
+    name: "",
+    orbBonus: Stat.None,
+    orbLink1: 0,
+    orbLink2: 0,
+    passive1Description: "",
+    passive1Name: "",
+    passive2Description: "",
+    passive2Name: "",
+    quality: Quality.Legendary,
+    reforgePointsPerLevel: 0,
+    totalPotential: 0
+};
 
-export interface GearTemplate {
-    helm?: Item,
-    chest?: Item,
-    gloves?: Item,
-    boots?: Item,
-    necklace?: Item,
-    ring?: Item,
-    talisman?: Item,
-    healthCollections: (Item | undefined)[],
-    attackCollections: (Item | undefined)[],
-    defenseCollections: (Item | undefined)[],
-    magicCollections: (Item | undefined)[],
-}
+export const itemIconInfo = (item?: Item) => {
+    if (!item) {
+        item = emptyItem;
+    }
+    return <span>
+            <img
+                src={getEmblemImgUrl(item.emblem)}
+                alt=""
+                width={20}
+                height={20}
+            />
+            <img
+                src={getItemSlotUrl(item.itemSlot)}
+                alt=""
+                width={20}
+                height={20}
+            />
+            <img
+                src={getStatUrl(item.itemBonus)}
+                alt=""
+                width={20}
+                height={20}
+            />
+        </span>
+};
 
 export const GearPlannerPage: React.FC<{}> = () => {
     const dispatch = useDispatch();
@@ -44,34 +87,34 @@ export const GearPlannerPage: React.FC<{}> = () => {
         dispatch(loadItems());
     }, [dispatch]);
 
-    const getItemLinks = (item?: Item) => {
-        if (!item) {
-            return [];
-        } else {
-            const itemLinkIds: number[] = [item.itemLink1, item.itemLink2, item.itemLink3].filter(notUndefined);
-            return itemLinkIds.map(id => items.find(item => item.id === id)).filter(notUndefined)
-        }
-    };
-
-    const getEquippedItemIds = () => {
-        return [
-            selectedGear?.helm?.id,
-            selectedGear?.chest?.id,
-            selectedGear?.gloves?.id,
-            selectedGear?.boots?.id,
-            selectedGear?.necklace?.id,
-            selectedGear?.ring?.id,
-            selectedGear?.talisman?.id,
-        ].concat(selectedGear.healthCollections.map(item => item?.id))
-            .concat(selectedGear.attackCollections.map(item => item?.id))
-            .concat(selectedGear.defenseCollections.map(item => item?.id))
-            .concat(selectedGear.magicCollections.map(item => item?.id))
-            .filter(notUndefined);
+    const getItemLinks = (item: Item) => {
+        const itemLinkIds: number[] = [item.itemLink1, item.itemLink2, item.itemLink3].filter(notUndefined);
+        return itemLinkIds.map(id => items.find(item => item.id === id)).filter(notUndefined);
     };
 
     const arrayUpdater = (items: (Item | undefined)[], index: number, value: Item | undefined) => {
         items[index] = value;
         return items;
+    };
+
+    const getDisplayedCard = (title: string, selectedItem: Item | undefined, setSelectedItem: any, itemSlotType: ItemSlot | Stat) => {
+        const equippedItemIds = getEquippedItemIds(selectedGear);
+        return selectedItem ?
+            <SelectedItemCard
+                title={title}
+                selectedItem={selectedItem}
+                setSelectedItem={setSelectedItem}
+                selectedItemLinks={getItemLinks(selectedItem)}
+                equippedItemIds={equippedItemIds}
+            />
+            :
+            <ItemSelectorCard
+                title={title}
+                collectionLocation={itemSlotType}
+                items={items}
+                setSelectedItem={(item?: Item) => setSelectedItem(item)}
+                equippedItemIds={equippedItemIds}
+            />
     };
 
     return (
@@ -85,99 +128,75 @@ export const GearPlannerPage: React.FC<{}> = () => {
             <h2>Equipment</h2>
             <GridList cellHeight={'auto'} cols={useGridListCols()}>
                 <GridListTile>
-                    <ItemSelectorCard
-                        title={ItemSlot.Helm.toString()}
-                        slotFilter={ItemSlot.Helm}
-                        items={items}
-                        selectedItem={selectedGear?.helm}
-                        setSelectedItem={(item?: Item) => setSelectedGear({...selectedGear, helm: item})}
-                        selectedItemLinks={getItemLinks(selectedGear?.helm)}
-                        equippedItemIds={getEquippedItemIds()}
-                    />
+                    {getDisplayedCard(
+                        ItemSlot.Helm.toString(),
+                        selectedGear?.helm,
+                        (item?: Item) => setSelectedGear({...selectedGear, helm: item}),
+                        ItemSlot.Helm
+                    )}
                 </GridListTile>
                 <GridListTile>
-                    <ItemSelectorCard
-                        title={ItemSlot.Chest.toString()}
-                        slotFilter={ItemSlot.Chest}
-                        items={items}
-                        selectedItem={selectedGear?.chest}
-                        setSelectedItem={(item?: Item) => setSelectedGear({...selectedGear, chest: item})}
-                        selectedItemLinks={getItemLinks(selectedGear?.chest)}
-                        equippedItemIds={getEquippedItemIds()}
-                    />
+                    {getDisplayedCard(
+                        ItemSlot.Chest.toString(),
+                        selectedGear?.chest,
+                        (item?: Item) => setSelectedGear({...selectedGear, chest: item}),
+                        ItemSlot.Chest
+                    )}
                 </GridListTile>
                 <GridListTile>
-                    <ItemSelectorCard
-                        title={ItemSlot.Gloves.toString()}
-                        slotFilter={ItemSlot.Gloves}
-                        items={items}
-                        selectedItem={selectedGear?.gloves}
-                        setSelectedItem={(item?: Item) => setSelectedGear({...selectedGear, gloves: item})}
-                        selectedItemLinks={getItemLinks(selectedGear?.gloves)}
-                        equippedItemIds={getEquippedItemIds()}
-                    />
+                    {getDisplayedCard(
+                        ItemSlot.Gloves.toString(),
+                        selectedGear?.gloves,
+                        (item?: Item) => setSelectedGear({...selectedGear, gloves: item}),
+                        ItemSlot.Gloves
+                    )}
                 </GridListTile>
                 <GridListTile>
-                    <ItemSelectorCard
-                        title={ItemSlot.Boots.toString()}
-                        slotFilter={ItemSlot.Boots}
-                        items={items}
-                        selectedItem={selectedGear?.boots}
-                        setSelectedItem={(item?: Item) => setSelectedGear({...selectedGear, boots: item})}
-                        selectedItemLinks={getItemLinks(selectedGear?.boots)}
-                        equippedItemIds={getEquippedItemIds()}
-                    />
+                    {getDisplayedCard(
+                        ItemSlot.Boots.toString(),
+                        selectedGear?.boots,
+                        (item?: Item) => setSelectedGear({...selectedGear, boots: item}),
+                        ItemSlot.Boots
+                    )}
                 </GridListTile>
                 <GridListTile>
-                    <ItemSelectorCard
-                        title={ItemSlot.Necklace.toString()}
-                        slotFilter={ItemSlot.Necklace}
-                        items={items}
-                        selectedItem={selectedGear?.necklace}
-                        setSelectedItem={(item?: Item) => setSelectedGear({...selectedGear, necklace: item})}
-                        selectedItemLinks={getItemLinks(selectedGear?.necklace)}
-                        equippedItemIds={getEquippedItemIds()}
-                    />
+                    {getDisplayedCard(
+                        ItemSlot.Necklace.toString(),
+                        selectedGear?.necklace,
+                        (item?: Item) => setSelectedGear({...selectedGear, necklace: item}),
+                        ItemSlot.Necklace
+                    )}
                 </GridListTile>
                 <GridListTile>
-                    <ItemSelectorCard
-                        title={ItemSlot.Ring.toString()}
-                        slotFilter={ItemSlot.Ring}
-                        items={items}
-                        selectedItem={selectedGear?.ring}
-                        setSelectedItem={(item?: Item) => setSelectedGear({...selectedGear, ring: item})}
-                        selectedItemLinks={getItemLinks(selectedGear?.ring)}
-                        equippedItemIds={getEquippedItemIds()}
-                    />
+                    {getDisplayedCard(
+                        ItemSlot.Ring.toString(),
+                        selectedGear?.ring,
+                        (item?: Item) => setSelectedGear({...selectedGear, ring: item}),
+                        ItemSlot.Ring
+                    )}
                 </GridListTile>
                 <GridListTile>
-                    <ItemSelectorCard
-                        title={ItemSlot.Talisman.toString()}
-                        slotFilter={ItemSlot.Talisman}
-                        items={items}
-                        selectedItem={selectedGear?.talisman}
-                        setSelectedItem={(item?: Item) => setSelectedGear({...selectedGear, talisman: item})}
-                        selectedItemLinks={getItemLinks(selectedGear?.talisman)}
-                        equippedItemIds={getEquippedItemIds()}
-                    />
+                    {getDisplayedCard(
+                        ItemSlot.Talisman.toString(),
+                        selectedGear?.talisman,
+                        (item?: Item) => setSelectedGear({...selectedGear, talisman: item}),
+                        ItemSlot.Talisman
+                    )}
                 </GridListTile>
             </GridList>
             <h2>Attack Collections</h2>
             <GridList cellHeight={'auto'} cols={useGridListCols()}>
                 {selectedGear.attackCollections.map((item, index) =>
                     <GridListTile key={index}>
-                        <ItemSelectorCard
-                            title={`Attack Collection ${index + 1}`}
-                            statFilter={Stat.Attack}
-                            items={items}
-                            selectedItem={selectedGear?.attackCollections[index]}
-                            setSelectedItem={(item?: Item) => setSelectedGear({
+                        {getDisplayedCard(
+                            `Attack Collection ${index + 1}`,
+                            selectedGear.attackCollections[index],
+                            (item?: Item) => setSelectedGear({
                                 ...selectedGear,
                                 attackCollections: arrayUpdater(selectedGear.attackCollections, index, item)
-                            })}
-                            selectedItemLinks={getItemLinks(selectedGear.attackCollections[index])}
-                            equippedItemIds={getEquippedItemIds()}
-                        />
+                            }),
+                            Stat.Attack
+                        )}
                     </GridListTile>
                 )}
             </GridList>
@@ -185,18 +204,15 @@ export const GearPlannerPage: React.FC<{}> = () => {
             <GridList cellHeight={'auto'} cols={useGridListCols()}>
                 {selectedGear.magicCollections.map((item, index) =>
                     <GridListTile key={index}>
-                        <ItemSelectorCard
-                            title={`Magic Collection ${index + 1}`}
-                            statFilter={Stat.Magic}
-                            items={items}
-                            selectedItem={selectedGear?.magicCollections[index]}
-                            setSelectedItem={(item?: Item) => setSelectedGear({
+                        {getDisplayedCard(
+                            `Magic Collection ${index + 1}`,
+                            selectedGear.magicCollections[index],
+                            (item?: Item) => setSelectedGear({
                                 ...selectedGear,
                                 magicCollections: arrayUpdater(selectedGear.magicCollections, index, item)
-                            })}
-                            selectedItemLinks={getItemLinks(selectedGear.magicCollections[index])}
-                            equippedItemIds={getEquippedItemIds()}
-                        />
+                            }),
+                            Stat.Magic
+                        )}
                     </GridListTile>
                 )}
             </GridList>
@@ -204,18 +220,15 @@ export const GearPlannerPage: React.FC<{}> = () => {
             <GridList cellHeight={'auto'} cols={useGridListCols()}>
                 {selectedGear.defenseCollections.map((item, index) =>
                     <GridListTile key={index}>
-                        <ItemSelectorCard
-                            title={`Defense Collection ${index + 1}`}
-                            statFilter={Stat.Defense}
-                            items={items}
-                            selectedItem={selectedGear?.defenseCollections[index]}
-                            setSelectedItem={(item?: Item) => setSelectedGear({
+                        {getDisplayedCard(
+                            `Defense Collection ${index + 1}`,
+                            selectedGear.defenseCollections[index],
+                            (item?: Item) => setSelectedGear({
                                 ...selectedGear,
                                 defenseCollections: arrayUpdater(selectedGear.defenseCollections, index, item)
-                            })}
-                            selectedItemLinks={getItemLinks(selectedGear.defenseCollections[index])}
-                            equippedItemIds={getEquippedItemIds()}
-                        />
+                            }),
+                            Stat.Defense
+                        )}
                     </GridListTile>
                 )}
             </GridList>
@@ -223,18 +236,15 @@ export const GearPlannerPage: React.FC<{}> = () => {
             <GridList cellHeight={'auto'} cols={useGridListCols()}>
                 {selectedGear.healthCollections.map((item, index) =>
                     <GridListTile key={index}>
-                        <ItemSelectorCard
-                            title={`Health Collection ${index + 1}`}
-                            statFilter={Stat.Health}
-                            items={items}
-                            selectedItem={selectedGear?.healthCollections[index]}
-                            setSelectedItem={(item?: Item) => setSelectedGear({
+                        {getDisplayedCard(
+                            `Health Collection ${index + 1}`,
+                            selectedGear.healthCollections[index],
+                            (item?: Item) => setSelectedGear({
                                 ...selectedGear,
                                 healthCollections: arrayUpdater(selectedGear.healthCollections, index, item)
-                            })}
-                            selectedItemLinks={getItemLinks(selectedGear.healthCollections[index])}
-                            equippedItemIds={getEquippedItemIds()}
-                        />
+                            }),
+                            Stat.Health
+                        )}
                     </GridListTile>
                 )}
             </GridList>

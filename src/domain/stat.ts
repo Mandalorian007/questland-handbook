@@ -1,3 +1,5 @@
+import {ItemSlot} from "./ItemSlot";
+
 export enum Stat {
   None = 'NONE',
   Attack = 'ATTACK',
@@ -16,4 +18,8 @@ export const toStat = (expectedStat: string): Stat => {
     throw new Error(`Unexpected stat: ${expectedStat}`);
   }
   return expectedStat;
+};
+
+export const getStatUrl = (stat: Stat) => {
+  return `/stat/${stat.toString().toLowerCase()}_icon_colored.png`;
 };

@@ -1,11 +1,13 @@
 import {
     Accordion,
     AccordionDetails,
-    AccordionSummary, Card, CardContent, Divider,
+    AccordionSummary,
+    Card,
+    CardContent,
+    Divider,
     Grid,
     List,
     ListItem,
-    Paper,
     Typography
 } from '@material-ui/core';
 import React from 'react';
@@ -13,8 +15,8 @@ import {Item} from '../../../domain/item';
 import {getItemSlotUrl, ItemSlot} from "../../../domain/ItemSlot";
 import {Stat} from "../../../domain/stat";
 import {Emblem, getEmblemImgUrl} from "../../../domain/emblem";
-import {GearTemplate, notUndefined} from "./GearPlannerPage";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import {GearTemplate, notUndefined} from "../../../domain/gearTemplate";
 
 export const GearSummary: React.FC<{
     gearTemplate: GearTemplate
