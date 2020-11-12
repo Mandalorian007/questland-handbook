@@ -132,3 +132,4 @@ yarn-debug.log*
 yarn-error.log*
 ### Environment Variable Secrets ###
 env_variables.yaml
+/.env

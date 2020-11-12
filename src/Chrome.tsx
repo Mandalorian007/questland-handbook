@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import {createMuiTheme, createStyles, makeStyles, Theme, ThemeProvider} from '@material-ui/core/styles';
 import {Container, Grid, Paper} from '@material-ui/core';
 import {NavItemGroup, RoutableNavList} from './components/chrome/RoutableNavList';
+import {Profile} from "./pages/profile/Profile";
 
 const darkTheme = createMuiTheme({
     palette: {
@@ -100,9 +101,10 @@ export const Chrome: React.FC<{
                         >
                             <MenuIcon/>
                         </IconButton>
-                        <Typography variant="h6" noWrap>
+                        <Typography variant="h6" noWrap style={{flex: 1}}>
                             {title}
                         </Typography>
+                        <Profile/>
                     </Toolbar>
                 </AppBar>
                 <nav className={classes.drawer} aria-label="mailbox folders">
@@ -150,7 +152,8 @@ export const Chrome: React.FC<{
                     <Container component="footer" className={classes.footer}>
                         <Paper>
                             <Grid container direction="row" alignItems="center" className={classes.footerContent}>
-                                <Typography variant="body1">Learn more about Questland at my Patreon{`\xa0\xa0`}</Typography>
+                                <Typography variant="body1">Learn more about Questland at my
+                                    Patreon{`\xa0\xa0`}</Typography>
                                 <a href="https://www.patreon.com/bePatron?u=33921067" target="_blank"
                                    rel="noopener noreferrer">
                                     <img
