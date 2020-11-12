@@ -11,7 +11,6 @@ import Typography from '@material-ui/core/Typography';
 import {createMuiTheme, createStyles, makeStyles, Theme, ThemeProvider} from '@material-ui/core/styles';
 import {Container, Grid, Paper} from '@material-ui/core';
 import {NavItemGroup, RoutableNavList} from './components/chrome/RoutableNavList';
-import {Profile} from "./pages/profile/Profile";
 
 const darkTheme = createMuiTheme({
     palette: {
@@ -104,7 +103,8 @@ export const Chrome: React.FC<{
                         <Typography variant="h6" noWrap style={{flex: 1}}>
                             {title}
                         </Typography>
-                        <Profile/>
+                        {/*TODO uncomment this to launch full login flow*/}
+                        {/*<Profile/>*/}
                     </Toolbar>
                 </AppBar>
                 <nav className={classes.drawer} aria-label="mailbox folders">
