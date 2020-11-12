@@ -32,8 +32,8 @@ Artifact 5
 
 - A4 of the item you want to make A5
 - random A4
+- 2 copies of the item you want to make A5
 - 4 legendaries of same emblem
-- 4 random legendaries
 
 ## What does an artifact give me?
 Each tier of an artifact will unlock:
