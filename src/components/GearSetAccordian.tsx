@@ -13,7 +13,7 @@ import {
     CardContent
 } from '@material-ui/core';
 import React from 'react';
-import {GearSet} from "../domain/gearSet";
+import {OptimizedGearSet} from "../domain/optimizedGearSet";
 import {makeStyles} from "@material-ui/core/styles";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export const GearSetAccordian: React.FC<{
-    gearSet: GearSet;
+    gearSet: OptimizedGearSet;
 }> = ({gearSet}) => {
     /*
     <Accordion disabled>
@@ -93,7 +93,7 @@ export const GearSetAccordian: React.FC<{
 };
 
 export const UnreleasedGearSetAccordian: React.FC<{
-    gearSet: GearSet;
+    gearSet: OptimizedGearSet;
 }> = ({gearSet}) => {
     /*
     <Accordion disabled>

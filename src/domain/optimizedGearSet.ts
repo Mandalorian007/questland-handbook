@@ -1,4 +1,4 @@
-export interface GearSet {
+export interface OptimizedGearSet {
     refCode: string;
     title: string;
     setsUsed?: string[];
