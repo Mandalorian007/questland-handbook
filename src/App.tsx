@@ -293,6 +293,7 @@ const navItemGroups: NavItemGroup[] = [
     },
     {label: 'About', to: '/about', icon: <InfoIcon/>, navItems: []},
     {label: 'Licensing', to: '/licensing', icon: <GavelIcon/>, navItems: []},
+    {label: 'Privacy Policy', to: '/privacy', icon: <GavelIcon/>, navItems: []},
 ];
 
 export const App: React.FC = () => {
