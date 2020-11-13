@@ -14,6 +14,7 @@ import {GearSummary} from "./GearSummary";
 import {SelectedItemCard} from "./SelectedItemCard";
 import {GearTemplate, getEquippedItemIds, notUndefined} from "../../../domain/gearTemplate";
 import {Emblem, getEmblemImgUrl} from "../../../domain/emblem";
+import {SavedGearTemplates} from "./SavedGearTemplates";
 
 const emptyItem: Item = {
     attack: 0,
@@ -121,9 +122,10 @@ export const GearPlannerPage: React.FC<{}> = () => {
         <>
             <h1>Gear Planner</h1>
             <Typography variant="body1" color="textSecondary" component="p">
-                This gear planner will always automatically include all the latest item data from Questland's API and in
-                the future will offer options for saving and sharing builds.
+                This gear planner will always automatically include all the latest item data from Questland's API as well as allowing you to save your favorite builds with sharing coming soon!
             </Typography>
+            <h2>Saved Gear Templates</h2>
+            <SavedGearTemplates activeGearTemplate={selectedGear} setActiveGearTemplate={setSelectedGear} items={items}/>
             <h2>Gear Summary</h2>
             <GearSummary gearTemplate={selectedGear}/>
             <h2>Equipment</h2>

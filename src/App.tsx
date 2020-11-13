@@ -62,7 +62,7 @@ import {BloodyHellPage} from "./pages/meta/BloodyHellPage";
 import {TurtlePage} from "./pages/meta/TurtlePage";
 import {BeginnerTipsPage} from "./pages/guides/BeginnerTipsGuide";
 import {GearDesignPage} from "./pages/guides/GearDesignPage";
-import {OptimizedGearSetsPage} from "./pages/gearing/OptimizedGearSetsPage";
+import {OptimizedGearTemplatesPage} from "./pages/gearing/OptimizedGearTemplatesPage";
 import {HeroLookupPage} from "./pages/tools/hero-lookup/HeroLookupPage";
 import {LicensingPage} from "./pages/licensing/LicensingPage";
 import {GearPlannerPage} from "./pages/tools/gear-planner/GearPlannerPage";
@@ -104,32 +104,32 @@ const navItemGroups: NavItemGroup[] = [
         ]
     },
     {
-        label: 'Gear system',
+        label: 'Gearing',
         icon: <HeroIcon/>,
         navItems: [
             {
                 label: 'Gear',
-                to: '/gear-system/gear'
+                to: '/gearing/gear'
             },
             {
                 label: 'Orbs',
-                to: '/gear-system/orbs'
+                to: '/gearing/orbs'
             },
             {
                 label: 'Artifacts',
-                to: '/gear-system/artifacts'
+                to: '/gearing/artifacts'
             },
             {
                 label: 'Collections',
-                to: '/gear-system/collections'
+                to: '/gearing/collections'
             },
             {
                 label: 'Reforging',
-                to: '/gear-system/reforging'
+                to: '/gearing/reforging'
             },
             {
-                label: 'Optimized Gear Sets',
-                to: '/gear-system/optimized-gear-sets'
+                label: 'Optimized Gear Templates',
+                to: '/gearing/optimized-gear-templates'
             }
         ]
     },
@@ -326,23 +326,23 @@ export const App: React.FC = () => {
                                 <GearDesignPage/>
                             </Route>
 
-                            <Route path="/gear-system/gear" exact>
+                            <Route path="/gearing/gear" exact>
                                 <Markdown md={gear}/>
                             </Route>
-                            <Route path="/gear-system/orbs" exact>
+                            <Route path="/gearing/orbs" exact>
                                 <Markdown md={orbs}/>
                             </Route>
-                            <Route path="/gear-system/artifacts" exact>
+                            <Route path="/gearing/artifacts" exact>
                                 <Markdown md={artifacts}/>
                             </Route>
-                            <Route path="/gear-system/collections" exact>
+                            <Route path="/gearing/collections" exact>
                                 <Markdown md={collections}/>
                             </Route>
-                            <Route path="/gear-system/reforging" exact>
+                            <Route path="/gearing/reforging" exact>
                                 <ReforgingPage/>
                             </Route>
-                            <Route path="/gear-system/optimized-gear-sets" exact>
-                                <OptimizedGearSetsPage/>
+                            <Route path="/gearing/optimized-gear-templates" exact>
+                                <OptimizedGearTemplatesPage/>
                             </Route>
 
                             <Route path="/meta/bloody-hell" exact>

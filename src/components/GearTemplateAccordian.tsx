@@ -13,7 +13,7 @@ import {
     CardContent
 } from '@material-ui/core';
 import React from 'react';
-import {OptimizedGearSet} from "../domain/optimizedGearSet";
+import {OptimizedGearTemplate} from "../domain/optimizedGearTemplate";
 import {makeStyles} from "@material-ui/core/styles";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
@@ -29,9 +29,9 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-export const GearSetAccordian: React.FC<{
-    gearSet: OptimizedGearSet;
-}> = ({gearSet}) => {
+export const GearTemplateAccordian: React.FC<{
+    gearTemplate: OptimizedGearTemplate;
+}> = ({gearTemplate}) => {
     /*
     <Accordion disabled>
     */
@@ -44,21 +44,21 @@ export const GearSetAccordian: React.FC<{
                 aria-controls="panel1a-content"
                 id="panel1a-header"
             >
-                <Typography variant="h5" component="h2">{gearSet.title}</Typography>
+                <Typography variant="h5" component="h2">{gearTemplate.title}</Typography>
             </AccordionSummary>
             <AccordionDetails>
                 <Card>
                     <CardMedia
                         component="img"
-                        image={gearSet.imageUrl}
+                        image={gearTemplate.imageUrl}
                     />
                     <CardContent>
                         <Typography variant="h6" component="p">
                             Sets Used
                         </Typography>
                         <List dense={true}>
-                            {gearSet.setsUsed ?
-                                gearSet.setsUsed.map(set =>
+                            {gearTemplate.setsUsed ?
+                                gearTemplate.setsUsed.map(set =>
                                     <ListItem key={set}>
                                         <ListItemText>{set}</ListItemText>
                                     </ListItem>
@@ -73,8 +73,8 @@ export const GearSetAccordian: React.FC<{
                             Notes
                         </Typography>
                         <List dense={true}>
-                            {gearSet.notes ?
-                                gearSet.notes.map(note =>
+                            {gearTemplate.notes ?
+                                gearTemplate.notes.map(note =>
                                     <ListItem key={note}>
                                         <ListItemText>{note}</ListItemText>
                                     </ListItem>
@@ -92,12 +92,9 @@ export const GearSetAccordian: React.FC<{
     );
 };
 
-export const UnreleasedGearSetAccordian: React.FC<{
-    gearSet: OptimizedGearSet;
-}> = ({gearSet}) => {
-    /*
-    <Accordion disabled>
-    */
+export const UnreleasedGearTemplateAccordian: React.FC<{
+    gearTemplate: OptimizedGearTemplate;
+}> = ({gearTemplate}) => {
     const classes = useStyles();
 
     return (
@@ -107,14 +104,14 @@ export const UnreleasedGearSetAccordian: React.FC<{
                 aria-controls="panel1a-content"
                 id="panel1a-header"
             >
-                <Typography variant="h5" component="h2">{gearSet.title}</Typography>
+                <Typography variant="h5" component="h2">{gearTemplate.title}</Typography>
             </AccordionSummary>
             <AccordionDetails>
                 <Card>
                     <CardContent>
                         <Typography variant="body1" component="p">
                             Most recent gear set information is limited to Legendary Tier+ patrons on ThunderSoap's discord.
-                            Once a new set is released, this gear set will be made available to all.
+                            Once a new set is released, this gear template will be made available to all.
                         </Typography>
                     </CardContent>
                 </Card>
