@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {useEffect} from 'react';
-import {Grid, Paper} from '@material-ui/core';
-import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
+import {Grid} from '@material-ui/core';
 import {RecentVideoPost} from "./RecentVideoPost";
 import {Post} from "../../domain/post";
 import {TypedUseSelectorHook, useDispatch, useSelector as useReduxSelector} from "react-redux";
@@ -10,21 +9,9 @@ import {loadYouTubeFeedPosts} from "../../store/YouTubeFeedActions";
 import {FeaturedGuide} from "./FeaturedGuide";
 import {HighlightedPost} from "./HighlightedPost";
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        contentPaper: {
-            background: '#303030'
-        },
-        container: {
-            padding: theme.spacing(3, 0),
-        },
-    })
-);
-
 export const useSelector: TypedUseSelectorHook<AppState> = useReduxSelector;
 
 export const HomePage = () => {
-    const classes = useStyles();
     const dispatch = useDispatch();
 
     const youTubePosts: Post[] = useSelector(state => state.youTubeFeedState.posts);
@@ -54,19 +41,19 @@ export const HomePage = () => {
     }, [dispatch]);
 
     return (
-        <Paper className={classes.contentPaper}>
+        <>
             <FeaturedGuide post={featuredGuide}/>
             <Grid container spacing={4}>
                 {highlightedContent.map((post) => (
-                    <HighlightedPost key={post.title} post={post} />
+                    <HighlightedPost key={post.title} post={post}/>
                 ))}
             </Grid>
             <h2>Latest videos</h2>
-            <Grid container spacing={2} >
+            <Grid container spacing={2}>
                 {youTubePosts.slice(0, 6).map(post => (
                     <RecentVideoPost post={post} key={post.title}/>
                 ))}
             </Grid>
-        </Paper>
+        </>
     );
 };
