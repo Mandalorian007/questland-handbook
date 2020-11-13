@@ -68,7 +68,7 @@ import {LicensingPage} from "./pages/licensing/LicensingPage";
 import {GearPlannerPage} from "./pages/tools/gear-planner/GearPlannerPage";
 import {PrivacyPolicyPage} from "./pages/privacy/PrivacyPolicyPage";
 import {AccountPage} from "./pages/profile/AccountPage";
-import {CookiesProvider, useCookies} from 'react-cookie';
+import {CookiesProvider} from 'react-cookie';
 
 const store = createStore(
     rootReducer,
@@ -297,7 +297,6 @@ const navItemGroups: NavItemGroup[] = [
 ];
 
 export const App: React.FC = () => {
-    const [cookies] = useCookies(['token']);
     const tagManagerArgs: TagManagerArgs = {
         gtmId: process.env.REACT_APP_GTM_ID || '',
     };
