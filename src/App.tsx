@@ -10,7 +10,7 @@ import {Provider} from 'react-redux';
 import {HomePage} from './pages/home/HomePage';
 import {NavItemGroup} from './components/chrome/RoutableNavList';
 import {OrbIndexPage} from './pages/indexes/OrbIndexPage';
-import {ItemIndexPage} from './pages/indexes/ItemIndexPage';
+import {ItemIndexPage} from './pages/indexes/item-index/ItemIndexPage';
 import {MonsterSlayerCalcPage} from './pages/tools/MonsterSlayerCalcPage';
 import HomeIcon from '@material-ui/icons/Home';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
@@ -68,7 +68,7 @@ import {LicensingPage} from "./pages/licensing/LicensingPage";
 import {GearPlannerPage} from "./pages/tools/gear-planner/GearPlannerPage";
 import {PrivacyPolicyPage} from "./pages/privacy/PrivacyPolicyPage";
 import {AccountPage} from "./pages/profile/AccountPage";
-import {CookiesProvider} from 'react-cookie';
+import {CookiesProvider, useCookies} from 'react-cookie';
 
 const store = createStore(
     rootReducer,
@@ -296,6 +296,7 @@ const navItemGroups: NavItemGroup[] = [
 ];
 
 export const App: React.FC = () => {
+    const [cookies] = useCookies(['token']);
     const tagManagerArgs: TagManagerArgs = {
         gtmId: process.env.REACT_APP_GTM_ID || '',
     };

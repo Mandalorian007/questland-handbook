@@ -8,17 +8,27 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import {createMuiTheme, createStyles, makeStyles, Theme, ThemeProvider} from '@material-ui/core/styles';
+import {createMuiTheme, createStyles, makeStyles, Theme, ThemeOptions, ThemeProvider} from '@material-ui/core/styles';
 import {Container, Grid, Paper} from '@material-ui/core';
 import {NavItemGroup, RoutableNavList} from './components/chrome/RoutableNavList';
+import {TypedUseSelectorHook, useSelector as useReduxSelector} from "react-redux";
+import {AppState} from "./store/rootReducer";
+import {Profile} from "./domain/profile";
+import {ProfileAvatar} from "./pages/profile/ProfileAvatar";
 
-const darkTheme = createMuiTheme({
+const drawerWidth = 240;
+
+const dark: ThemeOptions = {
     palette: {
         type: 'dark'
     }
-});
+};
 
-const drawerWidth = 240;
+const light: ThemeOptions = {
+    palette: {
+        type: 'light'
+    }
+};
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -74,19 +84,22 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 );
 
+export const useSelector: TypedUseSelectorHook<AppState> = useReduxSelector;
+
 export const Chrome: React.FC<{
     title: string;
     navItemGroups: NavItemGroup[];
 }> = ({title, navItemGroups, children}) => {
     const classes = useStyles();
     const [mobileOpen, setMobileOpen] = React.useState(false);
+    const profile: Profile = useSelector(state => state.profileState.profile);
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
 
     return (
-        <ThemeProvider theme={darkTheme}>
+        <ThemeProvider theme={createMuiTheme((profile.darkTheme === undefined ? dark : (profile.darkTheme ? dark : light)))}>
             <div className={classes.root}>
                 <CssBaseline/>
                 <AppBar position="fixed" className={classes.appBar}>
@@ -103,8 +116,7 @@ export const Chrome: React.FC<{
                         <Typography variant="h6" noWrap style={{flex: 1}}>
                             {title}
                         </Typography>
-                        {/*TODO uncomment this to launch full login flow*/}
-                        {/*<Profile/>*/}
+                        <ProfileAvatar/>
                     </Toolbar>
                 </AppBar>
                 <nav className={classes.drawer} aria-label="mailbox folders">

@@ -5,7 +5,7 @@ import {GoogleLoginResponse, GoogleLoginResponseOffline} from "react-google-logi
 import {Avatar, IconButton, Menu, MenuItem} from "@material-ui/core";
 import {Link} from "react-router-dom";
 
-export const Profile: React.FC<{}> = () => {
+export const ProfileAvatar: React.FC<{}> = () => {
     const [loggedIn, setLoggedIn] = React.useState(false);
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 

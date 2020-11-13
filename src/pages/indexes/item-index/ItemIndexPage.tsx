@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {TypedUseSelectorHook, useDispatch, useSelector as useReduxSelector} from 'react-redux';
-import {AppState} from '../../store/rootReducer';
+import {AppState} from '../../../store/rootReducer';
 import {
     Accordion,
     AccordionDetails,
@@ -15,16 +15,16 @@ import {
     TextField,
     Typography
 } from '@material-ui/core';
-import {loadItems} from '../../store/itemActions';
-import {Item} from '../../domain/item';
-import {useGridListCols} from '../../lib/responsiveList';
-import {ItemCard} from './item-index/ItemCard';
+import {loadItems} from '../../../store/itemActions';
+import {Item} from '../../../domain/item';
+import {useGridListCols} from '../../../lib/responsiveList';
+import {ItemCard} from './ItemCard';
 import {Autocomplete} from '@material-ui/lab';
-import {Emblem, getEmblems} from '../../domain/emblem';
-import {Quality} from '../../domain/quality';
+import {Emblem, getEmblems} from '../../../domain/emblem';
+import {Quality} from '../../../domain/quality';
 import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
-import {getItemSlots, ItemSlot} from '../../domain/ItemSlot';
-import {getComparator, stableSort} from '../../lib/sort';
+import {getItemSlots, ItemSlot} from '../../../domain/ItemSlot';
+import {getComparator, stableSort} from '../../../lib/sort';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 export const useSelector: TypedUseSelectorHook<AppState> = useReduxSelector;

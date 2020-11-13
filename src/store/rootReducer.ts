@@ -14,6 +14,7 @@ import {
   ReduxGuildBossStatState
 } from './guildBossStatReducer';
 import {ReduxYouTubeFeedState, youTubeFeedReducer} from "./YouTubeFeedReducer";
+import {ReduxProfileState, profileReducer} from "./profileReducer";
 
 export enum ReduxActionTypes {
   LOAD_ITEMS = 'LOAD_ITEMS',
@@ -27,7 +28,10 @@ export enum ReduxActionTypes {
   LOAD_BATTLE_LOCATIONS = 'LOAD_BATTLE_LOCATIONS',
   REST_BATTLE_LOCATIONS = 'REST_BATTLE_LOCATIONS',
   LOAD_VIDEOS = 'LOAD_VIDEOS',
-  RESET_VIDEOS = 'RESET_VIDEOS'
+  RESET_VIDEOS = 'RESET_VIDEOS',
+  LOAD_PROFILE = 'LOAD_PROFILE',
+  UPDATE_PROFILE = 'UPDATE_PROFILE',
+  RESET_PROFILE = 'RESET_PROFILE'
 }
 
 export const rootReducer: Reducer = combineReducers({
@@ -36,7 +40,8 @@ export const rootReducer: Reducer = combineReducers({
   hardBossStatsState: hardBossStatsReducer,
   guildBossStatsState: guildBossStatsReducer,
   battleLocationState: battleLocationReducer,
-  youTubeFeedState: youTubeFeedReducer
+  youTubeFeedState: youTubeFeedReducer,
+  profileState: profileReducer
 });
 
 export type AppState = {
@@ -46,4 +51,5 @@ export type AppState = {
   guildBossStatsState: ReduxGuildBossStatState;
   battleLocationState: ReduxBattleLocationState;
   youTubeFeedState: ReduxYouTubeFeedState;
+  profileState: ReduxProfileState;
 };

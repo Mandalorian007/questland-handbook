@@ -1,7 +1,8 @@
 import React from "react";
 import {GoogleLogin, GoogleLoginResponse, GoogleLoginResponseOffline} from "react-google-login";
 import {useCookies} from 'react-cookie';
-import {qlApiUrl} from "../../config";
+import {useDispatch} from "react-redux";
+import {loadProfile} from "../../store/profileActions";
 
 
 export const Login: React.FC<{
@@ -10,6 +11,7 @@ export const Login: React.FC<{
 }> = ({onLoginSuccess, onLoginFailure}) => {
     const [cookies, setCookie, removeCookie] = useCookies(['token']);
     const oauth2ClientId = process.env.REACT_APP_OAUTH2_CLIENT_ID || '';
+    const dispatch = useDispatch();
 
     const onSuccess = (res: GoogleLoginResponse | GoogleLoginResponseOffline): void => {
         if (onLoginSuccess) {
@@ -25,22 +27,12 @@ export const Login: React.FC<{
         }
     };
 
-    const setupUserProfile = (idToken: string) => {
-        const requestInit: RequestInit = {
-            method: 'POST',
-            headers: {
-                'id_token': idToken,
-            }
-        };
-        fetch(qlApiUrl + 'profile', requestInit);
-    };
-
     const refreshTokenSetup = (res: any) => {
         // Timing to renew access token
         let refreshTiming = (res.tokenObj.expires_in || 3600 - 5 * 60) * 1000;
         const idToken = res.getAuthResponse().id_token;
         setCookie('token', idToken);
-        setupUserProfile(idToken);
+        dispatch(loadProfile(idToken));
 
         const refreshToken = async () => {
             const newAuthRes = await res.reloadAuthResponse();

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {useEffect} from 'react';
 import {Item} from "../../../domain/item";
-import {useSelector} from "../../indexes/ItemIndexPage";
+import {useSelector} from "../../indexes/item-index/ItemIndexPage";
 import {useDispatch} from "react-redux";
 import {loadItems} from "../../../store/itemActions";
 import {GridList, GridListTile, Typography} from "@material-ui/core";
