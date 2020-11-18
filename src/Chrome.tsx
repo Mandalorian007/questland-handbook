@@ -99,7 +99,7 @@ export const Chrome: React.FC<{
     };
 
     return (
-        <ThemeProvider theme={createMuiTheme((profile.darkTheme === undefined ? dark : (profile.darkTheme ? dark : light)))}>
+        <ThemeProvider theme={createMuiTheme((profile.darkTheme === null || profile.darkTheme === undefined ? dark : (profile.darkTheme ? dark : light)))}>
             <div className={classes.root}>
                 <CssBaseline/>
                 <AppBar position="fixed" className={classes.appBar}>

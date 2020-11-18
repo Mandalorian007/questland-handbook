@@ -445,9 +445,9 @@ export const App: React.FC = () => {
                             <Route path="/tools/guild-be-plan" exact>
                                 <GuildBattleEventPlanner/>
                             </Route>
-                            <Route path="/tools/gear-planner" exact>
+                            {/*<Route path="/tools/gear-planner" exact>
                                 <GearPlannerPage/>
-                            </Route>
+                            </Route>*/}
 
                             <Route path="/about" exact>
                                 <Markdown md={about}/>

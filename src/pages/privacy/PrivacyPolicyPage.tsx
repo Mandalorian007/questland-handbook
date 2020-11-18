@@ -27,6 +27,7 @@ export const PrivacyPolicyPage = () => (
             you are the next time you login. This lets us save preferences like light vs. dark mode and add support for
             future features like remembering your Questland Hero.
         </div>
+        <div>Your data will not be shared with any 3rd parties or used outside of the context of the Questland Handbook site.</div>
         <div>If you have any questions or concerns about how we use your data please don't hesitate to reach out to us by email:</div>
         <ul>
            <li>questland-handbook-security@googlegroups.com</li>

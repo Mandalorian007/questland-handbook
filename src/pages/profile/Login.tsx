@@ -9,7 +9,7 @@ export const Login: React.FC<{
     onLoginSuccess?(res: GoogleLoginResponse | GoogleLoginResponseOffline): void,
     onLoginFailure?(error: any): void
 }> = ({onLoginSuccess, onLoginFailure}) => {
-    const [cookies, setCookie, removeCookie] = useCookies(['token']);
+    const [cookies, setCookie, removeCookie] = useCookies(['token', 'avatarURL']);
     const oauth2ClientId = process.env.REACT_APP_OAUTH2_CLIENT_ID || '';
     const dispatch = useDispatch();
 
@@ -17,11 +17,15 @@ export const Login: React.FC<{
         if (onLoginSuccess) {
             onLoginSuccess(res);
         }
+        if ("profileObj" in res) {
+            setCookie('avatarURL', res.profileObj.imageUrl);
+        }
         refreshTokenSetup(res);
     };
 
     const onFailure = (error: any): void => {
         removeCookie('token');
+        removeCookie('avatarURL');
         if (onLoginFailure) {
             onLoginFailure(error);
         }
