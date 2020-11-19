@@ -18,7 +18,7 @@ export const Login: React.FC<{
             onLoginSuccess(res);
         }
         if ("profileObj" in res) {
-            setCookie('avatarURL', res.profileObj.imageUrl);
+            setCookie('avatarURL', res.profileObj.imageUrl, { path: '/' });
         }
         refreshTokenSetup(res);
     };
@@ -35,7 +35,7 @@ export const Login: React.FC<{
         // Timing to renew access token
         let refreshTiming = (res.tokenObj.expires_in || 3600 - 5 * 60) * 1000;
         const idToken = res.getAuthResponse().id_token;
-        setCookie('token', idToken);
+        setCookie('token', idToken, { path: '/' });
         dispatch(loadProfile(idToken));
 
         const refreshToken = async () => {

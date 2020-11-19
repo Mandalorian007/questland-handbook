@@ -14,7 +14,7 @@ export const Logout: React.FC<{
     const dispatch = useDispatch();
 
     const onLogoutSuccess = () => {
-        removeCookie('token');
+        removeCookie('token', { path: '/' });
         dispatch(resetProfile());
         if (onLogout) {
             onLogout();

@@ -122,7 +122,8 @@ export const GearPlannerPage: React.FC<{}> = () => {
         <>
             <h1>Gear Planner</h1>
             <Typography variant="body1" color="textSecondary" component="p">
-                This gear planner will always automatically include all the latest item data from Questland's API as well as allowing you to save your favorite builds with sharing coming soon!
+                This gear planner will always automatically include all the latest item data from Questland's API as
+                well as allowing you to save your favorite builds with sharing coming soon!
             </Typography>
             <h2>Saved Gear Templates</h2>
             <SavedGearTemplates activeGearTemplate={selectedGear} setActiveGearTemplate={setSelectedGear} items={items}/>
