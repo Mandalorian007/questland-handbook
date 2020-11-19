@@ -24,8 +24,8 @@ export const Login: React.FC<{
     };
 
     const onFailure = (error: any): void => {
-        removeCookie('token');
-        removeCookie('avatarURL');
+        removeCookie('token', { path: '/' });
+        removeCookie('avatarURL', { path: '/' });
         if (onLoginFailure) {
             onLoginFailure(error);
         }
