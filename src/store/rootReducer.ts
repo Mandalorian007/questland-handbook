@@ -31,7 +31,8 @@ export enum ReduxActionTypes {
   RESET_VIDEOS = 'RESET_VIDEOS',
   LOAD_PROFILE = 'LOAD_PROFILE',
   UPDATE_PROFILE = 'UPDATE_PROFILE',
-  RESET_PROFILE = 'RESET_PROFILE'
+  UNLOAD_PROFILE = 'UNLOAD_PROFILE',
+  DELETE_PROFILE = 'DELETE_PROFILE'
 }
 
 export const rootReducer: Reducer = combineReducers({

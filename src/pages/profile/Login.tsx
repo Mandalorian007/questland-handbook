@@ -5,37 +5,24 @@ import {useDispatch} from "react-redux";
 import {loadProfile} from "../../store/profileActions";
 
 
-export const Login: React.FC<{
-    onLoginSuccess?(res: GoogleLoginResponse | GoogleLoginResponseOffline): void,
-    onLoginFailure?(error: any): void
-}> = ({onLoginSuccess, onLoginFailure}) => {
-    const [cookies, setCookie, removeCookie] = useCookies(['token', 'avatarURL']);
+export const Login: React.FC<{}> = () => {
+    const [cookies, setCookie, removeCookie] = useCookies(['authToken']);
     const oauth2ClientId = process.env.REACT_APP_OAUTH2_CLIENT_ID || '';
     const dispatch = useDispatch();
 
     const onSuccess = (res: GoogleLoginResponse | GoogleLoginResponseOffline): void => {
-        if (onLoginSuccess) {
-            onLoginSuccess(res);
-        }
-        if ("profileObj" in res) {
-            setCookie('avatarURL', res.profileObj.imageUrl, { path: '/' });
-        }
         refreshTokenSetup(res);
     };
 
     const onFailure = (error: any): void => {
-        removeCookie('token', { path: '/' });
-        removeCookie('avatarURL', { path: '/' });
-        if (onLoginFailure) {
-            onLoginFailure(error);
-        }
+        removeCookie('authToken', { path: '/' });
     };
 
     const refreshTokenSetup = (res: any) => {
         // Timing to renew access token
         let refreshTiming = (res.tokenObj.expires_in || 3600 - 5 * 60) * 1000;
         const idToken = res.getAuthResponse().id_token;
-        setCookie('token', idToken, { path: '/' });
+        setCookie('authToken', idToken, { path: '/' });
         dispatch(loadProfile(idToken));
 
         const refreshToken = async () => {
@@ -57,6 +44,7 @@ export const Login: React.FC<{
             onFailure={onFailure}
             cookiePolicy={'single_host_origin'}
             isSignedIn={true}
+            scope={'email profile openid'}
         />
     );
 };

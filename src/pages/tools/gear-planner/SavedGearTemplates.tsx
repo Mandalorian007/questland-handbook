@@ -25,16 +25,16 @@ export const SavedGearTemplates: React.FC<{
     setActiveGearTemplate: any;
     items: Item[];
 }> = ({activeGearTemplate, setActiveGearTemplate, items}) => {
-    const [cookies] = useCookies(['token']);
+    const [cookies] = useCookies(['authToken']);
     const [gearTemplates, setGearTemplates] = React.useState<ServerGearTemplate[]>([]);
     const [newGearTemplateName, setNewGearTemplateName] = React.useState<string>('');
 
     useEffect(() => {
         // Logic is duplicated with loadGearTemplates do to strange hook things....
-        if (cookies.token) {
+        if (cookies.authToken) {
             const requestInit: RequestInit = {
                 headers: {
-                    'id_token': cookies.token,
+                    'Authorization': 'Bearer ' + cookies.authToken,
                 }
             };
 
@@ -45,10 +45,10 @@ export const SavedGearTemplates: React.FC<{
     }, [cookies]);
 
     const loadGearTemplates = () => {
-        if (cookies.token) {
+        if (cookies.authToken) {
             const requestInit: RequestInit = {
                 headers: {
-                    'id_token': cookies.token,
+                    'Authorization': 'Bearer ' + cookies.authToken,
                 }
             };
 
@@ -63,7 +63,7 @@ export const SavedGearTemplates: React.FC<{
         const requestInit: RequestInit = {
             method: 'POST',
             headers: {
-                'id_token': cookies.token,
+                'Authorization': 'Bearer ' + cookies.authToken,
                 'Content-Type': 'application/json',
             },
             body: newGearTemplate
@@ -77,7 +77,7 @@ export const SavedGearTemplates: React.FC<{
         const requestInit: RequestInit = {
             method: 'DELETE',
             headers: {
-                'id_token': cookies.token,
+                'Authorization': 'Bearer ' + cookies.authToken,
                 'Content-Type': 'application/json',
             },
         };
@@ -113,7 +113,7 @@ export const SavedGearTemplates: React.FC<{
         <Card>
             <CardContent>
                 {
-                    cookies.token ?
+                    cookies.authToken ?
                         (gearTemplates.length > 0) ?
                             displayGearTemplates()
                             :

@@ -14,11 +14,15 @@ export interface ReduxUpdateProfileAction {
     data: Profile;
 }
 
-export interface ReduxResetProfileAction {
-    type: ReduxActionTypes.RESET_PROFILE;
+export interface ReduxUnloadProfileAction {
+    type: ReduxActionTypes.UNLOAD_PROFILE;
 }
 
-export const loadProfile = (tokenId: string): ThunkAction<Promise<ReduxLoadProfileAction>,
+export interface ReduxDeleteProfileAction {
+    type: ReduxActionTypes.DELETE_PROFILE;
+}
+
+export const loadProfile = (authToken: string): ThunkAction<Promise<ReduxLoadProfileAction>,
     ReduxProfileState,
     undefined,
     ReduxLoadProfileAction> => {
@@ -27,7 +31,8 @@ export const loadProfile = (tokenId: string): ThunkAction<Promise<ReduxLoadProfi
     ) => {
         const requestInit: RequestInit = {
             headers: {
-                'id_token': tokenId,
+                'Authorization': 'Bearer ' + authToken,
+                'Content-Type': 'application/json',
             }
         };
 
@@ -42,7 +47,7 @@ export const loadProfile = (tokenId: string): ThunkAction<Promise<ReduxLoadProfi
     };
 };
 
-export const updateProfile = (tokenId: string, profile: Profile): ThunkAction<Promise<ReduxUpdateProfileAction>,
+export const updateProfile = (authToken: string, profile: Profile): ThunkAction<Promise<ReduxUpdateProfileAction>,
     ReduxProfileState,
     undefined,
     ReduxUpdateProfileAction> => {
@@ -52,7 +57,7 @@ export const updateProfile = (tokenId: string, profile: Profile): ThunkAction<Pr
         const requestInit: RequestInit = {
             method: 'PATCH',
             headers: {
-                'id_token': tokenId,
+                'Authorization': 'Bearer ' + authToken,
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(profile)
@@ -69,6 +74,29 @@ export const updateProfile = (tokenId: string, profile: Profile): ThunkAction<Pr
     };
 };
 
-export const resetProfile = (): ReduxResetProfileAction => ({
-    type: ReduxActionTypes.RESET_PROFILE
+export const unloadProfile = (): ReduxUnloadProfileAction => ({
+    type: ReduxActionTypes.UNLOAD_PROFILE
 });
+
+export const deleteProfile = (authToken: string): ThunkAction<Promise<ReduxDeleteProfileAction>,
+    ReduxProfileState,
+    undefined,
+    ReduxDeleteProfileAction> => {
+    return async (
+        dispatch: ThunkDispatch<ReduxProfileState, undefined, ReduxDeleteProfileAction>
+    ) => {
+        const requestInit: RequestInit = {
+            method: 'DELETE',
+            headers: {
+                'Authorization': 'Bearer ' + authToken,
+            }
+        };
+
+        let url = qlApiUrl + 'profile';
+        await fetch(url, requestInit);
+
+        return dispatch({
+            type: ReduxActionTypes.DELETE_PROFILE as ReduxActionTypes.DELETE_PROFILE
+        });
+    };
+};
