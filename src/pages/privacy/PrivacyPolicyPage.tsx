@@ -6,14 +6,13 @@ export const PrivacyPolicyPage = () => (
         <h1>Privacy Policy</h1>
 
         <p>Your privacy is important to us. It is Questland Handbook's policy to respect your privacy regarding any
-            information we may collect from you across our website, https://www.questland-handbook.com</p>
+            information we may collect from you across this website, https://www.questland-handbook.com</p>
 
-        <p>We only ask for personal information as long as necessary to provide service to you. We collect it by fair
-            and lawful means, with your knowledge and consent. We also let you know why we are collecting it and how it
-            will be used.</p>
+        <p>We only ask for personal information to provide service to you. We collect it by fair and lawful means and
+            with your knowledge and consent. We also let you know why we are collecting it and how it will be used.</p>
 
         <p>We only retain collected information for as long as necessary to provide you with service and you may request
-            for this data to be deleted at anytime. What data we store, we'll protect within commercially acceptable
+            for this data to be deleted at any time. What data we store, we'll protect within commercially acceptable
             means to prevent loss and theft, as well as unauthorized access, disclosure, copying, use or
             modification.</p>
 
@@ -27,9 +26,9 @@ export const PrivacyPolicyPage = () => (
         <p>You are free to refuse our request for your personal information, with the understanding that we may be
             unable to provide you with some of your desired services.</p>
 
-        <p>Your continued use of our website will be regarded as acceptance of our practices around privacy and personal
-            information. If you have any questions about how we handle user data and personal information, feel free to
-            contact us by email at:</p>
+        <p>Your continued use of this website will be regarded as acceptance of our practices around privacy and
+            personal information. If you have any questions about how we handle user data and personal information, feel
+            free to contact us by email at:</p>
 
         <p>questland-handbook-security@googlegroups.com</p>
 
@@ -37,7 +36,7 @@ export const PrivacyPolicyPage = () => (
 
         <h2>Data used and stored about you</h2>
 
-        <p>The data below is all I am storing about you:</p>
+        <p>The data below is all we are storing about you:</p>
 
         <ul>
             <li>
@@ -46,8 +45,8 @@ export const PrivacyPolicyPage = () => (
             </li>
         </ul>
 
-        <p>I leverage Google Analytics to provide metrics about site usage, but that information contains no references
-            to personal information and only uses page count and accessing location provided from browsers.</p>
+        <p>We leverage Google Analytics to provide metrics about site usage, but that information contains no references
+            to personal information, and only uses page count and accessing location provided from browsers.</p>
 
         <p>Here is a sample of the raw data collected:</p>
 
