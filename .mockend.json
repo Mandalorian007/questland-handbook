@@ -1,0 +1,9 @@
+{
+    "Monsterslayer": {
+        "locationName": "string",
+        "locationNumber": "int",
+        "stageName": "string",
+        "stageNumber": "int",
+        "stageScore": "int"
+    }
+}
