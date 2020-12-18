@@ -10,7 +10,7 @@ export interface ReduxLoadStageScoresAction {
 }
   
 export interface ReduxResetStageScoresAction {
-  type: ReduxActionTypes.REST_STAGE_SCORES;
+  type: ReduxActionTypes.RESET_STAGE_SCORES;
 }
 
 export const loadStageScores = (): ThunkAction<
@@ -34,5 +34,5 @@ export const loadStageScores = (): ThunkAction<
 };
 
 export const resetStageScores = (): ReduxResetStageScoresAction => ({
-  type: ReduxActionTypes.REST_STAGE_SCORES
+  type: ReduxActionTypes.RESET_STAGE_SCORES
 });
