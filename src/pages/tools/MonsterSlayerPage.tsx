@@ -33,7 +33,10 @@ export const MonsterSlayerPage: React.FC<{}> = () => {
 
     if (stageScores.length == 0) {
         return (
-            <Paper><h1>Monster Slayer</h1><h2>No current Monster Slayer event</h2></Paper>
+            <Paper>
+                <h1>Monster Slayer</h1>
+                <h2>No current Monster Slayer event</h2>
+            </Paper>
         );
     }
 
@@ -53,9 +56,9 @@ export const MonsterSlayerPage: React.FC<{}> = () => {
                         {stageScores.map(stageScore => {
                         return (
                             <TableRow key={stageScore.stageName}>
-                            <TableCell>{stageScore.locationName}</TableCell>
-                            <TableCell>{stageScore.stageName}</TableCell>
-                            <TableCell>{Number(stageScore.stageScore).toLocaleString()}</TableCell>
+                                <TableCell>{stageScore.locationName}</TableCell>
+                                <TableCell>{stageScore.stageName}</TableCell>
+                                <TableCell>{Number(stageScore.stageScore).toLocaleString()}</TableCell>
                             </TableRow>
                         );
                         })}

@@ -20,7 +20,7 @@ export const stageScoreReducer: Reducer<ReduxStageScoreState, StageScoreReducerA
   switch (action.type) {
     case ReduxActionTypes.LOAD_STAGE_SCORES:
       return { ...state, stageScores: action.data };
-    case ReduxActionTypes.REST_STAGE_SCORES:
+    case ReduxActionTypes.RESET_STAGE_SCORES:
       return { ...state, stageScores: [] };
     default:
       return state;
