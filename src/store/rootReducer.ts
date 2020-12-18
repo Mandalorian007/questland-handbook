@@ -13,6 +13,10 @@ import {
   guildBossStatsReducer,
   ReduxGuildBossStatState
 } from './guildBossStatReducer';
+import {
+  stageScoreReducer,
+  ReduxStageScoreState
+} from './stageScoreReducer';
 import {ReduxYouTubeFeedState, youTubeFeedReducer} from "./YouTubeFeedReducer";
 import {ReduxProfileState, profileReducer} from "./profileReducer";
 
@@ -27,6 +31,8 @@ export enum ReduxActionTypes {
   RESET_GUILD_BOSS_STATS = 'RESET_GUILD_BOSS_STATS',
   LOAD_BATTLE_LOCATIONS = 'LOAD_BATTLE_LOCATIONS',
   REST_BATTLE_LOCATIONS = 'REST_BATTLE_LOCATIONS',
+  LOAD_STAGE_SCORES = 'LOAD_STAGE_SCORES',
+  RESET_STAGE_SCORES = 'RESET_STAGE_SCORES',
   LOAD_VIDEOS = 'LOAD_VIDEOS',
   RESET_VIDEOS = 'RESET_VIDEOS',
   LOAD_PROFILE = 'LOAD_PROFILE',
@@ -41,6 +47,7 @@ export const rootReducer: Reducer = combineReducers({
   hardBossStatsState: hardBossStatsReducer,
   guildBossStatsState: guildBossStatsReducer,
   battleLocationState: battleLocationReducer,
+  stageScoreState: stageScoreReducer,
   youTubeFeedState: youTubeFeedReducer,
   profileState: profileReducer
 });
@@ -51,6 +58,7 @@ export type AppState = {
   hardBossStatsState: ReduxHardBossStatState;
   guildBossStatsState: ReduxGuildBossStatState;
   battleLocationState: ReduxBattleLocationState;
+  stageScoreState: ReduxStageScoreState;
   youTubeFeedState: ReduxYouTubeFeedState;
   profileState: ReduxProfileState;
 };
