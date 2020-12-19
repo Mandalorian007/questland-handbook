@@ -34,7 +34,7 @@ export const MonsterSlayerPage: React.FC<{}> = () => {
     return (
         <Paper>
             <h1>Monster Slayer</h1>
-            { stageScores.length ? 
+            { stageScores.length != 0 ? 
                 <TableContainer>
                     <Table aria-label="simple table">
                         <TableHead>
