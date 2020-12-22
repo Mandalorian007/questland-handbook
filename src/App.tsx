@@ -259,6 +259,10 @@ const navItemGroups: NavItemGroup[] = [
                 to: '/tools/monster-slayer-calc'
             },
             {
+                label: 'Monster Slayer Stage Scores',
+                to: '/tools/monster-slayer'
+            },
+            {
                 label: 'Quest Event Smelting Calculator',
                 to: '/tools/qe-smelting-calc'
             },

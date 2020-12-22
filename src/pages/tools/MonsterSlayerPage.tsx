@@ -33,8 +33,8 @@ export const MonsterSlayerPage: React.FC<{}> = () => {
 
     return (
         <Paper>
-            <h1>Monster Slayer</h1>
-            { stageScores.length != 0 ? 
+            <h1>Monster Slayer Stage Scores</h1>
+            { stageScores.length !== 0 ? 
                 <TableContainer>
                     <Table aria-label="simple table">
                         <TableHead>
