@@ -12,6 +12,7 @@ import {NavItemGroup} from './components/chrome/RoutableNavList';
 import {OrbIndexPage} from './pages/indexes/OrbIndexPage';
 import {ItemIndexPage} from './pages/indexes/item-index/ItemIndexPage';
 import {MonsterSlayerCalcPage} from './pages/tools/MonsterSlayerCalcPage';
+import {MonsterSlayerPage} from './pages/tools/MonsterSlayerPage';
 import HomeIcon from '@material-ui/icons/Home';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import ListIcon from '@material-ui/icons/List';
@@ -258,6 +259,10 @@ const navItemGroups: NavItemGroup[] = [
                 to: '/tools/monster-slayer-calc'
             },
             {
+                label: 'Monster Slayer Stage Scores',
+                to: '/tools/monster-slayer'
+            },
+            {
                 label: 'Quest Event Smelting Calculator',
                 to: '/tools/qe-smelting-calc'
             },
@@ -423,6 +428,9 @@ export const App: React.FC = () => {
 
                             <Route path="/tools/monster-slayer-calc" exact>
                                 <MonsterSlayerCalcPage/>
+                            </Route>
+                            <Route path="/tools/monster-slayer" exact>
+                                <MonsterSlayerPage/>
                             </Route>
                             <Route path="/tools/qe-smelting-calc" exact>
                                 <QeSmeltingCalcPage/>
