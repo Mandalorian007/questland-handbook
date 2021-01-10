@@ -17,8 +17,11 @@ import {
     List,
     ListItem,
     ListItemIcon,
-    TextField, Typography
+    TextField,
+    Typography,
+    Grid
 } from "@material-ui/core";
+import CopyIcon from '@material-ui/icons/FileCopy';
 
 export const SavedGearTemplates: React.FC<{
     activeGearTemplate: GearTemplate;
@@ -28,6 +31,7 @@ export const SavedGearTemplates: React.FC<{
     const [cookies] = useCookies(['authToken']);
     const [gearTemplates, setGearTemplates] = React.useState<ServerGearTemplate[]>([]);
     const [newGearTemplateName, setNewGearTemplateName] = React.useState<string>('');
+    const [gearTemplateId, setGearTemplateId] = React.useState<string>('');
 
     useEffect(() => {
         // Logic is duplicated with loadGearTemplates do to strange hook things....
@@ -86,6 +90,17 @@ export const SavedGearTemplates: React.FC<{
             .then(() => loadGearTemplates());
     };
 
+    const loadGearTemplateById = (id: string, items: Item[]) => {
+        fetch(qlApiUrl + `gear-templates/${id}`)
+            .then(result => result.json())
+            .then(gearTemplate => setActiveGearTemplate(convertToGearTemplate(gearTemplate, items)))
+            .catch(err => alert('Unable to locate gear template for this id. It likely does not exist.'))
+    };
+
+    const copyToClipboard = (id: string | undefined) => {
+        navigator.clipboard.writeText(id || '');
+    };
+
     const displayGearTemplates = () => {
         return (
             <List dense={true}>
@@ -94,6 +109,9 @@ export const SavedGearTemplates: React.FC<{
                         <Button variant="contained" style={{textTransform: 'none'}}
                                 onClick={() => setActiveGearTemplate(convertToGearTemplate(gearTemplate, items))}>{gearTemplate.name}</Button>
                         <ListItemIcon>
+                            <IconButton onClick={() => copyToClipboard(gearTemplate.id)}>
+                                <CopyIcon/>
+                            </IconButton>
                             <IconButton onClick={() => deleteGearTemplate(gearTemplate.id)}>
                                 <img
                                     src={'/x-button.png'}
@@ -123,23 +141,43 @@ export const SavedGearTemplates: React.FC<{
                 }
             </CardContent>
             <CardActions>
-                <TextField
-                    id="gear-template-namer"
-                    label="New gear template name"
-                    error={newGearTemplateName.length > 50}
-                    helperText={newGearTemplateName.length > 50 ? 'Name is too long.' : ''}
-                    value={newGearTemplateName}
-                    onChange={(event) => setNewGearTemplateName(event.target.value)}
-                    variant="outlined"
-                />
-                <Button
-                    disabled={newGearTemplateName.length < 1 || newGearTemplateName.length > 50 || gearTemplates.length > 4}
-                    onClick={() => {
-                        setNewGearTemplateName('');
-                        saveGearTemplate(newGearTemplateName);
-                    }}>Save gear template</Button>
+                <Grid container spacing={1}>
+                    <Grid item xs={12}>
+                        <TextField
+                            id="gear-template-namer"
+                            label="New gear template name"
+                            error={newGearTemplateName.length > 50}
+                            helperText={newGearTemplateName.length > 50 ? 'Name is too long.' : ''}
+                            value={newGearTemplateName}
+                            onChange={(event) => setNewGearTemplateName(event.target.value)}
+                            variant="outlined"
+                        />
+                        <Button
+                            disabled={newGearTemplateName.length < 1 || newGearTemplateName.length > 50 || gearTemplates.length > 4}
+                            onClick={() => {
+                                setNewGearTemplateName('');
+                                saveGearTemplate(newGearTemplateName);
+                            }}>Save gear template</Button>
+                        {gearTemplates.length > 4 ?
+                            <Typography style={{marginLeft: 10}}>Limited to 5 saved templates.</Typography> : <div/>}
+                    </Grid>
+                    <Grid item xs={12}>
+                        <TextField
+                            id="gear-template-id"
+                            label="Load gear template by Id"
+                            value={gearTemplateId}
+                            onChange={(event) => setGearTemplateId(event.target.value)}
+                            variant="outlined"
+                        />
+                        <Button
+                            disabled={gearTemplateId.length < 1}
+                            onClick={() => {
+                                setGearTemplateId('');
+                                loadGearTemplateById(gearTemplateId, items);
+                            }}>Load gear template by id</Button>
+                    </Grid>
+                </Grid>
             </CardActions>
-            {gearTemplates.length > 4 ? <Typography style={{marginLeft: 10}}>Limited to 5 saved templates.</Typography> : <div/>}
         </Card>
     )
 
