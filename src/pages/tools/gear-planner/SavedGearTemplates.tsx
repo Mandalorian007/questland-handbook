@@ -22,6 +22,8 @@ import {
     Grid
 } from "@material-ui/core";
 import CopyIcon from '@material-ui/icons/FileCopy';
+import {Profile} from "../../../domain/profile";
+import {useSelector} from "../../profile/AccountPage";
 
 export const SavedGearTemplates: React.FC<{
     activeGearTemplate: GearTemplate;
@@ -29,6 +31,7 @@ export const SavedGearTemplates: React.FC<{
     items: Item[];
 }> = ({activeGearTemplate, setActiveGearTemplate, items}) => {
     const [cookies] = useCookies(['authToken']);
+    const profile: Profile = useSelector(state => state.profileState.profile);
     const [gearTemplates, setGearTemplates] = React.useState<ServerGearTemplate[]>([]);
     const [newGearTemplateName, setNewGearTemplateName] = React.useState<string>('');
     const [gearTemplateId, setGearTemplateId] = React.useState<string>('');
@@ -131,7 +134,7 @@ export const SavedGearTemplates: React.FC<{
         <Card>
             <CardContent>
                 {
-                    cookies.authToken ?
+                    profile.googleId ?
                         (gearTemplates.length > 0) ?
                             displayGearTemplates()
                             :
@@ -153,7 +156,7 @@ export const SavedGearTemplates: React.FC<{
                             variant="outlined"
                         />
                         <Button
-                            disabled={newGearTemplateName.length < 1 || newGearTemplateName.length > 50 || gearTemplates.length > 4}
+                            disabled={newGearTemplateName.length < 1 || newGearTemplateName.length > 50 || gearTemplates.length > 4 || !profile.googleId}
                             onClick={() => {
                                 setNewGearTemplateName('');
                                 saveGearTemplate(newGearTemplateName);
