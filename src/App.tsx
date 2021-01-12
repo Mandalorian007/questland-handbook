@@ -255,6 +255,26 @@ const navItemGroups: NavItemGroup[] = [
         icon: <BuildIcon/>,
         navItems: [
             {
+                label: 'QL Bot for Discord',
+                to: '/tools/ql-bot'
+            },
+            {
+                label: 'Gear Planner',
+                to: '/tools/gear-planner'
+            },
+            {
+                label: 'Guild Battle Event Planner',
+                to: '/tools/guild-be-plan'
+            },
+            {
+                label: 'Hero Lookup',
+                to: '/tools/hero-lookup'
+            },
+            {
+                label: 'Guild Lookup',
+                to: '/tools/guild-lookup'
+            },
+            {
                 label: 'Monster Slayer Calculator',
                 to: '/tools/monster-slayer-calc'
             },
@@ -271,29 +291,9 @@ const navItemGroups: NavItemGroup[] = [
                 to: '/tools/orb-calc'
             },
             {
-                label: 'QL Bot for Discord',
-                to: '/tools/ql-bot'
-            },
-            {
                 label: 'Questland Public API',
                 to: '/tools/public-api'
-            },
-            {
-                label: 'Guild Lookup',
-                to: '/tools/guild-lookup'
-            },
-            {
-                label: 'Hero Lookup',
-                to: '/tools/hero-lookup'
-            },
-            {
-                label: 'Guild Battle Event Planner',
-                to: '/tools/guild-be-plan'
-            }/*TODO add this back for live launch,
-            {
-                label: 'Gear Planner',
-                to: '/tools/gear-planner'
-            }*/
+            }
         ]
     },
     {label: 'About', to: '/about', icon: <InfoIcon/>, navItems: []},
