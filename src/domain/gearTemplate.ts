@@ -85,10 +85,10 @@ export const convertToGearTemplate = (serverGearTemplate: ServerGearTemplate, it
         necklace: findItemOrUndefined(serverGearTemplate.necklace, items),
         ring: findItemOrUndefined(serverGearTemplate.ring, items),
         talisman: findItemOrUndefined(serverGearTemplate.talisman, items),
-        healthCollections: serverGearTemplate.healthCollections.map(item => findItemOrUndefined(item, items)),
-        attackCollections: serverGearTemplate.attackCollections.map(item => findItemOrUndefined(item, items)),
-        defenseCollections: serverGearTemplate.defenseCollections.map(item => findItemOrUndefined(item, items)),
-        magicCollections: serverGearTemplate.magicCollections.map(item => findItemOrUndefined(item, items)),
+        healthCollections: collectionPad(serverGearTemplate.healthCollections.map(item => findItemOrUndefined(item, items))),
+        attackCollections: collectionPad(serverGearTemplate.attackCollections.map(item => findItemOrUndefined(item, items))),
+        defenseCollections: collectionPad(serverGearTemplate.defenseCollections.map(item => findItemOrUndefined(item, items))),
+        magicCollections: collectionPad(serverGearTemplate.magicCollections.map(item => findItemOrUndefined(item, items))),
     };
 };
 
@@ -108,4 +108,11 @@ const convertCollectionForApi = (collection: (Item | undefined)[]) => {
         tempCollection = tempCollection.concat(undefined);
     }
     return tempCollection;
+};
+
+const collectionPad = (collection: (Item | undefined)[]) => {
+  while (collection.length < 5) {
+      collection = collection.concat(undefined);
+  }
+  return collection;
 };

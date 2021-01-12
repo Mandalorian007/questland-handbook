@@ -84,14 +84,19 @@ export const GearSummary: React.FC<{
         return count >= 2;
     };
 
+    const nativeRound = (num: number, decimalPlaces = 0) => {
+        let p = Math.pow(10, decimalPlaces);
+        return Math.round(num * p) / p;
+    };
+
     const getGearTemplateStats = (gearTemplate: GearTemplate) => {
         const equippedItems = getEquippedItems(gearTemplate);
 
         return [
-            equippedItems.concat(gearTemplate.healthCollections).filter(notUndefined).map(item => getStatValue(item.health, item.itemBonus, Stat.Health, isItemLinked(item, gearTemplate))).reduce((total, stat) => total + stat, 0),
-            equippedItems.concat(gearTemplate.attackCollections).filter(notUndefined).map(item => getStatValue(item.attack, item.itemBonus, Stat.Attack, isItemLinked(item, gearTemplate))).reduce((total, stat) => total + stat, 0),
-            equippedItems.concat(gearTemplate.defenseCollections).filter(notUndefined).map(item => getStatValue(item.defense, item.itemBonus, Stat.Defense, isItemLinked(item, gearTemplate))).reduce((total, stat) => total + stat, 0),
-            equippedItems.concat(gearTemplate.magicCollections).filter(notUndefined).map(item => getStatValue(item.magic, item.itemBonus, Stat.Magic, isItemLinked(item, gearTemplate))).reduce((total, stat) => total + stat, 0),
+            nativeRound(equippedItems.concat(gearTemplate.healthCollections).filter(notUndefined).map(item => getStatValue(item.health, item.itemBonus, Stat.Health, isItemLinked(item, gearTemplate))).reduce((total, stat) => total + stat, 0), 2),
+            nativeRound(equippedItems.concat(gearTemplate.attackCollections).filter(notUndefined).map(item => getStatValue(item.attack, item.itemBonus, Stat.Attack, isItemLinked(item, gearTemplate))).reduce((total, stat) => total + stat, 0), 2),
+            nativeRound(equippedItems.concat(gearTemplate.defenseCollections).filter(notUndefined).map(item => getStatValue(item.defense, item.itemBonus, Stat.Defense, isItemLinked(item, gearTemplate))).reduce((total, stat) => total + stat, 0), 2),
+            nativeRound(equippedItems.concat(gearTemplate.magicCollections).filter(notUndefined).map(item => getStatValue(item.magic, item.itemBonus, Stat.Magic, isItemLinked(item, gearTemplate))).reduce((total, stat) => total + stat, 0), 2),
         ]
     };
 

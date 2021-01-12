@@ -18,7 +18,11 @@ export const ItemSelectorCard: React.FC<{
         let options = items.filter(item => !equippedItemIds.includes(item?.id));
         if (isItemSlot(itemSlotType.toString())) {
             options = options.filter(item => item.itemSlot === itemSlotType);
+            options = options.sort((a, b) => a.totalPotential < b.totalPotential ? 1 : -1);
+            let collectionItems = options.filter(item => item.orbBonus === Stat.None);
+            options = options.filter(item => item.orbBonus != Stat.None).concat(collectionItems)
         }
+
         if (isStat(itemSlotType.toString())) {
             if (itemSlotType === Stat.Health) {
                 //Consider attack gear also reasonable choices for health slots
@@ -28,24 +32,31 @@ export const ItemSelectorCard: React.FC<{
             }
         }
         if (isStat(itemSlotType.toString())) {
+
+            let nonEquippedItems = items.filter(item => !equippedItemIds.includes(item?.id));
+            let weapons = nonEquippedItems.filter(item => item.itemSlot === ItemSlot.MainHand || item.itemSlot === ItemSlot.OffHand);
+
             switch (itemSlotType) {
                 case Stat.Attack:
                     options = options.sort((a, b) => a.attack < b.attack ? 1 : -1);
+                    options = options.concat(weapons.sort((a, b) => a.attack < b.attack ? 1 : -1).slice(0, 3));
                     break;
                 case Stat.Magic:
                     options = options.sort((a, b) => a.magic < b.magic ? 1 : -1);
+                    options = options.concat(weapons.sort((a, b) => a.magic < b.magic ? 1 : -1).slice(0, 3));
                     break;
                 case Stat.Defense:
                     options = options.sort((a, b) => a.defense < b.defense ? 1 : -1);
+                    options = options.concat(weapons.sort((a, b) => a.defense < b.defense ? 1 : -1).slice(0, 3));
                     break;
                 case Stat.Health:
                     options = options.sort((a, b) => a.health < b.health ? 1 : -1);
+                    options = options.concat(weapons.sort((a, b) => a.health < b.health ? 1 : -1).slice(0, 3));
                     break;
                 default:
                     options = options.sort((a, b) => a.totalPotential < b.totalPotential ? 1 : -1);
+                    options = options.concat(weapons.sort((a, b) => a.totalPotential < b.totalPotential ? 1 : -1).slice(0, 3));
             }
-        } else {
-            options = options.sort((a, b) => a.totalPotential < b.totalPotential ? 1 : -1);
         }
 
         return options.map(item => item.name)

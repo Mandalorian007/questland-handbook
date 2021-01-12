@@ -40,8 +40,8 @@ export const SelectedItemCard: React.FC<{
         return <img
             src={(confirmed ? '/checkmark-button.png' : '/x-button.png')}
             alt={''}
-            width={30}
-            height={30}
+            width={25}
+            height={25}
         />
     };
 

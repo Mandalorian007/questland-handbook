@@ -52,6 +52,7 @@ export const itemIconInfo = (item?: Item) => {
     if (!item) {
         item = emptyItem;
     }
+
     return <span>
             <img
                 src={getEmblemImgUrl(item.emblem)}
@@ -60,7 +61,7 @@ export const itemIconInfo = (item?: Item) => {
                 height={20}
             />
             <img
-                src={getItemSlotUrl(item.itemSlot)}
+                src={(item.orbBonus === Stat.None && item?.itemSlot !== ItemSlot.MainHand && item?.itemSlot !== ItemSlot.OffHand) ? '/scroll.png' : getItemSlotUrl(item.itemSlot)}
                 alt=""
                 width={20}
                 height={20}
