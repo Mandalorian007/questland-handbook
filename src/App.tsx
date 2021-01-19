@@ -49,7 +49,6 @@ import {GuildBattleEventPlanner} from './pages/tools/GuildBattleEventPlanner';
 import {QeSmeltingCalcPage} from './pages/tools/QeSmeltingCalcPage';
 import {OrbCalcPage} from './pages/tools/OrbCalcPage';
 import {Markdown} from "./components/Markdown";
-import artifacts from './pages/gearing/artifacts.md'
 import collections from './pages/gearing/collections.md'
 import gear from './pages/gearing/gear.md'
 import orbs from './pages/gearing/orbs.md'
@@ -70,6 +69,7 @@ import {GearPlannerPage} from "./pages/tools/gear-planner/GearPlannerPage";
 import {PrivacyPolicyPage} from "./pages/privacy/PrivacyPolicyPage";
 import {AccountPage} from "./pages/profile/AccountPage";
 import {CookiesProvider} from 'react-cookie';
+import {ArtifactsPage} from "./pages/gearing/ArtifactsPage";
 
 const store = createStore(
     rootReducer,
@@ -338,7 +338,7 @@ export const App: React.FC = () => {
                                 <Markdown md={orbs}/>
                             </Route>
                             <Route path="/gearing/artifacts" exact>
-                                <Markdown md={artifacts}/>
+                                <ArtifactsPage/>
                             </Route>
                             <Route path="/gearing/collections" exact>
                                 <Markdown md={collections}/>
