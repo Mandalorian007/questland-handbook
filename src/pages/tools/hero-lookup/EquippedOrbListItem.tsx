@@ -28,7 +28,7 @@ export const EquippedOrbListItem: React.FC<{
                     height={30}
                 />
             </ListItemIcon>
-            <ListItemText secondary={`level: ${equippedOrb.level}, enhance: ${equippedOrb.enhance}`}>
+            <ListItemText secondary={`pot: ${orb.attackPotential + orb.defensePotential + orb.healthPotential}, lvl: ${equippedOrb.level}, enh: ${equippedOrb.enhance}`}>
                 <Typography variant="body2" style={{color: getQualityColor(orb.quality)}}>
                     {`${orb.name}`}
                 </Typography>

@@ -15,6 +15,26 @@ export const EquippedGearCard: React.FC<{
     equippedOrbStats: Orb[]
 }> = ({equippedGear, item, equippedOrbStats}) => {
 
+    const getItemMaxReforge = (item: Item) => {
+         const pointsPerLevel = Math.ceil(item.totalPotential / 2);
+         switch (item.quality) {
+             case Quality.Legendary:
+                 return pointsPerLevel * 99;
+             case Quality.Artifact1:
+                 return pointsPerLevel * 119;
+             case Quality.Artifact2:
+                 return pointsPerLevel * 139;
+             case Quality.Artifact3:
+                 return pointsPerLevel * 159;
+             case Quality.Artifact4:
+                 return pointsPerLevel * 179;
+             case Quality.Artifact5:
+                 return pointsPerLevel * 199;
+             default:
+                 return 0;
+         }
+    };
+
     const getOrbStats = (id: number, orbs: Orb[]) => {
         const maybeOrb = orbs.find(orb => orb.id === id);
         return maybeOrb ? maybeOrb :
@@ -69,10 +89,10 @@ export const EquippedGearCard: React.FC<{
                     Boosts: {equippedGear.boost}
                 </Typography>
                 <Typography variant="body1" color="textSecondary" component="p">
-                    Reforge(hp,atk,def,mag)
+                    Reforge (hp,atk,def,mag)
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                    {equippedGear.healthReforge}, {equippedGear.attackReforge}, {equippedGear.defenseReforge}, {equippedGear.magicReforge}
+                    {equippedGear.healthReforge}, {equippedGear.attackReforge}, {equippedGear.defenseReforge}, {equippedGear.magicReforge} ({equippedGear.healthReforge + equippedGear.attackReforge + equippedGear.defenseReforge + equippedGear.magicReforge}/{getItemMaxReforge(item)})
                 </Typography>
                 <List dense={true}>
                     {equippedGear.socketedOrbs.map(orb =>
