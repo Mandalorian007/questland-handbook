@@ -17,17 +17,18 @@ import * as React from 'react';
 import {useEffect} from 'react';
 import TextField from '@material-ui/core/TextField';
 import {qlApiUrl} from "../../../config";
-import {CollectionSlots, EquippedOrb, Hero} from "../../../domain/hero";
+import {CollectionSlots, EquippedGear, EquippedOrb, Hero} from "../../../domain/hero";
 import {useGridListCols} from "../../../lib/responsiveList";
 import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
-import {EquippedGearCard} from "./EquippedGearCard";
 import {Item, serverItemToItem} from "../../../domain/item";
 import {Orb, serverOrbToOrb} from "../../../domain/orb";
 import {Stat} from "../../../domain/stat";
 import {ItemSlot, toItemSlot} from "../../../domain/ItemSlot";
 import {Quality} from "../../../domain/quality";
 import {Emblem} from "../../../domain/emblem";
-import {CollectionGearCard, CollectionType} from "./CollectionGearCard";
+import {CollectionGearCard} from "./CollectionGearCard";
+import memoize from "fast-memoize";
+import {EquippedGearCard} from "./EquippedGearCard";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -36,6 +37,10 @@ const useStyles = makeStyles((theme: Theme) =>
         }
     })
 );
+
+export function filterUndef<T>(ts: (T | undefined)[]): T[] {
+    return ts.filter((t: T | undefined): t is T => !!t)
+}
 
 export const HeroLookupPage: React.FC<{}> = () => {
     const classes = useStyles();
@@ -124,6 +129,110 @@ export const HeroLookupPage: React.FC<{}> = () => {
                     );
                 }
             });
+    };
+
+    const getAttackCollectionItems = (collections1: EquippedGear[], collections2: EquippedGear[]) => {
+        return filterUndef([
+            collections1.find(item => item.collectionPosition === 4),
+            collections1.find(item => item.collectionPosition === 8),
+            collections2.find(item => item.collectionPosition === 2),
+            collections2.find(item => item.collectionPosition === 6),
+            collections2.find(item => item.collectionPosition === 10)
+        ]);
+    };
+
+    const getMagicCollectionItems = (collections1: EquippedGear[], collections2: EquippedGear[]) => {
+        return filterUndef([
+            collections1.find(item => item.collectionPosition === 1),
+            collections1.find(item => item.collectionPosition === 5),
+            collections1.find(item => item.collectionPosition === 9),
+            collections2.find(item => item.collectionPosition === 3),
+            collections2.find(item => item.collectionPosition === 7)
+        ]);
+    };
+
+    const getDefenseCollectionItems = (collections1: EquippedGear[], collections2: EquippedGear[]) => {
+        return filterUndef([
+            collections1.find(item => item.collectionPosition === 3),
+            collections1.find(item => item.collectionPosition === 7),
+            collections2.find(item => item.collectionPosition === 1),
+            collections2.find(item => item.collectionPosition === 5),
+            collections2.find(item => item.collectionPosition === 9)
+        ]);
+    };
+
+    const getHealthCollectionItems = (collections1: EquippedGear[], collections2: EquippedGear[]) => {
+        return filterUndef([
+            collections1.find(item => item.collectionPosition === 2),
+            collections1.find(item => item.collectionPosition === 6),
+            collections1.find(item => item.collectionPosition === 10),
+            collections2.find(item => item.collectionPosition === 4),
+            collections2.find(item => item.collectionPosition === 8)
+        ]);
+    };
+
+    const getCollectionSlotPercentage = (item: EquippedGear, collections1: EquippedGear[], collection1Upgrades: number[], collection2Upgrades: number[]): number => {
+        if (collections1.includes(item)) {
+            return collection1Upgrades[item.collectionPosition - 1]
+        } else {
+            return collection2Upgrades[item.collectionPosition - 1]
+        }
+    };
+
+    const isItemLinked = (gear: EquippedGear, items: Item[], equippedGear: EquippedGear[], collection1: EquippedGear[], collection2: EquippedGear[]) => {
+        //not including worn item
+        const allEquippedGear = equippedGear.concat(collection1).concat(collection2).filter(gear => gear.id === gear.id);
+        // get linking item ids.
+        const maybeItem = items.find(item => item.id === memoizedGetItemBaseId(gear));
+        const itemLinkIds: number[] = filterUndef([maybeItem?.itemLink1, maybeItem?.itemLink2, maybeItem?.itemLink3]);
+
+        //convert equipped gear into the baseIds
+        const baseEquippedItemIds = allEquippedGear.map(gear => memoizedGetItemBaseId(gear));
+
+        //check if at least two links are present.
+        return baseEquippedItemIds.filter(id => itemLinkIds.includes(id)).length > 1;
+    };
+
+    const getItemBaseId = (gear: EquippedGear) => {
+        const currentItem = items.find(item => item.id === gear.id);
+        if (currentItem && [Quality.Artifact1, Quality.Artifact2, Quality.Artifact3, Quality.Artifact4, Quality.Artifact5].includes(currentItem.quality)) {
+            // find the legendary item version
+            const legendaryItem = items.filter(item => item.name === currentItem.name).find(item => item.quality === Quality.Legendary);
+            if (legendaryItem) {
+                return legendaryItem.id;
+            }
+        }
+        //fallback if we can't find the legendary version of the artifact or if the item wasn't an artifact
+        return gear.id;
+    };
+
+    const memoizedGetItemBaseId = memoize(getItemBaseId);
+
+    const calculateStatBonus = (a: EquippedGear, linkStat: Stat) => {
+        const theItem = items.find(item => item.id === a.id);
+        if (theItem) {
+            if (theItem.itemBonus === linkStat && isItemLinked(a, items, hero.equippedGear, hero.collections1, hero.collections2)) {
+                return getItemStatValue(theItem, linkStat) * 1.3;
+            } else {
+                return getItemStatValue(theItem, linkStat);
+            }
+        }
+        return 0;
+    };
+
+    const getItemStatValue = (item: Item, stat: Stat) => {
+        switch (stat) {
+            case Stat.Attack:
+                return item.attack;
+            case Stat.Magic:
+                return item.magic;
+            case Stat.Defense:
+                return item.defense;
+            case Stat.Health:
+                return item.health;
+            default:
+                return 0;
+        }
     };
 
     return (
@@ -225,7 +334,6 @@ export const HeroLookupPage: React.FC<{}> = () => {
                     </Table>
                 </TableContainer>
             </Paper>
-            <Divider/>
             <h2>Equipment</h2>
             <GridList cellHeight={380} spacing={16} cols={useGridListCols()} className={classes.itemList}>
                 {hero.equippedGear
@@ -242,42 +350,83 @@ export const HeroLookupPage: React.FC<{}> = () => {
                         return (
                             <GridListTile key={index} cols={1}>
                                 <EquippedGearCard equippedGear={gear} item={getItemFromEquippedGear(gear.id, items)}
-                                                  equippedOrbStats={getOrbsFromEquippedOrbs(gear.socketedOrbs, orbs)}/>
+                                                  equippedOrbStats={getOrbsFromEquippedOrbs(gear.socketedOrbs, orbs)}
+                                                  isLinked={isItemLinked(gear, items, hero.equippedGear, hero.collections1, hero.collections2)}/>
                             </GridListTile>
                         );
                     })}
             </GridList>
-            <Divider/>
-            <h2>Collection 1</h2>
+            <h2>Attack Collections</h2>
             <GridList cellHeight={180} spacing={16} cols={useGridListCols()} className={classes.itemList}>
-                {hero.collections1
-                    .sort((a, b) => a.collectionPosition > b.collectionPosition ? 1 : -1)
-                    .map((gear, index) => {
-                        return (
-                            <GridListTile key={index} cols={1}>
-                                <CollectionGearCard collectionGear={gear}
-                                                    item={getItemFromEquippedGear(gear.id, items)}
-                                                    collectionSlots={hero.collection1Slots}
-                                                    collectionType={CollectionType.ONE}/>
-                            </GridListTile>
-                        );
-                    })}
+                {getAttackCollectionItems(hero.collections1, hero.collections2)
+                    .sort((a, b) => {
+                        const aStat = calculateStatBonus(a, Stat.Attack);
+                        const bStat = calculateStatBonus(b, Stat.Attack);
+                        return bStat > aStat ? 1 : -1;
+                    })
+                    .map((gear, index) =>
+                        <GridListTile key={index} cols={1}>
+                            <CollectionGearCard collectionGear={gear}
+                                                item={getItemFromEquippedGear(gear.id, items)}
+                                                collectionPercentage={getCollectionSlotPercentage(gear, hero.collections1, hero.collection1Slots.slotUpgradePercentages, hero.collection2Slots.slotUpgradePercentages)}
+                                                isLinked={isItemLinked(gear, items, hero.equippedGear, hero.collections1, hero.collections2)}/>
+                        </GridListTile>
+                    )
+                }
             </GridList>
-            <Divider/>
-            <h2>Collection 2</h2>
+            <h2>Magic Collections</h2>
             <GridList cellHeight={180} spacing={16} cols={useGridListCols()} className={classes.itemList}>
-                {hero.collections2
-                    .sort((a, b) => a.collectionPosition > b.collectionPosition ? 1 : -1)
-                    .map((gear, index) => {
-                        return (
-                            <GridListTile key={index} cols={1}>
-                                <CollectionGearCard collectionGear={gear}
-                                                    item={getItemFromEquippedGear(gear.id, items)}
-                                                    collectionSlots={hero.collection2Slots}
-                                                    collectionType={CollectionType.TWO}/>
-                            </GridListTile>
-                        );
-                    })}
+                {getMagicCollectionItems(hero.collections1, hero.collections2)
+                    .sort((a, b) => {
+                        const aStat = calculateStatBonus(a, Stat.Magic);
+                        const bStat = calculateStatBonus(b, Stat.Magic);
+                        return bStat > aStat ? 1 : -1;
+                    })
+                    .map((gear, index) =>
+                        <GridListTile key={index} cols={1}>
+                            <CollectionGearCard collectionGear={gear}
+                                                item={getItemFromEquippedGear(gear.id, items)}
+                                                collectionPercentage={getCollectionSlotPercentage(gear, hero.collections1, hero.collection1Slots.slotUpgradePercentages, hero.collection2Slots.slotUpgradePercentages)}
+                                                isLinked={isItemLinked(gear, items, hero.equippedGear, hero.collections1, hero.collections2)}/>
+                        </GridListTile>
+                    )
+                }
+            </GridList>
+            <h2>Defense Collections</h2>
+            <GridList cellHeight={180} spacing={16} cols={useGridListCols()} className={classes.itemList}>
+                {getDefenseCollectionItems(hero.collections1, hero.collections2)
+                    .sort((a, b) => {
+                        const aStat = calculateStatBonus(a, Stat.Defense);
+                        const bStat = calculateStatBonus(b, Stat.Defense);
+                        return bStat > aStat ? 1 : -1;
+                    })
+                    .map((gear, index) =>
+                        <GridListTile key={index} cols={1}>
+                            <CollectionGearCard collectionGear={gear}
+                                                item={getItemFromEquippedGear(gear.id, items)}
+                                                collectionPercentage={getCollectionSlotPercentage(gear, hero.collections1, hero.collection1Slots.slotUpgradePercentages, hero.collection2Slots.slotUpgradePercentages)}
+                                                isLinked={isItemLinked(gear, items, hero.equippedGear, hero.collections1, hero.collections2)}/>
+                        </GridListTile>
+                    )
+                }
+            </GridList>
+            <h2>Health Collections</h2>
+            <GridList cellHeight={180} spacing={16} cols={useGridListCols()} className={classes.itemList}>
+                {getHealthCollectionItems(hero.collections1, hero.collections2)
+                    .sort((a, b) => {
+                        const aStat = calculateStatBonus(a, Stat.Health);
+                        const bStat = calculateStatBonus(b, Stat.Health);
+                        return bStat > aStat ? 1 : -1;
+                    })
+                    .map((gear, index) =>
+                        <GridListTile key={index} cols={1}>
+                            <CollectionGearCard collectionGear={gear}
+                                                item={getItemFromEquippedGear(gear.id, items)}
+                                                collectionPercentage={getCollectionSlotPercentage(gear, hero.collections1, hero.collection1Slots.slotUpgradePercentages, hero.collection2Slots.slotUpgradePercentages)}
+                                                isLinked={isItemLinked(gear, items, hero.equippedGear, hero.collections1, hero.collections2)}/>
+                        </GridListTile>
+                    )
+                }
             </GridList>
         </>
     );

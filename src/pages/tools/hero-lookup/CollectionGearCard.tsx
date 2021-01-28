@@ -2,76 +2,26 @@ import {Card, CardContent, Grid, Typography} from '@material-ui/core';
 import React from 'react';
 import {Item} from '../../../domain/item';
 import {getQualityColor} from "../../../domain/quality";
-import {CollectionSlots, EquippedGear} from "../../../domain/hero";
+import {EquippedGear} from "../../../domain/hero";
 import {getEmblemImgUrl} from "../../../domain/emblem";
 import {getItemSlotUrl} from "../../../domain/ItemSlot";
-import {Stat} from "../../../domain/stat";
+import {getStatUrl} from "../../../domain/stat";
 
-export enum CollectionType {
-    ONE,
-    TWO
-}
 
 export const CollectionGearCard: React.FC<{
     collectionGear: EquippedGear;
     item: Item,
-    collectionSlots: CollectionSlots,
-    collectionType: CollectionType
-}> = ({collectionGear, item, collectionSlots, collectionType}) => {
+    collectionPercentage: number,
+    isLinked: boolean
+}> = ({collectionGear, item, collectionPercentage, isLinked}) => {
 
-    const getCollectionType1Stat = (collectionPosition: number) => {
-        let slotStat: Stat;
-        switch (collectionPosition) {
-            case 1:
-            case 4:
-            case 9:
-                slotStat = Stat.Health;
-                break;
-            case 3:
-            case 5:
-            case 7:
-                slotStat = Stat.Attack;
-                break;
-            case 2:
-            case 6:
-                slotStat = Stat.Defense;
-                break;
-            case 0:
-            case 8:
-                slotStat = Stat.Magic;
-                break;
-            default:
-                slotStat = Stat.None;
-                break;
-        }
-        return slotStat;
-    };
-    const getCollectionType2Stat = (collectionPosition: number) => {
-        let slotStat: Stat;
-        switch (collectionPosition) {
-            case 3:
-            case 7:
-                slotStat = Stat.Health;
-                break;
-            case 1:
-            case 5:
-            case 9:
-                slotStat = Stat.Attack;
-                break;
-            case 0:
-            case 4:
-            case 8:
-                slotStat = Stat.Defense;
-                break;
-            case 2:
-            case 6:
-                slotStat = Stat.Magic;
-                break;
-            default:
-                slotStat = Stat.None;
-                break;
-        }
-        return slotStat;
+    const getLinkedImage = (confirmed: boolean) => {
+        return <img
+            src={(confirmed ? '/checkmark-button.png' : '/x-button.png')}
+            alt={''}
+            width={18}
+            height={18}
+        />
     };
 
     return (
@@ -100,15 +50,21 @@ export const CollectionGearCard: React.FC<{
                         width={24}
                         height={24}
                     />
+                    <img
+                        src={getStatUrl(item.itemBonus)}
+                        alt=""
+                        width={24}
+                        height={24}
+                    />
                 </Grid>
                 <Typography variant="body1" color="textSecondary" component="p">
                     Boosts: {collectionGear.boost}
                 </Typography>
                 <Typography variant="body1" color="textSecondary" component="p">
-                    {`Slot Type: ${CollectionType.ONE === collectionType ? getCollectionType1Stat(collectionGear.collectionPosition -1) : getCollectionType2Stat(collectionGear.collectionPosition -1)}`}
+                    Slot Level: {collectionPercentage}
                 </Typography>
                 <Typography variant="body1" color="textSecondary" component="p">
-                    Slot Level: {collectionSlots.slotUpgradePercentages[collectionGear.collectionPosition - 1]}
+                    Link Status: {getLinkedImage(isLinked)}
                 </Typography>
             </CardContent>
         </Card>

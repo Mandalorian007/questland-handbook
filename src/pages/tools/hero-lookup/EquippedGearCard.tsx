@@ -7,13 +7,23 @@ import {Orb} from "../../../domain/orb";
 import {getEmblemImgUrl} from "../../../domain/emblem";
 import {getItemSlotUrl} from "../../../domain/ItemSlot";
 import {EquippedOrbListItem} from "./EquippedOrbListItem";
-import {Stat} from "../../../domain/stat";
+import {getStatUrl, Stat} from "../../../domain/stat";
 
 export const EquippedGearCard: React.FC<{
     equippedGear: EquippedGear;
     item: Item
-    equippedOrbStats: Orb[]
-}> = ({equippedGear, item, equippedOrbStats}) => {
+    equippedOrbStats: Orb[],
+    isLinked: boolean
+}> = ({equippedGear, item, equippedOrbStats, isLinked}) => {
+
+    const getLinkedImage = (confirmed: boolean) => {
+        return <img
+            src={(confirmed ? '/checkmark-button.png' : '/x-button.png')}
+            alt={''}
+            width={18}
+            height={18}
+        />
+    };
 
     const getItemMaxReforge = (item: Item) => {
          const pointsPerLevel = Math.ceil(item.totalPotential / 2);
@@ -81,6 +91,12 @@ export const EquippedGearCard: React.FC<{
                         width={24}
                         height={24}
                     />
+                    <img
+                        src={getStatUrl(item.itemBonus)}
+                        alt=""
+                        width={24}
+                        height={24}
+                    />
                 </Grid>
                 <Typography variant="body1" color="textSecondary" component="p">
                     Level: {equippedGear.level}
@@ -93,6 +109,9 @@ export const EquippedGearCard: React.FC<{
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                     {equippedGear.healthReforge}, {equippedGear.attackReforge}, {equippedGear.defenseReforge}, {equippedGear.magicReforge} ({equippedGear.healthReforge + equippedGear.attackReforge + equippedGear.defenseReforge + equippedGear.magicReforge}/{getItemMaxReforge(item)})
+                </Typography>
+                <Typography variant="body1" color="textSecondary" component="p">
+                    Link Status: {getLinkedImage(isLinked)}
                 </Typography>
                 <List dense={true}>
                     {equippedGear.socketedOrbs.map(orb =>
