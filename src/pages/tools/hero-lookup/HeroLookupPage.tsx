@@ -293,7 +293,7 @@ export const ItemOverviewPageInternal: React.FC<{}> = () => {
                     size="small"
                     color="primary"
                 >
-                    Load Hero Information
+                    Load Hero (Please be patient this takes a moment)
                 </Button>
             </form>
             <br/>
