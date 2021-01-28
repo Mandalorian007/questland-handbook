@@ -29,6 +29,7 @@ import {Emblem} from "../../../domain/emblem";
 import {CollectionGearCard} from "./CollectionGearCard";
 import memoize from "fast-memoize";
 import {EquippedGearCard} from "./EquippedGearCard";
+import {useParams, withRouter} from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -42,8 +43,9 @@ export function filterUndef<T>(ts: (T | undefined)[]): T[] {
     return ts.filter((t: T | undefined): t is T => !!t)
 }
 
-export const HeroLookupPage: React.FC<{}> = () => {
+export const ItemOverviewPageInternal: React.FC<{}> = () => {
     const classes = useStyles();
+    const {urlServer, urlGuildName, urlHeroName} = useParams();
     const [heroName, setHeroName] = React.useState<string>('');
     const [guildName, setGuildName] = React.useState<string>('');
     const [serverName, setServerName] = React.useState<string>('GLOBAL');
@@ -89,6 +91,18 @@ export const HeroLookupPage: React.FC<{}> = () => {
     const [hero, setHero] = React.useState<Hero>(initialState);
 
     useEffect(() => {
+        if (urlServer) {
+            const urlServerFormatted = urlServer.trim().toUpperCase();
+            if (['GLOBAL', 'AMERICA', 'EUROPE', 'VETERANS', 'ASIA'].includes(urlServerFormatted)) {
+                setServerName(urlServerFormatted);
+            }
+        }
+        if (urlGuildName) {
+            setGuildName(urlGuildName);
+        }
+        if (urlHeroName) {
+            setHeroName(urlHeroName);
+        }
         fetch(qlApiUrl + 'items?sort=totalPotential,desc')
             .then(res => res.json())
             .then(serverItems => serverItems.map(serverItemToItem))
@@ -97,7 +111,7 @@ export const HeroLookupPage: React.FC<{}> = () => {
             .then(res => res.json())
             .then(serverOrbs => serverOrbs.map(serverOrbToOrb))
             .then(setOrbs);
-    }, [setItems, setOrbs]);
+    }, [setItems, setOrbs, serverName, setGuildName, setHeroName, urlServer, urlGuildName, urlHeroName]);
 
     const handleHeroNameChange = (e: any) => {
         setHeroName(e.target.value);
@@ -181,7 +195,7 @@ export const HeroLookupPage: React.FC<{}> = () => {
 
     const isItemLinked = (gear: EquippedGear, items: Item[], equippedGear: EquippedGear[], collection1: EquippedGear[], collection2: EquippedGear[]) => {
         //not including worn item
-        const allEquippedGear = equippedGear.concat(collection1).concat(collection2).filter(gear => gear.id === gear.id);
+        const allEquippedGear = equippedGear.concat(collection1).concat(collection2).filter(item => item.id === gear.id);
         // get linking item ids.
         const maybeItem = items.find(item => item.id === memoizedGetItemBaseId(gear));
         const itemLinkIds: number[] = filterUndef([maybeItem?.itemLink1, maybeItem?.itemLink2, maybeItem?.itemLink3]);
@@ -240,19 +254,19 @@ export const HeroLookupPage: React.FC<{}> = () => {
             <h1>Questland Hero Lookup</h1>
             <form noValidate autoComplete="off" onSubmit={handleSubmit}>
                 <TextField
-                    id="standard-text"
+                    id="select-hero-name-label"
                     label="hero name"
                     type="text"
-                    defaultValue={''}
+                    value={heroName}
                     onChange={(e: any) => handleHeroNameChange(e)}
                 />
                 <br/>
                 <br/>
                 <TextField
-                    id="standard-text"
+                    id="select-guild-name-label"
                     label="guild name"
                     type="text"
-                    defaultValue={''}
+                    value={guildName}
                     onChange={(e: any) => handleGuildNameChange(e)}
                 />
                 <br/>
@@ -482,3 +496,5 @@ const getOrbsFromEquippedOrbs = (equippedOrbs: EquippedOrb[], orbs: Orb[]) => {
             };
     })
 };
+
+export const HeroLookupPage = withRouter(ItemOverviewPageInternal);

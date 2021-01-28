@@ -20,7 +20,7 @@ export const ItemSelectorCard: React.FC<{
             options = options.filter(item => item.itemSlot === itemSlotType);
             options = options.sort((a, b) => a.totalPotential < b.totalPotential ? 1 : -1);
             let collectionItems = options.filter(item => item.orbBonus === Stat.None);
-            options = options.filter(item => item.orbBonus != Stat.None).concat(collectionItems)
+            options = options.filter(item => item.orbBonus !== Stat.None).concat(collectionItems)
         }
 
         if (isStat(itemSlotType.toString())) {

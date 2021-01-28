@@ -447,6 +447,7 @@ export const App: React.FC = () => {
                             <Route path="/tools/guild-lookup" exact>
                                 <GuildLookupPage/>
                             </Route>
+                            <Route path="/tools/hero-lookup/:urlServer/:urlGuildName/:urlHeroName" component={HeroLookupPage}/>
                             <Route path="/tools/hero-lookup" exact>
                                 <HeroLookupPage/>
                             </Route>
