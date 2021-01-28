@@ -351,6 +351,7 @@ export const HeroLookupPage: React.FC<{}> = () => {
                             <GridListTile key={index} cols={1}>
                                 <EquippedGearCard equippedGear={gear} item={getItemFromEquippedGear(gear.id, items)}
                                                   equippedOrbStats={getOrbsFromEquippedOrbs(gear.socketedOrbs, orbs)}
+                                                  allOrbs={orbs}
                                                   isLinked={isItemLinked(gear, items, hero.equippedGear, hero.collections1, hero.collections2)}/>
                             </GridListTile>
                         );

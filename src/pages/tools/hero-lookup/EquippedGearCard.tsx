@@ -8,13 +8,15 @@ import {getEmblemImgUrl} from "../../../domain/emblem";
 import {getItemSlotUrl} from "../../../domain/ItemSlot";
 import {EquippedOrbListItem} from "./EquippedOrbListItem";
 import {getStatUrl, Stat} from "../../../domain/stat";
+import {filterUndef} from "./HeroLookupPage";
 
 export const EquippedGearCard: React.FC<{
     equippedGear: EquippedGear;
     item: Item
     equippedOrbStats: Orb[],
+    allOrbs: Orb[],
     isLinked: boolean
-}> = ({equippedGear, item, equippedOrbStats, isLinked}) => {
+}> = ({equippedGear, item, equippedOrbStats, allOrbs, isLinked}) => {
 
     const getLinkedImage = (confirmed: boolean) => {
         return <img
@@ -26,23 +28,23 @@ export const EquippedGearCard: React.FC<{
     };
 
     const getItemMaxReforge = (item: Item) => {
-         const pointsPerLevel = Math.ceil(item.totalPotential / 2);
-         switch (item.quality) {
-             case Quality.Legendary:
-                 return pointsPerLevel * 99;
-             case Quality.Artifact1:
-                 return pointsPerLevel * 119;
-             case Quality.Artifact2:
-                 return pointsPerLevel * 139;
-             case Quality.Artifact3:
-                 return pointsPerLevel * 159;
-             case Quality.Artifact4:
-                 return pointsPerLevel * 179;
-             case Quality.Artifact5:
-                 return pointsPerLevel * 199;
-             default:
-                 return 0;
-         }
+        const pointsPerLevel = Math.ceil(item.totalPotential / 2);
+        switch (item.quality) {
+            case Quality.Legendary:
+                return pointsPerLevel * 99;
+            case Quality.Artifact1:
+                return pointsPerLevel * 119;
+            case Quality.Artifact2:
+                return pointsPerLevel * 139;
+            case Quality.Artifact3:
+                return pointsPerLevel * 159;
+            case Quality.Artifact4:
+                return pointsPerLevel * 179;
+            case Quality.Artifact5:
+                return pointsPerLevel * 199;
+            default:
+                return 0;
+        }
     };
 
     const getOrbStats = (id: number, orbs: Orb[]) => {
@@ -63,6 +65,21 @@ export const EquippedGearCard: React.FC<{
                 statBonus: Stat.None,
                 iconGraphicsUrl: "",
             };
+    };
+
+    const doesOrbLink = (id: number) => {
+        const orbsThatLink = filterUndef([item.orbLink1, item.orbLink2]);
+        return orbsThatLink.includes(convertOrbIdToBase(id) || -1);
+    };
+
+    const convertOrbIdToBase = (id: number | undefined) => {
+        if (id) {
+            const maybeOrb = allOrbs.find(orb => orb.id === id);
+            if (maybeOrb && maybeOrb.quality === Quality.Artifact1) {
+                return allOrbs.find(orb => orb.name === maybeOrb.name && orb.quality === Quality.Legendary)?.id;
+            }
+        }
+        return id;
     };
 
     return (
@@ -115,7 +132,8 @@ export const EquippedGearCard: React.FC<{
                 </Typography>
                 <List dense={true}>
                     {equippedGear.socketedOrbs.map(orb =>
-                        <EquippedOrbListItem key={orb.id} equippedOrb={orb} orb={getOrbStats(orb.id, equippedOrbStats)}/>
+                        <EquippedOrbListItem key={orb.id} equippedOrb={orb} orb={getOrbStats(orb.id, equippedOrbStats)}
+                                             isLinked={doesOrbLink(orb.id)}/>
                     )}
                 </List>
             </CardContent>
