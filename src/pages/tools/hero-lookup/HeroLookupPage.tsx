@@ -194,8 +194,7 @@ export const ItemOverviewPageInternal: React.FC<{}> = () => {
     };
 
     const isItemLinked = (gear: EquippedGear, items: Item[], equippedGear: EquippedGear[], collection1: EquippedGear[], collection2: EquippedGear[]) => {
-        //not including worn item
-        const allEquippedGear = equippedGear.concat(collection1).concat(collection2).filter(item => item.id === gear.id);
+        const allEquippedGear = equippedGear.concat(collection1).concat(collection2);
         // get linking item ids.
         const maybeItem = items.find(item => item.id === memoizedGetItemBaseId(gear));
         const itemLinkIds: number[] = filterUndef([maybeItem?.itemLink1, maybeItem?.itemLink2, maybeItem?.itemLink3]);
