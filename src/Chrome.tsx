@@ -164,16 +164,9 @@ export const Chrome: React.FC<{
                     <Container component="footer" className={classes.footer}>
                         <Paper>
                             <Grid container direction="row" alignItems="center" className={classes.footerContent}>
-                                <Typography variant="body1">Learn more about Questland at my
-                                    Patreon{`\xa0\xa0`}</Typography>
-                                <a href="https://www.patreon.com/bePatron?u=33921067" target="_blank"
-                                   rel="noopener noreferrer">
-                                    <img
-                                        src="https://www.questland-handbook.com/become_a_patron_button@2x.png"
-                                        alt="unable to load patreon logo"
-                                        width={160}
-                                    />
-                                </a>
+                                <Typography variant="body1">
+                                    Unfortunately, the Questland Handbook, QL Bot, and Questland API are all shutting down with the final day being April 1st (this is not a joke). If you are serious about picking up the tooling before then please reach out to ThunderSoap with a pm via the Public Questland discord.
+                                </Typography>
                             </Grid>
                         </Paper>
                     </Container>
