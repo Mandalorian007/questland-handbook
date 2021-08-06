@@ -311,7 +311,7 @@ export const App: React.FC = () => {
         <Provider store={store}>
             <CookiesProvider>
                 <Router>
-                    <Chrome title="Questland Handbook (Ownership change in May)" navItemGroups={navItemGroups}>
+                    <Chrome title="Questland Handbook (maintenance mode)" navItemGroups={navItemGroups}>
                         <Switch>
                             <Route path="/" exact>
                                 <HomePage/>
