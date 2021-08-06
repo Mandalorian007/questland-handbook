@@ -6,14 +6,6 @@ import {
   ReduxBattleLocationState
 } from './battleLocationReducer';
 import {
-  hardBossStatsReducer,
-  ReduxHardBossStatState
-} from './hardBossStatReducer';
-import {
-  guildBossStatsReducer,
-  ReduxGuildBossStatState
-} from './guildBossStatReducer';
-import {
   stageScoreReducer,
   ReduxStageScoreState
 } from './stageScoreReducer';
@@ -44,8 +36,6 @@ export enum ReduxActionTypes {
 export const rootReducer: Reducer = combineReducers({
   itemState: itemReducer,
   orbState: orbReducer,
-  hardBossStatsState: hardBossStatsReducer,
-  guildBossStatsState: guildBossStatsReducer,
   battleLocationState: battleLocationReducer,
   stageScoreState: stageScoreReducer,
   youTubeFeedState: youTubeFeedReducer,
@@ -55,8 +45,6 @@ export const rootReducer: Reducer = combineReducers({
 export type AppState = {
   itemState: ReduxItemState;
   orbState: ReduxOrbState;
-  hardBossStatsState: ReduxHardBossStatState;
-  guildBossStatsState: ReduxGuildBossStatState;
   battleLocationState: ReduxBattleLocationState;
   stageScoreState: ReduxStageScoreState;
   youTubeFeedState: ReduxYouTubeFeedState;

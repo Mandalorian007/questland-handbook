@@ -42,8 +42,6 @@ import {RedGuildStrikerPage} from './pages/battleevent/RedGuildStrikerPage';
 import {BlueGuildStrikerPage} from './pages/battleevent/BlueGuildStrikerPage';
 import {ReforgingPage} from './pages/gearing/ReforgingPage';
 import {FarmerPage} from './pages/arena/FarmerPage';
-import {HardBossStatsIndexPage} from './pages/indexes/HardBossStatsIndexPage';
-import {GuildBossStatsIndexPage} from './pages/indexes/GuildBossStatsIndexPage';
 import {GuildLookupPage} from './pages/tools/GuildLookupPage';
 import {GuildBattleEventPlanner} from './pages/tools/GuildBattleEventPlanner';
 import {QeSmeltingCalcPage} from './pages/tools/QeSmeltingCalcPage';
@@ -245,9 +243,7 @@ const navItemGroups: NavItemGroup[] = [
         icon: <ListIcon/>,
         navItems: [
             {label: 'Gear Index', to: '/indexes/gear'},
-            {label: 'Orb Index', to: '/indexes/orb'},
-            {label: 'Hard Boss Stats', to: '/indexes/hard-boss-stats'},
-            {label: 'Guild Boss Stats', to: '/indexes/guild-boss-stats'}
+            {label: 'Orb Index', to: '/indexes/orb'}
         ]
     },
     {
@@ -418,12 +414,6 @@ export const App: React.FC = () => {
                             <Route path="/item/:id" component={ItemOverviewPage}/>
                             <Route path="/indexes/orb" exact>
                                 <OrbIndexPage/>
-                            </Route>
-                            <Route path="/indexes/hard-boss-stats" exact>
-                                <HardBossStatsIndexPage/>
-                            </Route>
-                            <Route path="/indexes/guild-boss-stats" exact>
-                                <GuildBossStatsIndexPage/>
                             </Route>
 
                             <Route path="/tools/monster-slayer-calc" exact>
