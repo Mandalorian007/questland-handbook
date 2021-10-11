@@ -165,7 +165,7 @@ export const Chrome: React.FC<{
                         <Paper>
                             <Grid container direction="row" alignItems="center" className={classes.footerContent}>
                                 <Typography variant="body1">
-                                    Important update: This project is in maintenance mode only and will be supported by ThunderSoap short term. Community developers who wish to build on this project should check github.
+                                    Important update: This project is shutting down and will no longer be available after October 31st. All source code for developers to run this project will remain publicly available in GitHub.
                                 </Typography>
                             </Grid>
                         </Paper>
